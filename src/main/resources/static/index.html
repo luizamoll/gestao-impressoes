@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Painel de gestão de impressões, contratos e consumo responsável." />
+  <title>Gestão de Impressões</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div>
+          <strong>Gestão de Impressões</strong>
+          <small>Consumo & ESG</small>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <button class="nav-item active" data-section="overview">
+          <span class="nav-icon">⌂</span>
+          Visão geral
+        </button>
+        <button class="nav-item" data-section="upload">
+          <span class="nav-icon">↑</span>
+          Novo relatório
+        </button>
+        <button class="nav-item" data-section="equipment">
+          <span class="nav-icon">▦</span>
+          Equipamentos
+        </button>
+        <button class="nav-item" data-section="contract">
+          <span class="nav-icon">◎</span>
+          Contrato
+        </button>
+        <button class="nav-item" data-section="responsible">
+          <span class="nav-icon">↘</span>
+          Consumo responsável
+        </button>
+      </nav>
+
+      <div class="sidebar-note">
+        <span class="status-dot"></span>
+        <div>
+          <strong>Protótipo</strong>
+          <small>Dados fictícios para validação</small>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Abrir menu">☰</button>
+        <div>
+          <p class="eyebrow">Painel operacional</p>
+          <h1>Visão geral</h1>
+        </div>
+        <div class="topbar-actions">
+          <label class="period-select">
+            <span>Competência</span>
+            <select id="periodSelect">
+              <option>Setembro 2026</option>
+              <option>Agosto 2026</option>
+              <option>Julho 2026</option>
+            </select>
+          </label>
+          <button class="primary-button" data-go="upload">Enviar relatório</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="hero-card section-anchor" id="overview">
+          <div class="hero-copy">
+            <span class="pill pill-positive">Dentro da franquia</span>
+            <h2>Seu ambiente de impressão está sob controle.</h2>
+            <p>O consumo atual está 8,7% abaixo do mês anterior e permanece dentro do volume contratado.</p>
+          </div>
+          <div class="hero-progress">
+            <div class="radial" style="--progress:85.4">
+              <div>
+                <strong>85,4%</strong>
+                <span>da franquia</span>
+              </div>
+            </div>
+            <small>42.680 de 50.000 impressões</small>
+          </div>
+        </section>
+
+        <section class="kpi-grid" aria-label="Indicadores principais">
+          <article class="kpi-card">
+            <div class="kpi-label">
+              <span>Impressões no mês</span>
+              <button class="info-button" data-tooltip="Soma das impressões calculadas a partir da diferença entre a leitura atual e a anterior.">i</button>
+            </div>
+            <strong>42.680</strong>
+            <span class="trend positive">↓ 8,7% vs. mês anterior</span>
+          </article>
+
+          <article class="kpi-card">
+            <div class="kpi-label">
+              <span>Franquia disponível</span>
+              <button class="info-button" data-tooltip="Quantidade ainda disponível antes de atingir a franquia mensal contratada.">i</button>
+            </div>
+            <strong>7.320</strong>
+            <span class="trend neutral">14,6% ainda disponível</span>
+          </article>
+
+          <article class="kpi-card">
+            <div class="kpi-label">
+              <span>Excedente</span>
+              <button class="info-button" data-tooltip="Volume que ultrapassa a franquia contratada. Neste protótipo, o consumo ainda está abaixo do limite.">i</button>
+            </div>
+            <strong>0</strong>
+            <span class="trend positive">Sem cobrança adicional</span>
+          </article>
+
+          <article class="kpi-card emphasis">
+            <div class="kpi-label">
+              <span>Maior utilização</span>
+              <button class="info-button" data-tooltip="Equipamento com o maior volume calculado no período selecionado.">i</button>
+            </div>
+            <strong>12.300</strong>
+            <span class="trend">Secretaria Acadêmica · 28,8%</span>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel chart-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Distribuição</p>
+                <h3>Consumo por equipamento</h3>
+              </div>
+              <span class="muted">42.680 páginas</span>
+            </div>
+            <div class="bar-chart" id="barChart" aria-label="Gráfico de consumo por equipamento"></div>
+          </article>
+
+          <article class="panel contract-panel section-anchor" id="contract">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Contrato</p>
+                <h3>Uso da franquia</h3>
+              </div>
+              <span class="pill">Mensal</span>
+            </div>
+
+            <div class="contract-summary">
+              <div>
+                <span>Consumo</span>
+                <strong>42.680</strong>
+              </div>
+              <div>
+                <span>Franquia</span>
+                <strong>50.000</strong>
+              </div>
+            </div>
+
+            <div class="linear-progress" aria-label="85,4% da franquia utilizada">
+              <span style="width: 85.4%"></span>
+            </div>
+
+            <div class="contract-note">
+              <div class="note-icon">✓</div>
+              <p><strong>Margem confortável.</strong> Restam 7.320 impressões antes do limite contratado.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel upload-panel section-anchor" id="upload">
+          <div class="panel-header upload-heading">
+            <div>
+              <p class="eyebrow">Novo processamento</p>
+              <h3>Analisar relatório de impressão</h3>
+              <p class="muted">Envie um arquivo para extrair as leituras e comparar com o histórico.</p>
+            </div>
+            <span class="formats">PDF · PNG · JPG</span>
+          </div>
+
+          <label class="dropzone" id="dropzone" for="fileInput">
+            <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg" hidden />
+            <div class="upload-icon">↑</div>
+            <strong id="uploadTitle">Arraste o arquivo aqui ou clique para selecionar</strong>
+            <span id="uploadSubtitle">Tamanho e estrutura serão validados antes do processamento</span>
+          </label>
+
+          <div class="upload-actions">
+            <div class="security-copy">
+              <span>✓</span>
+              <p>A leitura será conferida antes de atualizar o histórico.</p>
+            </div>
+            <button class="primary-button" id="analyzeButton" disabled>Analisar relatório</button>
+          </div>
+        </section>
+
+        <section class="panel responsible-panel section-anchor" id="responsible">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Consumo responsável</p>
+              <h3>O que os dados estão mostrando?</h3>
+            </div>
+            <span class="pill pill-esg">ESG · Ambiental</span>
+          </div>
+
+          <div class="insight-grid">
+            <article class="insight-card featured">
+              <span class="insight-kicker">Evolução mensal</span>
+              <strong>↓ 8,7%</strong>
+              <p>Foram 4.061 impressões a menos que no mês anterior.</p>
+              <div class="mini-series" aria-label="Evolução de julho a setembro">
+                <div><span>Jul</span><i style="height: 88%"></i><b>51,2k</b></div>
+                <div><span>Ago</span><i style="height: 80%"></i><b>46,7k</b></div>
+                <div><span>Set</span><i style="height: 72%"></i><b>42,7k</b></div>
+              </div>
+            </article>
+
+            <article class="insight-card">
+              <span class="insight-kicker">Concentração de uso</span>
+              <strong>28,8%</strong>
+              <p>das impressões estão concentradas na Secretaria Acadêmica.</p>
+              <button class="text-button" data-go="equipment">Ver equipamentos →</button>
+            </article>
+
+            <article class="insight-card educational">
+              <span class="insight-kicker">Por que acompanhar?</span>
+              <h4>Medir antes de agir</h4>
+              <p>O histórico permite identificar desperdícios, estabelecer metas e comprovar reduções com dados reais.</p>
+              <span class="methodology">Sem conversões ambientais não validadas</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel equipment-panel section-anchor" id="equipment">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Inventário</p>
+              <h3>Equipamentos monitorados</h3>
+            </div>
+            <div class="table-actions">
+              <input id="equipmentSearch" type="search" placeholder="Buscar equipamento..." aria-label="Buscar equipamento" />
+              <button class="secondary-button">Exportar</button>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Equipamento</th>
+                  <th>Nº de série</th>
+                  <th>Localização</th>
+                  <th>Leitura anterior</th>
+                  <th>Leitura atual</th>
+                  <th>Consumo</th>
+                  <th>Variação</th>
+                </tr>
+              </thead>
+              <tbody id="equipmentTable"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="tooltip" id="tooltip" role="tooltip"></div>
+  <div class="toast" id="toast" aria-live="polite">
+    <span>✓</span>
+    <div>
+      <strong>Relatório pronto para conferência</strong>
+      <p>Simulação concluída com dados fictícios.</p>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
