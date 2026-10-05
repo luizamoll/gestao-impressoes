@@ -3,22 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Painel de gestão de impressões e leituras de equipamentos." />
+  <meta name="description" content="Gestão de impressões e leitura de equipamentos." />
   <title>Gestão de Impressões</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%236C5CE7'/%3E%3Ccircle cx='23' cy='23' r='5' fill='white'/%3E%3Ccircle cx='41' cy='23' r='5' fill='white'/%3E%3Ccircle cx='23' cy='41' r='5' fill='white'/%3E%3Ccircle cx='41' cy='41' r='5' fill='white' opacity='.55'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar" id="sidebar">
       <div class="brand">
-        <div class="brand-symbol" aria-hidden="true">
-          <i></i><i></i><i></i><i></i>
-        </div>
-        <strong>Gestão de<br>Impressões</strong>
+        <div class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <strong>Gestão de Impressões</strong>
       </div>
 
       <nav class="nav" aria-label="Navegação principal">
@@ -45,85 +43,34 @@
       </header>
 
       <div class="content">
-        <section class="hero section-anchor" id="overview">
-          <div class="hero-copy">
-            <span class="eyebrow">Base atual</span>
-            <h2>3 equipamentos com leituras reais cadastradas.</h2>
-            <p>Os números abaixo vieram dos relatórios enviados. Como existe apenas uma leitura por equipamento, ainda não há consumo mensal calculado.</p>
+        <section class="summary section-anchor" id="overview">
+          <div class="summary-heading">
+            <h2>Resumo do contrato</h2>
+            <p>O consumo será calculado quando houver uma segunda leitura do mesmo equipamento.</p>
           </div>
-          <div class="hero-number">
-            <strong id="equipmentCount">3</strong>
-            <span>equipamentos</span>
+
+          <div class="summary-grid">
+            <article class="summary-item">
+              <span>Franquia mensal</span>
+              <strong>4.000</strong>
+              <small>impressões</small>
+            </article>
+            <article class="summary-item">
+              <span>Consumo do período</span>
+              <strong class="summary-text">Aguardando próxima leitura</strong>
+            </article>
+            <article class="summary-item">
+              <span>Excedente</span>
+              <strong class="summary-text">Ainda não calculado</strong>
+            </article>
           </div>
-        </section>
-
-        <section class="metrics-grid" aria-label="Resumo dos dados">
-          <article class="metric">
-            <span>Soma dos contadores atuais</span>
-            <strong id="totalCounter">45.106</strong>
-            <p>Páginas acumuladas nos três equipamentos.</p>
-          </article>
-          <article class="metric">
-            <span>Maior contador atual</span>
-            <strong id="largestCounter">27.582</strong>
-            <p id="largestCounterSerial">BRBST2P00K</p>
-          </article>
-          <article class="metric metric-soft">
-            <span>Franquia mensal</span>
-            <strong>4.000</strong>
-            <p>Uso, saldo e excedente serão calculados após a segunda leitura de cada série.</p>
-          </article>
-        </section>
-
-        <section class="dashboard-grid">
-          <article class="panel chart-panel">
-            <div class="panel-heading">
-              <div>
-                <h3>Contadores atuais</h3>
-                <p>Leitura acumulada registrada em cada número de série.</p>
-              </div>
-            </div>
-            <div class="bar-chart" id="barChart" aria-label="Contadores atuais por equipamento"></div>
-            <div class="chart-note">Contador acumulado ≠ consumo mensal.</div>
-          </article>
-
-          <article class="panel quick-panel">
-            <div class="panel-heading">
-              <div>
-                <h3>Leitura da base</h3>
-                <p>O que os relatórios já permitem afirmar.</p>
-              </div>
-            </div>
-            <div class="quick-list">
-              <div>
-                <span>Modelos</span>
-                <strong>2</strong>
-              </div>
-              <div>
-                <span>Séries únicas</span>
-                <strong>3</strong>
-              </div>
-              <div>
-                <span>Leituras anteriores</span>
-                <strong>0</strong>
-              </div>
-              <div>
-                <span>Franquia mensal</span>
-                <strong>4.000</strong>
-              </div>
-              <div>
-                <span>Consumos calculáveis</span>
-                <strong>0</strong>
-              </div>
-            </div>
-          </article>
         </section>
 
         <section class="equipment-section section-anchor" id="equipment">
           <div class="section-title">
             <div>
               <h2>Equipamentos</h2>
-              <p>Informações extraídas diretamente dos relatórios enviados.</p>
+              <p>Leituras registradas nos relatórios enviados.</p>
             </div>
             <div class="search-box">
               <input id="equipmentSearch" type="search" placeholder="Buscar por modelo ou série" aria-label="Buscar equipamento" />
@@ -134,10 +81,7 @@
 
           <div class="panel technical-panel">
             <div class="panel-heading">
-              <div>
-                <h3>Detalhes técnicos registrados</h3>
-                <p>Contadores e ocorrências disponíveis em cada relatório.</p>
-              </div>
+              <h3>Detalhes dos relatórios</h3>
             </div>
             <div class="table-wrap">
               <table>
@@ -161,9 +105,8 @@
 
         <section class="upload-section section-anchor" id="upload">
           <div class="upload-copy">
-            <span class="eyebrow">Nova leitura</span>
-            <h2>Adicionar outro relatório</h2>
-            <p>O número de série será a chave para ligar a próxima leitura ao equipamento correto. Quando uma segunda leitura do mesmo equipamento existir, o consumo do período poderá ser calculado.</p>
+            <h2>Adicionar relatório</h2>
+            <p>Ao registrar uma nova leitura do mesmo número de série, o sistema poderá calcular o consumo do período.</p>
           </div>
 
           <div class="upload-panel">
@@ -184,7 +127,7 @@
     <span>✓</span>
     <div>
       <strong>Arquivo selecionado</strong>
-      <p>A leitura automática ainda será conectada nesta etapa do projeto.</p>
+      <p>Pronto para a próxima etapa.</p>
     </div>
   </div>
 
