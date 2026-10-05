@@ -64,90 +64,110 @@
       </header>
 
       <div class="content">
-        <section class="bento section-anchor" id="overview">
-          <article class="card card-main">
-            <div class="card-main-copy">
-              <span class="badge">Dentro da franquia</span>
-              <h2>42.680 impressões neste mês.</h2>
-              <p>O consumo caiu 8,7% em relação a agosto e ainda restam 7.320 impressões disponíveis no contrato.</p>
-              <div class="main-actions">
-                <button class="primary-button light" data-go="upload">Processar relatório</button>
-                <button class="text-link" data-go="equipment">Ver equipamentos</button>
+        <section class="overview-grid section-anchor" id="overview">
+          <article class="summary-card">
+            <div class="summary-copy">
+              <div class="status-line"><span></span>Dentro da franquia</div>
+              <h2>42.680 impressões usadas neste mês</h2>
+              <p>O consumo está 8,7% abaixo do mês anterior. Ainda restam 7.320 impressões disponíveis no contrato atual.</p>
+              <div class="summary-actions">
+                <button class="primary-button" data-go="upload">Processar relatório</button>
+                <button class="secondary-button" data-go="equipment">Ver equipamentos</button>
               </div>
             </div>
-            <div class="main-visual">
-              <div class="ring">
-                <div class="ring-inner">
+
+            <div class="summary-progress">
+              <div class="progress-ring">
+                <div>
                   <strong>85,4%</strong>
-                  <span>da franquia</span>
+                  <span>utilizado</span>
                 </div>
               </div>
+              <p>42.680 de 50.000</p>
+            </div>
+
+            <div class="summary-numbers">
+              <div>
+                <span>Consumidas</span>
+                <strong>42.680</strong>
+              </div>
+              <div>
+                <span>Contratadas</span>
+                <strong>50.000</strong>
+              </div>
+              <div>
+                <span>Disponíveis</span>
+                <strong>7.320</strong>
+              </div>
             </div>
           </article>
 
-          <article class="card metric-card">
-            <span class="metric-label">Franquia mensal</span>
-            <strong>50.000</strong>
-            <p>7.320 páginas disponíveis</p>
-          </article>
-
-          <article class="card metric-card accent-card">
-            <span class="metric-label">Excedente</span>
+          <article class="info-card">
+            <span>Excedente</span>
             <strong>0</strong>
-            <p>Sem cobrança adicional</p>
+            <p>Sem cobrança adicional no período.</p>
           </article>
 
+          <article class="info-card info-card-accent">
+            <span>Maior utilização</span>
+            <strong>12.300</strong>
+            <p>Secretaria Acadêmica · 28,8% do total.</p>
+          </article>
+        </section>
+
+        <section class="analytics-grid">
           <article class="card chart-card">
             <div class="section-heading">
               <div>
                 <h3>Consumo por equipamento</h3>
-                <p>Onde está concentrado o volume do mês.</p>
+                <p>Comparação do volume registrado em cada ponto.</p>
               </div>
-              <span>42.680 páginas</span>
+              <strong>42.680 páginas</strong>
             </div>
             <div class="bar-chart" id="barChart" aria-label="Gráfico de consumo por equipamento"></div>
           </article>
 
-          <article class="card usage-card">
-            <span class="metric-label">Maior utilização</span>
-            <strong>12.300</strong>
-            <p>Secretaria Acadêmica</p>
-            <div class="usage-line"><span style="width:28.8%"></span></div>
-            <small>28,8% do consumo total</small>
-          </article>
-
           <article class="card contract-card section-anchor" id="contract">
-            <div class="section-heading compact">
+            <div class="section-heading">
               <div>
                 <h3>Contrato</h3>
-                <p>Uso atual da franquia</p>
+                <p>Uso da franquia mensal</p>
               </div>
-              <span class="status-pill">Dentro do limite</span>
+              <span class="status-text"><i></i>Dentro do limite</span>
             </div>
-            <div class="contract-row">
+
+            <div class="contract-hero">
+              <strong>7.320</strong>
+              <span>impressões ainda disponíveis</span>
+            </div>
+
+            <div class="contract-data">
               <div><span>Usado</span><strong>42.680</strong></div>
-              <div><span>Disponível</span><strong>7.320</strong></div>
+              <div><span>Limite</span><strong>50.000</strong></div>
             </div>
+
             <div class="linear-progress"><span style="width:85.4%"></span></div>
+            <p class="contract-note">85,4% da franquia já foi utilizada neste ciclo.</p>
           </article>
         </section>
 
         <section class="upload-section section-anchor" id="upload">
           <div class="upload-copy">
             <h2>Enviar novo relatório</h2>
-            <p>Selecione o arquivo da impressora. O sistema identifica o equipamento, busca a leitura anterior e calcula o consumo antes de atualizar o histórico.</p>
-            <div class="upload-notes">
-              <span>PDF, PNG ou JPG</span>
-              <span>Conferência antes de salvar</span>
-              <span>Histórico preservado</span>
-            </div>
+            <p>Selecione o arquivo da impressora. O sistema identifica o equipamento, localiza a leitura anterior e calcula o consumo antes de atualizar o histórico.</p>
+            <ul>
+              <li>PDF, PNG ou JPG</li>
+              <li>Conferência antes de salvar</li>
+              <li>Histórico preservado</li>
+            </ul>
           </div>
           <div class="upload-panel">
             <label class="dropzone" id="dropzone" for="fileInput">
               <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg" hidden />
               <div class="upload-icon">↑</div>
               <strong id="uploadTitle">Arraste o arquivo aqui</strong>
-              <span id="uploadSubtitle">ou clique para selecionar</span>
+              <span id="uploadSubtitle">ou clique para selecionar no computador</span>
+              <small>PDF · PNG · JPG</small>
             </label>
             <button class="primary-button full" id="analyzeButton" disabled>Analisar relatório</button>
           </div>
@@ -157,7 +177,7 @@
           <div class="section-heading table-heading">
             <div>
               <h3>Equipamentos monitorados</h3>
-              <p>Leituras, consumo e variação por ponto.</p>
+              <p>Leituras, consumo e variação de cada equipamento.</p>
             </div>
             <div class="table-actions">
               <div class="search-box">
@@ -184,24 +204,31 @@
           </div>
         </section>
 
-        <section class="responsible-grid section-anchor" id="responsible">
-          <article class="card responsible-main">
-            <h3>Consumo responsável</h3>
-            <p>Use o histórico para identificar desperdícios e acompanhar redução com números verificáveis.</p>
-          </article>
-          <article class="card responsible-metric">
-            <span>Redução mensal</span>
-            <strong>8,7%</strong>
-            <p>4.061 impressões a menos</p>
-          </article>
-          <article class="card responsible-metric">
-            <span>Maior concentração</span>
-            <strong>28,8%</strong>
-            <p>Secretaria Acadêmica</p>
-          </article>
-          <article class="card responsible-note">
-            <p>Conversões de CO₂, água ou árvores só aparecem quando houver metodologia e fonte definidas.</p>
-          </article>
+        <section class="responsible-section section-anchor" id="responsible">
+          <div class="responsible-heading">
+            <div>
+              <h2>Consumo responsável</h2>
+              <p>O histórico ajuda a identificar desperdícios e acompanhar reduções com dados verificáveis.</p>
+            </div>
+            <span>Indicadores do período</span>
+          </div>
+
+          <div class="responsible-cards">
+            <article>
+              <span>Redução mensal</span>
+              <strong>8,7%</strong>
+              <p>4.061 impressões a menos que no mês anterior.</p>
+            </article>
+            <article>
+              <span>Maior concentração</span>
+              <strong>28,8%</strong>
+              <p>do consumo está na Secretaria Acadêmica.</p>
+            </article>
+            <article class="method-card">
+              <strong>Metodologia transparente</strong>
+              <p>CO₂, água ou árvores só aparecem quando houver fonte e método definidos.</p>
+            </article>
+          </div>
         </section>
       </div>
     </main>
