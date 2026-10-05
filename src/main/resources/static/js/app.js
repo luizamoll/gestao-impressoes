@@ -37,42 +37,10 @@ const equipmentData = [
 const formatNumber = value =>
   value == null ? "—" : new Intl.NumberFormat("pt-BR").format(value);
 
-const totalCounter = equipmentData.reduce((sum, item) => sum + item.current, 0);
-const largestEquipment = [...equipmentData].sort((a, b) => b.current - a.current)[0];
-
-document.querySelector("#equipmentCount").textContent = equipmentData.length;
-document.querySelector("#totalCounter").textContent = formatNumber(totalCounter);
-document.querySelector("#largestCounter").textContent = formatNumber(largestEquipment.current);
-document.querySelector("#largestCounterSerial").textContent = largestEquipment.serial;
-
-function renderChart(data) {
-  const chart = document.querySelector("#barChart");
-  if (!data.length) {
-    chart.innerHTML = '<p>Nenhum equipamento encontrado.</p>';
-    return;
-  }
-
-  const max = Math.max(...data.map(item => item.current));
-  chart.innerHTML = data.map(item => {
-    const height = Math.max(8, (item.current / max) * 100);
-    const highlight = item.serial === largestEquipment.serial ? "highlight" : "";
-    return `
-      <div class="bar-column" title="${item.name}: ${formatNumber(item.current)} páginas acumuladas">
-        <div class="bar-track">
-          <div class="bar ${highlight}" style="height:${height}%"></div>
-        </div>
-        <span class="bar-value">${formatNumber(item.current)}</span>
-        <span class="bar-label">${item.serial}</span>
-      </div>
-    `;
-  }).join("");
-}
-
 function renderCards(data) {
   const container = document.querySelector("#equipmentCards");
-  container.innerHTML = data.map((item, index) => `
+  container.innerHTML = data.map(item => `
     <article class="equipment-card">
-      <div class="equipment-card-index">0${index + 1}</div>
       <h3>${item.name}</h3>
       <div class="serial">${item.serial}</div>
       <div class="reading">
@@ -101,7 +69,6 @@ function renderTable(data) {
 }
 
 function renderAll(data = equipmentData) {
-  renderChart(data);
   renderCards(data);
   renderTable(data);
 }
@@ -188,5 +155,5 @@ analyzeButton.addEventListener("click", () => {
 function showToast() {
   const toast = document.querySelector("#toast");
   toast.classList.add("visible");
-  window.setTimeout(() => toast.classList.remove("visible"), 3500);
+  window.setTimeout(() => toast.classList.remove("visible"), 3000);
 }
