@@ -1,4 +1,4 @@
-const navItems = document.querySelectorAll(".nav-item");
+const navItems = document.querySelectorAll("button.nav-item[data-section]");
 const sidebar = document.querySelector("#sidebar");
 
 function goToSection(id) {
