@@ -38,16 +38,20 @@ svg{display:block}
 .brand-symbol i{display:block;width:6px;height:6px;border-radius:2px;background:#fff}
 .brand-symbol i:last-child{opacity:.45}
 
-.nav{display:grid;gap:7px}
+.nav{display:grid;gap:8px}
 .nav-item{
-  width:100%;border:0;border-radius:10px;background:transparent;color:#9299aa;
+  width:100%;border:1px solid rgba(255,255,255,.055);border-radius:11px;
+  background:rgba(255,255,255,.035);color:#a4abba;
   padding:11px 12px;display:flex;align-items:center;gap:11px;text-align:left;
   font-size:13px;font-weight:600;transition:.18s
 }
 .nav-item svg{width:17px;height:17px;fill:currentColor;flex:0 0 17px}
-.nav-item:hover{color:#fff;background:rgba(255,255,255,.045)}
-.nav-item.active{color:#fff;background:var(--sidebar-soft)}
-.nav-item.active::after{content:"";width:5px;height:5px;border-radius:50%;background:#897cff;margin-left:auto}
+.nav-item:hover{color:#fff;background:rgba(255,255,255,.075);border-color:rgba(255,255,255,.09)}
+.nav-item.active{
+  color:#fff;background:var(--accent);border-color:var(--accent);
+  box-shadow:0 8px 18px rgba(108,92,231,.22)
+}
+.nav-item.active::after{content:"";width:5px;height:5px;border-radius:50%;background:#fff;margin-left:auto;opacity:.9}
 
 .main{min-width:0}
 .topbar{
@@ -57,7 +61,7 @@ svg{display:block}
 }
 .topbar h1{margin:0;font-size:22px;letter-spacing:-.04em;font-weight:600}
 .topbar .primary-button{margin-left:auto}
-.menu-button{display:none;border:0;background:transparent;font-size:20px;padding:0}
+.menu-button{display:none;border:0;background:#fff;font-size:20px;padding:7px 9px;border-radius:9px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
 .primary-button{
   min-height:42px;padding:0 17px;border:0;border-radius:10px;background:var(--accent);
   color:#fff;font-weight:600;box-shadow:0 8px 18px rgba(108,92,231,.16);transition:.18s
@@ -74,7 +78,10 @@ svg{display:block}
 }
 .summary-heading h2{margin:0;font-size:26px;letter-spacing:-.04em;font-weight:600}
 .summary-heading p{margin:8px 0 0;color:var(--muted);font-size:14px}
-.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:26px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.summary-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:26px;
+  background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden
+}
 .summary-item{min-height:142px;padding:23px;background:#fff}
 .summary-item:first-child{background:var(--surface-soft)}
 .summary-item span{display:block;color:var(--muted);font-size:13px;font-weight:500}
@@ -92,7 +99,7 @@ svg{display:block}
 .equipment-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .equipment-card{
   min-height:210px;padding:24px;border:1px solid var(--line);
-  border-radius:18px;background:#fff;transition:.18s
+  border-radius:18px;background:#fff;transition:.18s;box-shadow:0 3px 12px rgba(28,31,45,.025)
 }
 .equipment-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
 .equipment-card h3{margin:0;max-width:92%;font-size:18px;line-height:1.32;letter-spacing:-.03em;font-weight:600}
@@ -143,9 +150,7 @@ td small{display:block;color:#9095a3;margin-top:3px;font-size:10px}
 .toast>span{width:25px;height:25px;border-radius:50%;background:var(--accent);display:grid;place-items:center;font-weight:900}
 .toast strong{font-size:12px}.toast p{margin:4px 0 0;color:#b8bcc8;font-size:11px}
 
-@media(max-width:1180px){
-  .equipment-cards{grid-template-columns:1fr 1fr}
-}
+@media(max-width:1180px){.equipment-cards{grid-template-columns:1fr 1fr}}
 @media(max-width:980px){
   .app-shell{grid-template-columns:74px minmax(0,1fr)}
   .brand strong,.nav-item span{display:none}
