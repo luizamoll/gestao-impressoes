@@ -3,240 +3,184 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Gestão de impressões, consumo, franquia e indicadores ESG." />
+  <meta name="description" content="Painel de gestão de impressões e leituras de equipamentos." />
   <title>Gestão de Impressões</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237B6CF6'/%3E%3Cpath fill='%23fff' d='M20 12h24v13H20V12Zm-5 14h34a6 6 0 0 1 6 6v15h-9v7H18v-7H9V32a6 6 0 0 1 6-6Zm9 23h16V37H24v12Zm22-17a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%236C5CE7'/%3E%3Ccircle cx='23' cy='23' r='5' fill='white'/%3E%3Ccircle cx='41' cy='23' r='5' fill='white'/%3E%3Ccircle cx='23' cy='41' r='5' fill='white'/%3E%3Ccircle cx='41' cy='41' r='5' fill='white' opacity='.55'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar" id="sidebar">
       <div class="brand">
-        <div class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32"><path d="M9 4h14v7H9V4Zm-3 8h20a3 3 0 0 1 3 3v9h-5v4H8v-4H3v-9a3 3 0 0 1 3-3Zm5 13h10v-8H11v8Zm13-10a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"/></svg>
+        <div class="brand-symbol" aria-hidden="true">
+          <i></i><i></i><i></i><i></i>
         </div>
-        <div>
-          <strong>Gestão de Impressões</strong>
-          <span>Operação & consumo</span>
-        </div>
+        <strong>Gestão de<br>Impressões</strong>
       </div>
 
       <nav class="nav" aria-label="Navegação principal">
         <button class="nav-item active" data-section="overview">
-          <svg viewBox="0 0 24 24"><path d="M4 4h6v6H4V4Zm10 0h6v10h-6V4ZM4 14h6v6H4v-6Zm10 4h6v2h-6v-2Z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 0h6v6h-6v-6Z"/></svg>
           <span>Visão geral</span>
         </button>
-        <button class="nav-item" data-section="upload">
-          <svg viewBox="0 0 24 24"><path d="M11 5.8 8.2 8.6 6.8 7.2 12 2l5.2 5.2-1.4 1.4L13 5.8V16h-2V5.8ZM4 14h2v5h12v-5h2v7H4v-7Z"/></svg>
-          <span>Novo relatório</span>
-        </button>
         <button class="nav-item" data-section="equipment">
-          <svg viewBox="0 0 24 24"><path d="M6 3h12v5H6V3Zm-2 6h16a2 2 0 0 1 2 2v7h-4v3H6v-3H2v-7a2 2 0 0 1 2-2Zm4 10h8v-5H8v5Z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v5H6V4Zm-2 7h16v8h-3v2H7v-2H4v-8Zm5 8h6v-5H9v5Z"/></svg>
           <span>Equipamentos</span>
         </button>
-        <button class="nav-item" data-section="contract">
-          <svg viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 0 1 2 2v16l-3-2-3 2-3-2-3 2-3-2-3 2V5a2 2 0 0 1 2-2Zm2 5v2h10V8H7Zm0 4v2h7v-2H7Z"/></svg>
-          <span>Contrato</span>
-        </button>
-        <button class="nav-item" data-section="responsible">
-          <svg viewBox="0 0 24 24"><path d="M20.5 3.5C13.4 4.1 8 6.8 5.5 11.2c-1.8 3.3-.8 6.8 1.5 8.4 2.4 1.7 6.2 1.2 8.8-1.7 3.2-3.5 4.8-8.4 4.7-14.4ZM8.2 17.9c2-4.2 5.1-7.3 9.2-9.7-3.4 3-5.8 6.4-7.1 10.4-.7 0-1.4-.2-2.1-.7Z"/></svg>
-          <span>Consumo responsável</span>
+        <button class="nav-item" data-section="upload">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5.8 8.2 8.6 6.8 7.2 12 2l5.2 5.2-1.4 1.4L13 5.8V15h-2V5.8ZM4 14h2v5h12v-5h2v7H4v-7Z"/></svg>
+          <span>Novo relatório</span>
         </button>
       </nav>
-
-      <div class="sidebar-summary">
-        <span>Base atual</span>
-        <strong>3 equipamentos</strong>
-        <small>Leituras reais cadastradas</small>
-      </div>
-
-      <div class="sidebar-bottom">
-        <span class="status-dot"></span>
-        <div>
-          <strong>Base real em construção</strong>
-          <small>Sem números mensais inventados</small>
-        </div>
-      </div>
     </aside>
 
     <main class="main">
       <header class="topbar">
-        <div class="topbar-left">
-          <button class="menu-button" id="menuButton" aria-label="Abrir menu">☰</button>
-          <div>
-            <h1>Visão geral</h1>
-            <p>Dados extraídos dos relatórios enviados</p>
-          </div>
-        </div>
+        <button class="menu-button" id="menuButton" aria-label="Abrir menu">☰</button>
+        <h1>Visão geral</h1>
         <button class="primary-button" data-go="upload">Enviar relatório</button>
       </header>
 
       <div class="content">
-        <section class="overview-grid section-anchor" id="overview">
-          <article class="summary-card">
-            <div class="summary-copy">
-              <div class="status-line"><span></span>Dados reais cadastrados</div>
-              <h2>3 equipamentos já têm uma leitura registrada.</h2>
-              <p>Essas leituras são contadores acumulados das impressoras. O consumo do período será calculado quando houver uma leitura anterior do mesmo número de série.</p>
-              <div class="summary-actions">
-                <button class="primary-button" data-go="upload">Adicionar nova leitura</button>
-                <button class="secondary-button" data-go="equipment">Ver equipamentos</button>
-              </div>
-            </div>
+        <section class="hero section-anchor" id="overview">
+          <div class="hero-copy">
+            <span class="eyebrow">Base atual</span>
+            <h2>3 equipamentos com leituras reais cadastradas.</h2>
+            <p>Os números abaixo vieram dos relatórios enviados. Como existe apenas uma leitura por equipamento, ainda não há consumo mensal calculado.</p>
+          </div>
+          <div class="hero-number">
+            <strong id="equipmentCount">3</strong>
+            <span>equipamentos</span>
+          </div>
+        </section>
 
-            <div class="summary-visual">
-              <strong>3</strong>
-              <span>leituras reais</span>
-              <p>Prontas para formar o histórico.</p>
-            </div>
-
-            <div class="summary-numbers">
-              <div>
-                <span>Equipamentos cadastrados</span>
-                <strong>3</strong>
-              </div>
-              <div>
-                <span>Contadores recebidos</span>
-                <strong>3</strong>
-              </div>
-              <div>
-                <span>Consumo do período</span>
-                <strong class="pending-value">Aguardando histórico</strong>
-              </div>
-            </div>
+        <section class="metrics-grid" aria-label="Resumo dos dados">
+          <article class="metric">
+            <span>Soma dos contadores atuais</span>
+            <strong id="totalCounter">45.106</strong>
+            <p>Páginas acumuladas nos três equipamentos.</p>
           </article>
-
-          <article class="info-card">
+          <article class="metric">
             <span>Maior contador atual</span>
-            <strong>27.582</strong>
-            <p>HP LaserJet Pro MFP 4103fdw · BRBST2P00K</p>
+            <strong id="largestCounter">27.582</strong>
+            <p id="largestCounterSerial">BRBST2P00K</p>
           </article>
-
-          <article class="info-card info-card-accent">
-            <span>Franquia mensal</span>
-            <strong class="text-value">Não cadastrada</strong>
-            <p>O contrato ainda precisa ser informado para calcular limite e excedente.</p>
+          <article class="metric metric-soft">
+            <span>Consumo do período</span>
+            <strong class="metric-text">Ainda indisponível</strong>
+            <p>Será calculado após a segunda leitura de cada série.</p>
           </article>
         </section>
 
-        <section class="analytics-grid">
-          <article class="card chart-card">
-            <div class="section-heading">
+        <section class="dashboard-grid">
+          <article class="panel chart-panel">
+            <div class="panel-heading">
               <div>
                 <h3>Contadores atuais</h3>
-                <p>Leitura acumulada registrada em cada equipamento.</p>
+                <p>Leitura acumulada registrada em cada número de série.</p>
               </div>
-              <strong>45.106 páginas acumuladas</strong>
             </div>
-            <div class="bar-chart" id="barChart" aria-label="Gráfico dos contadores atuais dos equipamentos"></div>
-            <p class="chart-warning">Estes valores não representam consumo mensal. São contadores acumulados dos equipamentos.</p>
+            <div class="bar-chart" id="barChart" aria-label="Contadores atuais por equipamento"></div>
+            <div class="chart-note">Contador acumulado ≠ consumo mensal.</div>
           </article>
 
-          <article class="card contract-card section-anchor" id="contract">
-            <div class="section-heading">
+          <article class="panel quick-panel">
+            <div class="panel-heading">
               <div>
-                <h3>Contrato</h3>
-                <p>Franquia e excedente</p>
+                <h3>Leitura da base</h3>
+                <p>O que os relatórios já permitem afirmar.</p>
               </div>
             </div>
-            <div class="empty-state">
-              <strong>Franquia ainda não cadastrada</strong>
-              <p>Quando o limite mensal do contrato for informado, esta área mostrará uso da franquia, saldo e excedente automaticamente.</p>
+            <div class="quick-list">
+              <div>
+                <span>Modelos</span>
+                <strong>2</strong>
+              </div>
+              <div>
+                <span>Séries únicas</span>
+                <strong>3</strong>
+              </div>
+              <div>
+                <span>Leituras anteriores</span>
+                <strong>0</strong>
+              </div>
+              <div>
+                <span>Consumos calculáveis</span>
+                <strong>0</strong>
+              </div>
             </div>
           </article>
+        </section>
+
+        <section class="equipment-section section-anchor" id="equipment">
+          <div class="section-title">
+            <div>
+              <h2>Equipamentos</h2>
+              <p>Informações extraídas diretamente dos relatórios enviados.</p>
+            </div>
+            <div class="search-box">
+              <input id="equipmentSearch" type="search" placeholder="Buscar por modelo ou série" aria-label="Buscar equipamento" />
+            </div>
+          </div>
+
+          <div class="equipment-cards" id="equipmentCards"></div>
+
+          <div class="panel technical-panel">
+            <div class="panel-heading">
+              <div>
+                <h3>Detalhes técnicos registrados</h3>
+                <p>Contadores e ocorrências disponíveis em cada relatório.</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Equipamento</th>
+                    <th>Série</th>
+                    <th>Contador</th>
+                    <th>Frente/verso</th>
+                    <th>Congestões</th>
+                    <th>Falhas de coleta</th>
+                    <th>Cópias</th>
+                    <th>Scanner</th>
+                  </tr>
+                </thead>
+                <tbody id="equipmentTable"></tbody>
+              </table>
+            </div>
+          </div>
         </section>
 
         <section class="upload-section section-anchor" id="upload">
           <div class="upload-copy">
-            <h2>Enviar novo relatório</h2>
-            <p>O sistema usará o número de série para reconhecer o equipamento e comparar a nova leitura com o histórico já salvo.</p>
-            <ul>
-              <li>PDF, PNG ou JPG</li>
-              <li>Reconhecimento pelo número de série</li>
-              <li>Consumo calculado somente quando houver duas leituras</li>
-            </ul>
+            <span class="eyebrow">Nova leitura</span>
+            <h2>Adicionar outro relatório</h2>
+            <p>O número de série será a chave para ligar a próxima leitura ao equipamento correto. Quando uma segunda leitura do mesmo equipamento existir, o consumo do período poderá ser calculado.</p>
           </div>
+
           <div class="upload-panel">
             <label class="dropzone" id="dropzone" for="fileInput">
               <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg" hidden />
-              <div class="upload-icon">↑</div>
-              <strong id="uploadTitle">Arraste o arquivo aqui</strong>
-              <span id="uploadSubtitle">ou clique para selecionar no computador</span>
-              <small>PDF · PNG · JPG</small>
+              <div class="upload-glyph">↑</div>
+              <strong id="uploadTitle">Selecionar relatório</strong>
+              <span id="uploadSubtitle">PDF, PNG ou JPG</span>
             </label>
-            <button class="primary-button full" id="analyzeButton" disabled>Analisar relatório</button>
-          </div>
-        </section>
-
-        <section class="card equipment-panel section-anchor" id="equipment">
-          <div class="section-heading table-heading">
-            <div>
-              <h3>Equipamentos cadastrados</h3>
-              <p>Dados reais extraídos dos relatórios enviados.</p>
-            </div>
-            <div class="table-actions">
-              <div class="search-box">
-                <input id="equipmentSearch" type="search" placeholder="Buscar equipamento..." aria-label="Buscar equipamento" />
-              </div>
-              <button class="secondary-button">Exportar</button>
-            </div>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Equipamento</th>
-                  <th>Nº de série</th>
-                  <th>Localização</th>
-                  <th>Leitura anterior</th>
-                  <th>Leitura atual</th>
-                  <th>Consumo do período</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody id="equipmentTable"></tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="responsible-section section-anchor" id="responsible">
-          <div class="responsible-heading">
-            <div>
-              <h2>Consumo responsável</h2>
-              <p>Primeiro registramos o histórico. Depois o sistema compara períodos e mostra onde houve aumento, redução ou concentração de uso.</p>
-            </div>
-          </div>
-
-          <div class="responsible-cards">
-            <article>
-              <span>Histórico disponível</span>
-              <strong>1 leitura</strong>
-              <p>por equipamento cadastrado até agora.</p>
-            </article>
-            <article>
-              <span>Próximo passo</span>
-              <strong class="text-value">Nova coleta</strong>
-              <p>Uma segunda leitura permitirá calcular o consumo real do período.</p>
-            </article>
-            <article class="method-card">
-              <strong>Contador não é consumo mensal</strong>
-              <p>Os valores 56, 27.582 e 17.468 são leituras acumuladas. O consumo será a diferença entre duas leituras do mesmo equipamento.</p>
-            </article>
+            <button class="primary-button full" id="analyzeButton" disabled>Continuar</button>
           </div>
         </section>
       </div>
     </main>
   </div>
 
-  <div class="tooltip" id="tooltip" role="tooltip"></div>
   <div class="toast" id="toast" aria-live="polite">
     <span>✓</span>
     <div>
-      <strong>Relatório pronto para conferência</strong>
-      <p>O arquivo foi selecionado para análise.</p>
+      <strong>Arquivo selecionado</strong>
+      <p>A leitura automática ainda será conectada nesta etapa do projeto.</p>
     </div>
   </div>
 
