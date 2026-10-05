@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Gestão de impressões, consumo, franquia e indicadores ESG." />
   <title>Gestão de Impressões</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%235B6CFF'/%3E%3Cpath fill='%23ffffff' d='M20 12h24v13H20V12Zm-5 14h34a6 6 0 0 1 6 6v15h-9v7H18v-7H9V32a6 6 0 0 1 6-6Zm9 23h16V37H24v12Zm22-17a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237B6CF6'/%3E%3Cpath fill='%23fff' d='M20 12h24v13H20V12Zm-5 14h34a6 6 0 0 1 6 6v15h-9v7H18v-7H9V32a6 6 0 0 1 6-6Zm9 23h16V37H24v12Zm22-17a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
@@ -18,37 +18,22 @@
         <div class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 32 32"><path d="M9 4h14v7H9V4Zm-3 8h20a3 3 0 0 1 3 3v9h-5v4H8v-4H3v-9a3 3 0 0 1 3-3Zm5 13h10v-8H11v8Zm13-10a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"/></svg>
         </div>
-        <div class="brand-copy">
+        <div>
           <strong>Gestão de Impressões</strong>
-          <span>Controle de consumo</span>
+          <span>Operação & consumo</span>
         </div>
       </div>
 
       <nav class="nav" aria-label="Navegação principal">
-        <button class="nav-item active" data-section="overview">
-          <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4V4Zm9 0h7v11h-7V4ZM4 13h7v7H4v-7Zm9 4h7v3h-7v-3Z"/></svg></span>
-          <span>Visão geral</span>
-        </button>
-        <button class="nav-item" data-section="upload">
-          <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M11 4.8 7.7 8.1 6.3 6.7 12 1l5.7 5.7-1.4 1.4L13 4.8V16h-2V4.8ZM4 14h2v5h12v-5h2v7H4v-7Z"/></svg></span>
-          <span>Novo relatório</span>
-        </button>
-        <button class="nav-item" data-section="equipment">
-          <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M6 3h12v5H6V3Zm-2 6h16a2 2 0 0 1 2 2v7h-4v3H6v-3H2v-7a2 2 0 0 1 2-2Zm4 10h8v-5H8v5Zm10-7h2v-1h-2v1Z"/></svg></span>
-          <span>Equipamentos</span>
-        </button>
-        <button class="nav-item" data-section="contract">
-          <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 0 1 2 2v16l-3-2-3 2-3-2-3 2-3-2-3 2V5a2 2 0 0 1 2-2Zm2 5v2h10V8H7Zm0 4v2h7v-2H7Z"/></svg></span>
-          <span>Contrato</span>
-        </button>
-        <button class="nav-item" data-section="responsible">
-          <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20.5 3.5C13.4 4.1 8 6.8 5.5 11.2c-1.8 3.3-.8 6.8 1.5 8.4 2.4 1.7 6.2 1.2 8.8-1.7 3.2-3.5 4.8-8.4 4.7-14.4ZM8.2 17.9c2-4.2 5.1-7.3 9.2-9.7-3.4 3-5.8 6.4-7.1 10.4-.7 0-1.4-.2-2.1-.7Z"/></svg></span>
-          <span>Consumo responsável</span>
-        </button>
+        <button class="nav-item active" data-section="overview"><span>Visão geral</span></button>
+        <button class="nav-item" data-section="upload"><span>Novo relatório</span></button>
+        <button class="nav-item" data-section="equipment"><span>Equipamentos</span></button>
+        <button class="nav-item" data-section="contract"><span>Contrato</span></button>
+        <button class="nav-item" data-section="responsible"><span>Consumo responsável</span></button>
       </nav>
 
-      <div class="sidebar-footer">
-        <span class="environment-dot"></span>
+      <div class="sidebar-bottom">
+        <span class="status-dot"></span>
         <div>
           <strong>Ambiente de validação</strong>
           <small>Dados demonstrativos</small>
@@ -61,8 +46,8 @@
         <div class="topbar-left">
           <button class="menu-button" id="menuButton" aria-label="Abrir menu">☰</button>
           <div>
-            <span class="overline">Painel operacional</span>
             <h1>Visão geral</h1>
+            <p>Setembro de 2026</p>
           </div>
         </div>
         <div class="topbar-actions">
@@ -74,177 +59,110 @@
               <option>Julho 2026</option>
             </select>
           </label>
-          <button class="primary-button" data-go="upload">
-            <span class="button-icon">↑</span>
-            Enviar relatório
-          </button>
+          <button class="primary-button" data-go="upload">Enviar relatório</button>
         </div>
       </header>
 
       <div class="content">
-        <section class="hero section-anchor" id="overview">
-          <div class="hero-copy">
-            <div class="hero-status"><span></span> Operação dentro do limite</div>
-            <span class="overline light">Resumo de setembro</span>
-            <h2>Controle de impressão sem depender de planilha.</h2>
-            <p>Leituras, consumo, franquia e histórico reunidos em uma visão simples para você saber exatamente o que está acontecendo.</p>
-            <div class="hero-actions">
-              <button class="hero-primary" data-go="upload">Processar novo relatório <span>→</span></button>
-              <button class="hero-secondary" data-go="equipment">Ver equipamentos</button>
-            </div>
-          </div>
-
-          <div class="hero-metric">
-            <div class="usage-ring">
-              <div class="usage-ring-inner">
-                <span>Franquia usada</span>
-                <strong>85,4%</strong>
-                <small>42.680 de 50.000</small>
+        <section class="bento section-anchor" id="overview">
+          <article class="card card-main">
+            <div class="card-main-copy">
+              <span class="badge">Dentro da franquia</span>
+              <h2>42.680 impressões neste mês.</h2>
+              <p>O consumo caiu 8,7% em relação a agosto e ainda restam 7.320 impressões disponíveis no contrato.</p>
+              <div class="main-actions">
+                <button class="primary-button light" data-go="upload">Processar relatório</button>
+                <button class="text-link" data-go="equipment">Ver equipamentos</button>
               </div>
             </div>
-            <div class="hero-metric-footer">
-              <div><span>Disponível</span><strong>7.320</strong></div>
-              <div><span>Excedente</span><strong>0</strong></div>
+            <div class="main-visual">
+              <div class="ring">
+                <div class="ring-inner">
+                  <strong>85,4%</strong>
+                  <span>da franquia</span>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div class="hero-glow glow-one"></div>
-          <div class="hero-glow glow-two"></div>
-        </section>
-
-        <section class="quick-stats" aria-label="Indicadores principais">
-          <article class="stat-card">
-            <div class="stat-top">
-              <span class="stat-icon soft-green">↘</span>
-              <button class="info-button" data-tooltip="Soma das impressões calculadas pela diferença entre a leitura atual e a anterior.">i</button>
-            </div>
-            <span class="stat-label">Impressões no mês</span>
-            <strong>42.680</strong>
-            <small class="positive">↓ 8,7% em relação a agosto</small>
           </article>
 
-          <article class="stat-card">
-            <div class="stat-top">
-              <span class="stat-icon soft-blue">▦</span>
-              <button class="info-button" data-tooltip="Limite mensal contratado para o conjunto de equipamentos.">i</button>
-            </div>
-            <span class="stat-label">Franquia mensal</span>
+          <article class="card metric-card">
+            <span class="metric-label">Franquia mensal</span>
             <strong>50.000</strong>
-            <small>7.320 páginas disponíveis</small>
+            <p>7.320 páginas disponíveis</p>
           </article>
 
-          <article class="stat-card">
-            <div class="stat-top">
-              <span class="stat-icon soft-sand">◎</span>
-              <button class="info-button" data-tooltip="Volume que ultrapassa a franquia contratada.">i</button>
-            </div>
-            <span class="stat-label">Excedente</span>
+          <article class="card metric-card accent-card">
+            <span class="metric-label">Excedente</span>
             <strong>0</strong>
-            <small class="positive">Nenhuma cobrança adicional</small>
+            <p>Sem cobrança adicional</p>
           </article>
 
-          <article class="stat-card featured-stat">
-            <div class="stat-top">
-              <span class="stat-icon soft-violet">⌁</span>
-              <button class="info-button" data-tooltip="Equipamento com o maior volume de impressões no período.">i</button>
-            </div>
-            <span class="stat-label">Maior utilização</span>
-            <strong>12.300</strong>
-            <small>Secretaria Acadêmica · 28,8%</small>
-          </article>
-        </section>
-
-        <section class="dashboard-grid">
-          <article class="panel chart-panel">
-            <div class="panel-header">
+          <article class="card chart-card">
+            <div class="section-heading">
               <div>
-                <span class="overline">Distribuição</span>
                 <h3>Consumo por equipamento</h3>
-                <p>Compare rapidamente onde está concentrado o volume do mês.</p>
+                <p>Onde está concentrado o volume do mês.</p>
               </div>
-              <span class="panel-total">42.680 páginas</span>
+              <span>42.680 páginas</span>
             </div>
             <div class="bar-chart" id="barChart" aria-label="Gráfico de consumo por equipamento"></div>
           </article>
 
-          <article class="panel contract-panel section-anchor" id="contract">
-            <div class="panel-header compact">
+          <article class="card usage-card">
+            <span class="metric-label">Maior utilização</span>
+            <strong>12.300</strong>
+            <p>Secretaria Acadêmica</p>
+            <div class="usage-line"><span style="width:28.8%"></span></div>
+            <small>28,8% do consumo total</small>
+          </article>
+
+          <article class="card contract-card section-anchor" id="contract">
+            <div class="section-heading compact">
               <div>
-                <span class="overline">Contrato</span>
-                <h3>Franquia mensal</h3>
+                <h3>Contrato</h3>
+                <p>Uso atual da franquia</p>
               </div>
               <span class="status-pill">Dentro do limite</span>
             </div>
-
-            <div class="contract-main">
-              <span>Restam</span>
-              <strong>7.320</strong>
-              <small>impressões neste ciclo</small>
-            </div>
-
-            <div class="progress-meta">
-              <span>42.680 usadas</span>
-              <strong>85,4%</strong>
+            <div class="contract-row">
+              <div><span>Usado</span><strong>42.680</strong></div>
+              <div><span>Disponível</span><strong>7.320</strong></div>
             </div>
             <div class="linear-progress"><span style="width:85.4%"></span></div>
-            <div class="progress-scale"><span>0</span><span>50.000</span></div>
-
-            <div class="contract-message">
-              <span>✓</span>
-              <p><strong>Sem excedente.</strong> O consumo continua abaixo do limite contratado.</p>
-            </div>
           </article>
         </section>
 
-        <section class="process-strip" aria-label="Como funciona">
-          <div class="process-title">
-            <span class="overline">Fluxo simples</span>
-            <h3>Do relatório ao resultado.</h3>
-          </div>
-          <div class="process-step"><b>01</b><span><strong>Envie</strong><small>PDF, PNG ou JPG</small></span></div>
-          <span class="process-arrow">→</span>
-          <div class="process-step"><b>02</b><span><strong>Identificamos</strong><small>Número de série</small></span></div>
-          <span class="process-arrow">→</span>
-          <div class="process-step"><b>03</b><span><strong>Comparamos</strong><small>Leitura anterior</small></span></div>
-          <span class="process-arrow">→</span>
-          <div class="process-step"><b>04</b><span><strong>Calculamos</strong><small>Consumo real</small></span></div>
-        </section>
-
         <section class="upload-section section-anchor" id="upload">
-          <div class="upload-info">
-            <span class="overline light">Novo processamento</span>
-            <h3>Envie o relatório da impressora.</h3>
-            <p>O sistema identifica o equipamento, localiza a leitura anterior e prepara os dados para conferência antes de atualizar o histórico.</p>
-            <div class="upload-benefits">
-              <span>✓ Conferência antes de salvar</span>
-              <span>✓ Histórico preservado</span>
-              <span>✓ PDF, PNG e JPG</span>
+          <div class="upload-copy">
+            <h2>Enviar novo relatório</h2>
+            <p>Selecione o arquivo da impressora. O sistema identifica o equipamento, busca a leitura anterior e calcula o consumo antes de atualizar o histórico.</p>
+            <div class="upload-notes">
+              <span>PDF, PNG ou JPG</span>
+              <span>Conferência antes de salvar</span>
+              <span>Histórico preservado</span>
             </div>
           </div>
-
-          <div class="upload-card">
+          <div class="upload-panel">
             <label class="dropzone" id="dropzone" for="fileInput">
               <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg" hidden />
-              <div class="upload-symbol">
-                <svg viewBox="0 0 24 24"><path d="M11 4.8 7.7 8.1 6.3 6.7 12 1l5.7 5.7-1.4 1.4L13 4.8V16h-2V4.8ZM4 14h2v5h12v-5h2v7H4v-7Z"/></svg>
-              </div>
+              <div class="upload-icon">↑</div>
               <strong id="uploadTitle">Arraste o arquivo aqui</strong>
-              <span id="uploadSubtitle">ou clique para selecionar no computador</span>
-              <small>PDF · PNG · JPG</small>
+              <span id="uploadSubtitle">ou clique para selecionar</span>
             </label>
             <button class="primary-button full" id="analyzeButton" disabled>Analisar relatório</button>
           </div>
         </section>
 
-        <section class="panel equipment-panel section-anchor" id="equipment">
-          <div class="panel-header table-header">
+        <section class="card equipment-panel section-anchor" id="equipment">
+          <div class="section-heading table-heading">
             <div>
-              <span class="overline">Inventário</span>
               <h3>Equipamentos monitorados</h3>
-              <p>Acompanhe leitura, consumo e variação de cada ponto.</p>
+              <p>Leituras, consumo e variação por ponto.</p>
             </div>
             <div class="table-actions">
-              <div class="search-box"><span>⌕</span><input id="equipmentSearch" type="search" placeholder="Buscar equipamento..." aria-label="Buscar equipamento" /></div>
+              <div class="search-box">
+                <input id="equipmentSearch" type="search" placeholder="Buscar equipamento..." aria-label="Buscar equipamento" />
+              </div>
               <button class="secondary-button">Exportar</button>
             </div>
           </div>
@@ -266,29 +184,24 @@
           </div>
         </section>
 
-        <section class="esg-section section-anchor" id="responsible">
-          <div class="esg-copy">
-            <span class="overline light">Consumo responsável</span>
-            <h3>ESG baseado em evidência, não em estimativa bonita.</h3>
-            <p>O histórico de impressão ajuda a encontrar desperdícios, acompanhar redução e sustentar decisões com dados verificáveis.</p>
-            <span class="method-tag">Metodologia transparente</span>
-          </div>
-          <div class="esg-metrics">
-            <article>
-              <span>Redução mensal</span>
-              <strong>8,7%</strong>
-              <small>4.061 impressões a menos</small>
-            </article>
-            <article>
-              <span>Maior concentração</span>
-              <strong>28,8%</strong>
-              <small>Secretaria Acadêmica</small>
-            </article>
-            <article class="esg-note">
-              <span class="leaf">⌁</span>
-              <p>Conversões de CO₂, água ou árvores só entram quando houver fonte e metodologia definidas.</p>
-            </article>
-          </div>
+        <section class="responsible-grid section-anchor" id="responsible">
+          <article class="card responsible-main">
+            <h3>Consumo responsável</h3>
+            <p>Use o histórico para identificar desperdícios e acompanhar redução com números verificáveis.</p>
+          </article>
+          <article class="card responsible-metric">
+            <span>Redução mensal</span>
+            <strong>8,7%</strong>
+            <p>4.061 impressões a menos</p>
+          </article>
+          <article class="card responsible-metric">
+            <span>Maior concentração</span>
+            <strong>28,8%</strong>
+            <p>Secretaria Acadêmica</p>
+          </article>
+          <article class="card responsible-note">
+            <p>Conversões de CO₂, água ou árvores só aparecem quando houver metodologia e fonte definidas.</p>
+          </article>
         </section>
       </div>
     </main>
