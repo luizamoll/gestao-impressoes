@@ -1,27 +1,49 @@
 const equipmentData = [
-  { name: "HP LaserJet M428", serial: "BRH428-001", location: "Secretaria Acadêmica", previous: 38120, current: 50420, consumption: 12300, delta: 6.2 },
-  { name: "Brother DCP-L5652", serial: "BRL565-014", location: "Biblioteca", previous: 25600, current: 33700, consumption: 8100, delta: -12.4 },
-  { name: "HP LaserJet M404", serial: "BRM404-008", location: "Financeiro", previous: 19830, current: 26420, consumption: 6590, delta: -4.8 },
-  { name: "Epson WorkForce 5790", serial: "EPS579-021", location: "RH / DP", previous: 14420, current: 20210, consumption: 5790, delta: -9.1 },
-  { name: "Brother MFC-L6902", serial: "BRL690-003", location: "Coordenação", previous: 30880, current: 36310, consumption: 5430, delta: 3.4 },
-  { name: "HP LaserJet M428", serial: "BRH428-017", location: "TI", previous: 11250, current: 15720, consumption: 4470, delta: -18.5 }
+  {
+    name: "HP LaserJet Pro MFP 4103fdw",
+    productNumber: "2Z629A",
+    serial: "BRBSV730KB",
+    location: "Não cadastrada",
+    previous: null,
+    current: 56,
+    consumption: null
+  },
+  {
+    name: "HP LaserJet Pro MFP 4103fdw",
+    productNumber: "2Z629A",
+    serial: "BRBST2P00K",
+    location: "Não cadastrada",
+    previous: null,
+    current: 27582,
+    consumption: null
+  },
+  {
+    name: "HP LaserJet Pro 4003dw",
+    productNumber: "2Z610A",
+    serial: "BRBST160GT",
+    location: "Não cadastrada",
+    previous: null,
+    current: 17468,
+    consumption: null
+  }
 ];
 
-const formatNumber = value => new Intl.NumberFormat("pt-BR").format(value);
+const formatNumber = value =>
+  value == null ? "—" : new Intl.NumberFormat("pt-BR").format(value);
 
 function renderChart(data) {
   const chart = document.querySelector("#barChart");
-  const max = Math.max(...data.map(item => item.consumption));
+  const max = Math.max(...data.map(item => item.current));
 
   chart.innerHTML = data.map((item, index) => {
-    const height = Math.max(8, (item.consumption / max) * 100);
+    const height = Math.max(8, (item.current / max) * 100);
     return `
-      <div class="bar-column" title="${item.location}: ${formatNumber(item.consumption)} impressões">
+      <div class="bar-column" title="${item.name}: ${formatNumber(item.current)} páginas acumuladas">
         <div class="bar-track">
-          <div class="bar ${index === 0 ? "highlight" : ""}" style="height:${height}%"></div>
+          <div class="bar ${index === 1 ? "highlight" : ""}" style="height:${height}%"></div>
         </div>
-        <span class="bar-value">${(item.consumption / 1000).toFixed(1).replace(".", ",")}k</span>
-        <span class="bar-label">${item.location}</span>
+        <span class="bar-value">${formatNumber(item.current)}</span>
+        <span class="bar-label">${item.serial}</span>
       </div>
     `;
   }).join("");
@@ -32,13 +54,16 @@ function renderTable(data) {
 
   body.innerHTML = data.map(item => `
     <tr>
-      <td><strong>${item.name}</strong><small>Ativo</small></td>
+      <td>
+        <strong>${item.name}</strong>
+        <small>Produto ${item.productNumber}</small>
+      </td>
       <td>${item.serial}</td>
       <td>${item.location}</td>
       <td>${formatNumber(item.previous)}</td>
-      <td>${formatNumber(item.current)}</td>
-      <td><strong>${formatNumber(item.consumption)}</strong></td>
-      <td><span class="delta ${item.delta <= 0 ? "down" : "up"}">${item.delta > 0 ? "↑" : "↓"} ${Math.abs(item.delta).toFixed(1).replace(".", ",")}%</span></td>
+      <td><strong>${formatNumber(item.current)}</strong></td>
+      <td>${item.consumption == null ? "Aguardando leitura anterior" : formatNumber(item.consumption)}</td>
+      <td><span class="pending">Histórico inicial</span></td>
     </tr>
   `).join("");
 }
@@ -122,25 +147,12 @@ analyzeButton.addEventListener("click", () => {
   }, 700);
 });
 
-const tooltip = document.querySelector("#tooltip");
-document.querySelectorAll(".info-button").forEach(button => {
-  button.addEventListener("mouseenter", () => {
-    const rect = button.getBoundingClientRect();
-    tooltip.textContent = button.dataset.tooltip;
-    tooltip.style.left = Math.min(rect.left, window.innerWidth - 280) + "px";
-    tooltip.style.top = rect.bottom + 8 + "px";
-    tooltip.classList.add("visible");
-  });
-  button.addEventListener("mouseleave", () => tooltip.classList.remove("visible"));
-  button.addEventListener("focus", () => button.dispatchEvent(new Event("mouseenter")));
-  button.addEventListener("blur", () => tooltip.classList.remove("visible"));
-});
-
 const search = document.querySelector("#equipmentSearch");
 search.addEventListener("input", () => {
   const query = search.value.toLocaleLowerCase("pt-BR").trim();
   const filtered = equipmentData.filter(item =>
-    [item.name, item.serial, item.location].some(value => value.toLocaleLowerCase("pt-BR").includes(query))
+    [item.name, item.productNumber, item.serial, item.location]
+      .some(value => value.toLocaleLowerCase("pt-BR").includes(query))
   );
   renderTable(filtered);
 });
