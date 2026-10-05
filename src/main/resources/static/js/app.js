@@ -3,44 +3,63 @@ const equipmentData = [
     name: "HP LaserJet Pro MFP 4103fdw",
     productNumber: "2Z629A",
     serial: "BRBSV730KB",
-    location: "Não cadastrada",
-    previous: null,
     current: 56,
-    consumption: null
+    duplex: 5,
+    jams: 0,
+    pickupFailures: 0,
+    copies: 1,
+    scanner: 142
   },
   {
     name: "HP LaserJet Pro MFP 4103fdw",
     productNumber: "2Z629A",
     serial: "BRBST2P00K",
-    location: "Não cadastrada",
-    previous: null,
     current: 27582,
-    consumption: null
+    duplex: 7576,
+    jams: 1,
+    pickupFailures: 28,
+    copies: 978,
+    scanner: 5349
   },
   {
     name: "HP LaserJet Pro 4003dw",
     productNumber: "2Z610A",
     serial: "BRBST160GT",
-    location: "Não cadastrada",
-    previous: null,
     current: 17468,
-    consumption: null
+    duplex: 8589,
+    jams: 2,
+    pickupFailures: 3,
+    copies: null,
+    scanner: null
   }
 ];
 
 const formatNumber = value =>
   value == null ? "—" : new Intl.NumberFormat("pt-BR").format(value);
 
+const totalCounter = equipmentData.reduce((sum, item) => sum + item.current, 0);
+const largestEquipment = [...equipmentData].sort((a, b) => b.current - a.current)[0];
+
+document.querySelector("#equipmentCount").textContent = equipmentData.length;
+document.querySelector("#totalCounter").textContent = formatNumber(totalCounter);
+document.querySelector("#largestCounter").textContent = formatNumber(largestEquipment.current);
+document.querySelector("#largestCounterSerial").textContent = largestEquipment.serial;
+
 function renderChart(data) {
   const chart = document.querySelector("#barChart");
-  const max = Math.max(...data.map(item => item.current));
+  if (!data.length) {
+    chart.innerHTML = '<p>Nenhum equipamento encontrado.</p>';
+    return;
+  }
 
-  chart.innerHTML = data.map((item, index) => {
+  const max = Math.max(...data.map(item => item.current));
+  chart.innerHTML = data.map(item => {
     const height = Math.max(8, (item.current / max) * 100);
+    const highlight = item.serial === largestEquipment.serial ? "highlight" : "";
     return `
       <div class="bar-column" title="${item.name}: ${formatNumber(item.current)} páginas acumuladas">
         <div class="bar-track">
-          <div class="bar ${index === 1 ? "highlight" : ""}" style="height:${height}%"></div>
+          <div class="bar ${highlight}" style="height:${height}%"></div>
         </div>
         <span class="bar-value">${formatNumber(item.current)}</span>
         <span class="bar-label">${item.serial}</span>
@@ -49,27 +68,45 @@ function renderChart(data) {
   }).join("");
 }
 
+function renderCards(data) {
+  const container = document.querySelector("#equipmentCards");
+  container.innerHTML = data.map((item, index) => `
+    <article class="equipment-card">
+      <div class="equipment-card-index">0${index + 1}</div>
+      <h3>${item.name}</h3>
+      <div class="serial">${item.serial}</div>
+      <div class="reading">
+        <span>Contador atual</span>
+        <strong>${formatNumber(item.current)}</strong>
+      </div>
+      <div class="product">Produto ${item.productNumber}</div>
+    </article>
+  `).join("");
+}
+
 function renderTable(data) {
   const body = document.querySelector("#equipmentTable");
-
   body.innerHTML = data.map(item => `
     <tr>
-      <td>
-        <strong>${item.name}</strong>
-        <small>Produto ${item.productNumber}</small>
-      </td>
+      <td><strong>${item.name}</strong><small>Produto ${item.productNumber}</small></td>
       <td>${item.serial}</td>
-      <td>${item.location}</td>
-      <td>${formatNumber(item.previous)}</td>
       <td><strong>${formatNumber(item.current)}</strong></td>
-      <td>${item.consumption == null ? "Aguardando leitura anterior" : formatNumber(item.consumption)}</td>
-      <td><span class="pending">Histórico inicial</span></td>
+      <td>${formatNumber(item.duplex)}</td>
+      <td>${formatNumber(item.jams)}</td>
+      <td>${formatNumber(item.pickupFailures)}</td>
+      <td>${formatNumber(item.copies)}</td>
+      <td>${formatNumber(item.scanner)}</td>
     </tr>
   `).join("");
 }
 
-renderChart(equipmentData);
-renderTable(equipmentData);
+function renderAll(data = equipmentData) {
+  renderChart(data);
+  renderCards(data);
+  renderTable(data);
+}
+
+renderAll();
 
 const navItems = document.querySelectorAll(".nav-item");
 const sidebar = document.querySelector("#sidebar");
@@ -87,6 +124,17 @@ document.querySelectorAll("[data-go]").forEach(button => {
 
 document.querySelector("#menuButton").addEventListener("click", () => sidebar.classList.toggle("open"));
 
+const search = document.querySelector("#equipmentSearch");
+search.addEventListener("input", () => {
+  const query = search.value.toLocaleLowerCase("pt-BR").trim();
+  const filtered = equipmentData.filter(item =>
+    [item.name, item.productNumber, item.serial]
+      .some(value => value.toLocaleLowerCase("pt-BR").includes(query))
+  );
+  renderCards(filtered);
+  renderTable(filtered);
+});
+
 const fileInput = document.querySelector("#fileInput");
 const dropzone = document.querySelector("#dropzone");
 const analyzeButton = document.querySelector("#analyzeButton");
@@ -103,14 +151,14 @@ function handleFile(file) {
   if (!accepted.includes(file.type) && !acceptedByExtension) {
     selectedFile = null;
     uploadTitle.textContent = "Formato não suportado";
-    uploadSubtitle.textContent = "Selecione um arquivo PDF, PNG ou JPG.";
+    uploadSubtitle.textContent = "Selecione PDF, PNG ou JPG.";
     analyzeButton.disabled = true;
     return;
   }
 
   selectedFile = file;
   uploadTitle.textContent = file.name;
-  uploadSubtitle.textContent = `${(file.size / 1024 / 1024).toFixed(2).replace(".", ",")} MB · pronto para análise`;
+  uploadSubtitle.textContent = `${(file.size / 1024 / 1024).toFixed(2).replace(".", ",")} MB`;
   analyzeButton.disabled = false;
 }
 
@@ -130,31 +178,11 @@ fileInput.addEventListener("change", event => handleFile(event.target.files[0]))
   });
 });
 
-dropzone.addEventListener("drop", event => {
-  handleFile(event.dataTransfer.files[0]);
-});
+dropzone.addEventListener("drop", event => handleFile(event.dataTransfer.files[0]));
 
 analyzeButton.addEventListener("click", () => {
   if (!selectedFile) return;
-
-  analyzeButton.disabled = true;
-  analyzeButton.textContent = "Analisando...";
-
-  window.setTimeout(() => {
-    analyzeButton.textContent = "Analisar relatório";
-    analyzeButton.disabled = false;
-    showToast();
-  }, 700);
-});
-
-const search = document.querySelector("#equipmentSearch");
-search.addEventListener("input", () => {
-  const query = search.value.toLocaleLowerCase("pt-BR").trim();
-  const filtered = equipmentData.filter(item =>
-    [item.name, item.productNumber, item.serial, item.location]
-      .some(value => value.toLocaleLowerCase("pt-BR").includes(query))
-  );
-  renderTable(filtered);
+  showToast();
 });
 
 function showToast() {
