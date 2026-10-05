@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Indicadores ESG e consumo responsável da gestão de impressões." />
+  <title>ESG | Gestão de Impressões</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%236C5CE7'/%3E%3Ccircle cx='23' cy='23' r='5' fill='white'/%3E%3Ccircle cx='41' cy='23' r='5' fill='white'/%3E%3Ccircle cx='23' cy='41' r='5' fill='white'/%3E%3Ccircle cx='41' cy='41' r='5' fill='white' opacity='.55'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css?v=20261005-4" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <strong>Gestão de Impressões</strong>
+      </div>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="nav-item" href="/index.html#overview">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 0h6v6h-6v-6Z"/></svg>
+          <span>Visão geral</span>
+        </a>
+        <a class="nav-item" href="/index.html#equipment">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v5H6V4Zm-2 7h16v8h-3v2H7v-2H4v-8Zm5 8h6v-5H9v5Z"/></svg>
+          <span>Equipamentos</span>
+        </a>
+        <a class="nav-item" href="/index.html#upload">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5.8 8.2 8.6 6.8 7.2 12 2l5.2 5.2-1.4 1.4L13 5.8V15h-2V5.8ZM4 14h2v5h12v-5h2v7H4v-7Z"/></svg>
+          <span>Novo relatório</span>
+        </a>
+        <a class="nav-item active" href="/esg.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 3.3C13.4 4 8.2 6.8 5.8 11.1c-1.8 3.2-.8 6.5 1.4 8.1 2.3 1.6 5.9 1.1 8.4-1.7 3.1-3.4 4.6-8 4.6-14.2ZM8.4 17.6c1.9-4 4.9-7 8.8-9.3-3.2 2.9-5.5 6.1-6.8 9.9-.7 0-1.4-.2-2-.6Z"/></svg>
+          <span>ESG</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Abrir menu">☰</button>
+        <h1>ESG</h1>
+        <a class="primary-button link-button" href="/index.html">Voltar ao painel</a>
+      </header>
+
+      <div class="content esg-page-content">
+        <section class="esg-hero">
+          <h2>Consumo responsável com indicadores verificáveis.</h2>
+          <p>O painel acompanha o que os relatórios realmente permitem medir. Conversões de CO₂, água ou árvores só devem entrar quando houver uma metodologia definida para a operação.</p>
+        </section>
+
+        <section class="esg-metrics" aria-label="Indicadores ESG">
+          <article class="esg-metric accent">
+            <span>Franquia mensal</span>
+            <strong>4.000</strong>
+            <small>impressões</small>
+          </article>
+          <article class="esg-metric">
+            <span>Frente/verso registrado</span>
+            <strong>16.170</strong>
+            <small>páginas acumuladas nos relatórios atuais</small>
+          </article>
+          <article class="esg-metric">
+            <span>Consumo mensal</span>
+            <strong class="text">Aguardando próxima leitura</strong>
+            <small>necessário para comparação por período</small>
+          </article>
+        </section>
+
+        <section class="method-grid">
+          <article class="panel">
+            <div class="panel-heading"><h3>Medição</h3></div>
+            <div class="method-list">
+              <div class="method-row">
+                <strong>Consumo do período</strong>
+                <p>Leitura total atual menos a leitura total anterior do mesmo número de série.</p>
+              </div>
+              <div class="method-row">
+                <strong>Uso da franquia</strong>
+                <p>Consumo do período comparado ao limite mensal de 4.000 impressões.</p>
+              </div>
+              <div class="method-row">
+                <strong>Excedente</strong>
+                <p>Somente o que ultrapassar a franquia mensal, depois que o consumo puder ser calculado.</p>
+              </div>
+              <div class="method-row">
+                <strong>Frente/verso</strong>
+                <p>Leitura acumulada informada pelos próprios equipamentos. Não é tratada como economia de papel sem uma base comparativa.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading"><h3>Governança dos dados</h3></div>
+            <div class="governance-list">
+              <div class="governance-item">
+                <strong>Rastreabilidade</strong>
+                <p>Cada leitura é vinculada ao número de série do equipamento.</p>
+              </div>
+              <div class="governance-item">
+                <strong>Histórico</strong>
+                <p>As próximas coletas permitirão comparar períodos sem substituir a leitura anterior.</p>
+              </div>
+              <div class="governance-item">
+                <strong>Sem estimativas artificiais</strong>
+                <p>Indicadores ambientais derivados só entram quando houver fonte, premissa e fórmula documentadas.</p>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const sidebar=document.querySelector("#sidebar");
+    document.querySelector("#menuButton")?.addEventListener("click",()=>sidebar?.classList.toggle("open"));
+  </script>
+</body>
+</html>
