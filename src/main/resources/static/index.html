@@ -25,18 +25,39 @@
       </div>
 
       <nav class="nav" aria-label="Navegação principal">
-        <button class="nav-item active" data-section="overview"><span>Visão geral</span></button>
-        <button class="nav-item" data-section="upload"><span>Novo relatório</span></button>
-        <button class="nav-item" data-section="equipment"><span>Equipamentos</span></button>
-        <button class="nav-item" data-section="contract"><span>Contrato</span></button>
-        <button class="nav-item" data-section="responsible"><span>Consumo responsável</span></button>
+        <button class="nav-item active" data-section="overview">
+          <svg viewBox="0 0 24 24"><path d="M4 4h6v6H4V4Zm10 0h6v10h-6V4ZM4 14h6v6H4v-6Zm10 4h6v2h-6v-2Z"/></svg>
+          <span>Visão geral</span>
+        </button>
+        <button class="nav-item" data-section="upload">
+          <svg viewBox="0 0 24 24"><path d="M11 5.8 8.2 8.6 6.8 7.2 12 2l5.2 5.2-1.4 1.4L13 5.8V16h-2V5.8ZM4 14h2v5h12v-5h2v7H4v-7Z"/></svg>
+          <span>Novo relatório</span>
+        </button>
+        <button class="nav-item" data-section="equipment">
+          <svg viewBox="0 0 24 24"><path d="M6 3h12v5H6V3Zm-2 6h16a2 2 0 0 1 2 2v7h-4v3H6v-3H2v-7a2 2 0 0 1 2-2Zm4 10h8v-5H8v5Z"/></svg>
+          <span>Equipamentos</span>
+        </button>
+        <button class="nav-item" data-section="contract">
+          <svg viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 0 1 2 2v16l-3-2-3 2-3-2-3 2-3-2-3 2V5a2 2 0 0 1 2-2Zm2 5v2h10V8H7Zm0 4v2h7v-2H7Z"/></svg>
+          <span>Contrato</span>
+        </button>
+        <button class="nav-item" data-section="responsible">
+          <svg viewBox="0 0 24 24"><path d="M20.5 3.5C13.4 4.1 8 6.8 5.5 11.2c-1.8 3.3-.8 6.8 1.5 8.4 2.4 1.7 6.2 1.2 8.8-1.7 3.2-3.5 4.8-8.4 4.7-14.4ZM8.2 17.9c2-4.2 5.1-7.3 9.2-9.7-3.4 3-5.8 6.4-7.1 10.4-.7 0-1.4-.2-2.1-.7Z"/></svg>
+          <span>Consumo responsável</span>
+        </button>
       </nav>
+
+      <div class="sidebar-summary">
+        <span>Base atual</span>
+        <strong>3 equipamentos</strong>
+        <small>Leituras reais cadastradas</small>
+      </div>
 
       <div class="sidebar-bottom">
         <span class="status-dot"></span>
         <div>
-          <strong>Ambiente de validação</strong>
-          <small>Dados demonstrativos</small>
+          <strong>Base real em construção</strong>
+          <small>Sem números mensais inventados</small>
         </div>
       </div>
     </aside>
@@ -47,71 +68,57 @@
           <button class="menu-button" id="menuButton" aria-label="Abrir menu">☰</button>
           <div>
             <h1>Visão geral</h1>
-            <p>Setembro de 2026</p>
+            <p>Dados extraídos dos relatórios enviados</p>
           </div>
         </div>
-        <div class="topbar-actions">
-          <label class="period-select">
-            <span>Competência</span>
-            <select id="periodSelect">
-              <option>Setembro 2026</option>
-              <option>Agosto 2026</option>
-              <option>Julho 2026</option>
-            </select>
-          </label>
-          <button class="primary-button" data-go="upload">Enviar relatório</button>
-        </div>
+        <button class="primary-button" data-go="upload">Enviar relatório</button>
       </header>
 
       <div class="content">
         <section class="overview-grid section-anchor" id="overview">
           <article class="summary-card">
             <div class="summary-copy">
-              <div class="status-line"><span></span>Dentro da franquia</div>
-              <h2>42.680 impressões usadas neste mês</h2>
-              <p>O consumo está 8,7% abaixo do mês anterior. Ainda restam 7.320 impressões disponíveis no contrato atual.</p>
+              <div class="status-line"><span></span>Dados reais cadastrados</div>
+              <h2>3 equipamentos já têm uma leitura registrada.</h2>
+              <p>Essas leituras são contadores acumulados das impressoras. O consumo do período será calculado quando houver uma leitura anterior do mesmo número de série.</p>
               <div class="summary-actions">
-                <button class="primary-button" data-go="upload">Processar relatório</button>
+                <button class="primary-button" data-go="upload">Adicionar nova leitura</button>
                 <button class="secondary-button" data-go="equipment">Ver equipamentos</button>
               </div>
             </div>
 
-            <div class="summary-progress">
-              <div class="progress-ring">
-                <div>
-                  <strong>85,4%</strong>
-                  <span>utilizado</span>
-                </div>
-              </div>
-              <p>42.680 de 50.000</p>
+            <div class="summary-visual">
+              <strong>3</strong>
+              <span>leituras reais</span>
+              <p>Prontas para formar o histórico.</p>
             </div>
 
             <div class="summary-numbers">
               <div>
-                <span>Consumidas</span>
-                <strong>42.680</strong>
+                <span>Equipamentos cadastrados</span>
+                <strong>3</strong>
               </div>
               <div>
-                <span>Contratadas</span>
-                <strong>50.000</strong>
+                <span>Contadores recebidos</span>
+                <strong>3</strong>
               </div>
               <div>
-                <span>Disponíveis</span>
-                <strong>7.320</strong>
+                <span>Consumo do período</span>
+                <strong class="pending-value">Aguardando histórico</strong>
               </div>
             </div>
           </article>
 
           <article class="info-card">
-            <span>Excedente</span>
-            <strong>0</strong>
-            <p>Sem cobrança adicional no período.</p>
+            <span>Maior contador atual</span>
+            <strong>27.582</strong>
+            <p>HP LaserJet Pro MFP 4103fdw · BRBST2P00K</p>
           </article>
 
           <article class="info-card info-card-accent">
-            <span>Maior utilização</span>
-            <strong>12.300</strong>
-            <p>Secretaria Acadêmica · 28,8% do total.</p>
+            <span>Franquia mensal</span>
+            <strong class="text-value">Não cadastrada</strong>
+            <p>O contrato ainda precisa ser informado para calcular limite e excedente.</p>
           </article>
         </section>
 
@@ -119,46 +126,37 @@
           <article class="card chart-card">
             <div class="section-heading">
               <div>
-                <h3>Consumo por equipamento</h3>
-                <p>Comparação do volume registrado em cada ponto.</p>
+                <h3>Contadores atuais</h3>
+                <p>Leitura acumulada registrada em cada equipamento.</p>
               </div>
-              <strong>42.680 páginas</strong>
+              <strong>45.106 páginas acumuladas</strong>
             </div>
-            <div class="bar-chart" id="barChart" aria-label="Gráfico de consumo por equipamento"></div>
+            <div class="bar-chart" id="barChart" aria-label="Gráfico dos contadores atuais dos equipamentos"></div>
+            <p class="chart-warning">Estes valores não representam consumo mensal. São contadores acumulados dos equipamentos.</p>
           </article>
 
           <article class="card contract-card section-anchor" id="contract">
             <div class="section-heading">
               <div>
                 <h3>Contrato</h3>
-                <p>Uso da franquia mensal</p>
+                <p>Franquia e excedente</p>
               </div>
-              <span class="status-text"><i></i>Dentro do limite</span>
             </div>
-
-            <div class="contract-hero">
-              <strong>7.320</strong>
-              <span>impressões ainda disponíveis</span>
+            <div class="empty-state">
+              <strong>Franquia ainda não cadastrada</strong>
+              <p>Quando o limite mensal do contrato for informado, esta área mostrará uso da franquia, saldo e excedente automaticamente.</p>
             </div>
-
-            <div class="contract-data">
-              <div><span>Usado</span><strong>42.680</strong></div>
-              <div><span>Limite</span><strong>50.000</strong></div>
-            </div>
-
-            <div class="linear-progress"><span style="width:85.4%"></span></div>
-            <p class="contract-note">85,4% da franquia já foi utilizada neste ciclo.</p>
           </article>
         </section>
 
         <section class="upload-section section-anchor" id="upload">
           <div class="upload-copy">
             <h2>Enviar novo relatório</h2>
-            <p>Selecione o arquivo da impressora. O sistema identifica o equipamento, localiza a leitura anterior e calcula o consumo antes de atualizar o histórico.</p>
+            <p>O sistema usará o número de série para reconhecer o equipamento e comparar a nova leitura com o histórico já salvo.</p>
             <ul>
               <li>PDF, PNG ou JPG</li>
-              <li>Conferência antes de salvar</li>
-              <li>Histórico preservado</li>
+              <li>Reconhecimento pelo número de série</li>
+              <li>Consumo calculado somente quando houver duas leituras</li>
             </ul>
           </div>
           <div class="upload-panel">
@@ -176,8 +174,8 @@
         <section class="card equipment-panel section-anchor" id="equipment">
           <div class="section-heading table-heading">
             <div>
-              <h3>Equipamentos monitorados</h3>
-              <p>Leituras, consumo e variação de cada equipamento.</p>
+              <h3>Equipamentos cadastrados</h3>
+              <p>Dados reais extraídos dos relatórios enviados.</p>
             </div>
             <div class="table-actions">
               <div class="search-box">
@@ -195,8 +193,8 @@
                   <th>Localização</th>
                   <th>Leitura anterior</th>
                   <th>Leitura atual</th>
-                  <th>Consumo</th>
-                  <th>Variação</th>
+                  <th>Consumo do período</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody id="equipmentTable"></tbody>
@@ -208,25 +206,24 @@
           <div class="responsible-heading">
             <div>
               <h2>Consumo responsável</h2>
-              <p>O histórico ajuda a identificar desperdícios e acompanhar reduções com dados verificáveis.</p>
+              <p>Primeiro registramos o histórico. Depois o sistema compara períodos e mostra onde houve aumento, redução ou concentração de uso.</p>
             </div>
-            <span>Indicadores do período</span>
           </div>
 
           <div class="responsible-cards">
             <article>
-              <span>Redução mensal</span>
-              <strong>8,7%</strong>
-              <p>4.061 impressões a menos que no mês anterior.</p>
+              <span>Histórico disponível</span>
+              <strong>1 leitura</strong>
+              <p>por equipamento cadastrado até agora.</p>
             </article>
             <article>
-              <span>Maior concentração</span>
-              <strong>28,8%</strong>
-              <p>do consumo está na Secretaria Acadêmica.</p>
+              <span>Próximo passo</span>
+              <strong class="text-value">Nova coleta</strong>
+              <p>Uma segunda leitura permitirá calcular o consumo real do período.</p>
             </article>
             <article class="method-card">
-              <strong>Metodologia transparente</strong>
-              <p>CO₂, água ou árvores só aparecem quando houver fonte e método definidos.</p>
+              <strong>Contador não é consumo mensal</strong>
+              <p>Os valores 56, 27.582 e 17.468 são leituras acumuladas. O consumo será a diferença entre duas leituras do mesmo equipamento.</p>
             </article>
           </div>
         </section>
@@ -239,7 +236,7 @@
     <span>✓</span>
     <div>
       <strong>Relatório pronto para conferência</strong>
-      <p>Simulação concluída com dados fictícios.</p>
+      <p>O arquivo foi selecionado para análise.</p>
     </div>
   </div>
 
