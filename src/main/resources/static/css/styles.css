@@ -333,62 +333,71 @@ a.nav-item{text-decoration:none}
 @media(max-width:520px){.single-reading-grid{grid-template-columns:1fr}}
 
 
+
 /* Comparação mensal */
 .month-comparison{
   padding:30px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow)
 }
-.month-comparison-heading{
-  display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:20px
-}
+.month-comparison-heading{margin-bottom:20px}
 .month-comparison-heading h2{margin:0;font-size:26px;letter-spacing:-.04em;font-weight:600}
-.month-comparison-heading p{margin:7px 0 0;color:var(--muted);font-size:13px}
-.period-result{text-align:right;flex:0 0 auto}
-.period-result span,.period-result strong,.period-result small{display:block}
-.period-result span{color:var(--muted);font-size:11px}
-.period-result strong{margin-top:2px;font-size:27px;letter-spacing:-.045em}
-.period-result small{color:var(--muted);font-size:11px}
+.month-comparison-heading p{max-width:850px;margin:7px 0 0;color:var(--muted);font-size:13px;line-height:1.65}
 
-.month-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.month-card{
-  border:1px solid var(--line);border-radius:16px;background:#fafbfc;overflow:hidden
+.monthly-contract-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--line)
 }
-.month-card.current-month{background:#fbfaff;border-color:#ddd7ff}
-.month-card-title{
-  padding:18px 20px;border-bottom:1px solid var(--line);display:flex;
-  align-items:baseline;justify-content:space-between;gap:12px
-}
-.month-card-title span{color:var(--muted);font-size:11px}
-.month-card-title strong{font-size:18px;letter-spacing:-.03em}
-.current-month .month-card-title strong{color:var(--accent)}
-.month-device{
-  min-height:78px;padding:16px 20px;display:flex;align-items:center;
-  justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)
-}
-.month-device:last-child{border-bottom:0}
-.month-device>div:first-child{display:grid;gap:3px}
-.month-device>div:first-child>strong{font-size:13px}
-.month-device>div:first-child>span{color:var(--muted);font-size:11px}
-.month-reading{font-size:20px;letter-spacing:-.035em}
-.month-delta{text-align:right}
-.month-delta strong,.month-delta span{display:block}
-.month-delta strong{font-size:20px;letter-spacing:-.035em}
-.month-delta span{margin-top:2px;color:var(--accent);font-size:11px;font-weight:600}
+.monthly-kpi{padding:21px;background:#fff}
+.monthly-kpi.accent-kpi{background:var(--surface-soft)}
+.monthly-kpi span,.monthly-kpi strong,.monthly-kpi small{display:block}
+.monthly-kpi span{color:var(--muted);font-size:12px}
+.monthly-kpi strong{margin-top:7px;font-size:31px;letter-spacing:-.05em;font-weight:600}
+.monthly-kpi small{margin-top:2px;color:var(--muted);font-size:11px}
 
-.comparison-strip{
-  margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);
-  border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--line);gap:1px
+.calculation-panel{
+  margin-top:18px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff
 }
-.comparison-strip>div{padding:16px 18px;background:#fff}
-.comparison-strip span,.comparison-strip strong{display:block}
-.comparison-strip span{color:var(--muted);font-size:10px}
-.comparison-strip strong{margin-top:4px;font-size:19px;letter-spacing:-.035em}
+.calculation-head{padding:18px 20px;background:#fafafe;border-bottom:1px solid var(--line)}
+.calculation-head>div{display:grid;gap:3px}
+.calculation-head strong{font-size:14px}
+.calculation-head span{color:var(--muted);font-size:11px}
+.calculation-row{
+  display:grid;grid-template-columns:minmax(210px,1.5fr) .75fr 28px .75fr .9fr;
+  align-items:center;gap:14px;padding:17px 20px;border-bottom:1px solid var(--line)
+}
+.calc-device{display:grid;gap:3px}
+.calc-device strong{font-size:13px}
+.calc-device span{color:var(--muted);font-size:11px}
+.calc-number,.calc-result{display:grid;gap:2px}
+.calc-number span,.calc-result span{color:var(--muted);font-size:10px}
+.calc-number strong{font-size:17px;letter-spacing:-.025em}
+.calc-result{
+  padding:10px 12px;border-radius:10px;background:var(--accent-soft)
+}
+.calc-result strong{color:var(--accent);font-size:18px;letter-spacing:-.03em}
+.calc-symbol{text-align:center;color:#9a9eaa}
+.calculation-total{
+  padding:17px 20px;display:flex;align-items:center;justify-content:flex-end;gap:16px;background:#fafafe
+}
+.calculation-total span{color:var(--muted);font-size:11px}
+.calculation-total strong{font-size:18px;letter-spacing:-.03em}
 
-@media(max-width:850px){
-  .month-comparison-heading{align-items:flex-start;flex-direction:column}
-  .period-result{text-align:left}
-  .month-columns{grid-template-columns:1fr}
-  .comparison-strip{grid-template-columns:1fr 1fr}
+.comparison-note{
+  margin-top:14px;padding:14px 16px;border-radius:12px;background:#f7f7fa;
+  display:flex;gap:7px;align-items:flex-start;font-size:11px;line-height:1.55
+}
+.comparison-note strong{flex:0 0 auto}
+.comparison-note span{color:var(--muted)}
+
+@media(max-width:900px){
+  .monthly-contract-grid{grid-template-columns:1fr}
+  .calculation-row{grid-template-columns:1fr 1fr}
+  .calc-device{grid-column:1/-1}
+  .calc-symbol{display:none}
+  .calc-result{grid-column:1/-1}
+  .calculation-total{justify-content:space-between}
 }
 @media(max-width:520px){
-  .comparison-strip{grid-template-columns:1fr}
+  .calculation-row{grid-template-columns:1fr}
+  .calc-device,.calc-result{grid-column:auto}
+  .calculation-total{align-items:flex-start;flex-direction:column;gap:4px}
 }
