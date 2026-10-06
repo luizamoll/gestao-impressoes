@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20261006-6" />
+  <link rel="stylesheet" href="css/styles.css?v=20261006-7" />
 </head>
 <body>
   <div class="app-shell">
@@ -161,66 +161,113 @@
         <section class="month-comparison" aria-labelledby="monthComparisonTitle">
           <div class="month-comparison-heading">
             <div>
-              <span class="eyebrow">Comparação entre meses</span>
-              <h2 id="monthComparisonTitle">O que já dá para comparar?</h2>
-              <p>Para calcular o consumo de um mês, precisamos da leitura do mês anterior. Por isso setembro está fechado, mas agosto ainda não tem consumo mensal calculável.</p>
+              <span class="eyebrow">Histórico mensal</span>
+              <h2 id="monthComparisonTitle">Comparação mês a mês</h2>
+              <p>Todos os meses ficam visíveis. A leitura é o total acumulado da impressora; o consumo mensal é calculado pela diferença para o mês anterior.</p>
             </div>
           </div>
 
-          <div class="month-status-grid">
-            <article class="month-status-card unavailable">
-              <span class="month-name">Agosto/2026</span>
-              <strong>Leituras registradas</strong>
-              <p>Temos os dados das impressoras em agosto. O que ainda não pode ser calculado é o consumo do próprio mês, porque falta uma leitura anterior de julho.</p>
-              <div class="month-readings-list">
-                <div>
-                  <span>BRBST2P00K</span>
-                  <strong>18.318</strong>
-                  <small>leitura acumulada</small>
-                </div>
-                <div>
-                  <span>BRBST160GT</span>
-                  <strong>17.146</strong>
-                  <small>leitura acumulada</small>
-                </div>
-              </div>
-              <span class="status-pill neutral">Consumo de agosto: falta julho</span>
-            </article>
+          <div class="timeline-table-wrap">
+            <table class="timeline-table">
+              <thead>
+                <tr>
+                  <th>Mês</th>
+                  <th>BRBST2P00K</th>
+                  <th>BRBST160GT</th>
+                  <th>BRBSV730KB</th>
+                  <th>Consumo do mês</th>
+                  <th>Franquia</th>
+                  <th>Situação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="baseline-month">
+                  <td>
+                    <strong>Agosto/2026</strong>
+                    <small>primeiro mês registrado</small>
+                  </td>
+                  <td>
+                    <strong>18.318</strong>
+                    <small>leitura acumulada</small>
+                  </td>
+                  <td>
+                    <strong>17.146</strong>
+                    <small>leitura acumulada</small>
+                  </td>
+                  <td>
+                    <strong>—</strong>
+                    <small>sem leitura neste mês</small>
+                  </td>
+                  <td>
+                    <strong>—</strong>
+                    <small>falta leitura de julho</small>
+                  </td>
+                  <td><strong>4.000</strong></td>
+                  <td><span class="status-pill neutral">Mês-base</span></td>
+                </tr>
 
-            <article class="month-status-card available">
-              <span class="month-name">Setembro/2026</span>
-              <strong>1.522 impressões consumidas</strong>
-              <p>Em setembro temos as novas leituras e, como agosto já existe, conseguimos calcular o consumo do período.</p>
-              <div class="month-readings-list">
-                <div>
-                  <span>BRBST2P00K</span>
-                  <strong>19.757</strong>
-                  <small>leitura · consumo 1.439</small>
-                </div>
-                <div>
-                  <span>BRBST160GT</span>
-                  <strong>17.229</strong>
-                  <small>leitura · consumo 83</small>
-                </div>
-              </div>
-              <span class="status-pill good">38,1% da franquia</span>
-            </article>
+                <tr class="closed-month">
+                  <td>
+                    <strong>Setembro/2026</strong>
+                    <small>mês fechado</small>
+                  </td>
+                  <td>
+                    <strong>19.757</strong>
+                    <small>consumo: 1.439</small>
+                  </td>
+                  <td>
+                    <strong>17.229</strong>
+                    <small>consumo: 83</small>
+                  </td>
+                  <td>
+                    <strong>—</strong>
+                    <small>sem base comparável</small>
+                  </td>
+                  <td>
+                    <strong>1.522</strong>
+                    <small>38,1% da franquia</small>
+                  </td>
+                  <td><strong>4.000</strong></td>
+                  <td><span class="status-pill good">Dentro da franquia</span></td>
+                </tr>
 
-            <article class="month-status-card future">
-              <span class="month-name">Próxima competência</span>
-              <strong>Aguardando fechamento</strong>
-              <p>As leituras mais recentes já estão salvas, mas só entram como mês fechado quando a competência for confirmada.</p>
-              <span class="status-pill neutral">Ainda em aberto</span>
-            </article>
+                <tr class="future-month">
+                  <td>
+                    <strong>Próximo mês</strong>
+                    <small>entra automaticamente na sequência</small>
+                  </td>
+                  <td><span class="pending-value">Aguardando leitura</span></td>
+                  <td><span class="pending-value">Aguardando leitura</span></td>
+                  <td>
+                    <strong>56</strong>
+                    <small>primeira leitura já registrada; competência a confirmar</small>
+                  </td>
+                  <td><span class="pending-value">Será calculado ao fechar</span></td>
+                  <td><strong>4.000</strong></td>
+                  <td><span class="status-pill neutral">Em aberto</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="month-comparison-explainer">
+            <div>
+              <strong>Agosto não sumiu.</strong>
+              <span>Ele aparece como o primeiro mês registrado e serve de base para calcular setembro.</span>
+            </div>
+            <div>
+              <strong>Os próximos meses entram aqui.</strong>
+              <span>Quando uma nova competência for confirmada, ela passa a fazer parte da mesma sequência e será comparada ao mês anterior.</span>
+            </div>
           </div>
 
           <div class="month-answer">
-            <strong>Agosto tem dados, mas ainda não tem consumo mensal calculável.</strong>
-            <span>As leituras de agosto servem como base para calcular setembro. Para comparar “qual mês usou mais ou menos”, precisamos de pelo menos dois meses com consumo fechado — por exemplo, agosto calculado a partir de julho e setembro calculado a partir de agosto.</span>
+            <strong>Comparação disponível hoje</strong>
+            <span>Setembro consumiu 1.522 impressões. Ainda não dá para dizer se setembro foi maior ou menor que agosto porque o consumo de agosto exige uma leitura de julho. Assim que houver dois meses com consumo calculado, o sistema mostrará automaticamente qual foi o maior, o menor e a variação percentual.</span>
           </div>
 
           <details class="calculation-explainer">
-            <summary>Ver como o consumo de setembro foi calculado</summary>
+            <summary>Entender como setembro foi calculado</summary>
             <div class="calculation-panel">
               <div class="calculation-row">
                 <div class="calc-device">
