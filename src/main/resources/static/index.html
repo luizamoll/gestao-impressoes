@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20261006-3" />
+  <link rel="stylesheet" href="css/styles.css?v=20261006-4" />
 </head>
 <body>
   <div class="app-shell">
@@ -75,71 +75,86 @@
         <section class="month-comparison" aria-labelledby="monthComparisonTitle">
           <div class="month-comparison-heading">
             <div>
-              <h2 id="monthComparisonTitle">Agosto × Setembro</h2>
-              <p>Leituras organizadas por competência para comparar o consumo de cada equipamento.</p>
+              <h2 id="monthComparisonTitle">Consumo mensal — Setembro/2026</h2>
+              <p>Comparação entre a leitura de agosto e a leitura de setembro. Os contadores abaixo são acumulados; o consumo é somente a diferença entre eles.</p>
             </div>
-            <div class="period-result">
-              <span>Consumo no período</span>
+          </div>
+
+          <div class="monthly-contract-grid">
+            <article class="monthly-kpi">
+              <span>Franquia mensal</span>
+              <strong>4.000</strong>
+              <small>impressões disponíveis no mês</small>
+            </article>
+            <article class="monthly-kpi accent-kpi">
+              <span>Consumo apurado em setembro</span>
               <strong>1.522</strong>
-              <small>de 4.000 disponíveis</small>
+              <small>38,1% da franquia</small>
+            </article>
+            <article class="monthly-kpi">
+              <span>Saldo disponível</span>
+              <strong>2.478</strong>
+              <small>sem excedente</small>
+            </article>
+          </div>
+
+          <div class="calculation-panel">
+            <div class="calculation-head">
+              <div>
+                <strong>Como chegamos a 1.522</strong>
+                <span>Leitura de setembro − leitura de agosto = consumo do período</span>
+              </div>
+            </div>
+
+            <div class="calculation-row">
+              <div class="calc-device">
+                <strong>BRBST2P00K</strong>
+                <span>HP LaserJet Pro MFP 4103fdw</span>
+              </div>
+              <div class="calc-number">
+                <span>Agosto</span>
+                <strong>18.318</strong>
+              </div>
+              <div class="calc-symbol">→</div>
+              <div class="calc-number">
+                <span>Setembro</span>
+                <strong>19.757</strong>
+              </div>
+              <div class="calc-result">
+                <span>Consumo</span>
+                <strong>1.439</strong>
+              </div>
+            </div>
+
+            <div class="calculation-row">
+              <div class="calc-device">
+                <strong>BRBST160GT</strong>
+                <span>HP LaserJet Pro 4003dw</span>
+              </div>
+              <div class="calc-number">
+                <span>Agosto</span>
+                <strong>17.146</strong>
+              </div>
+              <div class="calc-symbol">→</div>
+              <div class="calc-number">
+                <span>Setembro</span>
+                <strong>17.229</strong>
+              </div>
+              <div class="calc-result">
+                <span>Consumo</span>
+                <strong>83</strong>
+              </div>
+            </div>
+
+            <div class="calculation-total">
+              <span>Total consumido em setembro</span>
+              <strong>1.439 + 83 = 1.522</strong>
             </div>
           </div>
 
-          <div class="month-columns">
-            <article class="month-card">
-              <div class="month-card-title">
-                <span>Competência</span>
-                <strong>Agosto/2026</strong>
-              </div>
-              <div class="month-device">
-                <div>
-                  <strong>BRBST2P00K</strong>
-                  <span>HP LaserJet Pro MFP 4103fdw</span>
-                </div>
-                <strong class="month-reading">18.318</strong>
-              </div>
-              <div class="month-device">
-                <div>
-                  <strong>BRBST160GT</strong>
-                  <span>HP LaserJet Pro 4003dw</span>
-                </div>
-                <strong class="month-reading">17.146</strong>
-              </div>
-            </article>
-
-            <article class="month-card current-month">
-              <div class="month-card-title">
-                <span>Competência</span>
-                <strong>Setembro/2026</strong>
-              </div>
-              <div class="month-device">
-                <div>
-                  <strong>BRBST2P00K</strong>
-                  <span>18.318 → 19.757</span>
-                </div>
-                <div class="month-delta">
-                  <strong>19.757</strong>
-                  <span>+1.439</span>
-                </div>
-              </div>
-              <div class="month-device">
-                <div>
-                  <strong>BRBST160GT</strong>
-                  <span>17.146 → 17.229</span>
-                </div>
-                <div class="month-delta">
-                  <strong>17.229</strong>
-                  <span>+83</span>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <div class="comparison-strip">
-            <div><span>Uso da franquia</span><strong>38,1%</strong></div>
-            <div><span>Saldo</span><strong>2.478</strong></div>
-            <div><span>Excedente</span><strong>0</strong></div>
-            <div><span>Frente/verso no período</span><strong>+309</strong></div>
+          <div class="comparison-note">
+            <strong>Importante:</strong>
+            <span>18.318, 19.757, 17.146 e 17.229 são leituras acumuladas do contador da impressora. Elas não devem ser comparadas diretamente com a franquia mensal de 4.000.</span>
           </div>
         </section>
 
@@ -396,9 +411,9 @@
               <small>impressões</small>
             </article>
             <article>
-              <span>Frente/verso registrado</span>
-              <strong>16.170</strong>
-              <small>páginas acumuladas</small>
+              <span>Consumo em setembro</span>
+              <strong>1.522</strong>
+              <small>38,1% da franquia mensal</small>
             </article>
           </div>
         </section>
