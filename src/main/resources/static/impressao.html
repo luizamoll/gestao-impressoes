@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20261006-10" />
+  <link rel="stylesheet" href="css/styles.css?v=20261006-11" />
 </head>
 <body>
   <div class="app-shell">
@@ -91,6 +91,33 @@
               <strong>0</strong>
               <small>sem cobrança excedente</small>
             </article>
+          </div>
+        </section>
+
+        <section class="month-insight" aria-labelledby="monthInsightTitle">
+          <div class="month-insight-icon" aria-hidden="true">↕</div>
+          <div class="month-insight-copy">
+            <span class="eyebrow">Comparação com o mês anterior</span>
+            <h2 id="monthInsightTitle">Ainda falta uma base para dizer se houve economia ou aumento.</h2>
+            <p>Setembro consumiu <strong>1.522 impressões</strong>. Para comparar com agosto, precisamos do consumo de agosto — e isso exige uma leitura de julho.</p>
+          </div>
+          <div class="month-insight-result pending">
+            <span>Variação mensal</span>
+            <strong>—</strong>
+            <small>disponível a partir de dois meses com consumo fechado</small>
+          </div>
+          <div class="month-insight-example">
+            <strong>Como esse campo vai funcionar nos próximos meses</strong>
+            <div class="insight-example-grid">
+              <div>
+                <span>Se o consumo cair</span>
+                <p><strong>Boa!</strong> Este mês você economizou <strong>X impressões</strong> em relação ao anterior.</p>
+              </div>
+              <div>
+                <span>Se o consumo subir</span>
+                <p><strong>Atenção:</strong> este mês o consumo aumentou <strong>X impressões</strong> em relação ao anterior.</p>
+              </div>
+            </div>
           </div>
         </section>
 
