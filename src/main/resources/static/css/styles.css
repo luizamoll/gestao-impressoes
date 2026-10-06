@@ -510,3 +510,31 @@ a.nav-item{text-decoration:none}
 .month-readings-list span{grid-area:serial;font-size:11px;font-weight:600}
 .month-readings-list strong{grid-area:value;font-size:14px;letter-spacing:-.02em}
 .month-readings-list small{grid-area:note;color:var(--muted);font-size:9px}
+
+
+/* Linha do tempo mensal */
+.timeline-table-wrap{
+  overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:#fff
+}
+.timeline-table{min-width:980px}
+.timeline-table th{background:#fafafe}
+.timeline-table th,.timeline-table td{padding:15px 16px}
+.timeline-table td strong,.timeline-table td small{display:block}
+.timeline-table td strong{font-size:13px}
+.timeline-table td small{margin-top:3px;color:var(--muted);font-size:9px}
+.timeline-table .baseline-month{background:#fcfcfd}
+.timeline-table .closed-month{background:#fbfaff}
+.timeline-table .future-month{background:#fafbfc}
+.pending-value{color:var(--muted);font-size:10px}
+.month-comparison-explainer{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px
+}
+.month-comparison-explainer>div{
+  padding:14px 16px;border-radius:12px;background:#f7f7fa
+}
+.month-comparison-explainer strong,.month-comparison-explainer span{display:block}
+.month-comparison-explainer strong{font-size:12px}
+.month-comparison-explainer span{margin-top:4px;color:var(--muted);font-size:10px;line-height:1.55}
+@media(max-width:760px){
+  .month-comparison-explainer{grid-template-columns:1fr}
+}
