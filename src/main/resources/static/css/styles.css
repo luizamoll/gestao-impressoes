@@ -809,3 +809,42 @@ a.nav-item{text-decoration:none}
   .month-insight{grid-template-columns:1fr}
   .month-insight-icon{display:none}
 }
+
+
+/* Estados de comparação mensal */
+.month-insight-result.pending{
+  background:#f5f6f6;
+  border-radius:12px;
+}
+.month-insight-result.positive{
+  background:#e9f5ef;
+  border-left-color:#b9dfce;
+  border-radius:12px;
+}
+.month-insight-result.positive strong{
+  color:#0f7a55;
+}
+.month-insight-result.negative{
+  background:#fbecec;
+  border-left-color:#edc3c3;
+  border-radius:12px;
+}
+.month-insight-result.negative strong{
+  color:#b43a3a;
+}
+.positive-example{
+  background:#edf7f2 !important;
+  border:1px solid #d4eadf;
+}
+.positive-example span,
+.positive-example p strong{
+  color:#0f7a55;
+}
+.negative-example{
+  background:#fcf0f0 !important;
+  border:1px solid #f0d4d4;
+}
+.negative-example span,
+.negative-example p strong{
+  color:#b43a3a;
+}
