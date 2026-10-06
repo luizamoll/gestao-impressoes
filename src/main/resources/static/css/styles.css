@@ -708,3 +708,13 @@ a.nav-item{text-decoration:none}
   border-color:#d0d8d4;
   background:#eef1ef;
 }
+
+.portal-mark img,.unh-symbol img{
+  width:100%;height:100%;display:block;object-fit:contain
+}
+.portal-mark{
+  padding:0;overflow:hidden;background:#fff
+}
+.unh-symbol{
+  padding:0;overflow:hidden;background:#fff
+}
