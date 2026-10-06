@@ -331,3 +331,64 @@ a.nav-item{text-decoration:none}
 .single-reading-grid strong{margin-top:5px;font-size:20px;letter-spacing:-.035em;font-weight:600}
 @media(max-width:780px){.single-reading-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.single-reading-grid{grid-template-columns:1fr}}
+
+
+/* Comparação mensal */
+.month-comparison{
+  padding:30px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow)
+}
+.month-comparison-heading{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:20px
+}
+.month-comparison-heading h2{margin:0;font-size:26px;letter-spacing:-.04em;font-weight:600}
+.month-comparison-heading p{margin:7px 0 0;color:var(--muted);font-size:13px}
+.period-result{text-align:right;flex:0 0 auto}
+.period-result span,.period-result strong,.period-result small{display:block}
+.period-result span{color:var(--muted);font-size:11px}
+.period-result strong{margin-top:2px;font-size:27px;letter-spacing:-.045em}
+.period-result small{color:var(--muted);font-size:11px}
+
+.month-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.month-card{
+  border:1px solid var(--line);border-radius:16px;background:#fafbfc;overflow:hidden
+}
+.month-card.current-month{background:#fbfaff;border-color:#ddd7ff}
+.month-card-title{
+  padding:18px 20px;border-bottom:1px solid var(--line);display:flex;
+  align-items:baseline;justify-content:space-between;gap:12px
+}
+.month-card-title span{color:var(--muted);font-size:11px}
+.month-card-title strong{font-size:18px;letter-spacing:-.03em}
+.current-month .month-card-title strong{color:var(--accent)}
+.month-device{
+  min-height:78px;padding:16px 20px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)
+}
+.month-device:last-child{border-bottom:0}
+.month-device>div:first-child{display:grid;gap:3px}
+.month-device>div:first-child>strong{font-size:13px}
+.month-device>div:first-child>span{color:var(--muted);font-size:11px}
+.month-reading{font-size:20px;letter-spacing:-.035em}
+.month-delta{text-align:right}
+.month-delta strong,.month-delta span{display:block}
+.month-delta strong{font-size:20px;letter-spacing:-.035em}
+.month-delta span{margin-top:2px;color:var(--accent);font-size:11px;font-weight:600}
+
+.comparison-strip{
+  margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--line);gap:1px
+}
+.comparison-strip>div{padding:16px 18px;background:#fff}
+.comparison-strip span,.comparison-strip strong{display:block}
+.comparison-strip span{color:var(--muted);font-size:10px}
+.comparison-strip strong{margin-top:4px;font-size:19px;letter-spacing:-.035em}
+
+@media(max-width:850px){
+  .month-comparison-heading{align-items:flex-start;flex-direction:column}
+  .period-result{text-align:left}
+  .month-columns{grid-template-columns:1fr}
+  .comparison-strip{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .comparison-strip{grid-template-columns:1fr}
+}
