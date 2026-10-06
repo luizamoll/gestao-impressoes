@@ -496,3 +496,17 @@ a.nav-item{text-decoration:none}
   .executive-kpis{grid-template-columns:1fr}
   .ranking-meta{flex-direction:column}
 }
+
+.month-readings-list{
+  display:grid;gap:8px;margin:14px 0
+}
+.month-readings-list>div{
+  display:grid;grid-template-columns:1fr auto;grid-template-areas:
+    "serial value"
+    "note note";
+  gap:2px 12px;padding:10px 12px;border:1px solid var(--line);
+  border-radius:10px;background:#fff
+}
+.month-readings-list span{grid-area:serial;font-size:11px;font-weight:600}
+.month-readings-list strong{grid-area:value;font-size:14px;letter-spacing:-.02em}
+.month-readings-list small{grid-area:note;color:var(--muted);font-size:9px}
