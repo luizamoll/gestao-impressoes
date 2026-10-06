@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Unihorizontes">
+  <rect x="5" y="5" width="54" height="54" rx="15" fill="#0f6b4f"/>
+  <rect x="11" y="11" width="42" height="42" rx="11" fill="#f4f6f5"/>
+  <path d="M15 35c5-11 12-16 21-10 5 3 7 8 13 8 4 0 7-2 10-6v8c-3 4-7 7-12 7-8 0-11-6-16-9-5-3-9-1-12 6-2 5-5 8-10 9v-8c3-1 5-3 6-5Z" fill="#0f6b4f"/>
+  <path d="M14 40c5-2 8-5 10-10 2-5 6-8 10-8 6 0 9 6 14 8 4 2 7 1 11-2v6c-4 4-8 6-13 6-7 0-10-5-15-8-4-2-7 0-9 5-2 4-4 7-8 9Z" fill="#8fbfaf" opacity=".95"/>
+</svg>
