@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20261006-5" />
+  <link rel="stylesheet" href="css/styles.css?v=20261006-6" />
 </head>
 <body>
   <div class="app-shell">
@@ -170,15 +170,39 @@
           <div class="month-status-grid">
             <article class="month-status-card unavailable">
               <span class="month-name">Agosto/2026</span>
-              <strong>Consumo não calculável</strong>
-              <p>Temos a leitura de agosto, mas não temos uma leitura de julho para descobrir quanto foi usado durante agosto.</p>
-              <span class="status-pill neutral">Falta leitura anterior</span>
+              <strong>Leituras registradas</strong>
+              <p>Temos os dados das impressoras em agosto. O que ainda não pode ser calculado é o consumo do próprio mês, porque falta uma leitura anterior de julho.</p>
+              <div class="month-readings-list">
+                <div>
+                  <span>BRBST2P00K</span>
+                  <strong>18.318</strong>
+                  <small>leitura acumulada</small>
+                </div>
+                <div>
+                  <span>BRBST160GT</span>
+                  <strong>17.146</strong>
+                  <small>leitura acumulada</small>
+                </div>
+              </div>
+              <span class="status-pill neutral">Consumo de agosto: falta julho</span>
             </article>
 
             <article class="month-status-card available">
               <span class="month-name">Setembro/2026</span>
-              <strong>1.522 impressões</strong>
-              <p>Foi possível calcular setembro usando a diferença entre as leituras de agosto e setembro das duas impressoras comparáveis.</p>
+              <strong>1.522 impressões consumidas</strong>
+              <p>Em setembro temos as novas leituras e, como agosto já existe, conseguimos calcular o consumo do período.</p>
+              <div class="month-readings-list">
+                <div>
+                  <span>BRBST2P00K</span>
+                  <strong>19.757</strong>
+                  <small>leitura · consumo 1.439</small>
+                </div>
+                <div>
+                  <span>BRBST160GT</span>
+                  <strong>17.229</strong>
+                  <small>leitura · consumo 83</small>
+                </div>
+              </div>
               <span class="status-pill good">38,1% da franquia</span>
             </article>
 
@@ -191,8 +215,8 @@
           </div>
 
           <div class="month-answer">
-            <strong>Ainda não dá para afirmar qual mês teve maior ou menor consumo.</strong>
-            <span>Hoje só setembro possui consumo mensal calculado. Quando tivermos pelo menos dois meses fechados, o painel mostrará automaticamente “mês de maior uso”, “mês de menor uso” e a variação percentual.</span>
+            <strong>Agosto tem dados, mas ainda não tem consumo mensal calculável.</strong>
+            <span>As leituras de agosto servem como base para calcular setembro. Para comparar “qual mês usou mais ou menos”, precisamos de pelo menos dois meses com consumo fechado — por exemplo, agosto calculado a partir de julho e setembro calculado a partir de agosto.</span>
           </div>
 
           <details class="calculation-explainer">
