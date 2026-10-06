@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gestão de impressões e leitura de equipamentos." />
+  <title>Gestão de Impressões | UNH Sistemas</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%236C5CE7'/%3E%3Ccircle cx='23' cy='23' r='5' fill='white'/%3E%3Ccircle cx='41' cy='23' r='5' fill='white'/%3E%3Ccircle cx='23' cy='41' r='5' fill='white'/%3E%3Ccircle cx='41' cy='41' r='5' fill='white' opacity='.55'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=20261006-8" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand brand-link" href="index.html">
+        <div class="brand-symbol unh-symbol" aria-hidden="true">UH</div>
+        <strong>UNH Sistemas</strong>
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="nav-item central-link" href="index.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.2 12 4l9 7.2V21h-6v-6H9v6H3v-9.8Zm2 1V19h2v-6h10v6h2v-6.8L12 6.6 5 12.2Z"/></svg>
+          <span>Central de sistemas</span>
+        </a>
+        <button class="nav-item active" data-section="overview">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 0h6v6h-6v-6Z"/></svg>
+          <span>Visão geral</span>
+        </button>
+        <button class="nav-item" data-section="equipment">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v5H6V4Zm-2 7h16v8h-3v2H7v-2H4v-8Zm5 8h6v-5H9v5Z"/></svg>
+          <span>Equipamentos</span>
+        </button>
+        <button class="nav-item" data-section="upload">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5.8 8.2 8.6 6.8 7.2 12 2l5.2 5.2-1.4 1.4L13 5.8V15h-2V5.8ZM4 14h2v5h12v-5h2v7H4v-7Z"/></svg>
+          <span>Novo relatório</span>
+        </button>
+        <a class="nav-item" href="esg.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 3.3C13.4 4 8.2 6.8 5.8 11.1c-1.8 3.2-.8 6.5 1.4 8.1 2.3 1.6 5.9 1.1 8.4-1.7 3.1-3.4 4.6-8 4.6-14.2ZM8.4 17.6c1.9-4 4.9-7 8.8-9.3-3.2 2.9-5.5 6.1-6.8 9.9-.7 0-1.4-.2-2-.6Z"/></svg>
+          <span>ESG</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Abrir menu">☰</button>
+        <h1>Gestão de Impressões</h1>
+        <button class="primary-button" data-go="upload">Enviar relatório</button>
+      </header>
+
+      <div class="content">
+        <section class="summary section-anchor executive-summary" id="overview">
+          <div class="summary-heading">
+            <span class="eyebrow">Setembro/2026</span>
+            <h2>Você usou 1.522 das 4.000 impressões disponíveis no mês.</h2>
+            <p>O consumo ficou dentro da franquia. Restam 2.478 impressões e não houve excedente.</p>
+          </div>
+
+          <div class="usage-progress" aria-label="38,1% da franquia utilizada">
+            <div class="usage-progress-head">
+              <span>Uso da franquia</span>
+              <strong>38,1%</strong>
+            </div>
+            <div class="usage-track"><span style="width:38.1%"></span></div>
+            <div class="usage-progress-foot">
+              <span>1.522 consumidas</span>
+              <span>2.478 disponíveis</span>
+            </div>
+          </div>
+
+          <div class="summary-grid executive-kpis">
+            <article class="summary-item">
+              <span>Franquia mensal</span>
+              <strong>4.000</strong>
+              <small>limite do mês</small>
+            </article>
+            <article class="summary-item">
+              <span>Consumido em setembro</span>
+              <strong>1.522</strong>
+              <small>38,1% da franquia</small>
+            </article>
+            <article class="summary-item">
+              <span>Saldo disponível</span>
+              <strong>2.478</strong>
+              <small>62,0% ainda disponível</small>
+            </article>
+            <article class="summary-item">
+              <span>Excedente</span>
+              <strong>0</strong>
+              <small>sem cobrança excedente</small>
+            </article>
+          </div>
+        </section>
+
+        <section class="usage-ranking" aria-labelledby="usageRankingTitle">
+          <div class="section-title simple-title">
+            <div>
+              <span class="eyebrow">Uso por equipamento</span>
+              <h2 id="usageRankingTitle">Qual impressora foi mais usada em setembro?</h2>
+              <p>O ranking considera somente equipamentos que possuem leitura anterior para calcular o consumo do mês.</p>
+            </div>
+          </div>
+
+          <div class="ranking-grid">
+            <article class="ranking-card top-use">
+              <div class="ranking-card-head">
+                <div>
+                  <span class="rank-label">Mais utilizada</span>
+                  <strong>BRBST2P00K</strong>
+                  <small>HP LaserJet Pro MFP 4103fdw</small>
+                </div>
+                <strong class="ranking-value">1.439</strong>
+              </div>
+              <div class="ranking-bar"><span style="width:94.5%"></span></div>
+              <div class="ranking-meta">
+                <span>94,5% do consumo calculado</span>
+                <span>Setor: não informado</span>
+              </div>
+            </article>
+
+            <article class="ranking-card">
+              <div class="ranking-card-head">
+                <div>
+                  <span class="rank-label">Menos utilizada</span>
+                  <strong>BRBST160GT</strong>
+                  <small>HP LaserJet Pro 4003dw</small>
+                </div>
+                <strong class="ranking-value">83</strong>
+              </div>
+              <div class="ranking-bar"><span style="width:5.5%"></span></div>
+              <div class="ranking-meta">
+                <span>5,5% do consumo calculado</span>
+                <span>Setor: não informado</span>
+              </div>
+            </article>
+
+            <article class="ranking-card new-device">
+              <div class="ranking-card-head">
+                <div>
+                  <span class="rank-label">Impressora nova</span>
+                  <strong>BRBSV730KB</strong>
+                  <small>HP LaserJet Pro MFP 4103fdw</small>
+                </div>
+                <strong class="ranking-value text-value">Sem comparação</strong>
+              </div>
+              <div class="new-device-message">
+                <strong>Primeira leitura registrada: 56</strong>
+                <span>Ainda não existe uma leitura anterior desta impressora. No próximo relatório será possível calcular quanto ela consumiu no mês.</span>
+              </div>
+              <div class="ranking-meta">
+                <span>Participação mensal: ainda não calculável</span>
+                <span>Setor: não informado</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="ranking-conclusion">
+            <strong>Leitura rápida:</strong>
+            <span>Entre as impressoras comparáveis, a BRBST2P00K concentrou quase todo o uso de setembro: 1.439 das 1.522 impressões calculadas.</span>
+          </div>
+        </section>
+
+        <section class="month-comparison" aria-labelledby="monthComparisonTitle">
+          <div class="month-comparison-heading">
+            <div>
+              <span class="eyebrow">Histórico mensal</span>
+              <h2 id="monthComparisonTitle">Comparação mês a mês</h2>
+              <p>Todos os meses ficam visíveis. A leitura é o total acumulado da impressora; o consumo mensal é calculado pela diferença para o mês anterior.</p>
+            </div>
+          </div>
+
+          <div class="timeline-table-wrap">
+            <table class="timeline-table">
+              <thead>
+                <tr>
+                  <th>Mês</th>
+                  <th>BRBST2P00K</th>
+                  <th>BRBST160GT</th>
+                  <th>BRBSV730KB</th>
+                  <th>Consumo do mês</th>
+                  <th>Franquia</th>
+                  <th>Situação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="baseline-month">
+                  <td>
+                    <strong>Agosto/2026</strong>
+                    <small>primeiro mês registrado</small>
+                  </td>
+                  <td>
+                    <strong>18.318</strong>
+                    <small>leitura acumulada</small>
+                  </td>
+                  <td>
+                    <strong>17.146</strong>
+                    <small>leitura acumulada</small>
+                  </td>
+                  <td>
+                    <strong>—</strong>
+                    <small>sem leitura neste mês</small>
+                  </td>
+                  <td>
+                    <strong>—</strong>
+                    <small>falta leitura de julho</small>
+                  </td>
+                  <td><strong>4.000</strong></td>
+                  <td><span class="status-pill neutral">Mês-base</span></td>
+                </tr>
+
+                <tr class="closed-month">
+                  <td>
+                    <strong>Setembro/2026</strong>
+                    <small>mês fechado</small>
+                  </td>
+                  <td>
+                    <strong>19.757</strong>
+                    <small>consumo: 1.439</small>
+                  </td>
+                  <td>
+                    <strong>17.229</strong>
+                    <small>consumo: 83</small>
+                  </td>
+                  <td>
+                    <strong>—</strong>
+                    <small>sem base comparável</small>
+                  </td>
+                  <td>
+                    <strong>1.522</strong>
+                    <small>38,1% da franquia</small>
+                  </td>
+                  <td><strong>4.000</strong></td>
+                  <td><span class="status-pill good">Dentro da franquia</span></td>
+                </tr>
+
+                <tr class="future-month">
+                  <td>
+                    <strong>Próximo mês</strong>
+                    <small>entra automaticamente na sequência</small>
+                  </td>
+                  <td><span class="pending-value">Aguardando leitura</span></td>
+                  <td><span class="pending-value">Aguardando leitura</span></td>
+                  <td>
+                    <strong>56</strong>
+                    <small>primeira leitura já registrada; competência a confirmar</small>
+                  </td>
+                  <td><span class="pending-value">Será calculado ao fechar</span></td>
+                  <td><strong>4.000</strong></td>
+                  <td><span class="status-pill neutral">Em aberto</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="month-comparison-explainer">
+            <div>
+              <strong>Agosto não sumiu.</strong>
+              <span>Ele aparece como o primeiro mês registrado e serve de base para calcular setembro.</span>
+            </div>
+            <div>
+              <strong>Os próximos meses entram aqui.</strong>
+              <span>Quando uma nova competência for confirmada, ela passa a fazer parte da mesma sequência e será comparada ao mês anterior.</span>
+            </div>
+          </div>
+
+          <div class="month-answer">
+            <strong>Comparação disponível hoje</strong>
+            <span>Setembro consumiu 1.522 impressões. Ainda não dá para dizer se setembro foi maior ou menor que agosto porque o consumo de agosto exige uma leitura de julho. Assim que houver dois meses com consumo calculado, o sistema mostrará automaticamente qual foi o maior, o menor e a variação percentual.</span>
+          </div>
+
+          <details class="calculation-explainer">
+            <summary>Entender como setembro foi calculado</summary>
+            <div class="calculation-panel">
+              <div class="calculation-row">
+                <div class="calc-device">
+                  <strong>BRBST2P00K</strong>
+                  <span>HP LaserJet Pro MFP 4103fdw</span>
+                </div>
+                <div class="calc-number"><span>Agosto</span><strong>18.318</strong></div>
+                <div class="calc-symbol">→</div>
+                <div class="calc-number"><span>Setembro</span><strong>19.757</strong></div>
+                <div class="calc-result"><span>Consumo</span><strong>1.439</strong></div>
+              </div>
+              <div class="calculation-row">
+                <div class="calc-device">
+                  <strong>BRBST160GT</strong>
+                  <span>HP LaserJet Pro 4003dw</span>
+                </div>
+                <div class="calc-number"><span>Agosto</span><strong>17.146</strong></div>
+                <div class="calc-symbol">→</div>
+                <div class="calc-number"><span>Setembro</span><strong>17.229</strong></div>
+                <div class="calc-result"><span>Consumo</span><strong>83</strong></div>
+              </div>
+              <div class="calculation-total">
+                <span>Total consumido em setembro</span>
+                <strong>1.439 + 83 = 1.522</strong>
+              </div>
+            </div>
+          </details>
+        </section>
+
+        <section class="equipment-section section-anchor" id="equipment">
+          <div class="section-title">
+            <div>
+              <h2>Equipamentos</h2>
+              <p>Primeiro mostramos o consumo do mês. Os contadores acumulados ficam como informação técnica de apoio.</p>
+            </div>
+            <div class="search-box">
+              <input id="equipmentSearch" type="search" placeholder="Buscar por modelo ou série" aria-label="Buscar equipamento" />
+            </div>
+          </div>
+
+          <div class="equipment-cards" id="equipmentCards">
+            <article class="equipment-card new-equipment-card" data-search="hp laserjet pro mfp 4103fdw 2z629a brbsv730kb">
+              <span class="equipment-state">Impressora nova</span>
+              <h3>HP LaserJet Pro MFP 4103fdw</h3>
+              <div class="serial">BRBSV730KB</div>
+              <div class="reading">
+                <span>Consumo mensal</span>
+                <strong class="reading-text">Ainda não calculável</strong>
+              </div>
+              <div class="card-secondary-data">
+                <span>Primeira leitura total</span>
+                <strong>56</strong>
+              </div>
+              <div class="product">Produto 2Z629A · Setor não informado</div>
+            </article>
+
+            <article class="equipment-card" data-search="hp laserjet pro mfp 4103fdw 2z629a brbst2p00k">
+              <span class="equipment-state highlight-state">Mais utilizada em setembro</span>
+              <h3>HP LaserJet Pro MFP 4103fdw</h3>
+              <div class="serial">BRBST2P00K</div>
+              <div class="reading">
+                <span>Consumo em setembro</span>
+                <strong>1.439</strong>
+              </div>
+              <div class="card-secondary-data">
+                <span>Leitura total mais recente</span>
+                <strong>27.582</strong>
+              </div>
+              <div class="product">Produto 2Z629A · Setor não informado</div>
+            </article>
+
+            <article class="equipment-card" data-search="hp laserjet pro 4003dw 2z610a brbst160gt">
+              <span class="equipment-state">Menos utilizada em setembro</span>
+              <h3>HP LaserJet Pro 4003dw</h3>
+              <div class="serial">BRBST160GT</div>
+              <div class="reading">
+                <span>Consumo em setembro</span>
+                <strong>83</strong>
+              </div>
+              <div class="card-secondary-data">
+                <span>Leitura total mais recente</span>
+                <strong>17.468</strong>
+              </div>
+              <div class="product">Produto 2Z610A · Setor não informado</div>
+            </article>
+          </div>
+
+          <div class="panel technical-panel">
+            <div class="panel-heading">
+              <h3>Dados técnicos dos relatórios</h3>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Equipamento</th>
+                    <th>Série</th>
+                    <th>Leitura total</th>
+                    <th>Frente/verso</th>
+                    <th>Congestões</th>
+                    <th>Falhas de coleta</th>
+                    <th>Cópias</th>
+                    <th>Scanner</th>
+                  </tr>
+                </thead>
+                <tbody id="equipmentTable">
+                  <tr data-search="hp laserjet pro mfp 4103fdw 2z629a brbsv730kb">
+                    <td><strong>HP LaserJet Pro MFP 4103fdw</strong><small>Produto 2Z629A</small></td>
+                    <td>BRBSV730KB</td>
+                    <td><strong>56</strong></td>
+                    <td>5</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>142</td>
+                  </tr>
+                  <tr data-search="hp laserjet pro mfp 4103fdw 2z629a brbst2p00k">
+                    <td><strong>HP LaserJet Pro MFP 4103fdw</strong><small>Produto 2Z629A</small></td>
+                    <td>BRBST2P00K</td>
+                    <td><strong>27.582</strong></td>
+                    <td>7.576</td>
+                    <td>1</td>
+                    <td>28</td>
+                    <td>978</td>
+                    <td>5.349</td>
+                  </tr>
+                  <tr data-search="hp laserjet pro 4003dw 2z610a brbst160gt">
+                    <td><strong>HP LaserJet Pro 4003dw</strong><small>Produto 2Z610A</small></td>
+                    <td>BRBST160GT</td>
+                    <td><strong>17.468</strong></td>
+                    <td>8.589</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>—</td>
+                    <td>—</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="history-panel">
+            <div class="history-heading">
+              <div>
+                <h3>Histórico de leituras</h3>
+                <p>Agosto e setembro foram identificados pelos conjuntos enviados. As leituras maiores permanecem como leitura mais recente, pois são posteriores a setembro.</p>
+              </div>
+            </div>
+
+            <article class="history-card">
+              <div class="history-card-head">
+                <div>
+                  <strong>BRBST2P00K</strong>
+                  <span>HP LaserJet Pro MFP 4103fdw · Produto 2Z629A</span>
+                </div>
+                <span class="history-status">3 leituras</span>
+              </div>
+              <div class="history-table-wrap">
+                <table class="history-table">
+                  <thead>
+                    <tr>
+                      <th>Leitura</th>
+                      <th>Leitura total</th>
+                      <th>Diferença</th>
+                      <th>Frente/verso</th>
+                      <th>Cópias</th>
+                      <th>Scanner</th>
+                      <th>Pasta na rede</th>
+                      <th>Falhas de coleta</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Ago/2026</td>
+                      <td><strong>18.318</strong></td>
+                      <td>—</td>
+                      <td>5.343</td>
+                      <td>808</td>
+                      <td>4.672</td>
+                      <td>692</td>
+                      <td>20</td>
+                    </tr>
+                    <tr>
+                      <td>Set/2026</td>
+                      <td><strong>19.757</strong></td>
+                      <td><span class="delta">+1.439</span></td>
+                      <td>5.613</td>
+                      <td>862</td>
+                      <td>5.229</td>
+                      <td>1.180</td>
+                      <td>21</td>
+                    </tr>
+                    <tr class="latest-row">
+                      <td>Mais recente</td>
+                      <td><strong>27.582</strong></td>
+                      <td><span class="delta">+7.825</span></td>
+                      <td>7.576</td>
+                      <td>978</td>
+                      <td>5.349</td>
+                      <td>1.274</td>
+                      <td>28</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="history-foot">Scanner = alimentador + vidro. Agosto → setembro: 1.439 impressões nesta série.</div>
+            </article>
+
+            <article class="history-card">
+              <div class="history-card-head">
+                <div>
+                  <strong>BRBST160GT</strong>
+                  <span>HP LaserJet Pro 4003dw · Produto 2Z610A</span>
+                </div>
+                <span class="history-status">3 leituras</span>
+              </div>
+              <div class="history-table-wrap">
+                <table class="history-table">
+                  <thead>
+                    <tr>
+                      <th>Leitura</th>
+                      <th>Leitura total</th>
+                      <th>Diferença</th>
+                      <th>Frente/verso</th>
+                      <th>Congestões</th>
+                      <th>Falhas de coleta</th>
+                      <th>A4 equivalente</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Ago/2026</td>
+                      <td><strong>17.146</strong></td>
+                      <td>—</td>
+                      <td>8.471</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>17.146</td>
+                    </tr>
+                    <tr>
+                      <td>Set/2026</td>
+                      <td><strong>17.229</strong></td>
+                      <td><span class="delta">+83</span></td>
+                      <td>8.510</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>17.229</td>
+                    </tr>
+                    <tr class="latest-row">
+                      <td>Mais recente</td>
+                      <td><strong>17.468</strong></td>
+                      <td><span class="delta">+239</span></td>
+                      <td>8.589</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>17.468</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="history-foot">Agosto → setembro: 83 impressões nesta série. Este modelo não apresenta dados de cópia ou scanner nos relatórios enviados.</div>
+            </article>
+
+            <article class="history-card">
+              <div class="history-card-head">
+                <div>
+                  <strong>BRBSV730KB</strong>
+                  <span>HP LaserJet Pro MFP 4103fdw · Produto 2Z629A</span>
+                </div>
+                <span class="history-status muted-status">1 leitura</span>
+              </div>
+              <div class="single-reading-grid">
+                <div><span>Leitura total</span><strong>56</strong></div>
+                <div><span>Frente/verso</span><strong>5</strong></div>
+                <div><span>Cópias</span><strong>1</strong></div>
+                <div><span>Scanner</span><strong>142</strong></div>
+                <div><span>Pasta na rede</span><strong>138</strong></div>
+                <div><span>A4 equivalente</span><strong>55,5</strong></div>
+              </div>
+              <div class="history-foot">Ainda não há uma segunda leitura desta série para calcular diferença.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="esg-preview">
+          <div class="esg-preview-copy">
+            <h2>Consumo responsável</h2>
+            <p>Acompanhe a franquia, o uso frente/verso e a evolução do consumo sem estimativas ambientais artificiais.</p>
+            <a class="esg-link" href="esg.html">Abrir painel ESG <span>→</span></a>
+          </div>
+          <div class="esg-preview-data">
+            <article>
+              <span>Franquia mensal</span>
+              <strong>4.000</strong>
+              <small>impressões</small>
+            </article>
+            <article>
+              <span>Consumo em setembro</span>
+              <strong>1.522</strong>
+              <small>38,1% da franquia mensal</small>
+            </article>
+          </div>
+        </section>
+
+        <section class="upload-section section-anchor" id="upload">
+          <div class="upload-copy">
+            <h2>Adicionar relatório</h2>
+            <p>Ao registrar uma nova leitura do mesmo número de série, o sistema poderá calcular o consumo do período.</p>
+          </div>
+
+          <div class="upload-panel">
+            <label class="dropzone" id="dropzone" for="fileInput">
+              <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg" hidden />
+              <div class="upload-glyph">↑</div>
+              <strong id="uploadTitle">Selecionar relatório</strong>
+              <span id="uploadSubtitle">PDF, PNG ou JPG</span>
+            </label>
+            <button class="primary-button full" id="analyzeButton" disabled>Continuar</button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" aria-live="polite">
+    <span>✓</span>
+    <div>
+      <strong>Arquivo selecionado</strong>
+      <p>Pronto para a próxima etapa.</p>
+    </div>
+  </div>
+
+  <script src="js/app.js?v=20261006-2"></script>
+</body>
+</html>
