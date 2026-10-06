@@ -1,5 +1,15 @@
 @echo off
-cd /d %~dp0
+setlocal
+cd /d "%~dp0"
+
+if /I not "%~dp0"=="%TEMP%\gestao-impressoes-launcher\" (
+  if not exist "%TEMP%\gestao-impressoes-launcher" mkdir "%TEMP%\gestao-impressoes-launcher"
+  copy /Y "%~f0" "%TEMP%\gestao-impressoes-launcher\atualizar_e_iniciar.bat" >nul
+  start "" /wait "%TEMP%\gestao-impressoes-launcher\atualizar_e_iniciar.bat" "%CD%"
+  exit /b
+)
+
+cd /d "%~1"
 
 echo.
 echo Gestao de Impressoes
@@ -8,23 +18,21 @@ echo Atualizando...
 echo.
 
 git fetch origin
-git switch feat/estrutura-mvp-esg
-if errorlevel 1 (
-  echo.
-  echo Nao foi possivel acessar a versao correta.
-  pause
-  exit /b 1
-)
+if errorlevel 1 goto erro
 
-git pull origin feat/estrutura-mvp-esg
-if errorlevel 1 (
-  echo.
-  echo Nao foi possivel atualizar o projeto.
-  pause
-  exit /b 1
-)
+git switch feat/estrutura-mvp-esg
+if errorlevel 1 goto erro
+
+git pull --ff-only origin feat/estrutura-mvp-esg
+if errorlevel 1 goto erro
 
 echo.
 echo Abrindo o sistema...
-start "" "%~dp0src\main\resources\static\index.html"
+start "" "%CD%\src\main\resources\static\index.html"
 exit /b 0
+
+:erro
+echo.
+echo Nao foi possivel atualizar o projeto.
+pause
+exit /b 1
