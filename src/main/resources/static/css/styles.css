@@ -1086,3 +1086,104 @@ a.nav-item{text-decoration:none}
     animation:none !important
   }
 }
+
+
+/* Conselhos de consumo consciente com hierarquia visual */
+.conscious-tip-grid{
+  gap:12px;
+}
+.conscious-tip{
+  position:relative;
+  min-height:132px;
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:13px;
+  align-items:flex-start;
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.conscious-tip:hover{
+  transform:translateY(-2px);
+  border-color:#c8d8d1;
+  box-shadow:0 10px 24px rgba(33,42,38,.06);
+}
+.conscious-tip::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:16px;
+  bottom:16px;
+  width:3px;
+  border-radius:0 3px 3px 0;
+  background:#d9e2de;
+}
+.conscious-tip.primary-tip{
+  background:#f2f7f4;
+  border-color:#cfe1d9;
+}
+.conscious-tip.primary-tip::before{
+  background:var(--accent);
+}
+.tip-icon{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:var(--gray-100);
+  color:var(--gray-700);
+  display:grid;
+  place-items:center;
+  font-size:13px;
+  font-weight:700;
+}
+.primary-tip .tip-icon{
+  background:var(--accent);
+  color:#fff;
+}
+.tip-copy{
+  min-width:0;
+}
+.tip-label{
+  display:block;
+  margin-bottom:4px;
+  color:var(--muted);
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.primary-tip .tip-label{
+  color:var(--accent);
+}
+.tip-copy strong{
+  display:block;
+  font-size:11px;
+  line-height:1.35;
+  color:var(--ink);
+}
+.tip-copy p{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.55;
+}
+.conscious-tips[open] .conscious-tip{
+  animation:tipReveal .28s ease both;
+}
+.conscious-tips[open] .conscious-tip:nth-child(2){
+  animation-delay:.05s;
+}
+.conscious-tips[open] .conscious-tip:nth-child(3){
+  animation-delay:.1s;
+}
+@keyframes tipReveal{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media(prefers-reduced-motion:reduce){
+  .conscious-tips[open] .conscious-tip{
+    animation:none !important;
+  }
+}
