@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20261006-12" />
+  <link rel="stylesheet" href="css/styles.css?v=20261007-1" />
 </head>
 <body>
   <div class="app-shell">
@@ -70,6 +70,18 @@
             </div>
           </div>
 
+          <div class="excess-rule">
+            <div class="excess-rule-icon">R$</div>
+            <div>
+              <strong>Regra de excedente</strong>
+              <span>Ao ultrapassar a franquia mensal de 4.000 impressões, cada folha excedente custa <b>R$ 0,006</b> (0,6 centavo).</span>
+            </div>
+            <div class="excess-rule-formula">
+              <span>Cálculo</span>
+              <strong>folhas excedentes × R$ 0,006</strong>
+            </div>
+          </div>
+
           <div class="summary-grid executive-kpis">
             <article class="summary-item">
               <span>Franquia mensal</span>
@@ -89,7 +101,12 @@
             <article class="summary-item">
               <span>Excedente</span>
               <strong>0</strong>
-              <small>sem cobrança excedente</small>
+              <small>folhas acima da franquia</small>
+            </article>
+            <article class="summary-item excess-cost-item">
+              <span>Custo do excedente</span>
+              <strong>R$ 0,00</strong>
+              <small>R$ 0,006 por folha excedente</small>
             </article>
           </div>
         </section>
@@ -209,6 +226,7 @@
                   <th>Consumo do mês</th>
                   <th>Franquia</th>
                   <th>Situação</th>
+                  <th>Custo excedente</th>
                 </tr>
               </thead>
               <tbody>
@@ -235,6 +253,7 @@
                   </td>
                   <td><strong>4.000</strong></td>
                   <td><span class="status-pill neutral">Mês-base</span></td>
+                  <td><strong>—</strong><small>consumo do mês não calculável</small></td>
                 </tr>
 
                 <tr class="closed-month">
@@ -260,6 +279,7 @@
                   </td>
                   <td><strong>4.000</strong></td>
                   <td><span class="status-pill good">Dentro da franquia</span></td>
+                  <td><strong>R$ 0,00</strong><small>sem excedente</small></td>
                 </tr>
 
                 <tr class="future-month">
@@ -276,6 +296,7 @@
                   <td><span class="pending-value">Será calculado ao fechar</span></td>
                   <td><strong>4.000</strong></td>
                   <td><span class="status-pill neutral">Em aberto</span></td>
+                  <td><span class="pending-value">calculado ao fechar</span></td>
                 </tr>
               </tbody>
             </table>
