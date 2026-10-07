@@ -887,3 +887,41 @@ a.nav-item{text-decoration:none}
 @media(max-width:560px){
   .executive-kpis{grid-template-columns:1fr}
 }
+
+
+/* Quebra de consumo por maquina */
+.month-machine-breakdown{
+  grid-column:1/-1;
+  padding:12px 14px;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px
+}
+.month-machine-breakdown>strong{
+  font-size:11px;
+  white-space:nowrap
+}
+.month-machine-breakdown>div{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:8px 16px;
+  color:var(--muted);
+  font-size:10px
+}
+.month-machine-breakdown b{
+  color:var(--ink);
+  font-weight:600
+}
+@media(max-width:760px){
+  .month-machine-breakdown{
+    flex-direction:column
+  }
+  .month-machine-breakdown>div{
+    justify-content:flex-start;
+    display:grid;
+    gap:5px
+  }
+}
