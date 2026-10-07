@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20261007-6" />
+  <link rel="stylesheet" href="css/styles.css?v=20261007-7" />
 </head>
 <body>
   <div class="app-shell">
@@ -171,13 +171,13 @@
           <div class="month-insight-icon" aria-hidden="true">↕</div>
           <div class="month-insight-copy">
             <span class="eyebrow">Comparação com o mês anterior</span>
-            <h2 id="monthInsightTitle">Ainda falta uma base para dizer se houve economia ou aumento.</h2>
-            <p>Setembro consumiu <strong>1.522 impressões</strong>. Para comparar com agosto, precisamos do consumo de agosto — e isso exige uma leitura de julho.</p>
+            <h2 id="monthInsightTitle">Atenção: setembro consumiu 506 impressões a mais que agosto.</h2>
+            <p>O consumo passou de <strong>1.016</strong> em agosto para <strong>1.522</strong> em setembro, um aumento de <strong>49,8%</strong>.</p>
           </div>
-          <div class="month-insight-result pending">
+          <div class="month-insight-result negative">
             <span>Variação mensal</span>
-            <strong>—</strong>
-            <small>disponível a partir de dois meses com consumo fechado</small>
+            <strong>+49,8%</strong>
+            <small>+506 impressões em relação a agosto</small>
           </div>
 
           <div class="month-machine-breakdown">
@@ -298,27 +298,27 @@
                 <tr class="baseline-month">
                   <td>
                     <strong>Agosto/2026</strong>
-                    <small>primeiro mês registrado</small>
+                    <small>mês fechado</small>
                   </td>
                   <td>
                     <strong>18.318</strong>
-                    <small>leitura acumulada</small>
+                    <small>consumo: 819</small>
                   </td>
                   <td>
                     <strong>17.146</strong>
-                    <small>leitura acumulada</small>
+                    <small>consumo: 197</small>
                   </td>
                   <td>
                     <strong>—</strong>
                     <small>sem leitura neste mês</small>
                   </td>
                   <td>
-                    <strong>—</strong>
-                    <small>falta leitura de julho</small>
+                    <strong>1.016</strong>
+                    <small>25,4% da franquia</small>
                   </td>
                   <td><strong>4.000</strong></td>
-                  <td><span class="status-pill neutral">Mês-base</span></td>
-                  <td><strong>—</strong><small>consumo do mês não calculável</small></td>
+                  <td><span class="status-pill good">Dentro da franquia</span></td>
+                  <td><strong>R$ 0,00</strong><small>sem excedente</small></td>
                 </tr>
 
                 <tr class="closed-month">
@@ -369,8 +369,8 @@
 
           <div class="month-comparison-explainer">
             <div>
-              <strong>Agosto não sumiu.</strong>
-              <span>Ele aparece como o primeiro mês registrado e serve de base para calcular setembro.</span>
+              <strong>Agosto agora é calculável.</strong>
+              <span>A nova leitura anterior permite calcular 1.016 impressões consumidas em agosto.</span>
             </div>
             <div>
               <strong>Os próximos meses entram aqui.</strong>
@@ -380,11 +380,11 @@
 
           <div class="month-answer">
             <strong>Comparação disponível hoje</strong>
-            <span>Setembro consumiu 1.522 impressões. Ainda não dá para dizer se setembro foi maior ou menor que agosto porque o consumo de agosto exige uma leitura de julho. Assim que houver dois meses com consumo calculado, o sistema mostrará automaticamente qual foi o maior, o menor e a variação percentual.</span>
+            <span>Agosto consumiu 1.016 impressões e setembro 1.522. Setembro foi o mês de maior consumo até agora, com aumento de 506 impressões (+49,8%).</span>
           </div>
 
           <details class="calculation-explainer">
-            <summary>Entender como setembro foi calculado</summary>
+            <summary>Entender como agosto e setembro foram calculados</summary>
             <div class="calculation-panel">
               <div class="calculation-row">
                 <div class="calc-device">
@@ -540,7 +540,7 @@
                   <strong>BRBST2P00K</strong>
                   <span>HP LaserJet Pro MFP 4103fdw · Produto 2Z629A</span>
                 </div>
-                <span class="history-status">3 leituras</span>
+                <span class="history-status">4 leituras</span>
               </div>
               <div class="history-table-wrap">
                 <table class="history-table">
@@ -558,9 +558,19 @@
                   </thead>
                   <tbody>
                     <tr>
+                      <td>Jul/2026</td>
+                      <td><strong>17.499</strong></td>
+                      <td>—</td>
+                      <td>5.132</td>
+                      <td>793</td>
+                      <td>4.526</td>
+                      <td>583</td>
+                      <td>20</td>
+                    </tr>
+                    <tr>
                       <td>Ago/2026</td>
                       <td><strong>18.318</strong></td>
-                      <td>—</td>
+                      <td><span class="delta">+819</span></td>
                       <td>5.343</td>
                       <td>808</td>
                       <td>4.672</td>
@@ -590,7 +600,7 @@
                   </tbody>
                 </table>
               </div>
-              <div class="history-foot">Scanner = alimentador + vidro. Agosto → setembro: 1.439 impressões nesta série.</div>
+              <div class="history-foot">Scanner = alimentador + vidro. Julho → agosto: 819 impressões. Agosto → setembro: 1.439 impressões.</div>
             </article>
 
             <article class="history-card">
@@ -599,7 +609,7 @@
                   <strong>BRBST160GT</strong>
                   <span>HP LaserJet Pro 4003dw · Produto 2Z610A</span>
                 </div>
-                <span class="history-status">3 leituras</span>
+                <span class="history-status">4 leituras</span>
               </div>
               <div class="history-table-wrap">
                 <table class="history-table">
@@ -616,9 +626,18 @@
                   </thead>
                   <tbody>
                     <tr>
+                      <td>Jul/2026</td>
+                      <td><strong>16.949</strong></td>
+                      <td>—</td>
+                      <td>8.373</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>16.949</td>
+                    </tr>
+                    <tr>
                       <td>Ago/2026</td>
                       <td><strong>17.146</strong></td>
-                      <td>—</td>
+                      <td><span class="delta">+197</span></td>
                       <td>8.471</td>
                       <td>2</td>
                       <td>3</td>
@@ -645,7 +664,7 @@
                   </tbody>
                 </table>
               </div>
-              <div class="history-foot">Agosto → setembro: 83 impressões nesta série. Este modelo não apresenta dados de cópia ou scanner nos relatórios enviados.</div>
+              <div class="history-foot">Julho → agosto: 197 impressões. Agosto → setembro: 83 impressões. Este modelo não apresenta dados de cópia ou scanner nos relatórios enviados.</div>
             </article>
 
             <article class="history-card">
@@ -717,6 +736,6 @@
     </div>
   </div>
 
-  <script src="js/app.js?v=20261007-6"></script>
+  <script src="js/app.js?v=20261007-7"></script>
 </body>
 </html>

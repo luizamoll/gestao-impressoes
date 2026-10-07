@@ -98,8 +98,8 @@ function enhanceMachineHistory() {
   }
 
   const configs = {
-    BRBST2P00K: { consumption: "1.439", share: "94,5%", previous: "18.318", current: "19.757", message: "Esta foi a máquina que mais consumiu em setembro e concentrou quase todo o uso calculado do mês.", tone: "important" },
-    BRBST160GT: { consumption: "83", share: "5,5%", previous: "17.146", current: "17.229", message: "Esta máquina teve baixo uso no período e respondeu por apenas 5,5% do consumo calculado de setembro.", tone: "calm" }
+    BRBST2P00K: { consumption: "1.439", share: "94,5%", previous: "18.318", current: "19.757", message: "Esta foi a máquina que mais consumiu em setembro. Em agosto, ela havia consumido 819 impressões; em setembro, subiu para 1.439.", tone: "important" },
+    BRBST160GT: { consumption: "83", share: "5,5%", previous: "17.146", current: "17.229", message: "Esta máquina teve baixo uso no período. Em agosto consumiu 197 impressões; em setembro caiu para 83.", tone: "calm" }
   };
 
   document.querySelectorAll(".history-card").forEach(card => {
