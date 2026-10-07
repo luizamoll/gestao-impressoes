@@ -1010,3 +1010,79 @@ a.nav-item{text-decoration:none}
   .conscious-card{grid-template-columns:1fr}
   .conscious-visual{display:none}
 }
+
+
+/* Movimento contínuo do consumo consciente */
+.conscious-card::before{
+  content:"";
+  position:absolute;
+  width:190px;
+  height:190px;
+  right:-70px;
+  top:-70px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(15,107,79,.055) 0%,rgba(15,107,79,0) 68%);
+  animation:consciousGlow 6s ease-in-out infinite;
+  pointer-events:none
+}
+
+.conscious-ring{
+  animation:consciousFloat 3.2s ease-in-out infinite
+}
+
+.conscious-ring::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:7px;
+  height:7px;
+  margin:-3.5px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 5px rgba(15,107,79,.10);
+  transform:rotate(0deg) translateY(-31px);
+  transform-origin:center;
+  animation:consciousOrbit 4.2s linear infinite
+}
+
+.conscious-ring-progress{
+  animation:
+    consciousDraw 1.2s ease-out both,
+    consciousPulse 2.8s ease-in-out 1.2s infinite
+}
+
+.conscious-leaf{
+  animation:consciousLeaf 2.6s ease-in-out infinite;
+  transform-origin:center
+}
+
+@keyframes consciousOrbit{
+  from{transform:rotate(0deg) translateY(-31px)}
+  to{transform:rotate(360deg) translateY(-31px)}
+}
+
+@keyframes consciousPulse{
+  0%,100%{opacity:1;stroke-width:2.5}
+  50%{opacity:.62;stroke-width:3.2}
+}
+
+@keyframes consciousLeaf{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-2px) rotate(-6deg)}
+}
+
+@keyframes consciousGlow{
+  0%,100%{transform:scale(.92);opacity:.55}
+  50%{transform:scale(1.08);opacity:1}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .conscious-card::before,
+  .conscious-ring,
+  .conscious-ring::after,
+  .conscious-ring-progress,
+  .conscious-leaf{
+    animation:none !important
+  }
+}
