@@ -4,7 +4,7 @@
 
 **Intranet**
 
-A Central de Sistemas deve evoluir para uma intranet institucional: um ambiente interno único para comunicação, colaboração, operação e indicadores da UNH.
+O **Portal UNH** é a intranet institucional da universidade: um ambiente interno único para comunicação, colaboração, operação e indicadores da UNH.
 
 ## Direção do produto
 
