@@ -1318,3 +1318,22 @@ a.nav-item{text-decoration:none}
 .current-month-row td{
   background:#fbfcfb;
 }
+
+
+/* Logo oficial UNH */
+.brand-symbol.unh-symbol,
+.portal-mark{
+  background:#fff !important;
+  padding:6px !important;
+  overflow:hidden;
+  box-shadow:none !important;
+}
+
+.brand-symbol.unh-symbol img,
+.portal-mark img{
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  object-fit:contain !important;
+  border-radius:0 !important;
+}
