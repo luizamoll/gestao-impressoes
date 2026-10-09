@@ -1,16 +1,38 @@
-# Compiled class file
+# Build
+target/
 *.class
 
-# Log file
+# Logs and temporary files
 *.log
+*.tmp
+*.temp
 
-# BlueJ files
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+application-local.properties
+application-local.yml
+application-local.yaml
+secrets.properties
+
+# IDE / editor
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# macOS
+.DS_Store
+
+# BlueJ
 *.ctxt
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
+# Packaged artifacts
 *.jar
 *.war
 *.nar
@@ -19,6 +41,6 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# JVM crash logs
 hs_err_pid*
 replay_pid*
