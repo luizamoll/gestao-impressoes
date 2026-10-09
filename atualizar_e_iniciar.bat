@@ -2,36 +2,47 @@
 cd /d "%~dp0"
 
 echo.
-echo UNH Sistemas - Gestao de Impressoes
-echo ------------------------------------
-echo Atualizando...
+echo Portal UNH - Gestao de Impressoes
+echo ---------------------------------
+echo Sincronizando com a versao oficial do GitHub...
 echo.
 
-git fetch origin
+git fetch origin feat/estrutura-mvp-esg
 if errorlevel 1 goto erro
 
 git switch feat/estrutura-mvp-esg
 if errorlevel 1 goto erro
 
-git pull --ff-only origin feat/estrutura-mvp-esg
+rem O GitHub e a fonte oficial deste projeto.
+rem Mantemos um backup automatico caso exista alguma alteracao local rastreada.
+for /f "delims=" %%s in ('git status --porcelain --untracked-files=no') do set "DIRTY=1"
+if defined DIRTY (
+  echo Alteracoes locais encontradas. Criando backup automatico...
+  git stash push -m "backup automatico antes de atualizar Portal UNH"
+  if errorlevel 1 goto erro
+)
+
+git reset --hard origin/feat/estrutura-mvp-esg
 if errorlevel 1 goto erro
 
 echo.
-echo Iniciando acesso local e pela rede...
+echo Reiniciando servidor local com a versao atualizada...
 echo.
 
-netstat -ano | findstr ":8000 " | findstr "LISTENING" >nul
-if errorlevel 1 (
-  start "Servidor UNH" /min cmd /c call "%~dp0servidor_lan.bat"
-  timeout /t 2 /nobreak >nul
+for /f "tokens=5" %%p in ('netstat -ano ^| findstr ":8000 " ^| findstr "LISTENING"') do (
+  taskkill /PID %%p /F >nul 2>&1
 )
+
+timeout /t 1 /nobreak >nul
+start "Portal UNH" /min cmd /c call "%~dp0servidor_lan.bat"
+timeout /t 2 /nobreak >nul
 
 for /f %%i in ('powershell -NoProfile -Command "(Get-NetIPAddress -AddressFamily IPv4 ^| Where-Object {$_.IPAddress -notlike '169.254*' -and $_.IPAddress -notlike '127.*' -and $_.InterfaceAlias -notmatch 'Loopback'} ^| Sort-Object InterfaceMetric ^| Select-Object -First 1 -ExpandProperty IPAddress)"') do set "LAN_IP=%%i"
 
-start "" "http://127.0.0.1:8000/impressao.html"
+start "" "http://127.0.0.1:8000/impressao.html?v=20261009-3"
 
 echo.
-echo Sistema aberto neste computador.
+echo Portal UNH atualizado e aberto neste computador.
 echo.
 if defined LAN_IP (
   echo Para outra pessoa na mesma rede:
@@ -49,6 +60,7 @@ exit /b 0
 
 :erro
 echo.
-echo Nao foi possivel atualizar o projeto.
+echo Nao foi possivel sincronizar o Portal UNH.
+echo Envie uma foto desta janela para conferirmos o erro.
 pause
 exit /b 1
