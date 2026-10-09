@@ -26,3 +26,10 @@ replay_pid*
 # Runtime do host interno
 .runtime/
 target/
+
+# Segredos e configuracoes privadas de hospedagem
+.env
+.env.*
+!.env.example
+application-local.properties
+application-secrets.properties
