@@ -1337,3 +1337,43 @@ a.nav-item{text-decoration:none}
   object-fit:contain !important;
   border-radius:0 !important;
 }
+
+
+/* Logo completa oficial UNH */
+.brand-official-wrap{
+  width:100%;
+  display:grid;
+  gap:9px;
+  align-items:start;
+}
+.brand-official-logo{
+  display:block;
+  width:152px;
+  max-width:100%;
+  height:auto;
+  filter:brightness(0) invert(1);
+}
+.brand-official-wrap strong{
+  max-width:none !important;
+  font-size:13px !important;
+  font-weight:600 !important;
+  color:#fff;
+  letter-spacing:.01em;
+}
+.brand.brand-link,
+.sidebar .brand{
+  align-items:flex-start;
+}
+.portal-brand{
+  gap:18px;
+}
+.portal-official-logo{
+  width:165px;
+  height:auto;
+  display:block;
+  filter:brightness(0) invert(1);
+}
+@media (max-width:760px){
+  .brand-official-logo{width:136px}
+  .portal-official-logo{width:145px}
+}
