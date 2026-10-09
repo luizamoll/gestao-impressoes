@@ -1351,7 +1351,7 @@ a.nav-item{text-decoration:none}
   width:152px;
   max-width:100%;
   height:auto;
-  filter:brightness(0) invert(1);
+  filter:none;
 }
 .brand-official-wrap strong{
   max-width:none !important;
@@ -1371,9 +1371,24 @@ a.nav-item{text-decoration:none}
   width:165px;
   height:auto;
   display:block;
-  filter:brightness(0) invert(1);
+  filter:none;
 }
 @media (max-width:760px){
   .brand-official-logo{width:136px}
   .portal-official-logo{width:145px}
+}
+
+
+/* Ajuste da logo oficial sem rasterizacao ampliada */
+.brand-official-logo,
+.portal-official-logo{
+  image-rendering:auto;
+  filter:none !important;
+  object-fit:contain;
+}
+.brand-official-logo{
+  width:150px;
+}
+.portal-official-logo{
+  width:158px;
 }
