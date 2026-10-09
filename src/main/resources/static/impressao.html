@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20261007-8" />
+  <link rel="stylesheet" href="css/styles.css?v=20261009-1" />
     </head>
 <body>
   <div class="app-shell">
@@ -53,20 +53,20 @@
       <div class="content">
         <section class="summary section-anchor executive-summary" id="overview">
           <div class="summary-heading">
-            <span class="eyebrow">Setembro/2026</span>
-            <h2>Você usou 1.522 das 4.000 impressões disponíveis no mês.</h2>
-            <p>O consumo ficou dentro da franquia. Restam 2.478 impressões e não houve excedente.</p>
+            <span class="eyebrow">Outubro/2026 · mês em aberto</span>
+            <h2>Outubro começou zerado: 0 das 4.000 impressões foram registradas no mês.</h2>
+            <p>A franquia reinicia a cada competência. As 1.522 impressões de setembro ficam apenas no histórico e não são carregadas para outubro.</p>
           </div>
 
-          <div class="usage-progress" aria-label="38,1% da franquia utilizada">
+          <div class="usage-progress" aria-label="0% da franquia utilizada em outubro">
             <div class="usage-progress-head">
               <span>Uso da franquia</span>
-              <strong>38,1%</strong>
+              <strong>0%</strong>
             </div>
-            <div class="usage-track"><span style="width:38.1%"></span></div>
+            <div class="usage-track"><span style="width:0%"></span></div>
             <div class="usage-progress-foot">
-              <span>1.522 consumidas</span>
-              <span>2.478 disponíveis</span>
+              <span>0 registradas em outubro</span>
+              <span>4.000 disponíveis</span>
             </div>
           </div>
 
@@ -89,14 +89,14 @@
               <small>limite do mês</small>
             </article>
             <article class="summary-item">
-              <span>Consumido em setembro</span>
-              <strong>1.522</strong>
-              <small>38,1% da franquia</small>
+              <span>Consumido em outubro</span>
+              <strong>0</strong>
+              <small>0% da franquia</small>
             </article>
             <article class="summary-item">
               <span>Saldo disponível</span>
-              <strong>2.478</strong>
-              <small>62,0% ainda disponível</small>
+              <strong>4.000</strong>
+              <small>100% disponível em outubro</small>
             </article>
             <article class="summary-item">
               <span>Excedente</span>
@@ -126,14 +126,14 @@
 
           <div class="conscious-copy">
             <span class="eyebrow">Consumo consciente</span>
-            <h2 id="consciousTitle">Seu uso está dentro da franquia.</h2>
-            <p>Você utilizou <strong>38,1%</strong> da franquia de setembro. Continue priorizando impressões realmente necessárias.</p>
+            <h2 id="consciousTitle">Outubro está zerado até o momento.</h2>
+            <p>Nenhum consumo foi registrado no sistema para outubro. A franquia mensal está integralmente disponível.</p>
           </div>
 
           <div class="conscious-kpi">
             <span>Uso no mês</span>
-            <strong>1.522 / 4.000</strong>
-            <small>2.478 impressões ainda disponíveis</small>
+            <strong>0 / 4.000</strong>
+            <small>4.000 impressões disponíveis em outubro</small>
           </div>
 
           <details class="conscious-tips">
@@ -167,48 +167,26 @@
           </details>
         </section>
 
-        <section class="month-insight" aria-labelledby="monthInsightTitle">
-          <div class="month-insight-icon" aria-hidden="true">↕</div>
+        <section class="month-insight current-month-zero" aria-labelledby="monthInsightTitle">
+          <div class="month-insight-icon" aria-hidden="true">0</div>
           <div class="month-insight-copy">
-            <span class="eyebrow">Comparação com o mês anterior</span>
-            <h2 id="monthInsightTitle">Atenção: setembro consumiu 506 impressões a mais que agosto.</h2>
-            <p>O consumo passou de <strong>1.016</strong> em agosto para <strong>1.522</strong> em setembro, um aumento de <strong>49,8%</strong>.</p>
+            <span class="eyebrow">Competência atual</span>
+            <h2 id="monthInsightTitle">Outubro não herda o consumo de setembro.</h2>
+            <p>O mês começa com <strong>0 impressões registradas</strong> e uma nova franquia de <strong>4.000</strong>. Setembro fechou com 1.522 e permanece somente no histórico.</p>
           </div>
-          <div class="month-insight-result negative">
-            <span>Variação mensal</span>
-            <strong>+49,8%</strong>
-            <small>+506 impressões em relação a agosto</small>
-          </div>
-
-          <div class="month-machine-breakdown">
-            <strong>De onde veio o consumo de setembro</strong>
-            <div>
-              <span><b>Secretaria de Graduação + RH</b> · 1.439 impressões · 94,5%</span>
-              <span><b>Reserva da Secretaria de Graduação + RH</b> · 83 impressões · 5,5%</span>
-              <span><b>Secretaria do Mestrado</b> · ainda sem consumo mensal calculável</span>
-            </div>
-          </div>
-          <div class="month-insight-example">
-            <strong>Como esse campo vai funcionar nos próximos meses</strong>
-            <div class="insight-example-grid">
-              <div class="positive-example">
-                <span>Se o consumo cair</span>
-                <p><strong>Boa!</strong> Este mês você economizou <strong>X impressões</strong> em relação ao anterior.</p>
-              </div>
-              <div class="negative-example">
-                <span>Se o consumo subir</span>
-                <p><strong>Atenção:</strong> este mês o consumo aumentou <strong>X impressões</strong> em relação ao anterior.</p>
-              </div>
-            </div>
+          <div class="month-insight-result pending">
+            <span>Consumo em outubro</span>
+            <strong>0</strong>
+            <small>4.000 disponíveis</small>
           </div>
         </section>
 
         <section class="usage-ranking" aria-labelledby="usageRankingTitle">
           <div class="section-title simple-title">
             <div>
-              <span class="eyebrow">Uso por equipamento</span>
-              <h2 id="usageRankingTitle">Qual impressora foi mais usada em setembro?</h2>
-              <p>O ranking considera somente equipamentos que possuem leitura anterior para calcular o consumo do mês.</p>
+              <span class="eyebrow">Último mês fechado</span>
+              <h2 id="usageRankingTitle">Como o consumo de setembro se distribuiu?</h2>
+              <p>Este ranking é histórico de setembro. Outubro está zerado e só receberá valores quando novas leituras forem registradas.</p>
             </div>
           </div>
 
@@ -347,21 +325,21 @@
                   <td><strong>R$ 0,00</strong><small>sem excedente</small></td>
                 </tr>
 
-                <tr class="future-month">
+                <tr class="future-month current-month-row">
                   <td>
-                    <strong>Próximo mês</strong>
-                    <small>entra automaticamente na sequência</small>
+                    <strong>Outubro/2026</strong>
+                    <small>mês atual · iniciado zerado</small>
                   </td>
-                  <td><span class="pending-value">Aguardando leitura</span></td>
-                  <td><span class="pending-value">Aguardando leitura</span></td>
+                  <td><span class="pending-value">Aguardando leitura de outubro</span></td>
+                  <td><span class="pending-value">Aguardando leitura de outubro</span></td>
+                  <td><span class="pending-value">Aguardando leitura de outubro</span></td>
                   <td>
-                    <strong>56</strong>
-                    <small>primeira leitura já registrada; competência a confirmar</small>
+                    <strong>0</strong>
+                    <small>nenhum consumo registrado no mês</small>
                   </td>
-                  <td><span class="pending-value">Será calculado ao fechar</span></td>
                   <td><strong>4.000</strong></td>
                   <td><span class="status-pill neutral">Em aberto</span></td>
-                  <td><span class="pending-value">calculado ao fechar</span></td>
+                  <td><strong>R$ 0,00</strong><small>sem excedente registrado</small></td>
                 </tr>
               </tbody>
             </table>
@@ -373,14 +351,14 @@
               <span>A nova leitura anterior permite calcular 1.016 impressões consumidas em agosto.</span>
             </div>
             <div>
-              <strong>Os próximos meses entram aqui.</strong>
-              <span>Quando uma nova competência for confirmada, ela passa a fazer parte da mesma sequência e será comparada ao mês anterior.</span>
+              <strong>Outubro é uma nova competência.</strong>
+              <span>Ele começa em zero. Quando as leituras de outubro forem registradas, o sistema calcula somente o consumo ocorrido dentro de outubro.</span>
             </div>
           </div>
 
           <div class="month-answer">
-            <strong>Comparação disponível hoje</strong>
-            <span>Agosto consumiu 1.016 impressões e setembro 1.522. Setembro foi o mês de maior consumo até agora, com aumento de 506 impressões (+49,8%).</span>
+            <strong>Último comparativo fechado</strong>
+            <span>Agosto consumiu 1.016 impressões e setembro 1.522. Esse comparativo é histórico. Outubro permanece separado e começa com consumo mensal igual a zero.</span>
           </div>
 
           <details class="calculation-explainer">
@@ -704,9 +682,9 @@
               <small>impressões</small>
             </article>
             <article>
-              <span>Consumo em setembro</span>
-              <strong>1.522</strong>
-              <small>38,1% da franquia mensal</small>
+              <span>Consumo em outubro</span>
+              <strong>0</strong>
+              <small>0% da franquia mensal · mês em aberto</small>
             </article>
           </div>
         </section>

@@ -947,7 +947,7 @@ a.nav-item{text-decoration:none}
 .conscious-ring-bg{fill:none;stroke:#e1e8e4;stroke-width:2.2}
 .conscious-ring-progress{
   fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linecap:round;
-  stroke-dasharray:38.1 100;
+  stroke-dasharray:0 100;
   animation:consciousDraw 1.2s ease-out both
 }
 .conscious-leaf{
@@ -1304,4 +1304,17 @@ a.nav-item{text-decoration:none}
 }
 .history-card-head>div>strong{
   line-height:1.25
+}
+
+
+/* Competencia atual zerada */
+.current-month-zero .month-insight-icon{
+  background:#eef1ef;
+  color:#56605b;
+}
+.current-month-row{
+  box-shadow:inset 4px 0 0 var(--accent);
+}
+.current-month-row td{
+  background:#fbfcfb;
 }
