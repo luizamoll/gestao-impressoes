@@ -1392,3 +1392,23 @@ a.nav-item{text-decoration:none}
 .portal-official-logo{
   width:158px;
 }
+
+/* Estilos exclusivos da versao publica de demonstracao */
+.demo-banner{
+  position:sticky;top:0;z-index:1001;
+  background:#f5f7e8;color:#31533d;
+  border-bottom:1px solid #c9d8bb;text-align:center;
+  padding:9px 16px;font:500 12px/1.4 Inter,system-ui,sans-serif;
+}
+.demo-banner strong{font-weight:800}
+.demo-disabled-upload{
+  opacity:.92;cursor:not-allowed;display:flex;justify-content:center;gap:6px;align-items:center;
+  flex-direction:column;text-align:center;min-height:140px;padding:20px;
+}
+.demo-disabled-upload span{font-size:13px}
+@media (max-width:600px){
+ .demo-banner{font-size:11px;padding:9px 12px}
+ .content{padding-left:14px;padding-right:14px}
+ .ranking-grid,.equipment-cards{grid-template-columns:1fr}
+ .timeline-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
