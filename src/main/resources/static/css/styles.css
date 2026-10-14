@@ -1392,3 +1392,62 @@ a.nav-item{text-decoration:none}
 .portal-official-logo{
   width:158px;
 }
+
+
+/* Portal UNH: marca vetorial aprovada em 14/10/2026, sem esticar raster */
+.portal-header{
+  min-height:96px;
+  background:#074b39;
+}
+.portal-brand{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+  gap:24px;
+}
+.portal-official-logo{
+  display:block;
+  width:340px;
+  max-width:min(62vw,340px);
+  height:auto;
+  flex-shrink:1;
+  object-fit:contain;
+  filter:none !important;
+}
+.portal-brand-context{
+  display:grid;
+  gap:3px;
+  text-align:right;
+}
+.portal-brand-context strong{
+  color:#fff;
+  font-size:15px;
+  font-weight:700;
+}
+.portal-brand-context span{
+  color:#d1e6dd;
+  font-size:12px;
+}
+.brand-official-wrap{
+  width:100%;
+  gap:10px;
+}
+.brand-official-logo{
+  display:block;
+  width:164px;
+  max-width:100%;
+  height:auto;
+  filter:none !important;
+  object-fit:contain;
+}
+@media (max-width:760px){
+  .portal-header{min-height:76px;padding:12px 18px}
+  .portal-official-logo{width:280px;max-width:70vw}
+  .portal-brand-context strong{font-size:13px}
+  .portal-brand-context span{font-size:10px}
+}
+@media (max-width:490px){
+  .portal-official-logo{width:255px;max-width:100%}
+  .portal-brand-context{display:none}
+}
