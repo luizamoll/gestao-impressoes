@@ -3,66 +3,158 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portal UNH — intranet e sistemas internos do Centro Universitário Unihorizontes." />
-    <link rel="icon" type="image/png" sizes="64x64" href="assets/portal-unh-favicon-v2.png?v=20261009-5" />
-    <link rel="shortcut icon" type="image/png" href="assets/portal-unh-favicon-v2.png?v=20261009-5" />
-<title>Portal UNH | Unihorizontes</title>
+  <meta name="description" content="Portal UNH — comunicação institucional e acesso aos sistemas internos da Unihorizontes." />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Portal UNH | Intranet e Sistemas Internos</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/portal-unh-favicon-v2.png?v=20261014" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20261014-1" />
-    </head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/portal.css?v=20261014-2" />
+  <script src="js/portal.js?v=20261014-2" defer></script>
+</head>
 <body class="portal-body">
-  <main class="systems-portal">
-    <header class="portal-header">
-      <div class="portal-brand">
-        <img class="portal-official-logo" src="assets/portal-unh-marca.svg?v=20261014-1" alt="Centro Universitário Unihorizontes" />
-        <div class="portal-brand-context">
-          <strong>Portal UNH</strong>
-          <span>Intranet e Sistemas Internos</span>
-        </div>
-      </div>
-    </header>
+  <a class="portal-skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-    <section class="portal-hero">
-      <div class="portal-hero-copy">
-        <span class="portal-kicker">Tecnologia e operações</span>
-        <h1>Um só lugar para acessar os sistemas internos.</h1>
-        <p>A central organiza as ferramentas desenvolvidas para apoiar processos, acompanhamento e tomada de decisão da instituição.</p>
+  <header class="portal-header" id="inicio">
+    <div class="portal-container portal-header-inner">
+      <a class="portal-logo-link" href="#inicio" aria-label="Portal UNH — ir para o início">
+        <img class="portal-official-logo" src="assets/portal-unh-marca-verde.svg?v=20261014-2" alt="Centro Universitário Unihorizontes" />
+      </a>
+
+      <button class="portal-menu-toggle" id="portalMenuButton" type="button"
+        aria-controls="portalNav" aria-expanded="false" aria-label="Abrir menu de navegação">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <span>Menu</span>
+      </button>
+
+      <nav class="portal-nav" id="portalNav" aria-label="Navegação principal">
+        <a href="#inicio" aria-current="page">Início</a>
+        <a href="#comunicados">Comunicados</a>
+        <a href="#ferramentas">Ferramentas</a>
+      </nav>
+
+      <div class="portal-brand-context" aria-label="Identificação do portal">
+        <strong>Portal UNH</strong>
+        <span>Intranet e Sistemas Internos</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo" class="systems-portal">
+    <section class="portal-hero" aria-labelledby="heroTitle">
+      <div class="portal-container portal-hero-layout">
+        <div class="portal-hero-copy">
+          <span class="portal-eyebrow"><span aria-hidden="true"></span> Tecnologia e operações</span>
+          <h1 id="heroTitle">Um só lugar para acessar <em>os sistemas internos.</em></h1>
+          <p>Informações e ferramentas organizadas para facilitar o trabalho, a comunicação e os processos da instituição.</p>
+          <div class="portal-hero-actions">
+            <a class="portal-button portal-button-primary" href="#ferramentas">
+              Explorar ferramentas <span aria-hidden="true">↗</span>
+            </a>
+            <a class="portal-text-link" href="#comunicados">Ver comunicados <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="portal-hero-art" aria-hidden="true">
+          <div class="portal-art-halo"></div>
+          <div class="portal-art-panel">
+            <div class="portal-art-topline"></div>
+            <div class="portal-art-monogram">
+              <svg viewBox="360 210 300 270" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <path fill="currentColor" fill-rule="evenodd" d="M402,230 390,242 386,248 382,257 379,268 379,420 382,432 387,442 396,453 408,462 426,468 593,468 602,466 614,460 626,450 632,442 637,432 640,422 640,268 638,259 632,246 620,232 615,228 600,221 596,220 577,220 576,219 561,219 560,220 534,220 533,219 525,219 524,220 515,220 514,219 494,219 493,220 445,219 444,220 438,220 437,219 431,219 417,222Z M400,395 403,383 410,364 420,345 429,333 437,325 448,318 463,317 474,322 486,333 523,385 534,395 549,403 562,406 572,406 585,403 600,395 619,378 620,379 619,380 620,381 620,386 619,387 620,416 618,424 614,432 601,444 588,448 430,448 425,447 415,442 404,430 401,424 399,415Z M402,262 407,254 414,247 423,242 430,240 589,240 597,242 606,247 613,254 618,263 620,271 620,329 616,343 606,361 592,376 585,381 573,386 561,386 553,383 547,379 536,368 508,327 492,310 484,304 474,299 461,296 454,296 444,298 430,305 418,315 400,339 399,338 399,273Z"/>
+              </svg>
+            </div>
+            <span class="portal-art-wordmark">UNIHORIZONTES</span>
+            <span class="portal-art-small">INTRANET &amp; SISTEMAS</span>
+          </div>
+          <div class="portal-art-words">
+            <span>Pessoas</span><span>Processos</span><span>Tecnologia</span><span>Resultados</span>
+          </div>
+          <div class="portal-art-arc"></div>
+          <div class="portal-art-disc"></div>
+        </div>
       </div>
     </section>
 
-    <section class="systems-section" aria-labelledby="systemsTitle">
-      <div class="systems-section-head">
-        <div>
-          <span class="portal-kicker">Sistemas disponíveis</span>
-          <h2 id="systemsTitle">Escolha uma ferramenta</h2>
-        </div>
-        <span class="systems-count">1 sistema disponível</span>
+    <div class="portal-home-content portal-container">
+      <div class="portal-section-intro">
+        <span class="portal-eyebrow"><span aria-hidden="true"></span> Seu espaço de trabalho</span>
+        <h2>Encontre o que precisa, sem complicação.</h2>
+        <p>Consulte as novidades e acesse os serviços em um só lugar.</p>
       </div>
 
-      <div class="systems-grid">
-        <a class="system-card active-system" href="impressao.html?v=20261009-5">
-          <div class="system-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M6 4h12v5H6V4Zm-2 7h16v8h-3v2H7v-2H4v-8Zm5 8h6v-5H9v5Z"/></svg>
+      <div class="portal-feature-grid">
+        <section class="portal-feature-section" id="ferramentas" aria-labelledby="toolsTitle">
+          <div class="portal-feature-head">
+            <div>
+              <span class="portal-overline">Sistemas internos</span>
+              <h2 id="toolsTitle">Suas ferramentas</h2>
+              <p>Abra as soluções disponíveis para o seu dia a dia.</p>
+            </div>
+            <span class="portal-count-pill">1 disponível</span>
           </div>
-          <div class="system-card-copy">
-            <span class="system-status">Disponível</span>
+          <div class="portal-tools-card">
+            <div class="portal-tool-card-top">
+              <span class="portal-tool-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round"><path d="M7 8V3h10v5M6 17H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M7 14h10v7H7zM18 11h.01"/></svg>
+              </span>
+              <span class="portal-status">Disponível</span>
+            </div>
             <h3>Gestão de Impressões</h3>
-            <p>Acompanhe franquia, consumo mensal, uso por equipamento, histórico de leituras e indicadores ESG.</p>
+            <p>Acompanhe consumo, franquia, equipamentos, histórico de leituras e indicadores ESG.</p>
+            <a class="portal-button portal-button-primary portal-tool-action"
+              href="impressao.html?v=20261014-2">Acessar sistema <span aria-hidden="true">→</span></a>
           </div>
-          <div class="system-card-footer">
-            <span>Abrir sistema</span>
-            <strong>→</strong>
+        </section>
+
+        <section class="portal-feature-section" id="comunicados" aria-labelledby="newsTitle">
+          <div class="portal-feature-head">
+            <div>
+              <span class="portal-overline">Comunicação institucional</span>
+              <h2 id="newsTitle">Comunicados</h2>
+              <p>Um espaço dedicado a novidades e avisos da instituição.</p>
+            </div>
+            <span class="portal-count-pill portal-count-muted">Em preparação</span>
           </div>
-        </a>
+          <div class="portal-announcement-card" role="status">
+            <span class="portal-announcement-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 0 0 2 2h2l2 5h3l-2-5h3l7 4V5l-7 4H5a2 2 0 0 0-2 2zM20 9a3 3 0 0 1 0 6"/></svg>
+            </span>
+            <span class="portal-coming-soon">Mural institucional</span>
+            <h3>Novidades e avisos, todos no mesmo espaço.</h3>
+            <p>Aqui serão exibidas as publicações oficiais quando o módulo de comunicados estiver implementado e autorizado.</p>
+            <span class="portal-announcement-note">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7h.01"/></svg>
+              Nenhum comunicado publicado neste portal
+            </span>
+          </div>
+        </section>
       </div>
 
-      <div class="future-modules-note">
-        <strong>Central preparada para crescer.</strong>
-        <span>Os próximos sistemas internos serão adicionados aqui conforme forem desenvolvidos, mantendo uma única porta de entrada.</span>
-      </div>
-    </section>
+      <section class="portal-next" aria-labelledby="nextTitle">
+        <div class="portal-next-text">
+          <span class="portal-overline">Evolução do portal</span>
+          <h2 id="nextTitle">Uma carteira de ferramentas que cresce com a instituição.</h2>
+          <p>Novos serviços serão integrados conforme as necessidades das equipes e a validação da TI.</p>
+        </div>
+        <div class="portal-next-items" aria-label="Integrações em avaliação">
+          <span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18M8 15h3"/></svg> Tarefas e projetos <small>Planejado</small></span>
+          <span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11a8 8 0 0 1 16 0v7a3 3 0 0 1-3 3h-2v-8h6M9 13H3v8h6z"/></svg> Suporte interno <small>Planejado</small></span>
+          <span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V4M4 20h16M8 16l4-5 3 2 5-7"/></svg> Gestão à Vista <small>Planejado</small></span>
+        </div>
+      </section>
+    </div>
   </main>
+
+  <footer class="portal-footer">
+    <div class="portal-container portal-footer-inner">
+      <span>Portal UNH · Intranet e Sistemas Internos</span>
+      <span>Ambiente em desenvolvimento</span>
+    </div>
+  </footer>
 </body>
 </html>
