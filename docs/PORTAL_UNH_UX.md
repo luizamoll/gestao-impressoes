@@ -76,3 +76,8 @@ Antes do uso institucional:
 ## Correção do hero após revisão visual
 
 A foto ficou artificial e borrada por compressão excessiva (arquivo inicial do repositório de apenas 5,4 KB para 800 × 446). Alteração de layout: o hero agora usa foto em proporção natural 16:9, recorte retangular discreto, sem selo sobre a imagem e sem bordas orgânicas exageradas, com texto independente à esquerda. O recurso atual permanece provisório até que uma fotografia com qualidade adequada seja incorporada ao repositório. Esta correção não altera a intranet institucional nem o feed.
+
+
+## Novo visual conceitual aprovado
+
+O mockup visual aprovado pela usuária foi tratado como referência de direção de arte, não como captura de tela para inserir inteira. A home referencia `assets/portal-unh-conceito.webp`, um recorte do ambiente gerado. Este ativo é uma imagem **conceitual**, não uma fotografia oficial das instalações. A imagem deve ser adicionada ao diretório estático antes da publicação; se estiver ausente no ambiente local, um fallback visual evita imagem quebrada. Cabeçalho, botões e atalhos permanecem HTML funcionais. A mudança não altera o dashboard Gestão à Vista, o mural nem o deploy da TI.

@@ -2,6 +2,19 @@
 
 // Apenas navegacao e busca local: nenhum conteudo ficticio e publicado.
 (() => {
+  // Mantém a home legível mesmo antes de instalar o novo arquivo da arte localmente.
+  const heroImage = document.getElementById("portalHeroImage");
+  heroImage?.addEventListener("error", () => {
+    const fallback = heroImage.getAttribute("data-fallback-src");
+    if (fallback && !heroImage.dataset.didFallback) {
+      heroImage.dataset.didFallback = "yes";
+      heroImage.src = fallback;
+      heroImage.alt = "Fotografia da entrada da Unihorizontes.";
+      const caption = heroImage.closest("figure")?.querySelector("figcaption");
+      if (caption) caption.textContent = "Imagem anterior · substituição pendente";
+    }
+  });
+
   const menuButton = document.getElementById("portalMenuButton");
   const nav = document.getElementById("portalNav");
   if (!menuButton || !nav) return;
