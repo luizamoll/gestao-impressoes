@@ -7,10 +7,10 @@ echo ---------------------------------
 echo Sincronizando com a versao oficial do GitHub...
 echo.
 
-git fetch origin feat/estrutura-mvp-esg
+git fetch origin main
 if errorlevel 1 goto erro
 
-git switch feat/estrutura-mvp-esg
+git switch main
 if errorlevel 1 goto erro
 
 rem O GitHub e a fonte oficial deste projeto.
@@ -22,7 +22,7 @@ if defined DIRTY (
   if errorlevel 1 goto erro
 )
 
-git reset --hard origin/feat/estrutura-mvp-esg
+git reset --hard origin/main
 if errorlevel 1 goto erro
 
 echo.
@@ -39,14 +39,14 @@ timeout /t 2 /nobreak >nul
 
 for /f %%i in ('powershell -NoProfile -Command "(Get-NetIPAddress -AddressFamily IPv4 ^| Where-Object {$_.IPAddress -notlike '169.254*' -and $_.IPAddress -notlike '127.*' -and $_.InterfaceAlias -notmatch 'Loopback'} ^| Sort-Object InterfaceMetric ^| Select-Object -First 1 -ExpandProperty IPAddress)"') do set "LAN_IP=%%i"
 
-start "" "http://127.0.0.1:8000/impressao.html?v=20261009-3"
+start "" "http://127.0.0.1:8000/"
 
 echo.
 echo Portal UNH atualizado e aberto neste computador.
 echo.
 if defined LAN_IP (
   echo Para outra pessoa na mesma rede:
-  echo http://%LAN_IP%:8000/impressao.html
+  echo http://%LAN_IP%:8000/
 ) else (
   echo Nao foi possivel identificar o IP automaticamente.
   echo Execute ipconfig e use o endereco IPv4.
