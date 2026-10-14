@@ -1,0 +1,208 @@
+/* Portal UNH — tipografia, contraste e navegação lateral — 14/10/2026 */
+/* Estilos dedicados à Gestão de Impressões e ESG. A home usa portal.css. */
+:root {
+  --sidebar:#ffffff;
+  --sidebar-soft:#f5f8f6;
+  --accent:#086344;
+  --accent-dark:#075139;
+  --accent-soft:#e8f4ed;
+  --ink:#202922;
+  --muted:#526159;
+  --line:#dbe4dd;
+  --bg:#f5f7f5;
+}
+body{font-size:16px;line-height:1.62;color:var(--ink);text-rendering:optimizeLegibility}
+.app-shell{grid-template-columns:248px minmax(0,1fr)}
+.main{min-width:0}
+.sidebar{
+  position:sticky;
+  top:0;
+  width:auto;
+  min-width:0;
+  height:100vh;
+  padding:26px 17px 18px;
+  background:#fff;
+  color:#1a382b;
+  border-right:1px solid #e0e9e2;
+  box-shadow:3px 0 22px rgba(26,52,35,.035);
+  overflow-y:auto;
+  scrollbar-width:thin;
+}
+.sidebar .brand{
+  display:block;
+  padding:0 10px 21px;
+  border-bottom:1px solid #ebf0ec;
+  margin:0 0 22px;
+  color:#0a533a;
+  text-decoration:none;
+}
+.sidebar .brand-official-wrap{width:100%;gap:5px;display:grid;justify-items:start}
+.sidebar .brand-official-logo{
+  display:block;
+  width:194px;
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+  filter:none!important;
+}
+.sidebar .brand-official-wrap strong{
+  font-size:13px!important;
+  color:#0b6043!important;
+  letter-spacing:.08em;
+  font-weight:800!important;
+  margin-top:9px;
+}
+.sidebar-brand-subtitle{font-size:12px;color:#687b70;font-weight:500;line-height:1.45}
+.sidebar-group-title,.sidebar-nav-group{
+  text-transform:uppercase;
+  color:#7b8981;
+  letter-spacing:.14em;
+  font-size:11px;
+  font-weight:800;
+  padding:0 12px;
+}
+.sidebar-group-title{margin:0 0 13px}
+.sidebar-nav-group{margin:14px 0 3px}
+.sidebar .nav{display:grid;gap:6px}
+.sidebar .nav-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:100%;
+  min-height:49px;
+  padding:12px 13px;
+  border-radius:12px;
+  border:1px solid transparent;
+  background:transparent;
+  box-shadow:none;
+  text-align:left;
+  text-decoration:none;
+  color:#3b4c42;
+  font-size:14px;
+  font-weight:600;
+  line-height:1.35;
+  transition:background .16s,color .16s,border-color .16s;
+}
+.sidebar .nav-item svg{width:20px;height:20px;flex:0 0 20px;color:#537262}
+.sidebar .nav-item:hover{background:#edf5ef;color:#0b6547;border-color:#e2ebe4}
+.sidebar .nav-item:focus-visible{outline:3px solid #67b696;outline-offset:2px}
+.sidebar .nav-item.active,
+.sidebar .nav-item[aria-current="page"]{
+  background:#e8f4ed;
+  border-color:#d5e9dc;
+  color:#06553a;
+  font-weight:750;
+}
+.sidebar .nav-item.active svg,
+.sidebar .nav-item[aria-current="page"] svg{color:#0a6748}
+.sidebar .nav-item.active::after{content:"";width:7px;height:7px;background:#098359;border-radius:50%;margin-left:auto;opacity:1}
+.sidebar .nav-item.central-link{margin-bottom:0}
+.sidebar-footer{
+  display:grid;
+  gap:2px;
+  margin-top:auto;
+  padding:20px 13px 5px;
+  border-top:1px solid #eaf0eb;
+}
+.sidebar-footer-label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#748478;font-weight:700}
+.sidebar-footer strong{font-size:14px;color:#253e31;font-weight:700}
+.sidebar-footer small{font-size:12px;color:#66786c}
+.sidebar-scrim[hidden]{display:none!important}
+.sidebar-scrim{display:none}
+.topbar{
+  min-height:80px;
+  background:#fff;
+  border-bottom:1px solid #e5ebe6;
+  box-shadow:none;
+}
+.topbar h1{font-size:23px;font-weight:700;letter-spacing:-.035em}
+.content{max-width:1450px;gap:26px}
+.summary,.panel,.upload-section,.esg-preview,
+.usage-ranking,.month-comparison,.equipment-card,.history-card{
+  border-color:#e1e8e2;
+  box-shadow:0 8px 26px rgba(17,50,30,.035);
+}
+.summary-heading h2{font-size:clamp(26px,2.4vw,33px);line-height:1.25;font-weight:700}
+.summary-heading p,
+.section-title p,.esg-hero p,.upload-copy p,.esg-preview-copy p,
+.history-heading p{font-size:15px;line-height:1.75;color:#53635a}
+.eyebrow{font-size:12px;letter-spacing:.08em;color:#086443}
+.usage-progress-head span{font-size:14px}
+.usage-progress-foot,.summary-item small,.summary-item span{font-size:13px;color:#536159}
+.summary-item strong{font-weight:700}
+.excess-rule strong,.excess-rule span,.excess-rule-formula span,.excess-rule-formula strong{font-size:13px}
+.ranking-card-head>div>strong,.ranking-conclusion,.month-status-card p,
+.month-comparison-explainer span,.technical-caption span{font-size:13px}
+.ranking-card-head small,.ranking-meta,.rank-label{font-size:12px;color:#5e6f64}
+.section-title h2,.history-heading h3,.upload-copy h2{font-weight:700}
+.equipment-card h3,.history-card-head strong{font-size:17px;line-height:1.45}
+.equipment-model,.equipment-card .serial,.card-secondary-data span{font-size:12px;color:#596c60}
+.equipment-state,.history-status,.status-pill,.status-pill.good,.status-pill.neutral{font-size:11px}
+.card-secondary-data strong,.month-status-card strong{font-size:14px}
+.history-card-head span,.history-foot,.history-table th,.history-table td{font-size:13px}
+.history-table td:first-child small,.history-table td:nth-child(3) small{font-size:11px}
+.timeline-table th,.timeline-table td,.timeline-table td small{font-size:12px}
+.device-column strong{font-size:12px}
+.device-column small{font-size:11px}
+.pending-value,.detail-list span,.detail-note,.governance-item p{font-size:12px}
+.month-readings-list span,.month-readings-list small,.method-row p{font-size:13px}
+.esg-metric span,.esg-metric small,.esg-preview-data span,
+.esg-preview-data small,.governance-item strong,.method-row strong{font-size:13px}
+.esg-hero h2{line-height:1.18}
+:where(.main) a:focus-visible,
+:where(.main) button:focus-visible{outline:3px solid #40a478;outline-offset:3px}
+
+@media(max-width:1180px){
+  .summary-grid.executive-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:1050px){
+  .app-shell{display:block}
+  .sidebar{
+    position:fixed;
+    inset:0 auto 0 0;
+    width:min(272px,85vw);
+    min-width:0;
+    height:100dvh;
+    padding:24px 18px;
+    z-index:60;
+    transform:translateX(-105%);
+    transition:transform .2s ease;
+    box-shadow:16px 0 40px rgba(14,46,29,.13);
+  }
+  .sidebar.open{transform:translateX(0)}
+  .sidebar .brand{display:block}
+  .sidebar .brand-official-wrap strong,
+  .sidebar .nav-item span{display:block}
+  .sidebar .nav-item{justify-content:flex-start;padding:12px 13px}
+  .sidebar .nav-item.active::after{display:block}
+  .sidebar-scrim:not([hidden]){
+    display:block;
+    position:fixed;
+    inset:0;
+    border:0;
+    padding:0;
+    margin:0;
+    width:100vw;
+    height:100dvh;
+    background:rgba(13,33,23,.4);
+    z-index:55;
+    cursor:pointer;
+  }
+  .menu-button{display:inline-flex;align-items:center;justify-content:center;min-width:43px;min-height:43px;font-size:22px;border:1px solid #dde8df}
+  .content{padding:26px 22px 46px}
+}
+@media(max-width:600px){
+  .topbar{min-height:70px;padding:0 15px}
+  .topbar h1{font-size:20px}
+  .content{padding:18px 13px 38px;gap:17px}
+  .summary,.panel,.upload-section,.esg-preview,.usage-ranking,.month-comparison{padding:20px 17px;border-radius:16px}
+  .summary-heading h2{font-size:25px}
+  .summary-heading p{font-size:14px}
+  .summary-grid.executive-kpis{grid-template-columns:1fr}
+  .summary-item{min-height:115px;padding:18px}
+  .usage-progress-foot{flex-wrap:wrap}
+  .history-table-wrap,.table-wrap,.timeline-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+@media(prefers-reduced-motion:reduce){
+  .sidebar{transition:none}
+}

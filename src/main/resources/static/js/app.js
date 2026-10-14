@@ -4,7 +4,8 @@ const sidebar = document.querySelector("#sidebar");
 function goToSection(id) {
   document.querySelector("#" + id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   navItems.forEach(item => item.classList.toggle("active", item.dataset.section === id));
-  sidebar?.classList.remove("open");
+  if (typeof window.closePortalSidebar === "function") window.closePortalSidebar();
+  else sidebar?.classList.remove("open");
 }
 
 navItems.forEach(item => {
@@ -13,10 +14,6 @@ navItems.forEach(item => {
 
 document.querySelectorAll("[data-go]").forEach(button => {
   button.addEventListener("click", () => goToSection(button.dataset.go));
-});
-
-document.querySelector("#menuButton")?.addEventListener("click", () => {
-  sidebar?.classList.toggle("open");
 });
 
 const search = document.querySelector("#equipmentSearch");

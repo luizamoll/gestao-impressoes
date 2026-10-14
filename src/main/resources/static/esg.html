@@ -11,24 +11,35 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css?v=20261014-1" />
+  <link rel="stylesheet" href="css/leitura.css?v=20261014-3" />
     </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar" id="sidebar">
-      <div class="brand">
-        <div class="brand-official-wrap"><img class="brand-official-logo" src="assets/portal-unh-marca.svg?v=20261014-1" alt="Unihorizontes" /><strong>Portal UNH</strong></div>
-      </div>
+      <a class="brand brand-link" href="index.html?v=20261014-3" aria-label="Voltar ao início do Portal UNH">
+        <div class="brand-official-wrap">
+          <img class="brand-official-logo" src="assets/portal-unh-marca-verde.svg?v=20261014-2" alt="Centro Universitário Unihorizontes" />
+          <strong>PORTAL UNH</strong>
+          <span class="sidebar-brand-subtitle">Intranet e sistemas internos</span>
+        </div>
+      </a>
+      <div class="sidebar-group-title" aria-hidden="true">Navegação</div>
 
       <nav class="nav" aria-label="Navegação principal">
-        <a class="nav-item" href="impressao.html?v=20261009-5#overview">
+        <a class="nav-item central-link" href="index.html?v=20261014-3">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.2 12 4l9 7.2V21h-6v-6H9v6H3v-9.8Zm2 1V19h2v-6h10v6h2v-6.8L12 6.6 5 12.2Z"/></svg>
+          <span>Página inicial</span>
+        </a>
+        <div class="sidebar-nav-group" aria-hidden="true">Gestão de Impressões</div>
+        <a class="nav-item" href="impressao.html?v=20261014-3#overview">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 0h6v6h-6v-6Z"/></svg>
           <span>Visão geral</span>
         </a>
-        <a class="nav-item" href="impressao.html?v=20261009-5#equipment">
+        <a class="nav-item" href="impressao.html?v=20261014-3#equipment">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v5H6V4Zm-2 7h16v8h-3v2H7v-2H4v-8Zm5 8h6v-5H9v5Z"/></svg>
           <span>Equipamentos</span>
         </a>
-        <a class="nav-item" href="impressao.html?v=20261009-5#upload">
+        <a class="nav-item" href="impressao.html?v=20261014-3#upload">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5.8 8.2 8.6 6.8 7.2 12 2l5.2 5.2-1.4 1.4L13 5.8V15h-2V5.8ZM4 14h2v5h12v-5h2v7H4v-7Z"/></svg>
           <span>Novo relatório</span>
         </a>
@@ -37,13 +48,19 @@
           <span>ESG</span>
         </a>
       </nav>
+      <div class="sidebar-footer">
+        <span class="sidebar-footer-label">Área de trabalho</span>
+        <strong>Gestão de Impressões</strong>
+        <small>Ambiente em desenvolvimento</small>
+      </div>
     </aside>
+    <button class="sidebar-scrim" type="button" id="sidebarScrim" aria-label="Fechar menu lateral" hidden></button>
 
     <main class="main">
       <header class="topbar">
-        <button class="menu-button" id="menuButton" aria-label="Abrir menu">☰</button>
+        <button type="button" class="menu-button" id="menuButton" aria-label="Abrir navegação" aria-controls="sidebar" aria-expanded="false">☰</button>
         <h1>ESG</h1>
-        <a class="primary-button link-button" href="impressao.html?v=20261009-5">Voltar ao painel</a>
+        <a class="primary-button link-button" href="impressao.html?v=20261014-3">Voltar ao painel</a>
       </header>
 
       <div class="content esg-page-content">
@@ -115,9 +132,6 @@
     </main>
   </div>
 
-  <script>
-    const sidebar=document.querySelector("#sidebar");
-    document.querySelector("#menuButton")?.addEventListener("click",()=>sidebar?.classList.toggle("open"));
-  </script>
+  <script src="js/sidebar.js?v=20261014-3" defer></script>
 </body>
 </html>
