@@ -206,3 +206,19 @@ body{font-size:16px;line-height:1.62;color:var(--ink);text-rendering:optimizeLeg
 @media(prefers-reduced-motion:reduce){
   .sidebar{transition:none}
 }
+
+/* Assinatura institucional: texto em HTML, sem redução da marca completa. */
+.app-shell{grid-template-columns:270px minmax(0,1fr)}
+.sidebar .brand-identity{width:100%;display:flex;align-items:center;gap:9px;min-width:0}
+.sidebar .brand-identity-symbol{width:47px;height:47px;flex:0 0 47px;object-fit:contain;display:block}
+.sidebar .brand-identity-copy{display:flex;flex-direction:column;min-width:0;gap:1px}
+.sidebar .brand-identity-kicker{
+  color:#316d57;font-size:8px;font-weight:800;letter-spacing:.045em;
+  line-height:1.3;white-space:nowrap
+}
+.sidebar .brand-identity-name{
+  color:#075641;font-size:20px;font-weight:800;letter-spacing:-.075em;
+  line-height:1.1;white-space:nowrap
+}
+.sidebar .brand-official-wrap{gap:7px}
+@media(max-width:1050px){.app-shell{display:block}}

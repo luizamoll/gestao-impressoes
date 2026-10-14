@@ -335,3 +335,36 @@ body.portal-body{margin:0;min-width:320px;background:#f5f7f6;color:var(--portal-
     margin:0 auto 25px;
   }
 }
+
+/* Marca nítida: símbolo vetorial + palavras como texto real no navegador. */
+.portal-logo-link{
+  display:inline-flex;align-items:center;gap:10px;
+  max-width:none;flex:0 1 auto;min-width:0;
+  text-decoration:none;color:#075641;
+}
+.portal-logo-symbol{width:58px;height:58px;flex:0 0 58px;display:block}
+.portal-logo-copy{display:flex;flex-direction:column;justify-content:center;gap:0;min-width:0}
+.portal-logo-kicker{
+  color:#23664f;font-weight:700;font-size:10px;letter-spacing:.17em;
+  white-space:nowrap;line-height:1.35
+}
+.portal-logo-name{
+  color:#075641;font-weight:800;font-size:29px;letter-spacing:-.065em;
+  line-height:1.06;white-space:nowrap
+}
+@media(max-width:1120px){
+  .portal-logo-symbol{width:52px;height:52px;flex-basis:52px}
+  .portal-logo-name{font-size:25px}
+  .portal-logo-kicker{font-size:9px;letter-spacing:.11em}
+}
+@media(max-width:850px){
+  .portal-logo-link{max-width:calc(100% - 103px);gap:9px}
+  .portal-logo-symbol{width:50px;height:50px;flex-basis:50px}
+  .portal-logo-name{font-size:24px}
+}
+@media(max-width:460px){
+  .portal-logo-symbol{width:43px;height:43px;flex-basis:43px}
+  .portal-logo-link{gap:7px}
+  .portal-logo-name{font-size:clamp(18px,5vw,22px)}
+  .portal-logo-kicker{font-size:7px;letter-spacing:.085em}
+}
