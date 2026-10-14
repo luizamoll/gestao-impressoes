@@ -35,3 +35,30 @@ não faz login, não gerencia arquivos e não tem backend de comunicados.
 A imagem arquitetônica ilustrativa do mockup aprovado não foi tratada como foto real do campus;
 foi substituída por uma composição abstrata de marca.
 Nenhum deploy para o servidor da UNH é realizado automaticamente.
+
+
+## Protótipo do Mural Interativo (14/10/2026)
+
+**Regra escolhida:** somente responsáveis e setores autorizados criam publicações.
+Colaboradores comentam e reagem em posts permitidos. Leitores apenas visualizam.
+
+A home agora contém um protótipo com alternância de perfis simulados, publicação
+de teste, comentário, resposta em um nível, reação "Útil", bloqueio/habilitação
+de comentários por publicação, ocultação/restauração de comentários e exclusão
+das publicações de teste criadas pelo responsável.
+
+O formulário recusa links, endereços de e-mail, três exemplos de termos ofensivos
+e comentários idênticos. Esses filtros existem SOMENTE no navegador para ilustrar
+o comportamento; não são uma solução de segurança ou moderação suficiente.
+
+O protótipo utiliza apenas memória JavaScript e reinicia ao atualizar. Não há
+autenticação, persistência, publicação institucional real, anexos ou notificações.
+A alternância de perfis serve para avaliar a interface e **não constitui permissão real**.
+
+Antes do uso institucional:
+- integração de contas institucionais e autorização no backend;
+- modelo persistido PostgreSQL para usuários, postagens, comentários, reações,
+  permissões por post, moderação e auditoria;
+- revisão e aplicação no servidor das políticas de conteúdo (não confiar no JS);
+- limite de requisições, antifraude, XSS, CSRF, privacidade e ciclo de retenção;
+- especificar quem aprova comunicados oficiais e o que deve ser público/restrito.

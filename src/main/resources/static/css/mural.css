@@ -1,0 +1,91 @@
+/* Mural do Portal UNH: interface de prototipo, isolada da Gestao de Impressoes. */
+.mural-section{min-width:0}
+.mural-panel{background:#fff;border:1px solid #e2e9e5;border-radius:21px;box-shadow:0 12px 35px rgba(37,60,46,.055);overflow:hidden}
+.mural-panel [hidden]{display:none!important}
+.mural-panel input,.mural-panel select,.mural-panel textarea,.mural-panel button{font:inherit}
+.mural-panel :is(button,input,textarea,select):focus-visible{outline:3px solid #78c8a7;outline-offset:3px}
+.mural-demo-top{padding:14px 20px;background:#f3f8f4;border-bottom:1px solid #e1ede4}
+.mural-demo-label{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:#166849}
+.mural-demo-dot{width:7px;height:7px;border-radius:100%;background:#36a973}
+.mural-demo-top p{margin:3px 0 0;color:#5e7769;font-size:12px;line-height:1.5}
+.mural-permission-bar{padding:17px 20px 15px;border-bottom:1px solid #edf0ee}
+.mural-permission-bar label{display:block;font-size:12px;font-weight:800;color:#375343;margin:0 0 7px}
+.mural-permission-bar select{width:100%;border:1px solid #dce7df;background:#fff;color:#1f3d30;border-radius:10px;padding:10px 12px;font-size:13px;min-height:44px}
+.mural-role-help{font-size:12px;margin:7px 0 0;color:#60756a}
+.mural-composer-locked{padding:17px 20px;display:flex;align-items:center;gap:11px;border-bottom:1px solid #ecf0ed;color:#5b6f63;font-size:13px}
+.mural-composer-locked>span:nth-child(2){flex:1}
+.mural-lock-symbol{font-size:14px;opacity:.65}
+.mural-avatar{flex:0 0 40px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#e7f3ed;color:#0d6345;font-size:15px;font-weight:800}
+.mural-avatar-neutral{background:#f1f3f1;color:#64776b}
+.mural-composer{padding:19px 20px;border-bottom:1px solid #e8efe9;display:grid;gap:9px}
+.mural-composer-title{display:flex;align-items:center;gap:10px;margin-bottom:5px}
+.mural-composer-title>div{display:grid;gap:0}
+.mural-composer-title strong{font-size:14px}
+.mural-composer-title small{font-size:11px;color:#718178}
+.mural-composer>label:not(.mural-checkbox-label){font-size:12px;font-weight:700;color:#3d5348}
+.mural-composer input[type=text],.mural-composer textarea,.mural-comment-form textarea{
+  width:100%;border:1px solid #dbe5de;background:#fbfcfb;border-radius:10px;color:#22392b;
+  padding:10px 12px;font-size:13px;line-height:1.55;resize:vertical
+}
+.mural-composer-options{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.mural-checkbox-label{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:#415c4b}
+.mural-checkbox-label input{accent-color:#086344;width:16px;height:16px}
+.mural-publish{border:0;border-radius:9px;background:#075641;color:#fff;min-height:39px;padding:8px 13px;font-weight:700;font-size:12px;cursor:pointer}
+.mural-publish:hover{background:#064736}
+.mural-feed-heading{padding:17px 20px 11px;display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.mural-feed-heading strong{font-size:14px;color:#203c2c}
+.mural-feed-heading span{font-size:11px;color:#859188}
+.mural-feed{display:grid;gap:13px;padding:0 14px 16px}
+.mural-feed-loading,.mural-feed-empty{margin:0;padding:20px 12px;color:#6b8071;font-size:13px}
+.mural-post{border:1px solid #e6ebe7;border-radius:15px;padding:17px;background:#fff;box-shadow:0 3px 11px rgba(28,54,37,.025);min-width:0}
+.mural-post-header{display:flex;align-items:center;gap:10px}
+.mural-post-author{flex:1;min-width:0}
+.mural-post-author strong{display:block;font-size:13px;line-height:1.25;color:#1f3529}
+.mural-post-author small{display:block;font-size:11px;color:#7a887d;margin-top:2px}
+.mural-post-kind{background:#edf5ef;border-radius:7px;color:#16694c;font-size:10px;font-weight:800;padding:5px 7px}
+.mural-post h3{font-size:16px;line-height:1.35;letter-spacing:-.025em;margin:15px 0 6px;color:#1b3123}
+.mural-post-body{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;color:#4e6053;line-height:1.7;margin:0 0 15px}
+.mural-post-stats{font-size:12px;color:#6a7b6e;display:flex;gap:13px;padding-bottom:8px}
+.mural-post-actions{display:flex;gap:8px;border-top:1px solid #edf0ed;border-bottom:1px solid #edf0ed;padding:7px 0;flex-wrap:wrap}
+.mural-action{border:0;background:transparent;color:#5f7165;border-radius:8px;min-height:35px;padding:5px 11px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.mural-action:hover:not(:disabled){background:#eff7f1;color:#086344}
+.mural-action.is-active{color:#076243;background:#e7f4eb}
+.mural-action:disabled{color:#abb5ae;cursor:not-allowed}
+.mural-mod-tools{display:flex;flex-wrap:wrap;gap:7px;padding:12px 0 0}
+.mural-mod-tools .mural-action{font-size:11px;border:1px solid #e2ebe5}
+.mural-comments-blocked{font-size:12px;color:#647669;padding:11px 0 0;display:flex;gap:6px;align-items:center}
+.mural-thread{padding-top:12px;display:grid;gap:10px}
+.mural-comment{display:flex;gap:9px;align-items:flex-start}
+.mural-comment.mural-reply{margin-left:31px}
+.mural-comment .mural-avatar{width:29px;height:29px;flex-basis:29px;font-size:11px}
+.mural-comment-content{flex:1;min-width:0}
+.mural-comment-bubble{background:#f4f7f4;padding:11px 12px;border-radius:12px}
+.mural-comment-bubble strong{display:block;color:#283f30;font-size:12px}
+.mural-comment-bubble small{display:block;color:#6d8071;font-size:10px}
+.mural-comment-bubble p{margin:5px 0 0;font-size:12px;color:#4d6255;white-space:pre-wrap;overflow-wrap:anywhere}
+.mural-comment-buttons{display:flex;gap:9px;margin:5px 0 0}
+.mural-comment-buttons button{border:0;background:none;color:#637c6b;font-size:11px;font-weight:700;cursor:pointer;padding:4px 2px}
+.mural-comment-buttons button:hover{color:#075b3e;text-decoration:underline}
+.mural-comment-form{display:grid;gap:7px;margin-top:5px}
+.mural-comment-form label{font-size:12px;font-weight:700;color:#425e4c}
+.mural-comment-form-footer{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.mural-comment-form-footer small{color:#849286;font-size:10px}
+.mural-comment-form .mural-publish{min-height:35px}
+.mural-reply-note{border-radius:8px;background:#eaf5ed;padding:7px 9px;font-size:11px;color:#35654c;display:flex;justify-content:space-between;gap:8px}
+.mural-reply-note button{border:0;background:transparent;color:#216f4a;cursor:pointer;font-size:11px}
+.mural-comment-hidden{font-size:11px;font-style:italic;color:#7c8980;margin:0}
+.mural-feedback{color:#265f46;font-size:12px;line-height:1.5;padding:0 20px;margin:0}
+.mural-feedback:not(:empty){padding-bottom:16px}
+.portal-feature-grid{align-items:start}
+.portal-tools-card{flex:none}
+@media(max-width:650px){
+ .mural-demo-top,.mural-permission-bar,.mural-composer{padding-left:16px;padding-right:16px}
+ .mural-composer-locked{padding:15px 16px}
+ .mural-feed{padding-left:9px;padding-right:9px}
+ .mural-feed-heading{padding-left:16px;padding-right:16px}
+ .mural-post{padding:15px 13px}
+ .mural-post-actions{gap:2px}
+ .mural-action{padding:5px 8px}
+ .mural-comment.mural-reply{margin-left:16px}
+}
+@media(prefers-reduced-motion:reduce){.mural-action,.mural-publish{transition:none}}

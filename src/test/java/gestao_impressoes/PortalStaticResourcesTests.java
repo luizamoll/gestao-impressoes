@@ -21,6 +21,8 @@ class PortalStaticResourcesTests {
         assertTrue(new ClassPathResource("static/css/styles.css").exists());
         assertTrue(new ClassPathResource("static/css/portal.css").exists());
         assertTrue(new ClassPathResource("static/js/portal.js").exists());
+        assertTrue(new ClassPathResource("static/css/mural.css").exists());
+        assertTrue(new ClassPathResource("static/js/mural.js").exists());
         assertTrue(new ClassPathResource("static/css/leitura.css").exists());
         assertTrue(new ClassPathResource("static/js/sidebar.js").exists());
         assertTrue(new ClassPathResource("static/assets/portal-unh-marca-verde.svg").exists());
