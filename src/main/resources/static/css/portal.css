@@ -368,3 +368,11 @@ body.portal-body{margin:0;min-width:320px;background:#f5f7f6;color:var(--portal-
   .portal-logo-name{font-size:clamp(18px,5vw,22px)}
   .portal-logo-kicker{font-size:7px;letter-spacing:.085em}
 }
+
+/* Carteira: novo módulo de Gestão à Vista e busca para múltiplos cartões. */
+.portal-feature-stack #ferramentas .portal-tools-card{margin-bottom:12px}
+.portal-feature-stack #ferramentas .portal-tools-card[hidden]{display:none!important}
+.gv-home-status{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:#637365;text-align:right;font-weight:700}
+.gv-home-status:before{content:"";width:6px;height:6px;border-radius:50%;background:#b5c3b8}
+.gv-home-tool .portal-tool-icon{background:#edf3ee;color:#0d6546}
+@media(max-width:650px){.portal-feature-stack #ferramentas .portal-tools-card{margin-bottom:10px}}

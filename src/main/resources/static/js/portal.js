@@ -29,7 +29,7 @@
 
   // Filtra apenas o catalogo local; sem chamada a servidores.
   const searchInput = document.getElementById("portalToolSearch");
-  const toolCard = document.getElementById("portalToolCard");
+  const toolCards = [...document.querySelectorAll(".portal-tools-card[data-search]")];
   const emptyNotice = document.getElementById("portalToolEmpty");
   const normalize = value => value
     .toLocaleLowerCase("pt-BR")
@@ -38,11 +38,15 @@
     .trim();
 
   searchInput?.addEventListener("input", () => {
-    if (!toolCard || !emptyNotice) return;
+    if (!toolCards.length || !emptyNotice) return;
     const query = normalize(searchInput.value);
-    const match = normalize(toolCard.getAttribute("data-search") || "").includes(query);
-    toolCard.hidden = !match;
-    emptyNotice.hidden = match;
+    let count = 0;
+    toolCards.forEach(card => {
+      const match = normalize(card.getAttribute("data-search") || "").includes(query);
+      card.hidden = !match;
+      if (match) count++;
+    });
+    emptyNotice.hidden = count > 0;
   });
 
   document.addEventListener("keydown", event => {

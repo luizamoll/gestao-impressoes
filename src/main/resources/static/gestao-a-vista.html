@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Gestão à Vista do Portal UNH: indicadores operacionais e comparações por período." />
+  <title>Gestão à Vista | Portal UNH</title>
+  <link rel="icon" type="image/png" href="assets/portal-unh-favicon-v2.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/portal.css?v=20261014-8" />
+  <link rel="stylesheet" href="css/gestao-vista.css?v=20261014-1" />
+  <script src="js/portal.js?v=20261014-8" defer></script>
+  <script src="js/gestao-vista.js?v=20261014-1" defer></script>
+</head>
+<body class="portal-body gv-body">
+  <a class="portal-skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="portal-header">
+    <div class="portal-container portal-header-inner">
+      <a class="portal-logo-link" href="index.html?v=20261014-8" aria-label="Voltar ao Portal UNH">
+        <img class="portal-logo-symbol" src="assets/portal-unh-simbolo.svg?v=20261014-7" alt="" width="62" height="62" />
+        <span class="portal-logo-copy"><span class="portal-logo-kicker">CENTRO UNIVERSITÁRIO</span><span class="portal-logo-name">unihorizontes</span></span>
+      </a>
+      <button class="portal-menu-toggle" id="portalMenuButton" type="button" aria-controls="portalNav" aria-expanded="false" aria-label="Abrir menu de navegação">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span>
+      </button>
+      <nav class="portal-nav" id="portalNav" aria-label="Navegação principal">
+        <a href="index.html?v=20261014-8">Início</a>
+        <a href="index.html?v=20261014-8#ferramentas">Ferramentas</a>
+        <a href="index.html?v=20261014-8#comunicados">Comunicados</a>
+        <a href="#conteudo" aria-current="page">Gestão à Vista</a>
+      </nav>
+      <div class="portal-brand-context"><strong>Portal UNH</strong><span>Intranet e Sistemas Internos</span></div>
+    </div>
+  </header>
+
+  <main id="conteudo" class="gv-page portal-container">
+    <nav class="gv-breadcrumb" aria-label="Localização">
+      <a href="index.html?v=20261014-8">Portal UNH</a><span aria-hidden="true">/</span><span aria-current="page">Gestão à Vista</span>
+    </nav>
+
+    <section class="gv-intro" aria-labelledby="gvTitle">
+      <div class="gv-intro-copy">
+        <span class="gv-eyebrow"><span class="gv-dash"></span> Indicadores e acompanhamento</span>
+        <h1 id="gvTitle">Gestão <em>à Vista.</em></h1>
+        <p>Acompanhe resultados e entenda o que mudou, sem precisar interpretar relatórios técnicos. Cada indicador terá período, origem e regras de cálculo claros.</p>
+        <div class="gv-tags"><span>Em desenvolvimento</span><span>Dados históricos · sem atualização automática</span></div>
+      </div>
+      <div class="gv-intro-art" aria-hidden="true">
+        <div class="gv-art-top"><span>VISUALIZE</span><span>COMPARE</span><span>DECIDA</span></div>
+        <div class="gv-art-graphic">
+          <div class="gv-art-steps"><i></i><i></i><i></i><i></i></div>
+          <div class="gv-art-line"></div>
+        </div>
+        <strong>Informação que orienta decisões.</strong>
+      </div>
+    </section>
+
+    <section class="gv-areas" aria-labelledby="gvAreasTitle">
+      <div>
+        <span class="gv-eyebrow">Áreas monitoradas</span>
+        <h2 id="gvAreasTitle">Um painel de cada vez, com dados confiáveis.</h2>
+        <p>Começamos pela Gestão de Impressões. Outros setores entram à medida que definirmos fontes e indicadores.</p>
+      </div>
+      <div class="gv-area-links">
+        <a href="#impressoes" class="gv-area-ready"><span>●</span> Impressões <small>Primeira fonte</small></a>
+        <span class="gv-area-future">Outras áreas <small>A definir</small></span>
+      </div>
+    </section>
+
+    <section class="gv-dashboard" id="impressoes" aria-labelledby="gvPrintTitle">
+      <div class="gv-dashboard-head">
+        <div>
+          <span class="gv-eyebrow">Operação · Gestão de Impressões</span>
+          <h2 id="gvPrintTitle">Consumo e franquia</h2>
+          <p>Uma visão gerencial dos dados históricos utilizados no projeto.</p>
+        </div>
+        <label class="gv-period" for="gvPeriod">Competência
+          <select id="gvPeriod">
+            <option value="2026-09" selected>Setembro/2026 · fechado</option>
+            <option value="2026-08">Agosto/2026 · fechado</option>
+            <option value="2026-10">Outubro/2026 · sem leitura</option>
+          </select>
+        </label>
+      </div>
+      <p class="gv-warning">Os valores desta versão são históricos e não estão sincronizados com um banco de dados. Outubro ainda não possui uma leitura de consumo confirmada.</p>
+      <div class="gv-kpis" aria-label="Indicadores da competência selecionada">
+        <article class="gv-kpi gv-kpi-main"><span>Consumo apurado</span><strong id="gvConsumed">1.522</strong><small id="gvConsumedNote">Impressões em setembro</small></article>
+        <article class="gv-kpi"><span>Franquia mensal</span><strong>4.000</strong><small>Limite contratado</small></article>
+        <article class="gv-kpi"><span>Saldo calculado</span><strong id="gvRemaining">2.478</strong><small id="gvRemainingNote">Após o consumo do mês</small></article>
+        <article class="gv-kpi gv-kpi-delta" id="gvTrend"><span>Variação anterior</span><strong id="gvDelta">+506</strong><small id="gvDeltaNote">+49,8% versus agosto</small></article>
+      </div>
+
+      <div class="gv-panels">
+        <section class="gv-panel gv-comparison" aria-labelledby="gvHistoryTitle">
+          <div class="gv-panel-top">
+            <div><h3 id="gvHistoryTitle">Comparação mensal</h3><p>Proporção em relação à franquia mensal de 4.000.</p></div>
+            <span class="gv-caption-pill">Histórico</span>
+          </div>
+          <div class="gv-bars" role="group" aria-label="Agosto: 1.016 impressões, 25,4% da franquia. Setembro: 1.522 impressões, 38,1% da franquia. Outubro: sem leitura apurada.">
+            <div class="gv-bar-row" data-period="2026-08">
+              <div><strong>Agosto/2026</strong><span>1.016 · 25,4%</span></div>
+              <div class="gv-track"><span style="width:25.4%"></span></div>
+            </div>
+            <div class="gv-bar-row gv-bar-selected" data-period="2026-09">
+              <div><strong>Setembro/2026</strong><span>1.522 · 38,1%</span></div>
+              <div class="gv-track"><span style="width:38.05%"></span></div>
+            </div>
+            <div class="gv-bar-row gv-bar-waiting" data-period="2026-10">
+              <div><strong>Outubro/2026</strong><span>Aguardando leitura</span></div>
+              <div class="gv-track"><span style="width:0%"></span></div>
+              <small>Sem barra porque o consumo não foi apurado, não porque foi zero.</small>
+            </div>
+          </div>
+          <div class="gv-insight gv-insight-alert" id="gvInsight" role="status" aria-live="polite">
+            <span id="gvInsightIcon" aria-hidden="true">↗</span>
+            <p id="gvInsightText">De agosto para setembro, o consumo aumentou 506 impressões (+49,8%). Vale acompanhar essa variação.</p>
+          </div>
+          <details class="gv-method"><summary>Como os indicadores são calculados?</summary>
+            <p>Consumo mensal = diferença entre duas leituras acumuladas do mesmo equipamento. A franquia de 4.000 é independente para cada mês. Sem leitura suficiente, o consumo é desconhecido — não zero.</p>
+          </details>
+        </section>
+        <aside class="gv-panel gv-reading" aria-labelledby="gvReadTitle">
+          <h3 id="gvReadTitle">O que observar</h3>
+          <div class="gv-reading-item"><b>01</b><div><strong>Olhe o período</strong><p>Um resultado mensal só pode ser comparado com outro período equivalente.</p></div></div>
+          <div class="gv-reading-item"><b>02</b><div><strong>Confira a origem</strong><p>Os valores vêm do histórico do projeto de Gestão de Impressões, sem integração automática nesta versão.</p></div></div>
+          <div class="gv-reading-item"><b>03</b><div><strong>Evite interpretações erradas</strong><p>Sem leitura registrada, não temos como dizer quanto foi impresso.</p></div></div>
+          <a class="gv-open-source" href="impressao.html?v=20261014-3">Abrir Gestão de Impressões <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+      <div class="gv-source"><span aria-hidden="true">●</span><p><strong>Fonte:</strong> registros históricos de agosto e setembro/2026 do projeto de impressões. Números fixos, ainda sujeitos à validação institucional antes de qualquer publicação em produção.</p></div>
+    </section>
+
+    <section class="gv-future">
+      <div><span class="gv-eyebrow">Próximas integrações</span><h2>Novos indicadores, sem números inventados.</h2>
+        <p>Quando definirmos quais processos a UNH deseja acompanhar, o painel poderá reunir suporte, tarefas e outros resultados relevantes.</p>
+      </div>
+      <div class="gv-future-list"><div><strong>Atendimento e suporte</strong><small>Métrica e fonte a definir</small></div><div><strong>Tarefas e projetos</strong><small>Métrica e fonte a definir</small></div></div>
+    </section>
+  </main>
+  <footer class="portal-footer"><div class="portal-container portal-footer-inner"><span>Portal UNH · Intranet e Sistemas Internos</span><span>Gestão à Vista · Em desenvolvimento</span></div></footer>
+</body>
+</html>
