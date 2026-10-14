@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Gestão Documental do Portal UNH — acesso à Conferência Perseus.">
+  <title>Gestão Documental | Portal UNH</title>
+  <link rel="icon" type="image/png" href="assets/portal-unh-favicon-v2.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .document-container{max-width:1050px;margin:0 auto;padding:44px 6vw 80px}
+    .document-back{display:inline-flex;margin-bottom:24px;color:#0f6b4f;font-weight:600;font-size:13px;text-decoration:none}
+    .document-intro h1{font-size:38px;line-height:1.15;letter-spacing:-.045em;margin:8px 0 12px}
+    .document-intro p{color:#68736e;max-width:720px;line-height:1.7}
+    .document-panel{margin-top:28px;background:white;border:1px solid #dce2df;border-radius:20px;padding:30px;box-shadow:0 6px 20px rgba(34,43,39,.04)}
+    .document-status{font-size:11px;font-weight:700;color:#6b736f;background:#eef1ef;border-radius:8px;padding:6px 10px;display:inline-block}
+    .document-panel h2{font-size:24px;letter-spacing:-.03em;margin:14px 0 8px}
+    .document-panel p,.document-panel li{font-size:14px;color:#68736e;line-height:1.75}
+    .document-actions{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}
+    .document-button{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;padding:12px 18px;font-size:13px;font-weight:600;text-decoration:none;background:#0f6b4f;color:#fff}
+    .document-help{background:#f4f7f5;border:1px solid #dfe7e2;padding:18px 20px;border-radius:12px}
+    .document-help strong{font-size:13px}
+    .document-help ol{margin:10px 0 0;padding-left:20px}
+    .document-help code{overflow-wrap:anywhere;color:#244e3d}
+    .document-warning{font-size:12px!important;color:#58665f!important;margin-top:16px}
+    @media(max-width:620px){.document-container{padding:30px 20px 55px}.document-intro h1{font-size:30px}.document-panel{padding:22px}}
+  </style>
+</head>
+<body class="portal-body">
+  <header class="portal-header">
+    <div class="portal-brand">
+      <img class="portal-official-logo" src="assets/unh-logo-oficial-branca.png" alt="Unihorizontes">
+      <div><strong>Centro Universitário Unihorizontes</strong><span>Intranet e Sistemas Internos</span></div>
+    </div>
+  </header>
+  <main class="document-container">
+    <a class="document-back" href="index.html">← Voltar ao Portal UNH</a>
+    <div class="document-intro">
+      <span class="portal-kicker" style="color:#0f6b4f">Ferramentas internas</span>
+      <h1>Gestão Documental</h1>
+      <p>Central de conferência e validação de documentos institucionais. As ferramentas são disponibilizadas por etapas, respeitando os requisitos de segurança e acesso.</p>
+    </div>
+    <section class="document-panel" aria-labelledby="perseusTitle">
+      <span class="document-status">Disponível para uso local</span>
+      <h2 id="perseusTitle">Conferência Perseus</h2>
+      <p>Processe relatórios PDF do Perseus, confira os registros extraídos, identifique divergências e exporte os resultados em Excel ou PDF.</p>
+      <div class="document-actions">
+        <a class="document-button" href="http://127.0.0.1:8878/" target="_blank" rel="noopener noreferrer">Abrir Conferência Perseus ↗</a>
+      </div>
+      <div class="document-help">
+        <strong>Como acessar nesta etapa</strong>
+        <ol>
+          <li>Inicie a Conferência Perseus no mesmo computador em que está navegando.</li>
+          <li>Mantenha o servidor Python aberto.</li>
+          <li>Clique em “Abrir Conferência Perseus”. Se não abrir, verifique se o programa foi iniciado na porta 8878.</li>
+        </ol>
+      </div>
+      <p class="document-warning"><strong>Atenção:</strong> este endereço funciona somente no computador que estiver executando o Perseus. O acesso pela rede da Unihorizontes ainda depende de hospedagem, autenticação e proteção dos documentos. Não envie PDFs reais para serviços públicos de teste.</p>
+    </section>
+  </main>
+</body>
+</html>
