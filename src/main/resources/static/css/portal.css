@@ -163,3 +163,18 @@ body.portal-body{margin:0;min-width:320px;background:#f5f7f6;color:var(--portal-
  html{scroll-behavior:auto}
  .portal-button{transition:none}
 }
+
+/* Busca funcional da carteira; compatível com toque e leitores de tela */
+.portal-visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.portal-tool-search{
+  display:flex;align-items:center;gap:9px;
+  min-height:42px;padding:0 13px;margin:0 0 12px;
+  border:1px solid var(--portal-line);border-radius:11px;
+  background:#fff;color:#668176;
+}
+.portal-tool-search:focus-within{border-color:#0b835c;box-shadow:0 0 0 3px rgba(17,117,83,.09)}
+.portal-tool-search svg{width:18px;height:18px;flex:0 0 auto}
+.portal-tool-search input{width:100%;border:0;outline:0;background:transparent;color:var(--portal-ink);font-size:12px;min-width:0}
+.portal-tool-search input::placeholder{color:#89958e}
+.portal-search-empty{margin:0;border:1px dashed #cfddd4;border-radius:14px;background:white;padding:24px;color:#66746e;font-size:13px}
+.portal-feature-section [hidden]{display:none!important}

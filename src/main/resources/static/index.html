@@ -95,7 +95,12 @@
             </div>
             <span class="portal-count-pill">1 disponível</span>
           </div>
-          <div class="portal-tools-card">
+          <label class="portal-tool-search" for="portalToolSearch">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
+            <span class="portal-visually-hidden">Buscar ferramentas</span>
+            <input id="portalToolSearch" type="search" autocomplete="off" placeholder="Buscar ferramenta ou finalidade..." aria-controls="portalToolCard" />
+          </label>
+          <div class="portal-tools-card" id="portalToolCard" data-search="gestão de impressões impressao impressões franquia consumo equipamentos histórico leituras indicadores esg">
             <div class="portal-tool-card-top">
               <span class="portal-tool-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
@@ -108,6 +113,7 @@
             <a class="portal-button portal-button-primary portal-tool-action"
               href="impressao.html?v=20261014-2">Acessar sistema <span aria-hidden="true">→</span></a>
           </div>
+          <p class="portal-search-empty" id="portalToolEmpty" role="status" hidden>Nenhuma ferramenta encontrada. Tente outro termo.</p>
         </section>
 
         <section class="portal-feature-section" id="comunicados" aria-labelledby="newsTitle">

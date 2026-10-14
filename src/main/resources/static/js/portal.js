@@ -26,6 +26,25 @@
     closeMenu();
   }));
 
+
+  // Filtra apenas o catalogo local; sem chamada a servidores.
+  const searchInput = document.getElementById("portalToolSearch");
+  const toolCard = document.getElementById("portalToolCard");
+  const emptyNotice = document.getElementById("portalToolEmpty");
+  const normalize = value => value
+    .toLocaleLowerCase("pt-BR")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+
+  searchInput?.addEventListener("input", () => {
+    if (!toolCard || !emptyNotice) return;
+    const query = normalize(searchInput.value);
+    const match = normalize(toolCard.getAttribute("data-search") || "").includes(query);
+    toolCard.hidden = !match;
+    emptyNotice.hidden = match;
+  });
+
   document.addEventListener("keydown", event => {
     if (event.key === "Escape") closeMenu();
   });
