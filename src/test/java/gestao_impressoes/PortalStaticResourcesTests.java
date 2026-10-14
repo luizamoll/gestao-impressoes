@@ -25,6 +25,7 @@ class PortalStaticResourcesTests {
         assertTrue(new ClassPathResource("static/css/mural.css").exists());
         assertTrue(new ClassPathResource("static/js/mural.js").exists());
         assertTrue(new ClassPathResource("static/css/leitura.css").exists());
+        assertTrue(new ClassPathResource("static/css/painel-premium.css").exists());
         assertTrue(new ClassPathResource("static/js/sidebar.js").exists());
         assertTrue(new ClassPathResource("static/css/gestao-vista.css").exists());
         assertTrue(new ClassPathResource("static/js/gestao-vista.js").exists());
