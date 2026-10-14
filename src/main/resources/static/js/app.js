@@ -3,7 +3,13 @@ const sidebar = document.querySelector("#sidebar");
 
 function goToSection(id) {
   document.querySelector("#" + id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-  navItems.forEach(item => item.classList.toggle("active", item.dataset.section === id));
+  navItems.forEach(item => {
+    const current = item.dataset.section === id;
+    item.classList.toggle("active", current);
+    if (current) item.setAttribute("aria-current", "page");
+    else item.removeAttribute("aria-current");
+  });
+  if (window.history?.replaceState) window.history.replaceState(null, "", "#" + id);
   if (typeof window.closePortalSidebar === "function") window.closePortalSidebar();
   else sidebar?.classList.remove("open");
 }
@@ -11,6 +17,21 @@ function goToSection(id) {
 navItems.forEach(item => {
   item.addEventListener("click", () => goToSection(item.dataset.section));
 });
+
+// Links vindos do ESG preservam a seção correta no menu.
+function syncActiveSection() {
+  const id = window.location.hash.replace("#", "");
+  if (!["overview", "equipment", "upload"].includes(id)) return;
+  navItems.forEach(item => {
+    const active = item.dataset.section === id;
+    item.classList.toggle("active", active);
+    if (active) item.setAttribute("aria-current", "page");
+    else item.removeAttribute("aria-current");
+  });
+}
+syncActiveSection();
+window.addEventListener("hashchange", syncActiveSection);
+
 
 document.querySelectorAll("[data-go]").forEach(button => {
   button.addEventListener("click", () => goToSection(button.dataset.go));
