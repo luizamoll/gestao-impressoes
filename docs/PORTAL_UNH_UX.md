@@ -71,3 +71,8 @@ Antes do uso institucional:
 - Hero troca composição gráfica genérica pela fotografia real da entrada da instituição fornecida pela usuária; o arquivo é otimizado em AVIF e não usa imagem sintética de fachada.
 - Responsividade: cartão de ferramenta reorganiza-se para telas pequenas; foto ganha recorte adaptável.
 - Sem alteração do mural interativo, da Gestão de Impressões, do Dockerfile ou da hospedagem institucional.
+
+
+## Correção do hero após revisão visual
+
+A foto ficou artificial e borrada por compressão excessiva (arquivo inicial do repositório de apenas 5,4 KB para 800 × 446). Alteração de layout: o hero agora usa foto em proporção natural 16:9, recorte retangular discreto, sem selo sobre a imagem e sem bordas orgânicas exageradas, com texto independente à esquerda. O recurso atual permanece provisório até que uma fotografia com qualidade adequada seja incorporada ao repositório. Esta correção não altera a intranet institucional nem o feed.
