@@ -196,3 +196,86 @@ body.portal-body{margin:0;min-width:320px;background:#f5f7f6;color:var(--portal-
  .portal-hero p{font-size:15px}
  .portal-feature-head p,.portal-tools-card p,.portal-announcement-card p{font-size:14px}
 }
+
+/* Revisão da home: foto real da entrada da UNH + módulos organizados por hierarquia */
+.portal-feature-grid.portal-feature-stack{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:36px;
+}
+.portal-feature-stack .portal-feature-section{display:block;width:100%}
+.portal-feature-stack .portal-feature-head{min-height:0;margin-bottom:19px}
+.portal-feature-stack #ferramentas{padding-bottom:39px;border-bottom:1px solid #dce7df}
+.portal-feature-stack #ferramentas .portal-tool-search{max-width:480px;margin-bottom:14px}
+.portal-feature-stack #ferramentas .portal-tools-card{
+  display:grid;grid-template-columns:72px minmax(0,1fr) auto;
+  grid-template-rows:auto auto;gap:2px 24px;
+  align-items:center;min-height:0;padding:25px 29px;
+}
+.portal-feature-stack #ferramentas .portal-tool-card-top{
+  grid-column:1;grid-row:1/3;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:8px;
+}
+.portal-feature-stack #ferramentas .portal-tools-card h3{
+  grid-column:2;grid-row:1;margin:0;font-size:21px
+}
+.portal-feature-stack #ferramentas .portal-tools-card p{
+  grid-column:2;grid-row:2;margin:0;max-width:620px
+}
+.portal-feature-stack #ferramentas .portal-tool-action{
+  grid-column:3;grid-row:1/3;margin:0;white-space:nowrap;align-self:center
+}
+.portal-feature-stack #comunicados{
+  width:min(100%,900px);
+  margin-inline:auto;
+  scroll-margin-top:25px;
+}
+.portal-hero-photo{
+  position:relative;align-self:center;
+  width:100%;height:350px;
+  margin:35px 0 35px;
+  overflow:hidden;
+  border-radius:130px 24px 24px 105px;
+  border:1px solid #d6e0d9;
+  box-shadow:0 25px 55px rgba(12,48,30,.10);
+  background:linear-gradient(135deg,#d9e5dd,#70877a);
+}
+.portal-hero-photo>img{
+  display:block;width:100%;height:100%;
+  object-fit:cover;object-position:58% 48%;
+  filter:contrast(1.03) saturate(.96);
+}
+.portal-hero-photo:after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(9,68,47,.06),transparent 50%);
+}
+.portal-hero-photo figcaption{
+  position:absolute;bottom:19px;left:29px;z-index:1;
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(255,255,255,.55);
+  border-radius:999px;padding:9px 14px;
+  background:rgba(255,255,255,.92);color:#1b5740;
+  font-size:12px;font-weight:800;
+  box-shadow:0 10px 23px rgba(0,0,0,.12);
+}
+.portal-photo-dot{width:8px;height:8px;background:#1caa72;border-radius:50%}
+@media(max-width:850px){
+ .portal-hero-photo{width:100%;height:295px;margin:22px 0 34px}
+ .portal-feature-stack #ferramentas .portal-tools-card{grid-template-columns:64px minmax(0,1fr);gap:5px 18px}
+ .portal-feature-stack #ferramentas .portal-tool-card-top{grid-column:1;grid-row:1/3}
+ .portal-feature-stack #ferramentas .portal-tools-card h3{grid-column:2;grid-row:1}
+ .portal-feature-stack #ferramentas .portal-tools-card p{grid-column:2;grid-row:2}
+ .portal-feature-stack #ferramentas .portal-tool-action{grid-column:1/3;grid-row:3;margin-top:16px;justify-self:start}
+}
+@media(max-width:650px){
+ .portal-hero-photo{height:230px;border-radius:80px 15px 15px 70px;margin:20px 0 26px}
+ .portal-hero-photo figcaption{left:15px;bottom:14px;font-size:11px;padding:6px 10px}
+ .portal-feature-grid.portal-feature-stack{gap:31px}
+ .portal-feature-stack #ferramentas{padding-bottom:30px}
+ .portal-feature-stack #ferramentas .portal-tools-card{padding:19px;gap:5px 12px}
+ .portal-feature-stack #ferramentas .portal-tool-card-top{gap:5px}
+ .portal-feature-stack #ferramentas .portal-tools-card h3{font-size:18px}
+ .portal-feature-stack #ferramentas .portal-tools-card p{font-size:13px}
+ .portal-feature-stack #ferramentas .portal-tool-action{justify-self:stretch}
+}

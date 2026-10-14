@@ -62,3 +62,12 @@ Antes do uso institucional:
 - revisão e aplicação no servidor das políticas de conteúdo (não confiar no JS);
 - limite de requisições, antifraude, XSS, CSRF, privacidade e ciclo de retenção;
 - especificar quem aprova comunicados oficiais e o que deve ser público/restrito.
+
+
+## Revisão de hierarquia da home (14/10/2026)
+
+- Ferramentas deixam de competir lado a lado com um feed crescente: catálogo compacto e horizontal logo depois do destaque.
+- Mural institucional vem em seção separada, abaixo, em coluna de leitura de até 900px.
+- Hero troca composição gráfica genérica pela fotografia real da entrada da instituição fornecida pela usuária; o arquivo é otimizado em AVIF e não usa imagem sintética de fachada.
+- Responsividade: cartão de ferramenta reorganiza-se para telas pequenas; foto ganha recorte adaptável.
+- Sem alteração do mural interativo, da Gestão de Impressões, do Dockerfile ou da hospedagem institucional.
