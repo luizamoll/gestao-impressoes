@@ -14,6 +14,7 @@ class PortalStaticResourcesTests {
         assertTrue(new ClassPathResource("static/esg.html").exists(), "Pagina ESG deve estar disponivel");
         assertTrue(new ClassPathResource("static/gestao-a-vista.html").exists());
         assertTrue(new ClassPathResource("static/gestao-documental.html").exists());
+        assertTrue(new ClassPathResource("static/automacoes.html").exists());
     }
 
     @Test
@@ -30,6 +31,8 @@ class PortalStaticResourcesTests {
         assertTrue(new ClassPathResource("static/js/sidebar.js").exists());
         assertTrue(new ClassPathResource("static/css/gestao-vista.css").exists());
         assertTrue(new ClassPathResource("static/css/gestao-documental.css").exists());
+        assertTrue(new ClassPathResource("static/css/automacoes.css").exists());
+        assertTrue(new ClassPathResource("static/js/automacoes.js").exists());
         assertTrue(new ClassPathResource("static/js/gestao-vista.js").exists());
         assertTrue(new ClassPathResource("static/assets/portal-unh-marca-verde.svg").exists());
         assertTrue(new ClassPathResource("static/assets/portal-unh-simbolo.svg").exists());

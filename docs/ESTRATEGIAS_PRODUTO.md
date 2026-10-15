@@ -49,3 +49,8 @@ Usar se um fluxo envolver 2+ serviços e eventos confiáveis, por exemplo: **con
 ## Próxima revisão
 
 Reavaliar escolhas após testes reais de busca, uso e processamento em Windows. Evitar mudanças decorativas que aumentem dívida técnica. Documentar o motivo de cada tecnologia adicionada.
+
+
+## Nova diretriz: automações para equipes + GitHub obrigatório
+
+Em 15/10/2026 ficou definido que as próximas automações são destinadas aos colaboradores autorizados da UNH. Todo código, documentação e script será versionado no GitHub, sem dados de alunos nem segredos. Ver docs/CENTRAL_AUTOMACOES.md.

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#ffffff"/>
+  <meta name="description" content="Central de Automações do Portal UNH: catálogo de ferramentas e fluxos para colaboradores."/>
+  <title>Central de Automações | Portal UNH</title>
+  <link rel="icon" type="image/png" href="assets/portal-unh-favicon-v2.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/portal.css?v=20261015-2"/>
+  <link rel="stylesheet" href="css/automacoes.css?v=20261015-2"/>
+  <script src="js/portal.js?v=20261014-9" defer></script>
+  <script src="js/automacoes.js?v=20261015-2" defer></script>
+</head>
+<body class="portal-body automation-body">
+  <a class="portal-skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="portal-header"><div class="portal-container portal-header-inner">
+    <a class="portal-logo-link" href="index.html?v=20261015-2" aria-label="Voltar ao Portal UNH">
+      <img class="portal-logo-symbol" src="assets/portal-unh-simbolo.svg?v=20261014-7" alt="" width="62" height="62"/>
+      <span class="portal-logo-copy"><span class="portal-logo-kicker">CENTRO UNIVERSITÁRIO</span><span class="portal-logo-name">unihorizontes</span></span>
+    </a>
+    <button class="portal-menu-toggle" id="portalMenuButton" type="button" aria-controls="portalNav" aria-expanded="false" aria-label="Abrir menu de navegação">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span>
+    </button>
+    <nav class="portal-nav" id="portalNav" aria-label="Navegação principal">
+      <a href="index.html?v=20261015-2">Início</a><a href="index.html?v=20261015-2#ferramentas">Ferramentas</a><a href="index.html?v=20261015-2#comunicados">Comunicados</a><a href="#conteudo" aria-current="page">Automações</a>
+    </nav>
+    <div class="portal-brand-context"><strong>Portal UNH</strong><span>Intranet e Sistemas Internos</span></div>
+  </div></header>
+  <main id="conteudo" class="portal-container automation-main">
+    <nav class="automation-breadcrumb" aria-label="Localização"><a href="index.html?v=20261015-2">Portal UNH</a><span aria-hidden="true">/</span><span>Central de Automações</span></nav>
+    <section class="automation-hero" aria-labelledby="automationTitle">
+      <div>
+        <span class="automation-eyebrow">Operações e produtividade</span>
+        <h1 id="automationTitle">Central de <em>Automações.</em></h1>
+        <p>Ferramentas para simplificar tarefas repetitivas das equipes da UNH. Tudo organizado pelo que você precisa fazer, com a situação real de cada integração.</p>
+        <div class="automation-tags"><span>Em desenvolvimento</span><span>Uso compartilhado requer autorização da TI</span></div>
+      </div>
+      <aside class="automation-hero-visual" aria-label="Fluxo de uma automação"><strong>COMO VAI FUNCIONAR</strong>
+        <div><span>Solicitação</span><span aria-hidden="true">→</span><span>Processamento</span><span aria-hidden="true">→</span><span>Resultado</span></div>
+        <small>Um fluxo claro para quem não precisa saber programar.</small>
+      </aside>
+    </section>
+    <section class="automation-section" aria-labelledby="automationListTitle">
+      <div class="automation-section-heading">
+        <div><span class="automation-eyebrow">Catálogo de ferramentas</span><h2 id="automationListTitle">O que deseja automatizar?</h2><p>Ferramentas locais e ideias em planejamento estão identificadas separadamente.</p></div>
+        <span id="automationCount" class="automation-counter" role="status" aria-live="polite">3 ferramentas</span>
+      </div>
+      <div class="automation-controls">
+        <label for="automationSearch">Buscar por tarefa <input id="automationSearch" type="search" autocomplete="off" placeholder="Ex.: PDF, planilha, documento"/></label>
+        <label for="automationStatus">Situação <select id="automationStatus"><option value="todas">Todas</option><option value="local">Uso local</option><option value="planejada">Planejadas</option></select></label>
+      </div>
+      <div class="automation-grid" id="automationGrid">
+        <article class="automation-card" data-status="local" data-search="perseus conferir relatorio pdf alunos fatura divergencias planilha excel extrair organizar">
+          <div class="automation-card-top"><span>01</span><small class="automation-status-local">Uso local</small></div>
+          <h3>Conferência Perseus</h3><p>Extrai e confere registros de relatórios PDF e gera arquivos de saída.</p>
+          <p class="automation-card-note"><strong>Ainda não é multiusuário:</strong> o processamento Python funciona somente no computador que iniciou o Perseus.</p>
+          <a href="gestao-documental.html?v=20261015-1">Ver ferramenta e instruções <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="automation-card" data-status="planejada" data-search="planilhas excel xlsx csv consertar corrigir colunas acentos organizar formatacao">
+          <div class="automation-card-top"><span>02</span><small class="automation-status-planned">Planejada</small></div>
+          <h3>Organização de planilhas</h3><p>Proposta: padronizar estrutura e corrigir erros de colunas e formatos conforme regras definidas.</p>
+          <p class="automation-card-note">Precisa de exemplos, testes e aprovação das regras.</p>
+          <span class="automation-unavailable">Ainda não disponível</span>
+        </article>
+        <article class="automation-card" data-status="planejada" data-search="documentos pdf word docx renomear padronizar arquivo lote ementario matriz">
+          <div class="automation-card-top"><span>03</span><small class="automation-status-planned">Planejada</small></div>
+          <h3>Padronização de documentos</h3><p>Proposta: aplicar modelos aprovados, organizar e renomear arquivos em lote.</p>
+          <p class="automation-card-note">Formatos e permissões deverão ser definidos com os setores.</p>
+          <span class="automation-unavailable">Ainda não disponível</span>
+        </article>
+      </div>
+      <p id="automationEmpty" class="automation-empty" role="status" hidden>Nenhuma ferramenta encontrada. Tente outra pesquisa.</p>
+    </section>
+    <section class="automation-governance" aria-labelledby="automationGovernanceTitle">
+      <div><span class="automation-eyebrow">Estratégia e segurança</span><h2 id="automationGovernanceTitle">Feita para equipes, não só para um computador.</h2><p>O catálogo é o começo. Para executar automações com documentos reais de vários colaboradores, precisamos de autenticação, permissões, processamento protegido e validação da TI.</p></div>
+      <div class="automation-principles"><span>✓ Código e documentação versionados no GitHub</span><span>✓ Dados pessoais e senhas fora do repositório</span><span>✓ Python para processamento; n8n quando fizer sentido</span></div>
+    </section>
+  </main>
+  <footer class="portal-footer"><div class="portal-container portal-footer-inner"><span>Portal UNH · Intranet e Sistemas Internos</span><span>Central de Automações · Em desenvolvimento</span></div></footer>
+</body>
+</html>

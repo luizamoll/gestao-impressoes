@@ -37,3 +37,8 @@ Portal UNH: iniciar seu servidor local e abrir `http://127.0.0.1:8000/gestao-doc
 Perseus: na pasta Portal UNH, executar `iniciar_perseus_local.bat` (procura o projeto no perfil/área de trabalho); depois clicar em "Abrir Perseus neste computador". A janela do Python deve permanecer aberta.
 
 O usuário deve saber que o link funciona somente com o servidor Python iniciado. Nenhuma etapa cria servidor remoto, hospeda documentos, instala n8n ou modifica os registros.
+
+
+## Transição para uso compartilhado
+
+A Central de Automações foi criada como catálogo de ferramentas. O Perseus existente continua local e não está disponível para múltiplos colaboradores via Portal. A expansão depende de autenticação institucional, API/gateway interno, isolamento dos processos Python, tratamento seguro de arquivos e aprovação da TI. O código privado do Perseus não será copiado para o repositório público do Portal.
