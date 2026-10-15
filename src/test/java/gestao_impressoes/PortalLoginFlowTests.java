@@ -97,6 +97,12 @@ class PortalLoginFlowTests {
         assertTrue(account.body().contains("Login realizado!"));
         assertTrue(account.body().contains("admin.lab"));
         assertEquals(200, get(client, "/gestao-a-vista.html").statusCode());
+
+        // A falha de pagina protegida deve manter HTTP 404 e apresentar a
+        // mensagem segura, nao uma pagina de erro 999 ou redirecionamento.
+        HttpResponse<String> missing = get(client, "/pagina-que-nao-existe-portal-unh");
+        assertEquals(404, missing.statusCode());
+        assertTrue(missing.body().contains("Não foi possível abrir esta página."));
     }
 
     @Test
