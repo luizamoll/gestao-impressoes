@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minha conta | Portal UNH</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      display: grid; place-items: center; min-height: 100vh; margin: 0; padding: 24px;
+      background: #f0f6f2; color: #164330; font-family: "Segoe UI", Arial, sans-serif;
+    }
+    .card {
+      width: min(100%, 480px); padding: 34px; border-radius: 22px;
+      background: white; border: 1px solid #dce9e0;
+      box-shadow: 0 17px 50px rgba(13,72,39,.09);
+    }
+    .eyebrow { font-weight: 800; font-size: 13px; letter-spacing: .13em; color: #146849; }
+    h1 { margin: 12px 0; font-size: 32px; line-height: 1.16; }
+    p { font-size: 16px; line-height: 1.6; }
+    .identity { padding: 15px; background: #ecf5ef; border: 1px solid #d8e9de; border-radius: 12px; }
+    .identity strong { overflow-wrap: anywhere; }
+    .actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 24px; }
+    a, button {
+      display: inline-block; border-radius: 10px; padding: 12px 17px;
+      font: inherit; font-weight: 700; font-size: 15px; cursor: pointer;
+    }
+    a { background: #075641; color: #fff; text-decoration: none; }
+    button { border: 1px solid #b9d1c1; background: white; color: #174c38; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #28a878; outline-offset: 3px; }
+    .note { color: #546b5b; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="eyebrow">PORTAL UNH · LABORATÓRIO</div>
+    <h1>Login realizado!</h1>
+    <p>Você entrou no ambiente de testes. Sua sessão foi reconhecida pelo Spring Security.</p>
+    <div class="identity">Usuário autenticado: <strong th:text="${userName}">admin.lab</strong></div>
+    <p class="note">A conta é temporária. O acesso institucional e as permissões por setor ainda não foram configurados.</p>
+    <div class="actions">
+      <a th:href="@{/}">Voltar ao Portal</a>
+      <form th:action="@{/logout}" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <button type="submit">Sair da conta</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
