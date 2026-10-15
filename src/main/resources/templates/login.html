@@ -3,194 +3,268 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#e9f2eb">
+  <meta name="theme-color" content="#e9ebec">
   <meta name="description" content="Acesso ao ambiente de trabalho do Portal UNH.">
   <title>Entrar | Portal UNH</title>
   <link rel="icon" type="image/png" href="/assets/portal-unh-favicon-v2.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
-      --ink: #173c30;
-      --forest: #064934;
-      --green: #0b6448;
-      --muted: #496258;
-      --line: #c9d8ce;
+      --ink: #1c2a30;
+      --ink-soft: #4f5f66;
+      --forest: #145642;
+      --line: #d8dcdd;
     }
     *, *::before, *::after { box-sizing: border-box; }
     html { min-height: 100%; }
     body {
-      position: relative;
-      isolation: isolate;
       min-height: 100vh;
       margin: 0;
-      padding: clamp(18px, 4vw, 52px);
+      padding: clamp(18px, 4.5vw, 66px);
       display: grid;
       place-items: center;
       overflow-x: hidden;
+      isolation: isolate;
+      position: relative;
       color: var(--ink);
-      font-family: "Segoe UI", Inter, Arial, sans-serif;
-      background: linear-gradient(138deg,#e8f3ea 0%,#f5f8f5 42%,#dcebe2 100%);
+      font-family: "DM Sans", "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(ellipse at 16% 12%, rgba(173,186,196,.22), transparent 38%),
+        radial-gradient(ellipse at 87% 88%, rgba(190,185,177,.25), transparent 36%),
+        linear-gradient(135deg, #f3f4f5 0%, #e9eced 44%, #e0e5e7 100%);
     }
-    body::before {
+    body::after {
       content: "";
       position: fixed;
-      z-index: -1;
       inset: 0;
+      z-index: -1;
       pointer-events: none;
-      background: radial-gradient(circle at 12% 12%,rgba(106,176,135,.28),transparent 33%),
-                  radial-gradient(circle at 95% 92%,rgba(30,108,77,.14),transparent 38%);
-    }
-    a, button, input { -webkit-tap-highlight-color: transparent; }
-    a:focus-visible, button:focus-visible, input:focus-visible {
-      outline: 3px solid #28a878;
-      outline-offset: 3px;
+      background-image: linear-gradient(115deg, transparent 20%, rgba(255,255,255,.28) 46%, transparent 72%);
+      opacity: .65;
     }
     .login-shell {
       display: grid;
-      grid-template-columns: minmax(0,1.06fr) minmax(0,.94fr);
-      width: min(1080px,100%);
-      min-height: 620px;
+      grid-template-columns: minmax(0,1.07fr) minmax(0,.93fr);
+      width: min(1150px, 100%);
+      min-height: 660px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,.86);
-      border-radius: 29px;
-      box-shadow: 0 30px 90px rgba(10,60,35,.14),0 3px 15px rgba(10,60,35,.04);
-      background: rgba(255,255,255,.79);
+      position: relative;
+      border: 1px solid rgba(255,255,255,.93);
+      border-radius: 25px;
+      background: #fff;
+      box-shadow:
+        0 52px 100px -32px rgba(27,46,54,.23),
+        0 18px 38px -20px rgba(30,46,55,.13),
+        0 1px 2px rgba(26,46,54,.06);
     }
     .visual {
       position: relative;
-      min-height: 610px;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 37px 42px 44px;
+      min-height: 660px;
+      isolation: isolate;
+      padding: clamp(30px,3.6vw,48px);
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(16,29,33,.42) 0%, rgba(21,37,41,.10) 32%, rgba(14,28,35,.72) 100%),
+        url('/assets/portal-unh-conceito.webp') center / cover no-repeat,
+        #314b4c;
       color: #fff;
-      background: linear-gradient(145deg,rgba(4,44,31,.75),rgba(8,77,55,.72) 48%,rgba(7,47,38,.84)),
-                  url('/assets/portal-unh-conceito.webp') center / cover,
-                  linear-gradient(135deg,#194936,#477c5b);
     }
-    .visual::after {
+    .visual::before {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      box-shadow: inset -1px 0 0 rgba(255,255,255,.18), inset 0 0 72px rgba(8,27,31,.1);
+    }
+    .visual-brand { display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; }
+    .visual-brand-mark {
+      display: grid;
+      place-items: center;
+      flex: 0 0 46px;
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.95);
+      box-shadow: 0 7px 20px rgba(0,0,0,.13);
+    }
+    .visual-brand-mark img { display: block; width: 33px; height: 33px; }
+    .visual-brand-copy { display: grid; gap: 3px; text-shadow: 0 1px 6px rgba(0,0,0,.23); }
+    .visual-brand-copy strong { font-size: 17px; font-weight: 700; letter-spacing: -.02em; }
+    .visual-brand-copy small { font-size: 12px; font-weight: 500; color: rgba(255,255,255,.9); }
+    .visual-content { max-width: 480px; position: relative; z-index: 1; }
+    .visual-content::before {
+      content: "";
+      display: block;
+      width: 42px;
+      height: 2px;
+      margin-bottom: 22px;
+      background: rgba(244,247,241,.87);
+    }
+    .visual h2 {
+      margin: 0 0 16px;
+      font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+      font-size: clamp(35px,3.6vw,51px);
+      font-weight: 700;
+      letter-spacing: -.055em;
+      line-height: 1.15;
+      text-wrap: balance;
+      text-shadow: 0 2px 17px rgba(0,0,0,.18);
+    }
+    .visual p {
+      margin: 0;
+      max-width: 400px;
+      font-size: 16px;
+      line-height: 1.72;
+      font-weight: 500;
+      color: rgba(255,255,255,.92);
+      text-shadow: 0 1px 10px rgba(0,0,0,.19);
+    }
+    .login-panel {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(35px,4.7vw,72px);
+      background: linear-gradient(150deg, #fff 0%, #fbfcfc 66%, #f6f8f8 100%);
+    }
+    .login-panel::before {
       content: "";
       position: absolute;
-      pointer-events: none;
-      width: 340px;
-      height: 340px;
-      top: 15%;
-      right: -185px;
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 50%;
-      box-shadow: 0 0 0 65px rgba(255,255,255,.035),0 0 0 130px rgba(255,255,255,.025);
-    }
-    .visual > * { position: relative; z-index: 1; }
-    .visual-brand { display: flex; align-items: center; gap: 12px; }
-    .visual-brand-mark {
-      display: grid; place-items: center; flex: 0 0 52px;
-      width: 52px; height: 52px;
-      border-radius: 15px;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
       background: rgba(255,255,255,.95);
-      box-shadow: 0 8px 24px rgba(3,44,27,.15);
     }
-    .visual-brand-mark img { width: 37px; height: 37px; display: block; }
-    .visual-brand-copy { display: grid; gap: 2px; }
-    .visual-brand-copy strong { font-size: 19px; letter-spacing: -.03em; }
-    .visual-brand-copy small { font-size: 12px; letter-spacing: .03em; color: #e2f4e9; }
-    .visual-content { max-width: 440px; }
-    .visual-eyebrow {
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 9px 13px; border-radius: 100px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.19);
-      font-size: 12px; letter-spacing: .075em; font-weight: 750;
+    .panel-kicker {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+      color: #536973;
+      margin-bottom: 27px;
     }
-    .visual-eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #a2eabc; }
-    .visual h2 { margin: 22px 0 14px; font-size: clamp(33px,3.65vw,48px); line-height: 1.13; letter-spacing: -.05em; }
-    .visual p { max-width: 380px; margin: 0; font-size: 17px; line-height: 1.65; color: #e5f3ea; }
-    .visual-footer { color: #d4e7d9; font-size: 13px; letter-spacing: .01em; }
-    .login-panel {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: clamp(30px,4.6vw,64px);
-      background: linear-gradient(145deg,rgba(255,255,255,.93),rgba(248,252,249,.79));
-      backdrop-filter: blur(14px);
+    h1 {
+      max-width: 410px;
+      margin: 0;
+      font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+      font-weight: 700;
+      font-size: clamp(32px,3.1vw,43px);
+      letter-spacing: -.065em;
+      line-height: 1.14;
+      color: #1a2d32;
     }
-    .panel-top {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 10px; margin-bottom: 30px;
+    .subtitle {
+      max-width: 355px;
+      margin: 16px 0 35px;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: var(--ink-soft);
     }
-    .panel-kicker { font-size: 13px; text-transform: uppercase; font-weight: 800; letter-spacing: .11em; color: #256b4c; }
-    .lab-pill { font-size: 12px; font-weight: 650; color: #426554; background: #eaf3ec; padding: 8px 11px; border-radius: 100px; white-space: nowrap; }
-    .avatar-row { display: flex; align-items: center; gap: 13px; margin-bottom: 20px; }
-    .avatar {
-      position: relative;
-      display: grid; place-items: center;
-      width: 67px; height: 67px; flex: 0 0 67px;
-      border-radius: 21px;
-      background: linear-gradient(145deg,#e4f6eb,#cce8d7);
-      border: 1px solid #d1e5d8;
-      box-shadow: 0 8px 21px rgba(13,88,55,.09);
-    }
-    .avatar svg { width: 40px; height: 40px; stroke: #176847; fill: none; stroke-width: 1.7; }
-    .avatar-dot {
-      position: absolute; bottom: -3px; right: -3px;
-      width: 18px; height: 18px; border-radius: 50%;
-      background: #2dba76; border: 3px solid #fff;
-    }
-    .avatar-copy { display: grid; gap: 4px; }
-    .avatar-copy strong { font-size: 15px; color: var(--forest); }
-    .avatar-copy span { font-size: 13px; color: #587064; }
-    h1 { margin: 0; font-size: clamp(31px,3vw,38px); line-height: 1.15; font-weight: 800; letter-spacing: -.045em; color: #103d2b; }
-    .subtitle { margin: 12px 0 28px; font-size: 16px; line-height: 1.6; color: var(--muted); }
     form { display: grid; gap: 0; }
-    label { font-size: 15px; font-weight: 750; color: #274c38; margin: 0 0 8px; }
+    label { margin: 0 0 9px; font-size: 13px; font-weight: 700; color: #34474e; }
     .field {
-      display: block; width: 100%; min-height: 51px;
-      padding: 13px 15px; margin-bottom: 20px;
-      border-radius: 12px; border: 1.5px solid var(--line);
-      font: inherit; font-size: 16px; color: #143c2b;
-      background: rgba(255,255,255,.92);
-      transition: border-color .16s,box-shadow .16s;
+      display: block;
+      width: 100%;
+      min-height: 55px;
+      padding: 14px 16px;
+      margin-bottom: 24px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      color: #25383e;
+      font: inherit;
+      font-size: 15px;
+      transition: border-color .18s ease, box-shadow .18s ease;
     }
-    .field:focus { border-color: #247952; box-shadow: 0 0 0 4px rgba(28,127,81,.11); outline: none; }
-    .field::placeholder { color: #6b8273; }
+    .field::placeholder { color: #869298; }
+    .field:hover { border-color: #adb9bc; }
+    .field:focus { border-color: #367969; outline: none; box-shadow: 0 0 0 4px rgba(28,106,79,.11); }
     .submit {
-      display: flex; justify-content: space-between; align-items: center;
-      width: 100%; margin-top: 6px; padding: 16px 19px;
-      border: none; border-radius: 12px;
-      color: #fff; font: inherit; font-size: 16px; font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 57px;
+      margin-top: 3px;
+      padding: 15px 19px;
+      border: none;
+      border-radius: 10px;
+      background: #164f40;
+      color: #fff;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -.01em;
       cursor: pointer;
-      background: linear-gradient(110deg,#09573f,#0f7854);
-      box-shadow: 0 12px 25px rgba(13,100,67,.17);
-      transition: transform .16s,box-shadow .16s,background .16s;
+      box-shadow: 0 14px 25px -15px rgba(11,64,46,.48);
+      transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
     }
-    .submit:hover { transform: translateY(-2px); box-shadow: 0 16px 27px rgba(13,100,67,.22); }
+    .submit span:last-child { font-size: 21px; font-weight: 400; line-height: 1; }
+    .submit:hover { background: #0f4335; transform: translateY(-1px); box-shadow: 0 18px 30px -15px rgba(11,64,46,.5); }
+    .submit:active { transform: translateY(0); }
     .back {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      margin-top: 25px; color: #236047;
-      text-decoration: none; font-weight: 700; font-size: 15px;
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 27px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #4f6869;
     }
-    .back:hover { text-decoration: underline; text-underline-offset: 4px; }
-    .feedback { margin: 0 0 19px; padding: 12px 14px; border: 1px solid #f0c7c1; border-radius: 11px; background: #fff1ed; color: #912d22; font-size: 14px; line-height: 1.5; }
-    .footer { padding-top: 21px; margin-top: 24px; border-top: 1px solid #e0eae3; color: #557064; text-align: center; font-size: 13px; }
+    .back:hover { color: #135744; text-decoration: underline; text-underline-offset: 4px; }
+    .feedback {
+      margin: -12px 0 24px;
+      padding: 12px 14px;
+      border-left: 3px solid #b34c3b;
+      border-radius: 7px;
+      background: #fff4f1;
+      color: #8e3029;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .footer {
+      margin-top: 38px;
+      padding-top: 17px;
+      border-top: 1px solid #e6e9e9;
+      color: #737f83;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+    :is(a, button, input):focus-visible { outline: 3px solid #287e66; outline-offset: 3px; }
+    .field:focus-visible { outline: none; }
     @media (max-width: 900px) {
-      .login-shell { grid-template-columns: 1fr; width: min(540px,100%); }
-      .visual { min-height: 230px; padding: 26px 30px; }
-      .visual-content { margin-top: 25px; }
-      .visual h2 { font-size: 32px; margin: 13px 0 8px; }
-      .visual p { font-size: 15px; line-height: 1.55; }
-      .visual-footer { display: none; }
-      .login-panel { padding: 32px 34px 40px; }
-      .panel-top { margin-bottom: 22px; }
+      .login-shell { grid-template-columns: 1fr; width: min(560px,100%); }
+      .visual { min-height: 260px; padding: 27px 32px; gap: 58px; }
+      .visual h2 { font-size: clamp(27px,5vw,36px); }
+      .visual p { font-size: 14px; }
+      .visual-content::before { margin-bottom: 14px; }
+      .login-panel { padding: 42px clamp(27px,6vw,48px); }
+      .subtitle { margin-bottom: 27px; }
     }
     @media (max-width: 480px) {
-      body { padding: 12px; }
-      .login-shell { border-radius: 20px; }
-      .visual { min-height: 190px; padding: 22px 23px; }
+      body { padding: 10px; }
+      .login-shell { border-radius: 18px; }
+      .visual { min-height: 230px; padding: 22px 24px; gap: 35px; }
       .visual h2 { font-size: 28px; }
-      .visual p { font-size: 14px; }
-      .login-panel { padding: 27px 23px 31px; }
-      .avatar-row { margin-bottom: 15px; }
-      .subtitle { margin-bottom: 23px; }
-      .panel-top { margin-bottom: 18px; }
+      .visual p { font-size: 13px; }
+      .login-panel { padding: 33px 25px; }
+      .panel-kicker { margin-bottom: 21px; }
       h1 { font-size: 31px; }
+      .subtitle { font-size: 14px; margin: 13px 0 26px; }
+      .field { margin-bottom: 19px; }
+      .footer { margin-top: 25px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; }
@@ -199,29 +273,20 @@
 </head>
 <body>
   <main class="login-shell">
-    <section class="visual" aria-label="Bem-vindo ao Portal UNH">
+    <section class="visual" aria-label="Portal UNH">
       <div class="visual-brand">
         <span class="visual-brand-mark"><img src="/assets/portal-unh-simbolo.svg" alt=""></span>
         <span class="visual-brand-copy"><strong>Portal UNH</strong><small>Unihorizontes · Sistemas internos</small></span>
       </div>
       <div class="visual-content">
-        <span class="visual-eyebrow">Seu espaço de trabalho</span>
-        <h2>Conecte-se ao que importa.</h2>
-        <p>Uma experiência mais simples para encontrar suas ferramentas e acompanhar o dia a dia da instituição.</p>
+        <h2>Sua rotina, em um lugar só.</h2>
+        <p>Sistemas, informações e ferramentas para o dia a dia da UNH.</p>
       </div>
-      <div class="visual-footer">Tecnologia para aproximar pessoas e processos.</div>
     </section>
     <section class="login-panel" aria-labelledby="loginTitle">
-      <div class="panel-top"><span class="panel-kicker">Acesso ao portal</span><span class="lab-pill">Ambiente de testes</span></div>
-      <div class="avatar-row">
-        <div class="avatar" aria-hidden="true">
-          <svg viewBox="0 0 64 64"><circle cx="32" cy="22" r="10"/><path d="M12 55c0-13 9-20 20-20s20 7 20 20"/></svg>
-          <span class="avatar-dot"></span>
-        </div>
-        <span class="avatar-copy"><strong>Bem-vindo de volta!</strong><span>Seu espaço começa aqui.</span></span>
-      </div>
-      <h1 id="loginTitle">Entre no seu espaço.</h1>
-      <p class="subtitle">Identifique-se para acessar os recursos protegidos do Portal UNH.</p>
+      <span class="panel-kicker">Acesso ao Portal UNH</span>
+      <h1 id="loginTitle">Acesse sua conta.</h1>
+      <p class="subtitle">Entre com suas credenciais para utilizar os recursos internos disponíveis.</p>
       <p class="feedback" role="alert" th:if="${param.error}">Usuário ou senha incorretos. Tente novamente.</p>
       <form th:action="@{/login}" method="post">
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
@@ -231,8 +296,8 @@
         <input class="field" id="password" name="password" type="password" autocomplete="current-password" placeholder="Sua senha" required>
         <button class="submit" type="submit"><span>Entrar no Portal</span><span aria-hidden="true">→</span></button>
       </form>
-      <a class="back" th:href="@{/}"><span aria-hidden="true">←</span> Continuar sem fazer login</a>
-      <div class="footer">Unihorizontes · Acesso de laboratório, ainda não institucional</div>
+      <a class="back" th:href="@{/}"><span aria-hidden="true">←</span> Voltar ao Portal</a>
+      <div class="footer">Ambiente de testes · Autenticação institucional ainda não habilitada</div>
     </section>
   </main>
 </body>
