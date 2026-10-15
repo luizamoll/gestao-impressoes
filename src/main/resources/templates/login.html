@@ -212,18 +212,39 @@
     .submit span:last-child { font-size: 21px; font-weight: 400; line-height: 1; }
     .submit:hover { background: #0f4335; transform: translateY(-1px); box-shadow: 0 18px 30px -15px rgba(11,64,46,.5); }
     .submit:active { transform: translateY(0); }
+    /* Acao secundaria clara, sem aparencia de link perdido no rodape. */
     .back {
       align-self: flex-start;
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      margin-top: 27px;
-      font-size: 13px;
-      font-weight: 600;
+      gap: 11px;
+      margin-top: 25px;
+      padding: 4px 0;
+      color: #2c444c;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -.01em;
       text-decoration: none;
-      color: #4f6869;
+      transition: color .16s ease;
     }
-    .back:hover { color: #135744; text-decoration: underline; text-underline-offset: 4px; }
+    .back-arrow {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      border: 1px solid #cdd7da;
+      border-radius: 9px;
+      color: #35505a;
+      background: #f4f7f7;
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 1;
+      transition: background .16s ease, border-color .16s ease;
+    }
+    .back:hover { color: #145642; }
+    .back:hover .back-arrow { background: #eaf3ef; border-color: #a4c0b4; }
+    .back:focus-visible { border-radius: 5px; }
     .feedback {
       margin: -12px 0 24px;
       padding: 12px 14px;
@@ -234,13 +255,26 @@
       font-size: 13px;
       line-height: 1.5;
     }
+    /* Informacao institucional: legivel, proxima ao formulario e sem badges. */
     .footer {
-      margin-top: 38px;
-      padding-top: 17px;
-      border-top: 1px solid #e6e9e9;
-      color: #737f83;
-      font-size: 11px;
-      line-height: 1.6;
+      display: grid;
+      gap: 6px;
+      margin-top: 27px;
+      padding-top: 21px;
+      border-top: 1px solid #d9e0e2;
+      color: #415760;
+    }
+    .footer strong {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .005em;
+      color: #354d56;
+    }
+    .footer span {
+      color: #5b6b72;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.55;
     }
     :is(a, button, input):focus-visible { outline: 3px solid #287e66; outline-offset: 3px; }
     .field:focus-visible { outline: none; }
@@ -296,8 +330,11 @@
         <input class="field" id="password" name="password" type="password" autocomplete="current-password" placeholder="Sua senha" required>
         <button class="submit" type="submit"><span>Entrar no Portal</span><span aria-hidden="true">→</span></button>
       </form>
-      <a class="back" th:href="@{/}"><span aria-hidden="true">←</span> Voltar ao Portal</a>
-      <div class="footer">Ambiente de testes · Autenticação institucional ainda não habilitada</div>
+      <a class="back" th:href="@{/}"><span class="back-arrow" aria-hidden="true">←</span><span>Voltar ao Portal</span></a>
+      <div class="footer" aria-label="Informação sobre o ambiente">
+        <strong>Portal UNH · Versão de testes</strong>
+        <span>Utilize as credenciais temporárias geradas ao iniciar o laboratório.</span>
+      </div>
     </section>
   </main>
 </body>
