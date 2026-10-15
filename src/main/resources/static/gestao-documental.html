@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gestão Documental — acesse o programa local de conferência Perseus pelo Portal UNH." />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Gestão Documental · Perseus | Portal UNH</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/portal-unh-favicon-v2.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/portal.css?v=20261015-1" />
+  <link rel="stylesheet" href="css/gestao-documental.css?v=20261015-1" />
+  <script src="js/portal.js?v=20261014-8" defer></script>
+</head>
+<body class="portal-body documental-body">
+  <a class="portal-skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="portal-header">
+    <div class="portal-container portal-header-inner">
+      <a class="portal-logo-link" href="index.html?v=20261015-1" aria-label="Voltar ao início do Portal UNH">
+        <img class="portal-logo-symbol" src="assets/portal-unh-simbolo.svg?v=20261014-7" alt="" width="62" height="62" />
+        <span class="portal-logo-copy">
+          <span class="portal-logo-kicker">CENTRO UNIVERSITÁRIO</span>
+          <span class="portal-logo-name">unihorizontes</span>
+        </span>
+      </a>
+      <button class="portal-menu-toggle" id="portalMenuButton" type="button" aria-controls="portalNav"
+        aria-expanded="false" aria-label="Abrir menu de navegação">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <span>Menu</span>
+      </button>
+      <nav class="portal-nav" id="portalNav" aria-label="Navegação principal">
+        <a href="index.html?v=20261015-1">Início</a>
+        <a href="index.html?v=20261015-1#ferramentas">Ferramentas</a>
+        <a href="index.html?v=20261015-1#comunicados">Comunicados</a>
+        <a href="#conteudo" aria-current="page">Gestão Documental</a>
+      </nav>
+      <div class="portal-brand-context" aria-label="Identificação do portal">
+        <strong>Portal UNH</strong>
+        <span>Intranet e Sistemas Internos</span>
+      </div>
+    </div>
+  </header>
+  <main id="conteudo" class="portal-container documental-main">
+    <nav class="documental-breadcrumb" aria-label="Você está aqui">
+      <a href="index.html?v=20261015-1">Portal UNH</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Gestão Documental</span>
+    </nav>
+    <section class="documental-intro" aria-labelledby="documentalTitle">
+      <div class="documental-intro-copy">
+        <span class="documental-overline"><span aria-hidden="true"></span> Gestão documental</span>
+        <h1 id="documentalTitle">Conferência de relatórios <em>Perseus.</em></h1>
+        <p>Menos trabalho manual com o PDF. Use o programa de conferência já desenvolvido para extrair registros, identificar divergências e gerar planilhas e relatórios.</p>
+        <div class="documental-tags">
+          <span>Motor Python preservado</span>
+          <span>Execução local no Windows</span>
+        </div>
+        <div class="documental-actions">
+          <a class="portal-button portal-button-primary" href="http://127.0.0.1:8878/" target="_blank" rel="noopener noreferrer">
+            Abrir Perseus neste computador <span aria-hidden="true">↗</span>
+          </a>
+          <a class="documental-text-link" href="#como-usar">Como iniciar <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="documental-local-note">O atalho abre o programa somente se ele estiver em execução neste computador. O servidor do Portal UNH não inicia o Python automaticamente.</p>
+      </div>
+      <aside class="documental-preview" aria-label="Fluxo de conferência">
+        <div class="documental-preview-heading">
+          <span>Fluxo documental</span><strong>PERSEUS</strong>
+        </div>
+        <div class="documental-flow-item"><span class="documental-flow-icon">01</span><div><strong>Importar PDF</strong><small>Alunos Coletados para Fatura</small></div></div>
+        <span class="documental-flow-arrow" aria-hidden="true">↓</span>
+        <div class="documental-flow-item"><span class="documental-flow-icon">02</span><div><strong>Conferir dados</strong><small>Quantidade, períodos e divergências</small></div></div>
+        <span class="documental-flow-arrow" aria-hidden="true">↓</span>
+        <div class="documental-flow-item documental-flow-finished"><span class="documental-flow-icon">03</span><div><strong>Baixar resultados</strong><small>Excel, PDF, CSV e pacote técnico</small></div></div>
+      </aside>
+    </section>
+
+    <section class="documental-instructions" id="como-usar" aria-labelledby="documentalStepsTitle">
+      <div class="documental-section-heading">
+        <span class="documental-overline">Uso no Windows</span>
+        <h2 id="documentalStepsTitle">Como abrir o processamento local</h2>
+        <p>O Perseus continua com servidor e processamento próprios. A entrada pelo portal facilita encontrá-lo sem copiar nem modificar seu motor de conferência.</p>
+      </div>
+      <div class="documental-step-grid">
+        <article class="documental-step">
+          <span class="documental-step-number">01</span>
+          <h3>Inicie o Perseus</h3>
+          <p>Em um PowerShell na pasta do Portal UNH, execute o iniciador de integração:</p>
+          <code>.\iniciar_perseus_local.bat</code>
+          <small>O arquivo procura o Perseus instalado no seu perfil do Windows. Se não encontrar, informa onde procurar.</small>
+        </article>
+        <article class="documental-step">
+          <span class="documental-step-number">02</span>
+          <h3>Selecione o relatório</h3>
+          <p>No Perseus, escolha o PDF <strong>Alunos Coletados para Fatura</strong>, processe e confira alertas ou diferenças na contagem.</p>
+        </article>
+        <article class="documental-step">
+          <span class="documental-step-number">03</span>
+          <h3>Exporte com segurança</h3>
+          <p>Baixe as saídas da conferência e verifique os registros em revisão antes de compartilhar qualquer informação.</p>
+        </article>
+      </div>
+    </section>
+    <section class="documental-note" aria-labelledby="documentalNoteTitle">
+      <span aria-hidden="true">i</span>
+      <div>
+        <h2 id="documentalNoteTitle">Esta é uma integração de navegação, ainda não de processamento.</h2>
+        <p>O programa Perseus recebe e processa o PDF no próprio computador, sem enviar arquivos para o Portal UNH. Não é uma ferramenta de compactação visual do PDF: ela extrai, organiza e confere os dados. A integração direta por API e as permissões institucionais serão avaliadas posteriormente.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="portal-footer">
+    <div class="portal-container portal-footer-inner">
+      <span>Portal UNH · Intranet e Sistemas Internos</span><span>Gestão Documental · Ambiente local em desenvolvimento</span>
+    </div>
+  </footer>
+</body>
+</html>
