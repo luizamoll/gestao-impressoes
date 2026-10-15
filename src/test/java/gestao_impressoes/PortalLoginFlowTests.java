@@ -52,6 +52,14 @@ class PortalLoginFlowTests {
             HttpResponse.BodyHandlers.ofString());
     }
 
+    private HttpResponse<String> getJson(HttpClient client, String path) throws Exception {
+        return client.send(
+            HttpRequest.newBuilder(url(path))
+                .header("Accept", "application/json")
+                .GET().timeout(Duration.ofSeconds(8)).build(),
+            HttpResponse.BodyHandlers.ofString());
+    }
+
     private String csrfFrom(String html) {
         Matcher m = Pattern.compile("name=\"_csrf\"[^>]*value=\"([^\"]+)\"")
             .matcher(html);
@@ -68,7 +76,7 @@ class PortalLoginFlowTests {
         assertEquals(302, protectedPage.statusCode());
         assertTrue(protectedPage.headers().firstValue("location").orElse("").contains("/login"));
 
-        HttpResponse<String> privateStatus = get(client, "/api/gestao-a-vista/status");
+        HttpResponse<String> privateStatus = getJson(client, "/api/gestao-a-vista/status");
         assertEquals(302, privateStatus.statusCode());
         assertTrue(privateStatus.headers().firstValue("location").orElse("").contains("/login"));
 
@@ -102,7 +110,7 @@ class PortalLoginFlowTests {
         assertTrue(account.body().contains("admin.lab"));
         assertEquals(200, get(client, "/gestao-a-vista.html").statusCode());
 
-        HttpResponse<String> status = get(client, "/api/gestao-a-vista/status");
+        HttpResponse<String> status = getJson(client, "/api/gestao-a-vista/status");
         assertEquals(200, status.statusCode());
         assertTrue(status.body().contains("aguardando_autorizacao"));
         assertTrue(status.body().contains("\"conectado\":false"));
