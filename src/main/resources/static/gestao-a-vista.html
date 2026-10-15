@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/portal.css?v=20261015-v2" />
-  <link rel="stylesheet" href="css/gestao-vista.css?v=20261015-v2" />
+  <link rel="stylesheet" href="css/gestao-vista.css?v=20261015-v3" />
   <script src="js/portal.js?v=20261014-8" defer></script>
-  <script src="js/gestao-vista.js?v=20261014-1" defer></script>
+  <script src="js/gestao-vista.js?v=20261015-v3" defer></script>
 </head>
 <body class="portal-body gv-body">
   <a class="portal-skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -80,7 +80,7 @@
             <h2 id="gvWorkspaceTitle">Tudo o que importa, em perspectiva.</h2>
             <p>Uma visão do andamento dos projetos, prazos e entregas — respeitando as permissões de cada equipe.</p>
           </div>
-          <span class="gv-workspace-status"><span aria-hidden="true"></span> Aguardando integração</span>
+          <span class="gv-workspace-status" id="gvConnectorStatus" role="status" aria-live="polite"><span aria-hidden="true"></span><span id="gvConnectorText">Verificando integração…</span></span>
         </div>
 
         <div class="gv-workspace-brief" role="note">
@@ -97,6 +97,23 @@
           <article class="gv-workspace-stat"><span>Próximos prazos</span><strong>—</strong><small>Dados não conectados</small></article>
           <article class="gv-workspace-stat"><span>Concluídas no período</span><strong>—</strong><small>Dados não conectados</small></article>
         </div>
+
+        <section class="gv-history-snapshot" aria-labelledby="gvHistorySnapshotTitle">
+          <div class="gv-history-snapshot-copy">
+            <span class="gv-workspace-kicker">Fonte histórica disponível</span>
+            <h3 id="gvHistorySnapshotTitle">Gestão de Impressões</h3>
+            <p>Registros do projeto, ainda sem sincronização automática nem validação institucional.</p>
+          </div>
+          <div class="gv-history-snapshot-metric">
+            <strong>1.522</strong>
+            <span>Impressões em setembro/2026</span>
+          </div>
+          <div class="gv-history-snapshot-metric">
+            <strong>4.000</strong>
+            <span>Franquia mensal contratada</span>
+          </div>
+          <a class="gv-history-snapshot-link" href="#impressoes">Ver histórico <span aria-hidden="true">→</span></a>
+        </section>
 
         <div class="gv-workspace-panels">
           <section class="gv-workspace-panel" aria-labelledby="gvAttentionTitle">
