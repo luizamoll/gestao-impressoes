@@ -68,6 +68,10 @@ class PortalLoginFlowTests {
         assertEquals(302, protectedPage.statusCode());
         assertTrue(protectedPage.headers().firstValue("location").orElse("").contains("/login"));
 
+        HttpResponse<String> privateStatus = get(client, "/api/gestao-a-vista/status");
+        assertEquals(302, privateStatus.statusCode());
+        assertTrue(privateStatus.headers().firstValue("location").orElse("").contains("/login"));
+
         HttpResponse<String> login = get(client, "/login");
         assertEquals(200, login.statusCode());
         assertTrue(login.body().contains("Acesse sua conta."));
@@ -97,6 +101,12 @@ class PortalLoginFlowTests {
         assertTrue(account.body().contains("Login realizado!"));
         assertTrue(account.body().contains("admin.lab"));
         assertEquals(200, get(client, "/gestao-a-vista.html").statusCode());
+
+        HttpResponse<String> status = get(client, "/api/gestao-a-vista/status");
+        assertEquals(200, status.statusCode());
+        assertTrue(status.body().contains("aguardando_autorizacao"));
+        assertTrue(status.body().contains("\"conectado\":false"));
+        assertTrue(status.headers().firstValue("cache-control").orElse("").contains("no-store"));
 
         // A falha de pagina protegida deve manter HTTP 404 e apresentar a
         // mensagem segura, nao uma pagina de erro 999 ou redirecionamento.
