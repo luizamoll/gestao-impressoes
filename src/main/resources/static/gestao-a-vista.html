@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/portal.css?v=20261014-8" />
-  <link rel="stylesheet" href="css/gestao-vista.css?v=20261014-1" />
+  <link rel="stylesheet" href="css/portal.css?v=20261015-v2" />
+  <link rel="stylesheet" href="css/gestao-vista.css?v=20261015-v2" />
   <script src="js/portal.js?v=20261014-8" defer></script>
   <script src="js/gestao-vista.js?v=20261014-1" defer></script>
 </head>
@@ -55,6 +55,64 @@
           <div class="gv-art-line"></div>
         </div>
         <strong>Informação que orienta decisões.</strong>
+      </div>
+    </section>
+
+    <!-- Painel gerencial: sem conexao com o Vikunja e sem dados de tarefas ficticios. -->
+    <section class="gv-workspace" id="gv-visao-geral" aria-labelledby="gvWorkspaceTitle">
+      <aside class="gv-workspace-sidebar" aria-label="Seções da Gestão à Vista">
+        <div class="gv-workspace-sidebar-brand">
+          <span class="gv-workspace-sidebar-icon" aria-hidden="true">◫</span>
+          <span><strong>Meu espaço</strong><small>Painel gerencial</small></span>
+        </div>
+        <nav class="gv-workspace-menu" aria-label="Navegação do painel">
+          <a class="gv-workspace-menu-current" href="#gv-visao-geral" aria-current="location"><span aria-hidden="true">▦</span> Visão geral</a>
+          <a href="#gv-projetos"><span aria-hidden="true">▤</span> Projetos</a>
+          <a href="#gv-indicadores"><span aria-hidden="true">◫</span> Indicadores</a>
+          <a href="#impressoes"><span aria-hidden="true">▥</span> Impressões</a>
+        </nav>
+        <div class="gv-workspace-sidebar-note">Integração ao Vikunja: <strong>pendente de validação da TI</strong>.</div>
+      </aside>
+      <div class="gv-workspace-main">
+        <div class="gv-workspace-titlebar">
+          <div>
+            <span class="gv-workspace-kicker">Visão da operação</span>
+            <h2 id="gvWorkspaceTitle">Tudo o que importa, em perspectiva.</h2>
+            <p>Uma visão do andamento dos projetos, prazos e entregas — respeitando as permissões de cada equipe.</p>
+          </div>
+          <span class="gv-workspace-status"><span aria-hidden="true"></span> Aguardando integração</span>
+        </div>
+
+        <div class="gv-workspace-brief" role="note">
+          <div class="gv-workspace-brief-copy">
+            <span class="gv-workspace-brief-overline">Próxima etapa · Conector Vikunja</span>
+            <strong>Seus indicadores estarão aqui.</strong>
+            <p>Aguardamos a confirmação da instância interna e das permissões para exibir dados reais. Nenhuma tarefa foi importada nesta versão.</p>
+          </div>
+        </div>
+
+        <div class="gv-workspace-stats" id="gv-indicadores" aria-label="Indicadores ainda não conectados">
+          <article class="gv-workspace-stat"><span>Tarefas abertas</span><strong>—</strong><small>Dados não conectados</small></article>
+          <article class="gv-workspace-stat"><span>Em atraso</span><strong>—</strong><small>Dados não conectados</small></article>
+          <article class="gv-workspace-stat"><span>Próximos prazos</span><strong>—</strong><small>Dados não conectados</small></article>
+          <article class="gv-workspace-stat"><span>Concluídas no período</span><strong>—</strong><small>Dados não conectados</small></article>
+        </div>
+
+        <div class="gv-workspace-panels">
+          <section class="gv-workspace-panel" aria-labelledby="gvAttentionTitle">
+            <div class="gv-workspace-panel-head"><div><span>ACOMPANHAMENTO</span><h3 id="gvAttentionTitle">O que precisa de atenção</h3></div><span class="gv-workspace-panel-decor" aria-hidden="true">◷</span></div>
+            <div class="gv-workspace-empty"><span aria-hidden="true">◇</span><strong>Nenhuma informação sincronizada</strong><p>Depois da conexão autorizada, esta área destacará prazos e pendências dos projetos permitidos.</p></div>
+          </section>
+          <section class="gv-workspace-panel" id="gv-projetos" aria-labelledby="gvProjectsTitle">
+            <div class="gv-workspace-panel-head"><div><span>PROJETOS</span><h3 id="gvProjectsTitle">Áreas acompanhadas</h3></div><span class="gv-workspace-panel-decor" aria-hidden="true">▤</span></div>
+            <div class="gv-workspace-empty"><span aria-hidden="true">◇</span><strong>Vikunja ainda não conectado</strong><p>Os projetos e equipes aparecerão aqui somente após configurar a origem e validar as permissões de acesso.</p></div>
+          </section>
+        </div>
+
+        <div class="gv-workspace-note">
+          <span aria-hidden="true">ⓘ</span>
+          <p>Protótipo de interface, sem conexão com a API do Vikunja. Os valores históricos da Gestão de Impressões permanecem disponíveis na seção abaixo, identificados por fonte e período.</p>
+        </div>
       </div>
     </section>
 
