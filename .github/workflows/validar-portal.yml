@@ -1,0 +1,29 @@
+name: Validar Portal UNH
+
+on:
+  push:
+    branches:
+      - feat/estrutura-mvp-esg
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  testes-java:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Testes do Portal e conector Perseus
+        run: |
+          chmod +x ./mvnw
+          ./mvnw -B -ntp test
