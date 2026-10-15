@@ -1,218 +1,239 @@
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Entrar | Portal UNH</title>
-
-    <style>
-        * { box-sizing: border-box; }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: grid;
-            place-items: center;
-            padding: 24px;
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: linear-gradient(145deg, #edf7f1, #f8fafb 60%, #e6f0ec);
-            color: #173c32;
-        }
-
-        .login-card {
-            width: 100%;
-            max-width: 468px;
-            padding: 42px 38px;
-            background: white;
-            border: 1px solid #dbe9e2;
-            border-radius: 24px;
-            box-shadow: 0 22px 65px rgba(21, 70, 50, .12);
-            text-align: center;
-        }
-
-        .brand {
-            font-size: 14px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: #286749;
-        }
-
-        .avatar {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            margin: 30px auto 20px;
-            border: 5px solid #e3f3e9;
-            border-radius: 30px;
-            display: grid;
-            place-items: center;
-            background: linear-gradient(145deg, #d5f0df, #f3faf6);
-        }
-
-        .avatar svg {
-            width: 64px;
-            height: 64px;
-            stroke: #287950;
-            fill: none;
-            stroke-width: 1.5;
-        }
-
-        .status {
-            position: absolute;
-            right: -5px;
-            bottom: -5px;
-            width: 25px;
-            height: 25px;
-            border: 4px solid white;
-            border-radius: 50%;
-            background: #35bd78;
-        }
-
-        h1 {
-            margin: 0 0 10px;
-            font-size: 32px;
-            line-height: 1.16;
-            letter-spacing: -.8px;
-            font-weight: 800;
-        }
-
-        .subtitle {
-            margin-bottom: 30px;
-            font-size: 17px;
-            line-height: 1.55;
-            color: #486457;
-            font-weight: 500;
-        }
-
-        form { text-align: left; }
-
-        label {
-            display: block;
-            margin: 17px 0 8px;
-            font-size: 15px;
-            font-weight: 700;
-            color: #214939;
-        }
-
-        input:not([type="hidden"]) {
-            width: 100%;
-            padding: 15px 16px;
-            border: 1.5px solid #bbd1c6;
-            border-radius: 11px;
-            font: inherit;
-            font-size: 16px;
-            color: #173c32;
-            background: #fff;
-            outline-color: #267a55;
-        }
-
-        .submit {
-            width: 100%;
-            padding: 16px;
-            margin-top: 26px;
-            border: none;
-            border-radius: 11px;
-            background: #227b50;
-            color: white;
-            font-size: 17px;
-            font-weight: 800;
-            cursor: pointer;
-        }
-
-        .submit:hover { background: #175c3c; }
-
-        .back {
-            display: inline-block;
-            margin-top: 26px;
-            color: #2b694c;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
-        }
-
-        .feedback {
-            padding: 12px;
-            border-radius: 9px;
-            background: #fff1f0;
-            color: #a12525;
-            font-size: 13px;
-        }
-
-        .footer {
-            margin-top: 26px;
-            color: #536e61;
-            font-size: 13px;
-        }
-        /* Leitura confortavel sem perder o visual de Messenger moderno. */
-        input:not([type="hidden"]):focus-visible {
-            border-color: #267a55;
-            box-shadow: 0 0 0 3px rgba(38, 122, 85, .12);
-        }
-
-        .submit:focus-visible, .back:focus-visible {
-            outline: 3px solid #267a55;
-            outline-offset: 3px;
-        }
-
-        @media (max-width: 480px) {
-            .login-card { padding: 30px 24px; }
-            h1 { font-size: 29px; }
-            .subtitle { font-size: 16px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9f2eb">
+  <meta name="description" content="Acesso ao ambiente de trabalho do Portal UNH.">
+  <title>Entrar | Portal UNH</title>
+  <link rel="icon" type="image/png" href="/assets/portal-unh-favicon-v2.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #173c30;
+      --forest: #064934;
+      --green: #0b6448;
+      --muted: #496258;
+      --line: #c9d8ce;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { min-height: 100%; }
+    body {
+      position: relative;
+      isolation: isolate;
+      min-height: 100vh;
+      margin: 0;
+      padding: clamp(18px, 4vw, 52px);
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+      color: var(--ink);
+      font-family: "Segoe UI", Inter, Arial, sans-serif;
+      background: linear-gradient(138deg,#e8f3ea 0%,#f5f8f5 42%,#dcebe2 100%);
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 12% 12%,rgba(106,176,135,.28),transparent 33%),
+                  radial-gradient(circle at 95% 92%,rgba(30,108,77,.14),transparent 38%);
+    }
+    a, button, input { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 3px solid #28a878;
+      outline-offset: 3px;
+    }
+    .login-shell {
+      display: grid;
+      grid-template-columns: minmax(0,1.06fr) minmax(0,.94fr);
+      width: min(1080px,100%);
+      min-height: 620px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.86);
+      border-radius: 29px;
+      box-shadow: 0 30px 90px rgba(10,60,35,.14),0 3px 15px rgba(10,60,35,.04);
+      background: rgba(255,255,255,.79);
+    }
+    .visual {
+      position: relative;
+      min-height: 610px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 37px 42px 44px;
+      color: #fff;
+      background: linear-gradient(145deg,rgba(4,44,31,.75),rgba(8,77,55,.72) 48%,rgba(7,47,38,.84)),
+                  url('/assets/portal-unh-conceito.webp') center / cover,
+                  linear-gradient(135deg,#194936,#477c5b);
+    }
+    .visual::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      width: 340px;
+      height: 340px;
+      top: 15%;
+      right: -185px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 50%;
+      box-shadow: 0 0 0 65px rgba(255,255,255,.035),0 0 0 130px rgba(255,255,255,.025);
+    }
+    .visual > * { position: relative; z-index: 1; }
+    .visual-brand { display: flex; align-items: center; gap: 12px; }
+    .visual-brand-mark {
+      display: grid; place-items: center; flex: 0 0 52px;
+      width: 52px; height: 52px;
+      border-radius: 15px;
+      background: rgba(255,255,255,.95);
+      box-shadow: 0 8px 24px rgba(3,44,27,.15);
+    }
+    .visual-brand-mark img { width: 37px; height: 37px; display: block; }
+    .visual-brand-copy { display: grid; gap: 2px; }
+    .visual-brand-copy strong { font-size: 19px; letter-spacing: -.03em; }
+    .visual-brand-copy small { font-size: 12px; letter-spacing: .03em; color: #e2f4e9; }
+    .visual-content { max-width: 440px; }
+    .visual-eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 9px 13px; border-radius: 100px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.19);
+      font-size: 12px; letter-spacing: .075em; font-weight: 750;
+    }
+    .visual-eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #a2eabc; }
+    .visual h2 { margin: 22px 0 14px; font-size: clamp(33px,3.65vw,48px); line-height: 1.13; letter-spacing: -.05em; }
+    .visual p { max-width: 380px; margin: 0; font-size: 17px; line-height: 1.65; color: #e5f3ea; }
+    .visual-footer { color: #d4e7d9; font-size: 13px; letter-spacing: .01em; }
+    .login-panel {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: clamp(30px,4.6vw,64px);
+      background: linear-gradient(145deg,rgba(255,255,255,.93),rgba(248,252,249,.79));
+      backdrop-filter: blur(14px);
+    }
+    .panel-top {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 10px; margin-bottom: 30px;
+    }
+    .panel-kicker { font-size: 13px; text-transform: uppercase; font-weight: 800; letter-spacing: .11em; color: #256b4c; }
+    .lab-pill { font-size: 12px; font-weight: 650; color: #426554; background: #eaf3ec; padding: 8px 11px; border-radius: 100px; white-space: nowrap; }
+    .avatar-row { display: flex; align-items: center; gap: 13px; margin-bottom: 20px; }
+    .avatar {
+      position: relative;
+      display: grid; place-items: center;
+      width: 67px; height: 67px; flex: 0 0 67px;
+      border-radius: 21px;
+      background: linear-gradient(145deg,#e4f6eb,#cce8d7);
+      border: 1px solid #d1e5d8;
+      box-shadow: 0 8px 21px rgba(13,88,55,.09);
+    }
+    .avatar svg { width: 40px; height: 40px; stroke: #176847; fill: none; stroke-width: 1.7; }
+    .avatar-dot {
+      position: absolute; bottom: -3px; right: -3px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: #2dba76; border: 3px solid #fff;
+    }
+    .avatar-copy { display: grid; gap: 4px; }
+    .avatar-copy strong { font-size: 15px; color: var(--forest); }
+    .avatar-copy span { font-size: 13px; color: #587064; }
+    h1 { margin: 0; font-size: clamp(31px,3vw,38px); line-height: 1.15; font-weight: 800; letter-spacing: -.045em; color: #103d2b; }
+    .subtitle { margin: 12px 0 28px; font-size: 16px; line-height: 1.6; color: var(--muted); }
+    form { display: grid; gap: 0; }
+    label { font-size: 15px; font-weight: 750; color: #274c38; margin: 0 0 8px; }
+    .field {
+      display: block; width: 100%; min-height: 51px;
+      padding: 13px 15px; margin-bottom: 20px;
+      border-radius: 12px; border: 1.5px solid var(--line);
+      font: inherit; font-size: 16px; color: #143c2b;
+      background: rgba(255,255,255,.92);
+      transition: border-color .16s,box-shadow .16s;
+    }
+    .field:focus { border-color: #247952; box-shadow: 0 0 0 4px rgba(28,127,81,.11); outline: none; }
+    .field::placeholder { color: #6b8273; }
+    .submit {
+      display: flex; justify-content: space-between; align-items: center;
+      width: 100%; margin-top: 6px; padding: 16px 19px;
+      border: none; border-radius: 12px;
+      color: #fff; font: inherit; font-size: 16px; font-weight: 800;
+      cursor: pointer;
+      background: linear-gradient(110deg,#09573f,#0f7854);
+      box-shadow: 0 12px 25px rgba(13,100,67,.17);
+      transition: transform .16s,box-shadow .16s,background .16s;
+    }
+    .submit:hover { transform: translateY(-2px); box-shadow: 0 16px 27px rgba(13,100,67,.22); }
+    .back {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 25px; color: #236047;
+      text-decoration: none; font-weight: 700; font-size: 15px;
+    }
+    .back:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .feedback { margin: 0 0 19px; padding: 12px 14px; border: 1px solid #f0c7c1; border-radius: 11px; background: #fff1ed; color: #912d22; font-size: 14px; line-height: 1.5; }
+    .footer { padding-top: 21px; margin-top: 24px; border-top: 1px solid #e0eae3; color: #557064; text-align: center; font-size: 13px; }
+    @media (max-width: 900px) {
+      .login-shell { grid-template-columns: 1fr; width: min(540px,100%); }
+      .visual { min-height: 230px; padding: 26px 30px; }
+      .visual-content { margin-top: 25px; }
+      .visual h2 { font-size: 32px; margin: 13px 0 8px; }
+      .visual p { font-size: 15px; line-height: 1.55; }
+      .visual-footer { display: none; }
+      .login-panel { padding: 32px 34px 40px; }
+      .panel-top { margin-bottom: 22px; }
+    }
+    @media (max-width: 480px) {
+      body { padding: 12px; }
+      .login-shell { border-radius: 20px; }
+      .visual { min-height: 190px; padding: 22px 23px; }
+      .visual h2 { font-size: 28px; }
+      .visual p { font-size: 14px; }
+      .login-panel { padding: 27px 23px 31px; }
+      .avatar-row { margin-bottom: 15px; }
+      .subtitle { margin-bottom: 23px; }
+      .panel-top { margin-bottom: 18px; }
+      h1 { font-size: 31px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
 </head>
-
 <body>
-    <main class="login-card">
-        <div class="brand">PORTAL UNH</div>
-
+  <main class="login-shell">
+    <section class="visual" aria-label="Bem-vindo ao Portal UNH">
+      <div class="visual-brand">
+        <span class="visual-brand-mark"><img src="/assets/portal-unh-simbolo.svg" alt=""></span>
+        <span class="visual-brand-copy"><strong>Portal UNH</strong><small>Unihorizontes · Sistemas internos</small></span>
+      </div>
+      <div class="visual-content">
+        <span class="visual-eyebrow">Seu espaço de trabalho</span>
+        <h2>Conecte-se ao que importa.</h2>
+        <p>Uma experiência mais simples para encontrar suas ferramentas e acompanhar o dia a dia da instituição.</p>
+      </div>
+      <div class="visual-footer">Tecnologia para aproximar pessoas e processos.</div>
+    </section>
+    <section class="login-panel" aria-labelledby="loginTitle">
+      <div class="panel-top"><span class="panel-kicker">Acesso ao portal</span><span class="lab-pill">Ambiente de testes</span></div>
+      <div class="avatar-row">
         <div class="avatar" aria-hidden="true">
-            <svg viewBox="0 0 64 64">
-                <circle cx="32" cy="23" r="11"/>
-                <path d="M12 55c0-13 9-20 20-20s20 7 20 20"/>
-            </svg>
-            <span class="status"></span>
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="22" r="10"/><path d="M12 55c0-13 9-20 20-20s20 7 20 20"/></svg>
+          <span class="avatar-dot"></span>
         </div>
-
-        <h1>Bem-vindo de volta!</h1>
-
-        <p class="subtitle">
-            Seu espaço de trabalho está esperando por você.
-            Entre para acessar suas ferramentas.
-        </p>
-
-        <p class="feedback" th:if="${param.error}">
-            Usuário ou senha incorretos.
-        </p>
-
-        <form th:action="@{/login}" method="post">
-            <input type="hidden"
-                   th:name="${_csrf.parameterName}"
-                   th:value="${_csrf.token}">
-
-            <label for="username">Usuário</label>
-            <input id="username" name="username"
-                   type="text" autocomplete="username"
-                   required>
-
-            <label for="password">Senha</label>
-            <input id="password" name="password"
-                   type="password"
-                   autocomplete="current-password"
-                   required>
-
-            <button class="submit" type="submit">
-                Entrar no meu espaço →
-            </button>
-        </form>
-
-        <a class="back" th:href="@{/}">
-            ← Continuar sem fazer login
-        </a>
-
-        <div class="footer">
-            Unihorizontes · Ambiente de desenvolvimento
-        </div>
-    </main>
+        <span class="avatar-copy"><strong>Bem-vindo de volta!</strong><span>Seu espaço começa aqui.</span></span>
+      </div>
+      <h1 id="loginTitle">Entre no seu espaço.</h1>
+      <p class="subtitle">Identifique-se para acessar os recursos protegidos do Portal UNH.</p>
+      <p class="feedback" role="alert" th:if="${param.error}">Usuário ou senha incorretos. Tente novamente.</p>
+      <form th:action="@{/login}" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <label for="username">Usuário</label>
+        <input class="field" id="username" name="username" type="text" autocomplete="username" placeholder="Seu usuário" required autofocus>
+        <label for="password">Senha</label>
+        <input class="field" id="password" name="password" type="password" autocomplete="current-password" placeholder="Sua senha" required>
+        <button class="submit" type="submit"><span>Entrar no Portal</span><span aria-hidden="true">→</span></button>
+      </form>
+      <a class="back" th:href="@{/}"><span aria-hidden="true">←</span> Continuar sem fazer login</a>
+      <div class="footer">Unihorizontes · Acesso de laboratório, ainda não institucional</div>
+    </section>
+  </main>
 </body>
 </html>
