@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/portal.css?v=20261015-v2" />
+  <link rel="stylesheet" href="css/portal.css?v=20261015-v4" />
   <link rel="stylesheet" href="css/mural.css?v=20261014-4" />
   <script src="js/portal.js?v=20261014-9" defer></script>
   <script src="js/mural.js?v=20261014-4" defer></script>
@@ -59,10 +59,10 @@
           <h1 id="heroTitle">Um só lugar para acessar <em>os sistemas internos.</em></h1>
           <p>Informações e ferramentas organizadas para facilitar o trabalho, a comunicação e os processos da instituição.</p>
           <div class="portal-hero-actions">
-            <a class="portal-button portal-button-primary" href="#ferramentas">
-              Explorar ferramentas <span aria-hidden="true">↗</span>
+            <a class="portal-button portal-button-primary" href="#comunicados">
+              Ver comunicados <span aria-hidden="true">↗</span>
             </a>
-            <a class="portal-text-link" href="#comunicados">Ver comunicados <span aria-hidden="true">→</span></a>
+            <a class="portal-text-link" href="#ferramentas">Explorar ferramentas <span aria-hidden="true">→</span></a>
           </div>
           <div class="portal-hero-details" aria-label="Como funciona o acesso">
             <span class="portal-hero-detail"><span class="portal-hero-detail-dot" aria-hidden="true"></span> Navegação livre</span>
@@ -82,12 +82,73 @@
 
     <div class="portal-home-content portal-container">
       <div class="portal-section-intro">
-        <span class="portal-eyebrow"><span aria-hidden="true"></span> Seu espaço de trabalho</span>
-        <h2>Encontre o que precisa, sem complicação.</h2>
-        <p>Acesse suas ferramentas primeiro e acompanhe as publicações no mural logo abaixo.</p>
+        <span class="portal-eyebrow"><span aria-hidden="true"></span> Informação e trabalho</span>
+        <h2>Fique por dentro. Depois, mãos à obra.</h2>
+        <p>Os comunicados vêm primeiro. Logo depois, encontre as ferramentas e sistemas para sua rotina.</p>
       </div>
 
       <div class="portal-feature-grid portal-feature-stack">
+        <section class="portal-feature-section mural-section" id="comunicados" aria-labelledby="newsTitle">
+          <div class="portal-feature-head">
+            <div>
+              <span class="portal-overline">Comunicação e colaboração</span>
+              <h2 id="newsTitle">Mural institucional</h2>
+              <p>Um espaço para compartilhar, comentar e acompanhar publicações.</p>
+            </div>
+            <span class="portal-count-pill portal-count-muted">Protótipo</span>
+          </div>
+          <div class="mural-panel" id="muralPanel">
+            <div class="mural-demo-top">
+              <span class="mural-demo-label"><span class="mural-demo-dot" aria-hidden="true"></span> Ambiente de demonstração</span>
+              <p>Perfis simulados, sem login ou envio de dados. Tudo reinicia ao atualizar a página.</p>
+            </div>
+
+            <div class="mural-permission-bar">
+              <label for="muralRole">Testar como</label>
+              <select id="muralRole" aria-describedby="muralRoleHelp">
+                <option value="colaborador">Colaborador</option>
+                <option value="responsavel">Responsável autorizado</option>
+                <option value="leitor">Somente leitura</option>
+              </select>
+              <p id="muralRoleHelp" class="mural-role-help">Pode comentar e reagir quando a publicação permitir.</p>
+            </div>
+
+            <div id="muralComposerClosed" class="mural-composer-locked">
+              <span class="mural-avatar mural-avatar-neutral" aria-hidden="true">C</span>
+              <span>Publicações criadas apenas por setores autorizados.</span>
+              <span class="mural-lock-symbol" aria-hidden="true">🔒</span>
+            </div>
+
+            <form id="muralPostForm" class="mural-composer" hidden>
+              <div class="mural-composer-title"><span class="mural-avatar" aria-hidden="true">R</span>
+                <div><strong>Criar publicação</strong><small>Responsável autorizado (simulação)</small></div>
+              </div>
+              <label for="muralPostTitle">Título da publicação</label>
+              <input id="muralPostTitle" name="title" type="text" required minlength="4" maxlength="90"
+                placeholder="Ex.: Orientação sobre um serviço" />
+              <label for="muralPostText">Mensagem</label>
+              <textarea id="muralPostText" name="content" rows="3" required maxlength="1200"
+                placeholder="O que você deseja compartilhar?"></textarea>
+              <div class="mural-composer-options">
+                <label class="mural-checkbox-label" for="muralCommentsAllowed">
+                  <input id="muralCommentsAllowed" type="checkbox" checked />
+                  Permitir comentários
+                </label>
+                <button type="submit" class="mural-publish">Publicar no teste <span aria-hidden="true">→</span></button>
+              </div>
+            </form>
+
+            <div class="mural-feed-heading">
+              <strong>Publicações recentes</strong>
+              <span>Mais recentes primeiro</span>
+            </div>
+            <div id="muralFeed" class="mural-feed" aria-label="Publicações do mural">
+              <p class="mural-feed-loading">Carregando o protótipo de mural…</p>
+            </div>
+            <p id="muralFeedback" class="mural-feedback" role="status" aria-live="polite"></p>
+          </div>
+        </section>
+
         <section class="portal-feature-section" id="ferramentas" aria-labelledby="toolsTitle">
           <div class="portal-feature-head">
             <div>
@@ -155,67 +216,6 @@
             <a class="portal-button portal-button-primary portal-tool-action" href="automacoes.html?v=20261015-2">Explorar central <span aria-hidden="true">→</span></a>
           </div>
           <p class="portal-search-empty" id="portalToolEmpty" role="status" hidden>Nenhuma ferramenta encontrada. Tente outro termo.</p>
-        </section>
-
-        <section class="portal-feature-section mural-section" id="comunicados" aria-labelledby="newsTitle">
-          <div class="portal-feature-head">
-            <div>
-              <span class="portal-overline">Comunicação e colaboração</span>
-              <h2 id="newsTitle">Mural institucional</h2>
-              <p>Um espaço para compartilhar, comentar e acompanhar publicações.</p>
-            </div>
-            <span class="portal-count-pill portal-count-muted">Protótipo</span>
-          </div>
-          <div class="mural-panel" id="muralPanel">
-            <div class="mural-demo-top">
-              <span class="mural-demo-label"><span class="mural-demo-dot" aria-hidden="true"></span> Ambiente de demonstração</span>
-              <p>Perfis simulados, sem login ou envio de dados. Tudo reinicia ao atualizar a página.</p>
-            </div>
-
-            <div class="mural-permission-bar">
-              <label for="muralRole">Testar como</label>
-              <select id="muralRole" aria-describedby="muralRoleHelp">
-                <option value="colaborador">Colaborador</option>
-                <option value="responsavel">Responsável autorizado</option>
-                <option value="leitor">Somente leitura</option>
-              </select>
-              <p id="muralRoleHelp" class="mural-role-help">Pode comentar e reagir quando a publicação permitir.</p>
-            </div>
-
-            <div id="muralComposerClosed" class="mural-composer-locked">
-              <span class="mural-avatar mural-avatar-neutral" aria-hidden="true">C</span>
-              <span>Publicações criadas apenas por setores autorizados.</span>
-              <span class="mural-lock-symbol" aria-hidden="true">🔒</span>
-            </div>
-
-            <form id="muralPostForm" class="mural-composer" hidden>
-              <div class="mural-composer-title"><span class="mural-avatar" aria-hidden="true">R</span>
-                <div><strong>Criar publicação</strong><small>Responsável autorizado (simulação)</small></div>
-              </div>
-              <label for="muralPostTitle">Título da publicação</label>
-              <input id="muralPostTitle" name="title" type="text" required minlength="4" maxlength="90"
-                placeholder="Ex.: Orientação sobre um serviço" />
-              <label for="muralPostText">Mensagem</label>
-              <textarea id="muralPostText" name="content" rows="3" required maxlength="1200"
-                placeholder="O que você deseja compartilhar?"></textarea>
-              <div class="mural-composer-options">
-                <label class="mural-checkbox-label" for="muralCommentsAllowed">
-                  <input id="muralCommentsAllowed" type="checkbox" checked />
-                  Permitir comentários
-                </label>
-                <button type="submit" class="mural-publish">Publicar no teste <span aria-hidden="true">→</span></button>
-              </div>
-            </form>
-
-            <div class="mural-feed-heading">
-              <strong>Publicações recentes</strong>
-              <span>Mais recentes primeiro</span>
-            </div>
-            <div id="muralFeed" class="mural-feed" aria-label="Publicações do mural">
-              <p class="mural-feed-loading">Carregando o protótipo de mural…</p>
-            </div>
-            <p id="muralFeedback" class="mural-feedback" role="status" aria-live="polite"></p>
-          </div>
         </section>
       </div>
 
