@@ -48,7 +48,7 @@ class PortalLoginFlowTests {
 
     private HttpResponse<String> get(HttpClient client, String path) throws Exception {
         return client.send(
-            HttpRequest.newBuilder(url(path)).GET().timeout(Duration.ofSeconds(8)).build(),
+            HttpRequest.newBuilder(url(path)).header("Accept", "text/html").GET().timeout(Duration.ofSeconds(8)).build(),
             HttpResponse.BodyHandlers.ofString());
     }
 
