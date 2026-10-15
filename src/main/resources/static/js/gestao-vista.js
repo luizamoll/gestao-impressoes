@@ -1,6 +1,37 @@
 "use strict";
 // Protótipo com dados históricos fixos. Não consultar API nem apresentar tempo real.
 (() => {
+  // A tela pergunta ao backend apenas se o conector foi liberado.
+  // Nenhum dado de tarefas vem do navegador ou de tokens client-side.
+  async function checkConnector() {
+    const status = document.getElementById("gvConnectorStatus");
+    const label = document.getElementById("gvConnectorText");
+    if (!status || !label) return;
+    try {
+      const response = await fetch("/api/gestao-a-vista/status", {
+        credentials: "same-origin",
+        cache: "no-store",
+        headers: { "Accept": "application/json" }
+      });
+      if (!response.ok || !(response.headers.get("content-type") || "").includes("application/json")) {
+        throw new Error("Estado da integracao indisponivel");
+      }
+      const data = await response.json();
+      if (data.conectado === false && data.estado === "aguardando_autorizacao") {
+        status.dataset.connection = "pending";
+        label.textContent = "Vikunja não conectado";
+      } else {
+        // Nao declarar uma conexao como ativa sem integracao realmente implantada.
+        status.dataset.connection = "unavailable";
+        label.textContent = "Estado da integração não confirmado";
+      }
+    } catch (_error) {
+      status.dataset.connection = "unavailable";
+      label.textContent = "Não foi possível verificar a integração";
+    }
+  }
+  void checkConnector();
+
  const select=document.getElementById("gvPeriod");
  if(!select)return;
  const data={
