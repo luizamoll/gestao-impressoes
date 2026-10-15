@@ -70,7 +70,7 @@ class PortalLoginFlowTests {
 
         HttpResponse<String> login = get(client, "/login");
         assertEquals(200, login.statusCode());
-        assertTrue(login.body().contains("Entre no seu espaço."));
+        assertTrue(login.body().contains("Acesse sua conta."));
         csrfFrom(login.body());
     }
 
