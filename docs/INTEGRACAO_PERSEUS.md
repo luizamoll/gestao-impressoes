@@ -48,3 +48,14 @@ A Central de Automações foi criada como catálogo de ferramentas. O Perseus ex
 Nova implementação no repositório Perseus (privado), `servico_interno.py`, com API apenas em `127.0.0.1:8879`, distinta da interface original em `:8878`. Endpoints `GET /v1/saude`, `POST /v1/trabalhos`, `GET /v1/trabalhos/{id}` e `GET /v1/trabalhos/{id}/download/{nome}` exigem chave de serviço; chamadas de trabalho também exigem identificador do usuário **já verificado por futuro gateway confiável**. Resultados de terceiros não são retornados.
 
 É uma fundação técnica, não a entrega completa para equipes: não há autenticador da UNH, autorização institucional por setor, acesso por navegador, banco persistente, fila, antivírus ou implantação. A chave NÃO deve ser enviada à interface web e o serviço só escuta loopback. Os PDFs continuam fora do GitHub; nem o portal público nem os projetos de terceiros recebem as fontes privadas. A documentação detalhada da API está em `luizamoll/perseus-conferencia/API_INTERNA.md` (repositório privado).
+
+
+## Conector Java adicionado no Portal (15/10/2026)
+
+Código: \`src/main/java/gestao_impressoes/perseus/PerseusInternalClient.java\`. Este cliente backend-to-backend acessa apenas \`127.0.0.1:8879\` e implementa saúde, envio de PDF, consulta de tarefa e download autorizado. Usa o segredo \`PERSEUS_SERVICE_KEY\` exclusivamente no servidor. O bean Spring só é criado quando \`perseus.integration.enabled=true\` (desativado por padrão). Não há controller público nem upload liberado.
+
+A identidade recebida pelo cliente Java **deverá vir de sessão autenticada**; ele nunca poderá confiar no cabeçalho X-UNH-Actor do navegador. Ainda faltam SSO/LDAP, autorização por setor, hospedagem interna, retenção, fila e homologação antes do acesso por equipes. O serviço Python também continua apenas em loopback. Testes locais do Java usam servidor HTTP sintético sem alunos.
+
+Para testar no Windows, dentro do Portal UNH: \`.\mvnw.cmd -Dtest=PerseusInternalClientTests test\`. Isto testa a ponte Java sem ler nenhum PDF real nem exigir execução do Python.
+
+Importante: \`servidor_lan.bat\` serve HTML estático e não executa Spring Boot; por isso não utiliza esta ponte ainda.

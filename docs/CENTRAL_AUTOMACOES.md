@@ -46,3 +46,8 @@ O repositório privado `luizamoll/perseus-conferencia`, branch `feat/nova-interf
 **IMPORTANTE:** este serviço ainda **não está liberado para colaboradores**. Nenhuma API externa, infraestrutura ou gateway autenticado foi implantado. O protótipo não implementa login institucional e, por isso, não permite acesso remoto/multiusuário seguro por si só. O próximo passo é implementar o gateway de aplicação com sessão institucional, regras por setor e proteção da chave exclusivamente no backend. Não colocar chave em browser nem expor `:8879` à LAN.
 
 Contrato, execução, testes e limites detalhados em `API_INTERNA.md` do repositório privado Perseus.
+
+
+## Nova etapa 15/10/2026 — adaptador Java-Python (desativado)
+
+Foi criado no backend Spring Boot o \`PerseusInternalClient\` que utiliza a API privada Python do Perseus. O cliente possui testes sintéticos, recusa destinos externos e só aceita chave de serviço configurada no backend. Nenhum endpoint web foi publicado. Antes de permitir que colaboradores enviem relatórios pelo Portal, devem existir login institucional, autorização por setor, segurança de upload e configuração da TI.
