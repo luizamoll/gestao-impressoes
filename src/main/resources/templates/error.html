@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Não foi possível abrir | Portal UNH</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh; display: grid; place-items: center;
+      margin: 0; padding: 24px;
+      font-family: "Segoe UI", Arial, sans-serif; color: #253b33;
+      background: linear-gradient(140deg,#eef4f1,#f9fbfa);
+    }
+    main {
+      width: min(100%, 480px); padding: 36px;
+      border-radius: 20px; background: white;
+      border: 1px solid #dfe9e3;
+      box-shadow: 0 16px 40px rgba(20,65,41,.08);
+    }
+    .brand { font-weight: 800; color: #0b6046; font-size: 14px; letter-spacing: .06em; }
+    h1 { font-size: 29px; line-height: 1.2; margin: 18px 0 10px; }
+    p { font-size: 16px; line-height: 1.6; color: #50685b; margin-bottom: 24px; }
+    a {
+      display: inline-block; border-radius: 11px; padding: 13px 17px;
+      background: #0b6046; color: #fff; font-weight: 700; text-decoration: none;
+    }
+    a:focus-visible { outline: 3px solid #249d78; outline-offset: 3px; }
+    .note { margin-top: 26px; font-size: 12px; color: #718478; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand">PORTAL UNH · LABORATÓRIO</div>
+    <h1>Não foi possível abrir esta página.</h1>
+    <p>Ocorreu um problema ao carregar o endereço solicitado. Volte ao Portal e tente novamente. Se persistir, informe à equipe responsável o endereço que aparece no navegador.</p>
+    <a th:href="@{/}">Voltar à página inicial</a>
+    <div class="note">Nenhuma senha ou dado pessoal precisa ser compartilhado para investigar.</div>
+  </main>
+</body>
+</html>
