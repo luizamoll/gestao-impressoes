@@ -27,3 +27,9 @@ Não deve se limitar ao sistema de impressões: este é apenas o primeiro conjun
 5. Testar com gestores e colaboradores; homologar com TI antes de produção.
 
 Não houve publicação na hospedagem institucional nem alteração dos dados originais.
+
+## Planejamento V2 — Gestão à Vista com Vikunja
+
+A direção de produto definida em 15/10/2026 é manter **Vikunja como sistema de tarefas** e fazer da Gestão à Vista um painel gerencial de leitura, com filtros, indicadores, fonte e autorização por usuário/setor. Integração API **ainda não habilitada**; nenhum número de Vikunja foi coletado nem inventado. O visual futuro deve privilegiar neutros, usando verde UNH apenas em pontos de destaque e admitindo paisagens conceituais como elementos atmosféricos.
+
+Ver especificação: [GESTAO_A_VISTA_V2_REQUISITOS.md](GESTAO_A_VISTA_V2_REQUISITOS.md).
