@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/portal.css?v=20261015-2" />
+  <link rel="stylesheet" href="css/portal.css?v=20261015-v2" />
   <link rel="stylesheet" href="css/mural.css?v=20261014-4" />
   <script src="js/portal.js?v=20261014-9" defer></script>
   <script src="js/mural.js?v=20261014-4" defer></script>
@@ -45,9 +45,9 @@
         <strong>Portal UNH</strong>
         <span>Intranet e Sistemas Internos</span>
       </div>
-<a class="portal-button portal-button-primary" href="/login">
-  Entrar <span aria-hidden="true">→</span>
-</a>
+<a class="portal-button portal-button-primary portal-signin-link" href="/login" aria-label="Entrar no Portal UNH">
+        Entrar <span aria-hidden="true">↗</span>
+      </a>
     </div>
   </header>
 
@@ -63,6 +63,10 @@
               Explorar ferramentas <span aria-hidden="true">↗</span>
             </a>
             <a class="portal-text-link" href="#comunicados">Ver comunicados <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="portal-hero-details" aria-label="Como funciona o acesso">
+            <span class="portal-hero-detail"><span class="portal-hero-detail-dot" aria-hidden="true"></span> Navegação livre</span>
+            <span class="portal-hero-detail portal-hero-detail-muted"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Áreas internas protegidas</span>
           </div>
         </div>
 
@@ -90,7 +94,7 @@
             <div>
               <span class="portal-overline">Sistemas internos</span>
               <h2 id="toolsTitle">Suas ferramentas</h2>
-              <p>Abra as soluções disponíveis para o seu dia a dia.</p>
+              <p>Conheça as soluções para o dia a dia. O acesso às áreas internas requer login.</p>
             </div>
             <span class="portal-count-pill">Ferramentas em evolução</span>
           </div>
