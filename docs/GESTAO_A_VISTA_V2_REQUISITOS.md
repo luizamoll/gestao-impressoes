@@ -93,3 +93,7 @@ Fora do MVP: criação/edição/arrastar tarefas, chat, anexos, clonagem de Viku
 - [ ] Aprovar a proposta estética equilibrada (sem excesso de verde) antes da reestruturação visual.
 
 **Próximo bloqueio real:** autorização e detalhes da instância Vikunja UNH. Até lá, somente documentação e protótipo sem dados institucionais.
+
+## 8. Protótipo local da Gestão à Vista
+
+Implementação de interface em `gestao-a-vista.html` + `css/gestao-vista.css` na branch de laboratório, sem mexer nas APIs e sem integrar com a instância Vikunja. Navegação lateral, visão geral, projetos, indicadores indisponíveis e atalho para a seção de Impressões. Valores de tarefas representados por traço (—), rótulos explícitos de integração pendente; nenhum dado fictício foi criado. A área histórica de Gestão de Impressões permanece intacta e separada.
