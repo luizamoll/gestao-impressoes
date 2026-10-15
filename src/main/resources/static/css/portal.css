@@ -727,3 +727,21 @@ body.portal-body {
   .portal-hero-concept,.portal-feature-stack #ferramentas .portal-tools-card { transition: none; }
   .portal-hero-concept:hover,.portal-feature-stack #ferramentas .portal-tools-card:hover { transform: none; }
 }
+
+
+/* Home: primeiro comunicados, depois catalogo de ferramentas (15/10/2026). */
+.portal-feature-stack #comunicados {
+  width: min(100%, 900px);
+  margin-inline: auto;
+  padding-bottom: 36px;
+  border-bottom: 1px solid #dce4e5;
+}
+.portal-feature-stack #ferramentas {
+  padding-bottom: 0;
+  border-bottom: 0;
+  scroll-margin-top: 25px;
+}
+@media (max-width: 650px) {
+  .portal-feature-stack #comunicados { padding-bottom: 24px; }
+  .portal-feature-stack #ferramentas { padding-bottom: 0; border-bottom: 0; }
+}
