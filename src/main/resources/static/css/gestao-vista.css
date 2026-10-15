@@ -257,3 +257,49 @@
   .gv-workspace-panel { padding: 19px; }
 }
 @media (prefers-reduced-motion: reduce) { .gv-workspace-menu a { transition: none; } }
+
+
+/* V3: resumo real historico, sem tratar dados fixos como atualizacao ao vivo. */
+.gv-workspace-status[data-connection="pending"] { color: #5d6d78; background: #eef2f4; border-color: #d8e0e5; }
+.gv-workspace-status[data-connection="pending"]>span:first-child { background: #8e9da4; }
+.gv-workspace-status[data-connection="unavailable"] { color: #815d38; background: #faf2e9; border-color: #e9ddcd; }
+.gv-history-snapshot {
+  display: grid;
+  grid-template-columns: minmax(220px,1.4fr) minmax(120px,.65fr) minmax(120px,.65fr) auto;
+  align-items: center;
+  gap: 24px;
+  margin-top: 19px;
+  padding: 22px 24px;
+  border: 1px solid #dce4e8;
+  border-radius: 17px;
+  background: linear-gradient(110deg,#f6f9fa 0%,#fff 72%);
+}
+.gv-history-snapshot-copy .gv-workspace-kicker { font-size: 10px; margin-bottom: 6px; }
+.gv-history-snapshot-copy h3 { font-size: 19px; margin: 0 0 5px; color: #233e4c; letter-spacing: -.035em; }
+.gv-history-snapshot-copy p { font-size: 12px; color: #697980; line-height: 1.55; max-width: 300px; margin: 0; }
+.gv-history-snapshot-metric strong { display: block; font-size: 26px; letter-spacing: -.055em; color: #203c4a; line-height: 1.3; }
+.gv-history-snapshot-metric span { display: block; margin-top: 3px; font-size: 12px; color: #65777f; line-height: 1.5; }
+.gv-history-snapshot-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 750;
+  color: #1e5162!important;
+  padding: 10px 13px;
+  border: 1px solid #c9dce2;
+  border-radius: 10px;
+  background: #fff;
+}
+.gv-history-snapshot-link:hover { background: #edf4f6; }
+@media (max-width: 1200px) {
+  .gv-history-snapshot { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .gv-history-snapshot-copy { grid-column: 1/-1; }
+}
+@media (max-width: 600px) {
+  .gv-history-snapshot { gap: 15px; padding: 19px; }
+  .gv-history-snapshot-metric strong { font-size: 24px; }
+  .gv-history-snapshot-link { grid-column: 1/-1; justify-content: center; }
+}
