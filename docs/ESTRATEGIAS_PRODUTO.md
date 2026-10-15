@@ -54,3 +54,7 @@ Reavaliar escolhas após testes reais de busca, uso e processamento em Windows. 
 ## Nova diretriz: automações para equipes + GitHub obrigatório
 
 Em 15/10/2026 ficou definido que as próximas automações são destinadas aos colaboradores autorizados da UNH. Todo código, documentação e script será versionado no GitHub, sem dados de alunos nem segredos. Ver docs/CENTRAL_AUTOMACOES.md.
+
+## Uso compartilhado do Perseus: etapa concluída e dependências
+
+A infraestrutura começou com uma API Python privada, mas sua execução permanece restrita a loopback. **Não implementar um link público, abrir portas, nem transferir chave de serviço para o navegador como atalho para multiusuário.** Necessários autenticação autorizada pelo setor de TI, gateway de backend, isolamento do processo, fila, retenção segura, auditoria e integração com a intranet. A automação n8n não substitui essas medidas.

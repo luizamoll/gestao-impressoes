@@ -38,3 +38,11 @@ Central de Automações (catálogo responsivo com busca)
 Python para transformação de dados, leitura de PDFs, planilhas e documentos. Java/Spring Boot permanece nos módulos em que já agrega valor. n8n apenas para fluxos multissistema, aprovações e notificações com credenciais e endpoints homologados.
 
 Toda decisão técnica futura deve ser registrada no repositório Git correspondente.
+
+## Entrega técnica 15/10/2026 — API Python do Perseus (em validação)
+
+O repositório privado `luizamoll/perseus-conferencia`, branch `feat/nova-interface`, agora possui um novo `servico_interno.py` separado da interface local. Seu endpoint interno em `127.0.0.1:8879` exige chave forte apenas entre servidores, identifica o autor da tarefa enviado por um gateway autenticado, permite consultar status e baixar somente resultados do mesmo autor. Possui testes automatizados de autenticação e segregação. O processamento original em `127.0.0.1:8878` foi preservado.
+
+**IMPORTANTE:** este serviço ainda **não está liberado para colaboradores**. Nenhuma API externa, infraestrutura ou gateway autenticado foi implantado. O protótipo não implementa login institucional e, por isso, não permite acesso remoto/multiusuário seguro por si só. O próximo passo é implementar o gateway de aplicação com sessão institucional, regras por setor e proteção da chave exclusivamente no backend. Não colocar chave em browser nem expor `:8879` à LAN.
+
+Contrato, execução, testes e limites detalhados em `API_INTERNA.md` do repositório privado Perseus.

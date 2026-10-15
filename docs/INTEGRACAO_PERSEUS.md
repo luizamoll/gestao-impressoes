@@ -42,3 +42,9 @@ O usuário deve saber que o link funciona somente com o servidor Python iniciado
 ## Transição para uso compartilhado
 
 A Central de Automações foi criada como catálogo de ferramentas. O Perseus existente continua local e não está disponível para múltiplos colaboradores via Portal. A expansão depende de autenticação institucional, API/gateway interno, isolamento dos processos Python, tratamento seguro de arquivos e aprovação da TI. O código privado do Perseus não será copiado para o repositório público do Portal.
+
+## Protótipo backend-to-backend criado no motor Python (15/10/2026)
+
+Nova implementação no repositório Perseus (privado), `servico_interno.py`, com API apenas em `127.0.0.1:8879`, distinta da interface original em `:8878`. Endpoints `GET /v1/saude`, `POST /v1/trabalhos`, `GET /v1/trabalhos/{id}` e `GET /v1/trabalhos/{id}/download/{nome}` exigem chave de serviço; chamadas de trabalho também exigem identificador do usuário **já verificado por futuro gateway confiável**. Resultados de terceiros não são retornados.
+
+É uma fundação técnica, não a entrega completa para equipes: não há autenticador da UNH, autorização institucional por setor, acesso por navegador, banco persistente, fila, antivírus ou implantação. A chave NÃO deve ser enviada à interface web e o serviço só escuta loopback. Os PDFs continuam fora do GitHub; nem o portal público nem os projetos de terceiros recebem as fontes privadas. A documentação detalhada da API está em `luizamoll/perseus-conferencia/API_INTERNA.md` (repositório privado).
