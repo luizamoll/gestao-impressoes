@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feat/estrutura-mvp-esg
+      - feat/autenticacao-portal
   pull_request:
     branches:
       - main
