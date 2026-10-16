@@ -46,7 +46,7 @@
     const here = String(context.pathname || "");
 
     // Nunca prometer acesso ou executar operacoes institucionais.
-    if (has(text, /\b(cpf|rg|matricula|dados pessoais|dados de aluno|dados dos alunos|senhas?|credenciais|boletim|notas dos alunos|folha de pagamento)\b/)) {
+    if (has(text, /\b(cpf|rg|matriculas?|dados pessoais|dados de aluno|dados dos alunos|senhas?|credenciais|boletim|notas dos alunos|folha de pagamento)\b/)) {
       return reply("Não tenho acesso a informações pessoais, senhas ou registros de alunos. Nesta fase, só uso orientações públicas e dados históricos de laboratório.");
     }
 
