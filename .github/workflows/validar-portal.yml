@@ -31,8 +31,10 @@ jobs:
           node --check src/main/resources/static/js/portal.js
           node --check src/main/resources/static/js/mural.js
           node --check src/main/resources/static/js/nexo-assistente.js
+          node --check src/main/resources/static/js/nexo-agente.js
           node --test tests/gestao-vista-ui.test.cjs
           node --test tests/nexo-assistente.test.cjs
+          node --test tests/nexo-agente.test.cjs
       - name: Testes do Portal e conector Perseus
         run: |
           chmod +x ./mvnw
