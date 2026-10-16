@@ -24,7 +24,7 @@ Este arquivo registra boas práticas acordadas no Radar IA Aplicado e no Banco d
 - Sem autorização TI, dados de tarefas ficam como **não conectados**, não como zeros, listas fictícias ou produtividade calculada.
 - Toda API de conteúdo operacional deve validar autenticação **e permissão por projeto/setor no servidor**, inclusive agregações. A conta `admin.lab` serve só ao laboratório local e não equivale a autorização institucional.
 - Armazenar tokens apenas no backend e fora do GitHub; não usar `localStorage` do navegador para credenciais.
-- Para a API de status `GET /api/gestao-a-vista/status`, preservar resposta JSON, proteção por login e cache desativado. Ver `docs/api/gestao-a-vista-status.openapi.yaml`.
+- Para a API de status `GET /api/gestao-a-vista/status`, preservar JSON e cache desativado. Exigir login normalmente; a única exceção é navegação GET no laboratório local e isolado. Ver `docs/api/gestao-a-vista-status.openapi.yaml`.
 - Em falha de integração, diferenciar não conectado, indisponível, dados desatualizados e ausência genuína de tarefas.
 
 ## Qualidade e design
@@ -42,6 +42,6 @@ Este arquivo registra boas práticas acordadas no Radar IA Aplicado e no Banco d
 node --check src/main/resources/static/js/gestao-vista.js
 ```
 
-No Windows, reiniciar apenas a instância local de `iniciar_portal_laboratorio.bat` depois do pull e usar `http://127.0.0.1:18081/`. A senha temporária gerada por execução **não** deve ser compartilhada.
+No Windows, reiniciar apenas a instância local de `iniciar_portal_laboratorio.bat` depois do pull e usar `http://127.0.0.1:18081/`. O arquivo habilita `PORTAL_LAB_PASSWORDLESS=true` para **navegação GET apenas no loopback (127.0.0.1)**; a senha efêmera é gerada internamente e não é mostrada nem necessária para navegar. O backend recusa inicializar nesse modo fora do laboratório ou escutando na rede (`0.0.0.0`). Operações de escrita e APIs fora da lista autorizada continuam protegidas; autenticação normal segue como padrão quando o modo está desligado. Jamais usar o bypass na rede institucional.
 
 As regras aqui são um guia versionado; os privilégios e o fluxo institucional efetivos precisam de homologação da TI.
