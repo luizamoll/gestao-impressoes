@@ -14,9 +14,10 @@ paths:
     get:
       summary: Consulta o status do conector de tarefas
       description: >-
-        Requer sessão autenticada no Portal; nesta etapa o conector permanece
-        desabilitado e não retorna dados institucionais. A resposta deve usar
-        Cache-Control: no-store.
+        Requer sessão autenticada no Portal, exceto no laboratório local
+        autorizado (portal.lab.passwordless=true, escuta 127.0.0.1), onde
+        consultas GET podem ocorrer sem login. A integração continua desabilitada,
+        sem dados institucionais. A resposta usa Cache-Control: no-store.
       operationId: consultarStatusGestaoAVista
       tags: [Gestão à Vista]
       security:
