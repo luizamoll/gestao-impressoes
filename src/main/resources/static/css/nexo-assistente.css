@@ -50,9 +50,12 @@
 .nexo-launcher-label {
   display: block;
   position: absolute;
-  bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%);
+  /* Balao lateral, sem cobrir a blusa e o simbolo UNH. */
+  bottom: auto;
+  top: 30px;
+  left: auto;
+  right: calc(100% - 8px);
+  transform: none;
   white-space: nowrap;
   padding: 6px 12px;
   font-size: 12px;
@@ -188,7 +191,7 @@
   }
   .nexo-launcher { width: 86px; min-height: 98px; }
   .nexo-launcher-avatar { height: 87px; }
-  .nexo-launcher-label { font-size: 10px; padding: 4px 9px; }
+  .nexo-launcher-label { top: 19px; right: calc(100% - 6px); font-size: 10px; padding: 5px 9px; }
   .nexo-panel { max-height: calc(100dvh - 128px); width: min(370px, calc(100vw - 18px)); }
   .nexo-panel-body { padding: 14px; }
 }
