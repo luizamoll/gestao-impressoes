@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 206" role="img" aria-labelledby="nexoTitle nexoDesc">
+<title id="nexoTitle">Nexo em estado de confirmacao, assistente do Portal UNH</title>
+<desc id="nexoDesc">Robô com corpo simétrico em prata e grafite, olhos azulados e blusa cinza com símbolo branco da Unihorizontes.</desc>
+<defs>
+  <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#f5f8fa"/><stop offset=".38" stop-color="#c3ced7"/><stop offset=".68" stop-color="#8a99a6"/><stop offset="1" stop-color="#e4ebf0"/>
+  </linearGradient>
+  <linearGradient id="face" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#2b3b4c"/><stop offset=".5" stop-color="#111d2a"/><stop offset="1" stop-color="#263848"/>
+  </linearGradient>
+  <linearGradient id="fabric" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#616b77"/><stop offset=".5" stop-color="#323b47"/><stop offset="1" stop-color="#1d2732"/>
+  </linearGradient>
+  <radialGradient id="light"><stop stop-color="#dff8ff"/><stop offset=".5" stop-color="#a9e2ff"/><stop offset="1" stop-color="#6eb5db"/></radialGradient>
+  <filter id="shade" x="-25%" y="-25%" width="150%" height="160%">
+    <feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#293b49" flood-opacity=".13"/>
+  </filter>
+</defs>
+<ellipse cx="90" cy="196" rx="59" ry="7" fill="#243543" opacity=".10"/>
+<g filter="url(#shade)">
+  <path d="M48 141Q34 135 28 150Q24 162 33 170Q40 176 49 167L52 150Z" fill="url(#metal)" stroke="#84919b" stroke-width="1.4"/>
+  <path d="M132 141Q146 135 152 150Q156 162 147 170Q140 176 131 167L128 150Z" fill="url(#metal)" stroke="#84919b" stroke-width="1.4"/>
+  <rect x="34" y="174" width="37" height="20" rx="10" fill="#788693" stroke="#53636f"/>
+  <rect x="109" y="174" width="37" height="20" rx="10" fill="#788693" stroke="#53636f"/>
+  <path d="M54 123Q72 114 90 114Q108 114 126 123Q137 131 139 148L137 183Q90 197 43 183L41 148Q43 131 54 123Z" fill="url(#fabric)" stroke="#34404a" stroke-width="2"/>
+  <path d="M72 121Q88 139 107 121" fill="none" stroke="#a0a9b1" stroke-width="4" stroke-linecap="round"/>
+  <path d="M73 121Q88 135 106 121L112 128Q88 150 67 128Z" fill="#27323e" stroke="#737e89" stroke-width="1"/>
+  <path d="M46 161L44 180M134 161L136 180" stroke="#95a0aa" stroke-opacity=".4" stroke-width="2.5"/>
+  <path d="M64 157Q90 163 115 157" stroke="#87929e" opacity=".33" fill="none"/>
+  <g transform="translate(81 160) scale(.07) translate(-379 -219)">
+    <path d="M402,230 390,242 386,248 382,257 379,268 379,420 382,432 387,442 396,453 408,462 426,468 593,468 602,466 614,460 626,450 632,442 637,432 640,422 640,268 638,259 632,246 620,232 615,228 600,221 596,220 577,220 576,219 561,219 560,220 534,220 533,219 525,219 524,220 515,220 514,219 494,219 493,220 445,219 444,220 438,220 437,219 431,219 417,222Z M400,395 403,383 410,364 420,345 429,333 437,325 448,318 463,317 474,322 486,333 523,385 534,395 549,403 562,406 572,406 585,403 600,395 619,378 620,379 619,380 620,381 620,386 619,387 620,416 618,424 614,432 601,444 588,448 430,448 425,447 415,442 404,430 401,424 399,415Z M402,262 407,254 414,247 423,242 430,240 589,240 597,242 606,247 613,254 618,263 620,271 620,329 616,343 606,361 592,376 585,381 573,386 561,386 553,383 547,379 536,368 508,327 492,310 484,304 474,299 461,296 454,296 444,298 430,305 418,315 400,339 399,338 399,273Z" fill="#f2f5f7" fill-rule="evenodd"/>
+  </g>
+  <rect x="24" y="47" width="20" height="48" rx="10" fill="url(#metal)" stroke="#74838e" stroke-width="2"/>
+  <rect x="136" y="47" width="20" height="48" rx="10" fill="url(#metal)" stroke="#74838e" stroke-width="2"/>
+  <rect x="29" y="53" width="10" height="33" rx="5" fill="#707d89"/>
+  <rect x="141" y="53" width="10" height="33" rx="5" fill="#707d89"/>
+  <rect x="33" y="17" width="114" height="110" rx="44" fill="url(#metal)" stroke="#8c9aa5" stroke-width="2"/>
+  <path d="M53 33Q88 19 124 32" stroke="#fff" stroke-opacity=".58" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="44" y="42" width="92" height="67" rx="28" fill="url(#face)" stroke="#798b99" stroke-width="2"/>
+  <path d="M53 52Q88 43 122 52" stroke="#fff" stroke-opacity=".16" stroke-width="3" fill="none"/>
+  <path d="M59 77Q69 64 79 77M101 77Q111 64 121 77" fill="none" stroke="#b8eaff" stroke-width="5" stroke-linecap="round"/>
+  <path d="M81 92Q90 106 99 92" fill="none" stroke="#b7e8ff" stroke-width="3.2" stroke-linecap="round"/>
+  <rect x="77" y="116" width="26" height="9" rx="4.5" fill="#8898a5" stroke="#cbd3db" stroke-width="1"/>
+  <path d="M159 18l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#c4ecff" stroke="#7faecb" stroke-width="1.3"/>
+</g>
+</svg>
