@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/portal.css?v=20261015-v2" />
-  <link rel="stylesheet" href="css/gestao-vista.css?v=20261016-v7" />
+  <link rel="stylesheet" href="css/gestao-vista.css?v=20261016-v8" />
   <script src="js/portal.js?v=20261014-8" defer></script>
-  <script src="js/gestao-vista.js?v=20261016-v7" defer></script>
+  <script src="js/gestao-vista.js?v=20261016-v8" defer></script>
 </head>
 <body class="portal-body gv-body">
   <a class="portal-skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -102,6 +102,21 @@
             </div>
             <a class="gv-history-snapshot-link" href="#impressoes">Ver histórico <span aria-hidden="true">→</span></a>
           </section>
+          <section class="gv-performance" aria-labelledby="gvPerformanceTitle">
+            <div class="gv-performance-top">
+              <div><h3 id="gvPerformanceTitle">Uso da franquia no mês</h3><p id="gvOverviewUsageNote">Setembro/2026 · competência apurada</p></div>
+              <strong id="gvOverviewUsage">38,1%</strong>
+            </div>
+            <div class="gv-performance-track" role="progressbar" id="gvOverviewUsageTrack"
+                 aria-label="Porcentagem consumida da franquia mensal" aria-valuemin="0" aria-valuemax="100"
+                 aria-valuenow="38.1" aria-valuetext="38,1% da franquia mensal">
+              <span id="gvOverviewUsageFill" style="width:38.05%"></span>
+            </div>
+            <div class="gv-performance-bottom">
+              <span>Saldo do mês: <strong id="gvOverviewRemaining">2.478</strong></span>
+              <span>Comparação anterior: <strong id="gvOverviewDelta">+506</strong></span>
+            </div>
+          </section>
           <section class="gv-next-modules" aria-labelledby="gvModulesTitle">
             <h3 id="gvModulesTitle">Outras áreas de acompanhamento</h3>
             <div class="gv-next-modules-grid">
@@ -161,6 +176,10 @@
             <span class="gv-eyebrow">Operação · Gestão de Impressões</span>
             <h2 id="gvPrintTitle">Consumo e franquia</h2>
             <p>Uma visão gerencial dos dados históricos utilizados no projeto.</p>
+            <div class="gv-report-actions">
+              <button type="button" class="gv-report-button" id="gvDownloadCsv">Exportar CSV histórico</button>
+              <button type="button" class="gv-report-button" id="gvPrintReport">Imprimir histórico</button>
+            </div>
           </div>
           <label class="gv-period" for="gvPeriod">Competência
             <select id="gvPeriod">
@@ -178,6 +197,17 @@
           <article class="gv-kpi gv-kpi-delta" id="gvTrend"><span>Variação anterior</span><strong id="gvDelta">+506</strong><small id="gvDeltaNote">+49,8% versus agosto</small></article>
         </div>
   
+        <section class="gv-performance gv-detail-performance" aria-labelledby="gvDetailPerformanceTitle">
+          <div class="gv-performance-top">
+            <div><h3 id="gvDetailPerformanceTitle">Uso da franquia</h3><p>Consumo registrado na competência selecionada</p></div>
+            <strong id="gvDetailUsage">38,1%</strong>
+          </div>
+          <div class="gv-performance-track" role="progressbar" id="gvDetailUsageTrack"
+               aria-label="Porcentagem consumida da franquia na competência" aria-valuemin="0" aria-valuemax="100"
+               aria-valuenow="38.1" aria-valuetext="38,1% da franquia mensal">
+            <span id="gvDetailUsageFill" style="width:38.05%"></span>
+          </div>
+        </section>
         <div class="gv-panels">
           <section class="gv-panel gv-comparison" aria-labelledby="gvHistoryTitle">
             <div class="gv-panel-top">
@@ -186,15 +216,21 @@
             </div>
             <div class="gv-bars" role="group" aria-label="Agosto: 1.016 impressões, 25,4% da franquia. Setembro: 1.522 impressões, 38,1% da franquia. Outubro: sem leitura apurada.">
               <div class="gv-bar-row" data-period="2026-08">
-                <div><strong>Agosto/2026</strong><span>1.016 · 25,4%</span></div>
+                <button type="button" class="gv-bar-select" data-gv-period-target="2026-08" aria-pressed="false" aria-label="Selecionar agosto de 2026">
+                  <strong>Agosto/2026</strong><span>1.016 · 25,4%</span>
+                </button>
                 <div class="gv-track"><span style="width:25.4%"></span></div>
               </div>
               <div class="gv-bar-row gv-bar-selected" data-period="2026-09">
-                <div><strong>Setembro/2026</strong><span>1.522 · 38,1%</span></div>
+                <button type="button" class="gv-bar-select" data-gv-period-target="2026-09" aria-pressed="true" aria-label="Selecionar setembro de 2026">
+                  <strong>Setembro/2026</strong><span>1.522 · 38,1%</span>
+                </button>
                 <div class="gv-track"><span style="width:38.05%"></span></div>
               </div>
               <div class="gv-bar-row gv-bar-waiting" data-period="2026-10">
-                <div><strong>Outubro/2026</strong><span>Aguardando leitura</span></div>
+                <button type="button" class="gv-bar-select" data-gv-period-target="2026-10" aria-pressed="false" aria-label="Selecionar outubro de 2026 sem leitura">
+                  <strong>Outubro/2026</strong><span>Aguardando leitura</span>
+                </button>
                 <div class="gv-track"><span style="width:0%"></span></div>
                 <small>Sem barra porque o consumo não foi apurado, não porque foi zero.</small>
               </div>
