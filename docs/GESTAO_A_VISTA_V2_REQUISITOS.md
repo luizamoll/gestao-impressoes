@@ -135,3 +135,15 @@ Feedback recebido em 16/10/2026: tipografia aprovada, porém visão geral ainda 
 - Preservados acesso, cálculo e histórico de Impressões e o isolamento em relação ao Vikunja.
 
 Aprovação visual no Windows e homologação institucional de dados ainda pendentes.
+
+## 12. Entrega de laboratório V7 — competências sincronizadas
+
+A Gestão à Vista passou a usar **a mesma competência selecionada** na Visão geral e no detalhamento de Impressões. O seletor no resumo permite alternar agosto, setembro e outubro de 2026 sem trocar de módulo; alterar o detalhamento também atualiza a Visão geral.
+
+- Dados **históricos fixos no JavaScript**, sem origem de produção, sincronização ou consulta ao banco: agosto/2026 = 1.016, setembro/2026 = 1.522, franquia mensal = 4.000. Sujeitos à validação institucional.
+- Outubro/2026 permanece **sem leitura confirmada**, mostrando travessão (—), legenda de ausência de leitura e saldo indisponível. A franquia é mensal, não acumula automaticamente de um período para o outro.
+- `gvOverviewPeriod` e `gvPeriod` compartilham seleção na mesma sessão da página; os valores do resumo não têm cópia de lógica independente.
+- Criados testes comportamentais sem bibliotecas externas: `tests/gestao-vista-ui.test.cjs`, executados pelo `node --test` na CI. Casos: carregamento padrão, sincronização nos dois sentidos, outubro ausente, retorno a setembro. Teste Java valida os controles no HTML.
+- O seletor é um refinamento da área histórica existente, **não** cria permissão, fonte de dados ou conector Vikunja.
+
+**Próxima etapa:** confirmar com a TI as fontes reais de Impressões e decidir se vale integrar leituras confirmadas ao painel. Não converter automaticamente os números estáticos em métricas operacionais atuais.
