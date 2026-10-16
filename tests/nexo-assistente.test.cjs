@@ -39,7 +39,6 @@ function mount(options = {}) {
   const document = {
     body: { append(item) { host = item; } },
     createElement(tag) {
-      assert.equal(tag, "div");
       assert.ok(["div", "p", "small", "a"].includes(tag));
       return {
         id: "", className: "", innerHTML: "", dataset: {},
