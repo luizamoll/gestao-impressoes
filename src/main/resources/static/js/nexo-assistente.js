@@ -18,14 +18,24 @@
           <span class="nexo-panel-avatar"><img id="nexo-panel-robot" src="assets/nexo-robo.svg?v=20261016-v2" alt="" width="43" height="49"></span>
           <div>
             <strong id="nexo-title">Nexo</strong>
-            <span>Assistente do Portal UNH</span>
+            <span>Agente experimental do Portal</span>
           </div>
         </div>
         <button type="button" id="nexo-close" class="nexo-close" aria-label="Fechar assistente">×</button>
       </div>
       <div class="nexo-panel-body">
         <p class="nexo-intro"><strong>Olá! Posso ajudar?</strong> Sou o guia de navegação do Portal UNH. Encontre rapidamente os recursos que você precisa.</p>
-        <p class="nexo-section-heading">Onde você quer ir?</p>
+        <form id="nexo-chat-form" class="nexo-chat-form" aria-label="Converse com o Nexo">
+          <label for="nexo-chat-input">Pergunte ao Nexo</label>
+          <div class="nexo-chat-entry">
+            <input id="nexo-chat-input" name="pergunta" type="text" autocomplete="off"
+                   maxlength="280" placeholder="Ex.: Como foi setembro nas Impressões?" required>
+            <button type="submit" id="nexo-chat-submit" aria-label="Enviar pergunta ao Nexo">Enviar</button>
+          </div>
+        </form>
+        <div id="nexo-chat-log" class="nexo-chat-log" role="log" aria-label="Conversa temporária com o Nexo" aria-live="polite" aria-relevant="additions text"></div>
+        <p class="nexo-chat-disclosure">Respostas orientadas por regras e dados históricos de laboratório. Sem IA generativa nesta fase.</p>
+        <p class="nexo-section-heading">Ou escolha um atalho</p>
         <nav class="nexo-links" aria-label="Atalhos do assistente">
           <a href="index.html#comunicados"><span aria-hidden="true">▤</span><span>Mural de comunicados</span><span aria-hidden="true">→</span></a>
           <a href="index.html#ferramentas"><span aria-hidden="true">▦</span><span>Ferramentas do Portal</span><span aria-hidden="true">→</span></a>
@@ -43,7 +53,7 @@
         </div>
         <p id="nexo-tip-description" class="nexo-visually-hidden">Mostra uma dica local, sem consultar IA nem dados institucionais.</p>
         <p id="nexo-feedback" class="nexo-feedback" role="status" aria-live="polite" hidden></p>
-        <p class="nexo-disclaimer">Orientação local · IA não conectada</p>
+        <p class="nexo-disclaimer">Agente local experimental · IA não conectada</p>
       </div>
     </aside>
     <button id="nexo-toggle" class="nexo-launcher" type="button"
@@ -63,6 +73,10 @@
   const tipButton = document.getElementById("nexo-tip");
   const copyButton = document.getElementById("nexo-copy");
   const feedback = document.getElementById("nexo-feedback");
+  const chatForm = document.getElementById("nexo-chat-form");
+  const chatInput = document.getElementById("nexo-chat-input");
+  const chatLog = document.getElementById("nexo-chat-log");
+
 
   // Um unico personagem base e cinco expressões vetoriais, sem dependencias.
   const emotions = Object.freeze({
@@ -98,6 +112,47 @@
     };
     return tips[pathname] || "Na página inicial do Portal, os comunicados aparecem antes do catálogo de ferramentas.";
   }
+
+  // Cada pergunta aciona uma decisao local verificavel e no maximo uma
+  // sugestao de navegacao. Nenhum texto digitado e enviado a um servidor.
+  function appendChatMessage(text, side, suggestedAction = null, source = null) {
+    const item = document.createElement("div");
+    item.className = "nexo-chat-message nexo-chat-message-" + side;
+    const content = document.createElement("p");
+    content.textContent = text;
+    item.append(content);
+    if (source && side === "assistant") {
+      const provenance = document.createElement("small");
+      provenance.textContent = source;
+      item.append(provenance);
+    }
+    if (suggestedAction && typeof suggestedAction.href === "string" && typeof suggestedAction.label === "string") {
+      const action = document.createElement("a");
+      action.href = suggestedAction.href;
+      action.className = "nexo-chat-link";
+      action.textContent = suggestedAction.label + " →";
+      item.append(action);
+    }
+    chatLog.append(item);
+    // Evita uma conversa infinita em memoria. Nao armazenamos historico.
+    while (chatLog.children.length > 12) chatLog.firstElementChild.remove();
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  chatForm.addEventListener("submit", event => {
+    event.preventDefault();
+    const question = chatInput.value.trim();
+    if (!question) return;
+    appendChatMessage(question, "user");
+    chatInput.value = "";
+    const agent = window.NexoAgent;
+    const response = agent && typeof agent.ask === "function"
+      ? agent.ask(question, { pathname: window.location.pathname })
+      : { answer: "O modo de perguntas ainda não carregou. Atualize a página e tente novamente.", action: null, source: null };
+    appendChatMessage(response.answer, "assistant", response.action, response.source);
+    showEmotion("respondendo");
+    chatInput.focus();
+  });
 
   function setOpen(open) {
     panel.hidden = !open;
