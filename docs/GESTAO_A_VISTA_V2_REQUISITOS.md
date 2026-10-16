@@ -123,3 +123,15 @@ Após análise dos prints do laboratório Windows em 16/10/2026, o painel recebe
 - Dados e lógica de comparação das Impressões não alterados. Nenhuma conexão ao Vikunja institucional ou outra ação em produção.
 
 **Validação:** testes Java e sintaxe JS pela CI, revisão visual final no Windows a confirmar com a usuária.
+
+## 11. Ajuste de prioridade visual V6 — revisão do navegador
+
+Feedback recebido em 16/10/2026: tipografia aprovada, porém visão geral ainda dava mais destaque a avisos repetidos de indisponibilidade do Vikunja do que aos indicadores historicamente disponíveis. Ajustes feitos na branch de laboratório:
+
+- Removido cartão de aviso grande antes dos indicadores e nota redundante na barra lateral.
+- O resumo de Impressões com competência, origem e dados históricos é a primeira seção após o cabeçalho da Visão geral.
+- Mantido o status de conector não conectado e uma única observação discreta abaixo dos atalhos para Projetos e Indicadores; nenhuma tarefa foi inventada.
+- Verificação automatizada passou a proteger a ordem dos elementos e a não repetição dos avisos.
+- Preservados acesso, cálculo e histórico de Impressões e o isolamento em relação ao Vikunja.
+
+Aprovação visual no Windows e homologação institucional de dados ainda pendentes.
