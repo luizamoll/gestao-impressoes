@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/portal.css?v=20261015-v2" />
-  <link rel="stylesheet" href="css/gestao-vista.css?v=20261016-v6" />
+  <link rel="stylesheet" href="css/gestao-vista.css?v=20261016-v7" />
   <script src="js/portal.js?v=20261014-8" defer></script>
-  <script src="js/gestao-vista.js?v=20261016-v4" defer></script>
+  <script src="js/gestao-vista.js?v=20261016-v7" defer></script>
 </head>
 <body class="portal-body gv-body">
   <a class="portal-skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -82,11 +82,19 @@
             <div class="gv-history-snapshot-copy">
               <span class="gv-workspace-kicker">Histórico disponível · sem atualização automática</span>
               <h3 id="gvHistorySnapshotTitle">Gestão de Impressões</h3>
-              <p>Valores históricos do projeto, sujeitos à validação institucional.</p>
+              <p id="gvOverviewDataNote" role="status" aria-live="polite">Setembro/2026 · histórico do projeto, ainda sem sincronização automática.</p>
+              <label class="gv-snapshot-period" for="gvOverviewPeriod">
+                Competência
+                <select id="gvOverviewPeriod" aria-controls="gvOverviewConsumed gvOverviewConsumedNote">
+                  <option value="2026-09" selected>Setembro/2026</option>
+                  <option value="2026-08">Agosto/2026</option>
+                  <option value="2026-10">Outubro/2026 · sem leitura</option>
+                </select>
+              </label>
             </div>
             <div class="gv-history-snapshot-metric">
-              <strong>1.522</strong>
-              <span>Impressões em setembro/2026</span>
+              <strong id="gvOverviewConsumed">1.522</strong>
+              <span id="gvOverviewConsumedNote">Impressões em setembro/2026</span>
             </div>
             <div class="gv-history-snapshot-metric">
               <strong>4.000</strong>
