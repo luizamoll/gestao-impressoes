@@ -45,7 +45,21 @@ O botão de cópia existe para demonstrar **uma operação real e verificável**
 
 **Validação:** testes Node para seis assets, contexto local, troca de estados, atraso de cópia real, sucesso e ausência de permissão. A inspeção visual final no Edge/Windows ainda exige confirmação da usuária.
 
-## Fase 2 — orientador contextual e explicação de indicadores (proposta)
+## Fase 2A — agente experimental de perguntas (implementado)
+
+O Nexo agora aceita texto livre no próprio painel. O arquivo `static/js/nexo-agente.js` interpreta perguntas com regras locais restritas, devolve uma resposta com fonte, e opcionalmente uma **sugestão de navegação** dentre URLs aprovadas. É uma primeira arquitetura agente → intenção → resposta/ação proposta, **não** um LLM nem uma IA generativa. Nenhum modelo externo, chave ou infraestrutura foi conectado.
+
+- Assuntos conhecidos: Mural, Ferramentas, Gestão à Vista, Impressões (agosto/setembro históricos, outubro sem leitura), Projetos sem Vikunja, Automações, ESG e Gestão Documental.
+- Nunca atribuir métricas ao Vikunja, inferir números da instituição ou interpretar consumo sem a competência.
+- Respostas construídas por `textContent`, nunca `innerHTML`, e links exclusivamente de uma lista codificada de destinos permitidos; **nenhuma navegação automática**.
+- Histórico limitado a 12 mensagens no DOM, sem envio pela rede, localStorage, persistência, telemetria ou consulta a API externa.
+- Solicitações desconhecidas retornam limitação honesta; dados pessoais, senhas e matrículas não são acessíveis.
+- Emoção “respondendo” somente ao mostrar resposta pronta. Não criar atraso artificial com “pensando”.
+- Incluídos testes Node para roteamento de intenções, privacidade, ausência de dados, segurança dos links, limite de mensagens e renderização sem HTML executável.
+
+**Próxima decisão arquitetural (não executada):** escolher se o futuro modelo de linguagem será local no laboratório (ex.: processo local com aprovação explícita e validação de requisitos de hardware) ou hospedado em infraestrutura homologada. Só conectar o modelo a fontes institucionais após políticas de acesso e autorização da TI. O script atual não é um mecanismo de IA generativa e não substitui uma base de conhecimento revisada.
+
+## Fase 2 — orientador contextual e explicação de indicadores (etapas futuras)
 
 Antes de contratar IA, testar utilidade com intenções estritas e dados estáticos/autorizados:
 1. Explicar o que são consumo, franquia e competência na Gestão de Impressões.
