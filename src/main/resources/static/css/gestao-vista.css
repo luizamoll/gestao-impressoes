@@ -494,3 +494,31 @@
   .gv-next-modules { margin-top: 19px; }
   .gv-integration-footnote { font-size: 12px; }
 }
+
+/* V7: seletor do resumo historico, alinhado ao detalhamento de Impressões. */
+.gv-snapshot-period {
+  display: grid;
+  gap: 5px;
+  margin-top: 12px;
+  max-width: 230px;
+  color: #536b78;
+  font-size: 12px;
+  font-weight: 700;
+}
+.gv-snapshot-period select {
+  width: 100%;
+  min-height: 39px;
+  padding: 9px 10px;
+  color: #294652;
+  font: inherit;
+  font-weight: 600;
+  background: #fff;
+  border: 1px solid #ccdce3;
+  border-radius: 9px;
+}
+.gv-snapshot-period select:hover { border-color: #95b5c3; }
+.gv-snapshot-period select:focus-visible { outline: 3px solid #376b84; outline-offset: 2px; }
+.gv-history-snapshot-metric strong { font-variant-numeric: tabular-nums; }
+@media (max-width: 600px) {
+  .gv-snapshot-period { max-width: none; }
+}
