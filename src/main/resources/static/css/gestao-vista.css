@@ -168,7 +168,8 @@
   border: 1px solid #e5dac3; background: #fcf6eb;
   color: #765f37; font-size: 12px; font-weight: 800; white-space: nowrap;
 }
-.gv-workspace-status>span { width: 7px; height: 7px; background: #c39545; border-radius: 50%; }
+.gv-workspace-status>span:first-child { width: 7px; height: 7px; flex: 0 0 7px; background: #c39545; border-radius: 50%; }
+.gv-workspace-status>span:last-child { width: auto; height: auto; background: none; border-radius: 0; }
 .gv-workspace-brief {
   min-height: 172px;
   display: flex; align-items: center;
