@@ -26,6 +26,25 @@ No Portal e páginas principais, o Nexo abre um painel com atalhos reais para Mu
 - Links respeitam a proteção atual das páginas: fora do laboratório, acesso a ferramenta protegida ainda exige login.
 - Os arquivos estáticos do Nexo podem ser públicos; dados internos não são transmitidos.
 
+## Emoções do Nexo — primeiro lote interativo (implementado)
+
+Seis variantes SVG preservam o mesmo tronco simétrico, o uniforme grafite e a marca branca, mudando olhos, boca e pequenos detalhes visuais. Assets: `nexo-robo.svg` (normal) e `nexo-robo-{saudacao,pensando,respondendo,confirmacao,dica}.svg`. A paleta do personagem exclui verde.
+
+| Emoção | Gatilho verdadeiro | Comportamento |
+| --- | --- | --- |
+| Normal | Painel fechado / carregamento inicial | Olhar calmo e movimento suave de repouso |
+| Saudação | Usuário abre o painel | Expressão sorridente e aceno discreto |
+| Respondendo | Usuário expande a explicação das capacidades | Expressão de fala; conteúdo estático e conferível |
+| Dica | Usuário solicita "Dica desta página" | Expressão inspirada; dica local apropriada ao módulo, sem chamadas de rede |
+| Pensando | Usuário aciona "Copiar endereço" e a Promise do navegador está pendente | Expressão de concentração; sem falsa análise de IA |
+| Confirmação | `navigator.clipboard.writeText` conclui com sucesso | Expressão de alegria; confirmação não aparece se a operação falhar |
+
+O botão de cópia existe para demonstrar **uma operação real e verificável**. Se o navegador bloquear o Clipboard API, o Nexo exibe instrução para copiar pelo teclado e nunca declara êxito. Outras automações/integrações permanecem desabilitadas.
+
+**Uso cuidadoso:** nada de mensagens proativas automáticas, pop-ups repetitivos ou caricaturas em loop. Animação reduzida segue o sistema via `prefers-reduced-motion`. Respostas do Nexo não fazem requisições externas, não acessam dados de estudantes, nem simulam consultas institucionais.
+
+**Validação:** testes Node para seis assets, contexto local, troca de estados, atraso de cópia real, sucesso e ausência de permissão. A inspeção visual final no Edge/Windows ainda exige confirmação da usuária.
+
 ## Fase 2 — orientador contextual e explicação de indicadores (proposta)
 
 Antes de contratar IA, testar utilidade com intenções estritas e dados estáticos/autorizados:
