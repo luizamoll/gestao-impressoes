@@ -217,7 +217,9 @@ test("agente nao transforma texto do usuario em HTML nem acessa a rede", () => {
   const user = ui.elements["nexo-chat-log"].children[0].children[0];
   assert.equal(user.textContent, "<img src=x onerror=alert(1)>");
   assert.equal(user.innerHTML, undefined);
-  assert.doesNotMatch(script, /\\bfetch\\s*\\(|localStorage|sessionStorage/);
+  assert.equal(script.includes("fetch("), false);
+  assert.equal(script.includes("localStorage"), false);
+  assert.equal(script.includes("sessionStorage"), false);
 });
 
 test("conversa nao mantem mais que doze mensagens em memoria da pagina", () => {
