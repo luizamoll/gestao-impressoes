@@ -30,6 +30,7 @@ jobs:
           node --check src/main/resources/static/js/gestao-vista.js
           node --check src/main/resources/static/js/portal.js
           node --check src/main/resources/static/js/mural.js
+          node --test tests/gestao-vista-ui.test.cjs
       - name: Testes do Portal e conector Perseus
         run: |
           chmod +x ./mvnw
