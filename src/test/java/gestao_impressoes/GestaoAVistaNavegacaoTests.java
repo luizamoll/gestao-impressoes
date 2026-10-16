@@ -35,6 +35,13 @@ class GestaoAVistaNavegacaoTests {
             "Visão geral deve oferecer navegação rápida para módulos futuros.");
         assertTrue(html.contains("Versão de laboratório"),
             "Dados históricos devem permanecer claramente identificados.");
+        assertTrue(html.indexOf("class=\"gv-history-snapshot\"") <
+                   html.indexOf("class=\"gv-next-modules\""),
+            "Resultados históricos disponíveis devem vir antes das integrações pendentes.");
+        assertTrue(!html.contains("class=\"gv-workspace-brief\""),
+            "Evitar aviso em destaque que esconda os resultados já disponíveis.");
+        assertTrue(!html.contains("class=\"gv-workspace-sidebar-note\""),
+            "Não repetir na barra lateral o status já informado no cabeçalho.");
 
     }
 
