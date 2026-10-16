@@ -24,6 +24,12 @@ jobs:
           distribution: temurin
           java-version: '21'
           cache: maven
+      - name: Verificar sintaxe JavaScript dos modulos ativos
+        run: |
+          node --version
+          node --check src/main/resources/static/js/gestao-vista.js
+          node --check src/main/resources/static/js/portal.js
+          node --check src/main/resources/static/js/mural.js
       - name: Testes do Portal e conector Perseus
         run: |
           chmod +x ./mvnw
