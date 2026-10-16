@@ -110,3 +110,16 @@ Implementada em 16/10/2026 na branch `feat/autenticacao-portal`:
 - Issue de bloqueio: https://github.com/luizamoll/gestao-impressoes/issues/3 — aprovação TI, escopos de dados e homologação, **antes** de consultar Vikunja.
 
 **Validação:** testes Java e sintaxe JS aprovados no GitHub Actions; aparência/fluxo no Edge Windows ainda aguardam avaliação da usuária. Nenhuma integração real, publicação institucional ou merge foi efetuado.
+
+## 10. Refinamento visual V5 — feedback no Edge
+
+Após análise dos prints do laboratório Windows em 16/10/2026, o painel recebeu ajustes de legibilidade e hierarquia:
+
+- Títulos migrados para tipografia de leitura com espaçamento de letras normalizado. Corrigida a impressão de palavras coladas na interface.
+- Imagem conceitual mantida somente no cabeçalho, retirada do aviso de integração (agora uma faixa neutra, compacta, textual).
+- Eliminados selos decorativos de desenvolvimento no cabeçalho em favor de uma linha discreta com a situação real dos dados históricos.
+- Na Visão geral, o cartão de placeholder grande foi substituído por dois atalhos funcionais para Projetos e Indicadores. O aviso do Vikunja permanece explícito e os dados de tarefas continuam indisponíveis, sem contagens fictícias.
+- Nota lateral mais curta e próxima do menu; reduzidos espaços excessivos e a altura da área introdutória.
+- Dados e lógica de comparação das Impressões não alterados. Nenhuma conexão ao Vikunja institucional ou outra ação em produção.
+
+**Validação:** testes Java e sintaxe JS pela CI, revisão visual final no Windows a confirmar com a usuária.
