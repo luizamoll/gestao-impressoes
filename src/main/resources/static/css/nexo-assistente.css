@@ -21,12 +21,14 @@
 .nexo-launcher {
   pointer-events: auto;
   position: relative;
-  display: grid;
-  justify-items: center;
-  align-items: end;
+  /* Area fixa: o balao nao pode comprimir nem redimensionar o mascote. */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   width: 112px;
-  min-height: 125px;
-  padding: 0 3px 6px;
+  height: 137px;
+  min-height: 0;
+  padding: 0;
   margin-left: auto;
   border: 0;
   background: transparent;
@@ -35,10 +37,13 @@
 }
 .nexo-launcher-avatar {
   display: block;
-  height: 110px;
-  width: auto;
-  max-width: 100%;
+  /* Mesma proporcao intrinseca do SVG (180 x 206), com corpo inteiro. */
+  width: 106px;
+  height: auto;
+  aspect-ratio: 180 / 206;
+  max-width: none;
   object-fit: contain;
+  flex: 0 0 auto;
   filter: drop-shadow(0 8px 8px rgba(43,55,70,.19));
   transform-origin: 50% 100%;
   animation: nexo-idle 4.8s ease-in-out infinite;
@@ -50,12 +55,13 @@
 .nexo-launcher-label {
   display: block;
   position: absolute;
-  /* Balao lateral, sem cobrir a blusa e o simbolo UNH. */
+  /* Balao solto acima e um pouco a esquerda da cabeca: nunca sobre a blusa. */
   bottom: auto;
-  top: 30px;
+  top: -27px;
   left: auto;
-  right: calc(100% - 8px);
+  right: 30px;
   transform: none;
+  pointer-events: none;
   white-space: nowrap;
   padding: 6px 12px;
   font-size: 12px;
@@ -66,6 +72,21 @@
   border-radius: 100px;
   box-shadow: 0 4px 15px rgba(32,48,64,.1);
 }
+/* Pontinha direcionada a cabeca, sem encostar na arte. */
+.nexo-launcher-label::after {
+  content: "";
+  position: absolute;
+  right: 22px;
+  bottom: -5px;
+  width: 9px;
+  height: 9px;
+  background: #fff;
+  border-right: 1px solid #dce4e9;
+  border-bottom: 1px solid #dce4e9;
+  transform: rotate(45deg);
+}
+/* Com o painel aberto, o texto nao compete com os controles. */
+.nexo-launcher[aria-expanded="true"] .nexo-launcher-label { display: none; }
 .nexo-panel[hidden],.nexo-help-answer[hidden] { display: none !important; }
 .nexo-panel {
   pointer-events: auto;
@@ -189,9 +210,9 @@
     right: max(7px, env(safe-area-inset-right));
     bottom: max(7px, env(safe-area-inset-bottom));
   }
-  .nexo-launcher { width: 86px; min-height: 98px; }
-  .nexo-launcher-avatar { height: 87px; }
-  .nexo-launcher-label { top: 19px; right: calc(100% - 6px); font-size: 10px; padding: 5px 9px; }
+  .nexo-launcher { width: 90px; height: 113px; min-height: 0; }
+  .nexo-launcher-avatar { width: 86px; height: auto; }
+  .nexo-launcher-label { top: -24px; right: 18px; font-size: 10px; padding: 5px 9px; }
   .nexo-panel { max-height: calc(100dvh - 128px); width: min(370px, calc(100vw - 18px)); }
   .nexo-panel-body { padding: 14px; }
 }
