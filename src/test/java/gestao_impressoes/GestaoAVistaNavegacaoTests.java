@@ -29,6 +29,12 @@ class GestaoAVistaNavegacaoTests {
         assertTrue(html.contains("id=\"gv-impressao-view\""));
         assertTrue(html.contains("id=\"gvPeriod\""));
         assertTrue(html.contains("id=\"gvConsumed\""));
+        assertTrue(html.contains("id=\"gvOverviewPeriod\""),
+            "Resumo deve permitir escolher a mesma competencia do detalhamento.");
+        assertTrue(html.contains("id=\"gvOverviewConsumed\""),
+            "Resumo deve atualizar o consumo sem repetir valores independentes.");
+        assertTrue(html.contains("id=\"gvOverviewDataNote\""),
+            "Ausencia de leitura precisa ser identificada na Visao geral.");
         assertTrue(html.contains("Setembro/2026"));
         assertTrue(html.contains("Outubro/2026 · sem leitura"));
         assertTrue(html.contains("class=\"gv-next-modules\""),
