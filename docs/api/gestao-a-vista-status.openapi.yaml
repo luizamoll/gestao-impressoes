@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: Portal UNH - Gestão à Vista (laboratório)
+  version: 0.1.0
+  description: >-
+    Contrato inicial da API de status do conector Vikunja.
+    A API NÃO consulta tarefas nem a rede interna; devolve apenas uma condição
+    de integração desabilitada. Não implica aprovação institucional.
+servers:
+  - url: http://127.0.0.1:18081
+    description: Apenas laboratório local, com sessão de teste
+paths:
+  /api/gestao-a-vista/status:
+    get:
+      summary: Consulta o status do conector de tarefas
+      description: >-
+        Requer sessão autenticada no Portal; nesta etapa o conector permanece
+        desabilitado e não retorna dados institucionais. A resposta deve usar
+        Cache-Control: no-store.
+      operationId: consultarStatusGestaoAVista
+      tags: [Gestão à Vista]
+      security:
+        - portalSession: []
+      responses:
+        '200':
+          description: Estado conhecido da integração ainda não autorizada
+          headers:
+            Cache-Control:
+              description: Dados da sessão não devem ser armazenados por intermediários
+              schema:
+                type: string
+                example: no-store
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegracaoStatus'
+              example:
+                fonte: Vikunja
+                estado: aguardando_autorizacao
+                conectado: false
+                detalhe: A instancia institucional ainda nao foi integrada ou autorizada pela TI.
+        '302':
+          description: Sem sessão, redireciona para /login
+          headers:
+            Location:
+              schema:
+                type: string
+                example: /login
+        '403':
+          description: Acesso negado
+components:
+  securitySchemes:
+    portalSession:
+      type: apiKey
+      in: cookie
+      name: JSESSIONID
+      description: Cookie de sessão emitido pelo Spring Security, somente laboratório.
+  schemas:
+    IntegracaoStatus:
+      type: object
+      required: [fonte, estado, conectado, detalhe]
+      additionalProperties: false
+      properties:
+        fonte:
+          type: string
+          enum: [Vikunja]
+        estado:
+          type: string
+          enum: [aguardando_autorizacao]
+        conectado:
+          type: boolean
+          enum: [false]
+        detalhe:
+          type: string
+description: Contrato propositalmente limitado à funcionalidade já implementada.
