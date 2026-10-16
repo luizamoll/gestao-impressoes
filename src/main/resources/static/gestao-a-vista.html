@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/portal.css?v=20261015-v2" />
-  <link rel="stylesheet" href="css/gestao-vista.css?v=20261016-v4" />
+  <link rel="stylesheet" href="css/gestao-vista.css?v=20261016-v5" />
   <script src="js/portal.js?v=20261014-8" defer></script>
   <script src="js/gestao-vista.js?v=20261016-v4" defer></script>
 </head>
@@ -46,7 +46,7 @@
         <span class="gv-eyebrow"><span class="gv-dash"></span> Indicadores e acompanhamento</span>
         <h1 id="gvTitle">Gestão <em>à Vista.</em></h1>
         <p>Acompanhe resultados e entenda o que mudou, sem precisar interpretar relatórios técnicos. Cada indicador terá período, origem e regras de cálculo claros.</p>
-        <div class="gv-tags"><span>Em desenvolvimento</span><span>Dados históricos · sem atualização automática</span></div>
+        <p class="gv-intro-caption">Versão de laboratório · Histórico de impressões sem sincronização automática</p>
       </div>
       <div class="gv-intro-art gv-intro-photo" aria-hidden="true"></div>
     </section>
@@ -64,7 +64,7 @@
           <a href="#gv-indicadores" data-gv-nav="gv-indicadores"><span aria-hidden="true">◫</span> Indicadores</a>
           <a href="#impressoes" data-gv-nav="impressoes"><span aria-hidden="true">▥</span> Impressões</a>
         </nav>
-        <div class="gv-workspace-sidebar-note">Dados do Vikunja: <strong>aguardando autorização da TI</strong>. A conta de testes não dá acesso a projetos reais.</div>
+        <div class="gv-workspace-sidebar-note"><strong>Integração pendente</strong><span>Projetos e tarefas exigem autorização da TI.</span></div>
       </aside>
 
       <div class="gv-workspace-main">
@@ -72,17 +72,16 @@
           <div class="gv-workspace-titlebar">
             <div>
               <span class="gv-workspace-kicker">Visão da operação</span>
-              <h2 id="gvWorkspaceTitle">Panorama de trabalho.</h2>
-              <p>Acompanhe projetos e indicadores autorizados em um só lugar. Por enquanto, apenas o histórico de impressões está disponível.</p>
+              <h2 id="gvWorkspaceTitle">Visão geral</h2>
+              <p>Informações operacionais em um só lugar. Nesta etapa, podemos consultar o histórico de Impressões.</p>
             </div>
             <span class="gv-workspace-status" id="gvConnectorStatus" role="status" aria-live="polite"><span aria-hidden="true"></span><span id="gvConnectorText">Verificando integração…</span></span>
           </div>
 
           <div class="gv-workspace-brief" role="note">
             <div class="gv-workspace-brief-copy">
-              <span class="gv-workspace-brief-overline">Conexão interna · Vikunja</span>
-              <strong>O acompanhamento de tarefas está sendo preparado.</strong>
-              <p>Quando as permissões e a versão do Vikunja forem homologadas pela TI, os dados dos projetos autorizados aparecerão aqui. Não há tarefas importadas.</p>
+              <strong>Projetos e tarefas aguardam integração.</strong>
+              <p>O Vikunja institucional ainda não foi conectado. Os indicadores de tarefas serão liberados após autorização da TI.</p>
             </div>
           </div>
 
@@ -102,14 +101,19 @@
             </div>
             <a class="gv-history-snapshot-link" href="#impressoes">Ver histórico <span aria-hidden="true">→</span></a>
           </section>
-          <section class="gv-workspace-panel gv-overview-focus" aria-labelledby="gvAttentionTitle">
-            <div class="gv-workspace-panel-head">
-              <div><span>ACOMPANHAMENTO</span><h3 id="gvAttentionTitle">O que precisa de atenção</h3></div>
-              <span class="gv-workspace-panel-decor" aria-hidden="true">◷</span>
-            </div>
-            <div class="gv-workspace-empty">
-              <strong>Aguardando a conexão ao Vikunja</strong>
-              <p>Quando for autorizada, esta área poderá mostrar prazos e pendências dos projetos que você tem permissão para visualizar.</p>
+          <section class="gv-next-modules" aria-labelledby="gvModulesTitle">
+            <h3 id="gvModulesTitle">Outras áreas de acompanhamento</h3>
+            <div class="gv-next-modules-grid">
+              <a href="#gv-projetos" class="gv-next-module">
+                <span class="gv-next-module-name">Projetos</span>
+                <span class="gv-next-module-description">Áreas e equipes acompanhadas</span>
+                <span class="gv-next-module-status">Integração pendente <span aria-hidden="true">→</span></span>
+              </a>
+              <a href="#gv-indicadores" class="gv-next-module">
+                <span class="gv-next-module-name">Indicadores</span>
+                <span class="gv-next-module-description">Prazos, entregas e tarefas</span>
+                <span class="gv-next-module-status">Integração pendente <span aria-hidden="true">→</span></span>
+              </a>
             </div>
           </section>
         </section>
