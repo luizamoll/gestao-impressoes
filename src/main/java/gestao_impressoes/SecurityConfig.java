@@ -49,8 +49,8 @@ public class SecurityConfig {
             } else {
                 auth.requestMatchers(
                     "/", "/index.html",
-                    "/css/portal.css", "/css/mural.css",
-                    "/js/portal.js", "/js/mural.js",
+                    "/css/portal.css", "/css/mural.css", "/css/nexo-assistente.css",
+                    "/js/portal.js", "/js/mural.js", "/js/nexo-assistente.js",
                     "/assets/**", "/favicon.ico"
                 ).permitAll();
             }
