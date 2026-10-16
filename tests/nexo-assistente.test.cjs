@@ -10,16 +10,23 @@ const script = fs.readFileSync(
   path.join(__dirname, "../src/main/resources/static/js/nexo-assistente.js"),
   "utf8"
 );
+const agentScript = fs.readFileSync(
+  path.join(__dirname, "../src/main/resources/static/js/nexo-agente.js"), "utf8"
+);
 
 function mount(options = {}) {
   const events = {};
   const elements = {};
   let host = null;
   const ids = ["nexo-toggle", "nexo-panel", "nexo-close", "nexo-explain", "nexo-help-answer",
-    "nexo-robot", "nexo-panel-robot", "nexo-tip", "nexo-copy", "nexo-feedback"];
+    "nexo-robot", "nexo-panel-robot", "nexo-tip", "nexo-copy", "nexo-feedback",
+    "nexo-chat-form", "nexo-chat-input", "nexo-chat-log"];
   for (const id of ids) {
     elements[id] = {
       hidden: id === "nexo-panel" || id === "nexo-help-answer" || id === "nexo-feedback",
+      value: "", textContent: "", children: [],
+      append(child) { this.children.push(child); child.parent = this; },
+      get firstElementChild() { return this.children[0]; },
       attributes: {},
       handlers: {},
       focused: false,
@@ -33,7 +40,15 @@ function mount(options = {}) {
     body: { append(item) { host = item; } },
     createElement(tag) {
       assert.equal(tag, "div");
-      return { id: "", className: "", innerHTML: "", dataset: {} };
+      assert.ok(["div", "p", "small", "a"].includes(tag));
+      return {
+        id: "", className: "", innerHTML: "", dataset: {},
+        textContent: "", children: [],
+        append(child) { this.children.push(child); child.parent = this; },
+        remove() {
+          if (this.parent) this.parent.children.splice(this.parent.children.indexOf(this), 1);
+        }
+      };
     },
     getElementById(id) {
       if (id === "nexo-widget") return host;
@@ -46,6 +61,7 @@ function mount(options = {}) {
     pathname: "/" + (options.pathname || "index.html")
   }};
   const navigator = { clipboard: options.clipboard };
+  vm.runInNewContext(agentScript, { window });
   vm.runInNewContext(script, { document, window, navigator });
   return { elements, events, get host() { return host; } };
 }
@@ -172,4 +188,45 @@ test("as seis expressoes preservam a mesma estrutura do uniforme e a marca", () 
     assert.match(svg, /M54 123Q72 114 90 114/);
     assert.doesNotMatch(svg, /#[0-9a-f]{0,2}(?:00ff00|008000|075641)/i);
   }
+});
+
+test("conversa local transforma pergunta em resposta e acao com fonte", () => {
+  const ui = mount();
+  const input = ui.elements["nexo-chat-input"];
+  const form = ui.elements["nexo-chat-form"];
+  const log = ui.elements["nexo-chat-log"];
+  input.value = "Onde fica o mural?";
+  let prevented = false;
+  form.handlers.submit({ preventDefault() { prevented = true; } });
+  assert.equal(prevented, true);
+  assert.equal(input.value, "");
+  assert.equal(log.children.length, 2);
+  assert.equal(log.children[0].children[0].textContent, "Onde fica o mural?");
+  const assistant = log.children[1];
+  assert.match(assistant.children[0].textContent, /Mural/);
+  assert.equal(assistant.children[2].href, "index.html#comunicados");
+  assert.equal(ui.host.dataset.nexoEmotion, "respondendo");
+});
+
+test("agente nao transforma texto do usuario em HTML nem acessa a rede", () => {
+  const ui = mount();
+  const input = ui.elements["nexo-chat-input"];
+  const form = ui.elements["nexo-chat-form"];
+  input.value = "<img src=x onerror=alert(1)>";
+  form.handlers.submit({ preventDefault() {} });
+  const user = ui.elements["nexo-chat-log"].children[0].children[0];
+  assert.equal(user.textContent, "<img src=x onerror=alert(1)>");
+  assert.equal(user.innerHTML, undefined);
+  assert.doesNotMatch(script, /\\bfetch\\s*\\(|localStorage|sessionStorage/);
+});
+
+test("conversa nao mantem mais que doze mensagens em memoria da pagina", () => {
+  const ui = mount();
+  const input = ui.elements["nexo-chat-input"];
+  const form = ui.elements["nexo-chat-form"];
+  for (let i=0; i<8; i++) {
+    input.value = "oi";
+    form.handlers.submit({ preventDefault() {} });
+  }
+  assert.equal(ui.elements["nexo-chat-log"].children.length, 12);
 });
