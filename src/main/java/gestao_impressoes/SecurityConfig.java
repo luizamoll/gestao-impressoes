@@ -50,7 +50,7 @@ public class SecurityConfig {
                 auth.requestMatchers(
                     "/", "/index.html",
                     "/css/portal.css", "/css/mural.css", "/css/nexo-assistente.css",
-                    "/js/portal.js", "/js/mural.js", "/js/nexo-assistente.js",
+                    "/js/portal.js", "/js/mural.js", "/js/nexo-assistente.js", "/js/nexo-agente.js",
                     "/assets/**", "/favicon.ico"
                 ).permitAll();
             }
