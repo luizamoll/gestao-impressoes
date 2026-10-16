@@ -478,3 +478,19 @@
 @media(prefers-reduced-motion: reduce) {
   .gv-next-module { transition: none; }
 }
+
+
+/* V6: os resultados historicos sao o conteudo primario da visao geral. */
+.gv-history-snapshot { margin-top: 0; }
+.gv-next-modules { margin-top: 22px; }
+.gv-integration-footnote {
+  margin: 15px 0 0;
+  color: #657780;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.gv-workspace-sidebar { justify-content: flex-start; }
+@media(max-width: 650px) {
+  .gv-next-modules { margin-top: 19px; }
+  .gv-integration-footnote { font-size: 12px; }
+}
