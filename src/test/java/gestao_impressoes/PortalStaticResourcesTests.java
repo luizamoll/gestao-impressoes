@@ -35,6 +35,10 @@ class PortalStaticResourcesTests {
         assertTrue(new ClassPathResource("static/js/automacoes.js").exists());
         assertTrue(new ClassPathResource("static/js/gestao-vista.js").exists());
         assertTrue(new ClassPathResource("static/assets/nexo-robo.svg").exists());
+        for (String emotion : new String[]{"saudacao","pensando","respondendo","confirmacao","dica"}) {
+            assertTrue(new ClassPathResource("static/assets/nexo-robo-" + emotion + ".svg").exists(),
+                "A expressao " + emotion + " do Nexo precisa entrar no JAR.");
+        }
         assertTrue(new ClassPathResource("static/css/nexo-assistente.css").exists());
         assertTrue(new ClassPathResource("static/js/nexo-assistente.js").exists());
         assertTrue(new ClassPathResource("static/assets/portal-unh-marca-verde.svg").exists());
