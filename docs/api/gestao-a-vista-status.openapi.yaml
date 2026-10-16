@@ -72,4 +72,3 @@ components:
           enum: [false]
         detalhe:
           type: string
-description: Contrato propositalmente limitado à funcionalidade já implementada.
