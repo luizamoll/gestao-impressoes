@@ -80,3 +80,20 @@ test("Escape fecha e explicacao funciona sem simular uma IA", () => {
   events.keydown({ key: "Escape" });
   assert.equal(elements["nexo-panel"].hidden, true);
 });
+
+test("o balao fica fora do corpo e o robo conserva proporcao", () => {
+  const css = fs.readFileSync(
+    path.join(__dirname, "../src/main/resources/static/css/nexo-assistente.css"), "utf8"
+  );
+  const launcher = css.match(/\.nexo-launcher \{([\s\S]*?)\}/)?.[1] || "";
+  const robot = css.match(/\.nexo-launcher-avatar \{([\s\S]*?)\}/)?.[1] || "";
+  const bubble = css.match(/\.nexo-launcher-label \{([\s\S]*?)\}/)?.[1] || "";
+  assert.match(launcher, /height:\s*137px/);
+  assert.match(robot, /aspect-ratio:\s*180\s*\/\s*206/);
+  assert.match(robot, /height:\s*auto/);
+  assert.match(bubble, /top:\s*-27px/);
+  assert.match(bubble, /right:\s*30px/);
+  assert.match(css, /\.nexo-launcher-label::after\s*\{/);
+  assert.match(css, /\.nexo-launcher\[aria-expanded="true"\] \.nexo-launcher-label\s*\{\s*display:\s*none/);
+  assert.match(css, /@media\(max-width:\s*600px\)/);
+});
