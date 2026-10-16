@@ -299,3 +299,62 @@
 @media(prefers-reduced-motion: reduce) {
   .nexo-widget[data-nexo-emotion] .nexo-launcher-avatar { animation: none; }
 }
+
+
+/* Nexo v3: linguagem natural com regras locais, sem coletar conversas. */
+.nexo-chat-form { display: grid; gap: 8px; margin: 8px 0 7px; }
+.nexo-chat-form>label { color: #2a4556; font-size: 13px; font-weight: 750; }
+.nexo-chat-entry { display: flex; align-items: stretch; gap: 6px; }
+.nexo-chat-entry input {
+  min-width: 0; flex: 1 1 auto;
+  width: 100%; min-height: 43px; padding: 10px 11px;
+  border: 1px solid #cfdde5; border-radius: 10px;
+  color: #263b4a; background: #fff;
+  font-size: 13px; line-height: 1.35; font-family: inherit;
+}
+.nexo-chat-entry input::placeholder { color: #7c8d99; opacity: 1; }
+.nexo-chat-entry button {
+  flex: 0 0 auto; min-width: 58px;
+  padding: 10px 11px; border: 1px solid #2b465b; border-radius: 10px;
+  background: #2d485c; color: #fff;
+  font-size: 12px; font-weight: 750;
+  cursor: pointer;
+}
+.nexo-chat-entry button:hover { background: #1d3649; }
+.nexo-chat-disclosure {
+  margin: 0 0 16px;
+  color: #657987; font-size: 11px; line-height: 1.45;
+}
+.nexo-chat-log:empty { display: none; }
+.nexo-chat-log {
+  display: grid; gap: 9px;
+  padding: 4px 0 10px;
+  max-height: 240px; overflow-y: auto; overscroll-behavior: contain;
+}
+.nexo-chat-message {
+  min-width: 0; max-width: 93%; padding: 10px 12px;
+  border-radius: 13px;
+  color: #2d4557; font-size: 12px; line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.nexo-chat-message p { margin: 0; }
+.nexo-chat-message-user {
+  justify-self: end; border: 1px solid #d4e2ea;
+  background: #edf3f7; border-bottom-right-radius: 3px;
+}
+.nexo-chat-message-assistant {
+  justify-self: start; background: #f8fafb;
+  border: 1px solid #dfe7ed; border-bottom-left-radius: 3px;
+}
+.nexo-chat-message small { display: block; margin-top: 7px; color: #647e8c; font-size: 10px; line-height: 1.4; }
+.nexo-chat-link {
+  display: inline-flex; align-items: center; margin-top: 9px;
+  padding: 7px 9px; border-radius: 8px; border: 1px solid #bdcfda;
+  color: #28475b !important; background: #eef4f7;
+  text-decoration: none; font-size: 11px; font-weight: 750;
+}
+.nexo-chat-link:hover { background: #e1ebf2; }
+@media(max-width: 420px) {
+  .nexo-chat-entry { flex-wrap: nowrap; }
+  .nexo-chat-entry input { font-size: 12px; }
+}
