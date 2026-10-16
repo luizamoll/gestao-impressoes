@@ -5,9 +5,10 @@ cd /d "%~dp0"
 set "SERVER_ADDRESS=127.0.0.1"
 set "PORT=18081"
 set "PORTAL_LAB_ENABLED=true"
+set "PORTAL_LAB_PASSWORDLESS=true"
 
 echo ============================================================
-echo Portal UNH - Laboratorio de autenticacao
+echo Portal UNH - Laboratorio local (navegacao sem senha)
 echo Porta 18081 - somente neste computador
 echo ============================================================
 echo.
@@ -48,13 +49,14 @@ if not defined PORTAL_LAB_PASSWORD (
 
 echo.
 echo ============================================================
-echo CONTA DE TESTES - valida somente enquanto esta janela rodar
-echo Usuario: admin.lab
-echo Senha temporaria: %PORTAL_LAB_PASSWORD%
+echo ACESSO LOCAL PARA TESTES - sem digitar senha
+echo Navegacao liberada apenas no seu computador.
+echo API de integracao real e operacoes de escrita seguem protegidas.
 echo ============================================================
 echo.
-echo Abra no navegador: http://127.0.0.1:18081/login
-echo Mantenha esta janela aberta. Nao compartilhe a senha.
+echo Abra no navegador: http://127.0.0.1:18081/
+echo Gestao a Vista: http://127.0.0.1:18081/gestao-a-vista.html
+echo Mantenha esta janela aberta enquanto usar o laboratorio.
 echo Para encerrar o servidor use Ctrl+C.
 echo.
 
@@ -67,5 +69,5 @@ if errorlevel 1 (
 )
 
 echo.
-echo Laboratorio encerrado. Senha temporaria nao sera reutilizada.
+echo Laboratorio encerrado.
 pause
