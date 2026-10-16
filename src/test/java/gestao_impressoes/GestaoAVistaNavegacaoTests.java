@@ -31,6 +31,11 @@ class GestaoAVistaNavegacaoTests {
         assertTrue(html.contains("id=\"gvConsumed\""));
         assertTrue(html.contains("Setembro/2026"));
         assertTrue(html.contains("Outubro/2026 · sem leitura"));
+        assertTrue(html.contains("class=\"gv-next-modules\""),
+            "Visão geral deve oferecer navegação rápida para módulos futuros.");
+        assertTrue(html.contains("Versão de laboratório"),
+            "Dados históricos devem permanecer claramente identificados.");
+
     }
 
     @Test
@@ -49,6 +54,6 @@ class GestaoAVistaNavegacaoTests {
         String html = resource("static/gestao-a-vista.html");
         assertTrue(html.contains("Nenhum nome, responsável ou tarefa institucional"));
         assertTrue(html.contains("Aguardando integração"));
-        assertTrue(html.contains("Não há tarefas importadas"));
+        assertTrue(html.contains("O Vikunja institucional ainda não foi conectado."));
     }
 }
