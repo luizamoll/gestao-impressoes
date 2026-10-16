@@ -97,3 +97,16 @@ Fora do MVP: criação/edição/arrastar tarefas, chat, anexos, clonagem de Viku
 ## 8. Protótipo local da Gestão à Vista
 
 Implementação de interface em `gestao-a-vista.html` + `css/gestao-vista.css` na branch de laboratório, sem mexer nas APIs e sem integrar com a instância Vikunja. Navegação lateral, visão geral, projetos, indicadores indisponíveis e atalho para a seção de Impressões. Valores de tarefas representados por traço (—), rótulos explícitos de integração pendente; nenhum dado fictício foi criado. A área histórica de Gestão de Impressões permanece intacta e separada.
+
+## 9. Entrega de laboratório V4 — Radar IA Aplicado
+
+Implementada em 16/10/2026 na branch `feat/autenticacao-portal`:
+
+- Quatro visões independentes (Visão geral, Projetos, Indicadores e Impressões) com navegação por hash, suporte ao histórico do navegador e fallback sem JS. O conteúdo de Impressões foi preservado.
+- Indicadores de tarefas honestamente indisponíveis até integração e autorização; dados históricos de Impressões identificados como estáticos.
+- Correção na legibilidade do texto de status e refinamento visual sóbrio, com cores institucionais discretas.
+- Verificação de sintaxe JS no GitHub Actions, sem dependência externa adicional, e testes Java para navegação/acesso e estados não conectados.
+- `AGENTS.md` (regras persistentes), `docs/api/gestao-a-vista-status.openapi.yaml` (contrato implementado) e fluxo Descobrir → Avaliar → Agir → Verificar → Registrar.
+- Issue de bloqueio: https://github.com/luizamoll/gestao-impressoes/issues/3 — aprovação TI, escopos de dados e homologação, **antes** de consultar Vikunja.
+
+**Validação:** testes Java e sintaxe JS aprovados no GitHub Actions; aparência/fluxo no Edge Windows ainda aguardam avaliação da usuária. Nenhuma integração real, publicação institucional ou merge foi efetuado.
