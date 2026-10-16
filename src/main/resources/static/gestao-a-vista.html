@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/portal.css?v=20261015-v2" />
-  <link rel="stylesheet" href="css/gestao-vista.css?v=20261016-v5" />
+  <link rel="stylesheet" href="css/gestao-vista.css?v=20261016-v6" />
   <script src="js/portal.js?v=20261014-8" defer></script>
   <script src="js/gestao-vista.js?v=20261016-v4" defer></script>
 </head>
@@ -64,7 +64,7 @@
           <a href="#gv-indicadores" data-gv-nav="gv-indicadores"><span aria-hidden="true">◫</span> Indicadores</a>
           <a href="#impressoes" data-gv-nav="impressoes"><span aria-hidden="true">▥</span> Impressões</a>
         </nav>
-        <div class="gv-workspace-sidebar-note"><strong>Integração pendente</strong><span>Projetos e tarefas exigem autorização da TI.</span></div>
+
       </aside>
 
       <div class="gv-workspace-main">
@@ -76,13 +76,6 @@
               <p>Informações operacionais em um só lugar. Nesta etapa, podemos consultar o histórico de Impressões.</p>
             </div>
             <span class="gv-workspace-status" id="gvConnectorStatus" role="status" aria-live="polite"><span aria-hidden="true"></span><span id="gvConnectorText">Verificando integração…</span></span>
-          </div>
-
-          <div class="gv-workspace-brief" role="note">
-            <div class="gv-workspace-brief-copy">
-              <strong>Projetos e tarefas aguardam integração.</strong>
-              <p>O Vikunja institucional ainda não foi conectado. Os indicadores de tarefas serão liberados após autorização da TI.</p>
-            </div>
           </div>
 
           <section class="gv-history-snapshot" aria-labelledby="gvHistorySnapshotTitle">
@@ -115,6 +108,7 @@
                 <span class="gv-next-module-status">Integração pendente <span aria-hidden="true">→</span></span>
               </a>
             </div>
+            <p class="gv-integration-footnote">O Vikunja institucional ainda não foi conectado. Indicadores de tarefas dependem da autorização da TI.</p>
           </section>
         </section>
 
