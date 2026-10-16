@@ -72,38 +72,73 @@
     syncNavigation(false);
   }
 
- const select=document.getElementById("gvPeriod");
- if(!select)return;
- const data={
-  "2026-08":{
-    consumed:"1.016",note:"Impressões em agosto",remaining:"2.984",remainingNote:"Após o consumo do mês",
-    delta:"—",deltaNote:"Sem mês anterior comparável",
-    insight:"Agosto registra 1.016 impressões, ou 25,4% da franquia. Sem histórico anterior confirmado para comparar.",status:"neutral",symbol:"●"
-  },
-  "2026-09":{
-    consumed:"1.522",note:"Impressões em setembro",remaining:"2.478",remainingNote:"Após o consumo do mês",
-    delta:"+506",deltaNote:"+49,8% versus agosto",
-    insight:"De agosto para setembro, o consumo aumentou 506 impressões (+49,8%). Vale acompanhar essa variação.",status:"bad",symbol:"↗"
-  },
-  "2026-10":{
-    consumed:"—",note:"Consumo ainda não apurado",remaining:"—",remainingNote:"Saldo depende da leitura atual",
-    delta:"—",deltaNote:"Sem comparação disponível",
-    insight:"Outubro é uma competência nova, mas não há leitura suficiente para determinar consumo. Ausência de registro não significa zero impressões.",status:"neutral",symbol:"○"
+  // Uma unica selecao de competencia alimenta a Visao geral e Impressões.
+  // Historico demonstrativo fixo do projeto; nao e leitura ao vivo.
+  const select = document.getElementById("gvPeriod");
+  const overviewSelect = document.getElementById("gvOverviewPeriod");
+  if (!select) return;
+  const data = {
+    "2026-08": {
+      consumed: "1.016", note: "Impressões em agosto", remaining: "2.984",
+      remainingNote: "Após o consumo do mês", delta: "—",
+      deltaNote: "Sem mês anterior comparável",
+      insight: "Agosto registra 1.016 impressões, ou 25,4% da franquia. Sem histórico anterior confirmado para comparar.",
+      status: "neutral", symbol: "●",
+      overviewNote: "Agosto/2026 · histórico do projeto, ainda sem sincronização automática.",
+      overviewConsumedNote: "Impressões em agosto/2026"
+    },
+    "2026-09": {
+      consumed: "1.522", note: "Impressões em setembro", remaining: "2.478",
+      remainingNote: "Após o consumo do mês", delta: "+506",
+      deltaNote: "+49,8% versus agosto",
+      insight: "De agosto para setembro, o consumo aumentou 506 impressões (+49,8%). Vale acompanhar essa variação.",
+      status: "bad", symbol: "↗",
+      overviewNote: "Setembro/2026 · histórico do projeto, ainda sem sincronização automática.",
+      overviewConsumedNote: "Impressões em setembro/2026"
+    },
+    "2026-10": {
+      consumed: "—", note: "Consumo ainda não apurado", remaining: "—",
+      remainingNote: "Saldo depende da leitura atual", delta: "—",
+      deltaNote: "Sem comparação disponível",
+      insight: "Outubro é uma competência nova, mas não há leitura suficiente para determinar consumo. Ausência de registro não significa zero impressões.",
+      status: "neutral", symbol: "○",
+      overviewNote: "Outubro/2026 · leitura não apurada. Consumo desconhecido, não zero.",
+      overviewConsumedNote: "Outubro/2026 · sem leitura confirmada"
+    }
+  };
+
+  function render(period) {
+    const d = Object.prototype.hasOwnProperty.call(data, period) ? data[period] : null;
+    if (!d) return;
+
+    // Os dois seletores permanecem sincronizados mesmo ao mudar de modulo.
+    select.value = period;
+    if (overviewSelect) overviewSelect.value = period;
+
+    const byId = id => document.getElementById(id);
+    byId("gvConsumed").textContent = d.consumed;
+    byId("gvConsumedNote").textContent = d.note;
+    byId("gvRemaining").textContent = d.remaining;
+    byId("gvRemainingNote").textContent = d.remainingNote;
+    byId("gvDelta").textContent = d.delta;
+    byId("gvDeltaNote").textContent = d.deltaNote;
+    byId("gvInsightText").textContent = d.insight;
+    byId("gvInsightIcon").textContent = d.symbol;
+    byId("gvInsight").classList.toggle("gv-insight-neutral", d.status === "neutral");
+    byId("gvTrend").classList.toggle("gv-trend-bad", d.status === "bad");
+    document.querySelectorAll(".gv-bar-row").forEach(row => {
+      row.classList.toggle("gv-bar-selected", row.dataset.period === period);
+    });
+
+    // Na ausencia de backend, valores indisponiveis jamais viram zeros.
+    if (overviewSelect) {
+      byId("gvOverviewConsumed").textContent = d.consumed;
+      byId("gvOverviewConsumedNote").textContent = d.overviewConsumedNote;
+      byId("gvOverviewDataNote").textContent = d.overviewNote;
+    }
   }
- };
- function render(){
-  const d=data[select.value];if(!d)return;
-  document.getElementById("gvConsumed").textContent=d.consumed;
-  document.getElementById("gvConsumedNote").textContent=d.note;
-  document.getElementById("gvRemaining").textContent=d.remaining;
-  document.getElementById("gvRemainingNote").textContent=d.remainingNote;
-  document.getElementById("gvDelta").textContent=d.delta;
-  document.getElementById("gvDeltaNote").textContent=d.deltaNote;
-  document.getElementById("gvInsightText").textContent=d.insight;
-  document.getElementById("gvInsightIcon").textContent=d.symbol;
-  document.getElementById("gvInsight").classList.toggle("gv-insight-neutral",d.status==="neutral");
-  document.getElementById("gvTrend").classList.toggle("gv-trend-bad",d.status==="bad");
-  document.querySelectorAll(".gv-bar-row").forEach(row=>row.classList.toggle("gv-bar-selected",row.dataset.period===select.value));
- }
- select.addEventListener("change",render);render();
+
+  select.addEventListener("change", () => render(select.value));
+  overviewSelect?.addEventListener("change", () => render(overviewSelect.value));
+  render(select.value);
 })();
