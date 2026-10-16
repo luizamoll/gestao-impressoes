@@ -109,7 +109,7 @@ test("abertura usa saudacao e fechamento volta ao estado normal", () => {
   assert.equal(ui.host.dataset.nexoEmotion, "normal");
   ui.elements["nexo-toggle"].click();
   assert.equal(ui.host.dataset.nexoEmotion, "saudacao");
-  assert.match(ui.elements["nexo-robot"].src, /nexo-robo-saudacao\\.svg/);
+  assert.match(ui.elements["nexo-robot"].src, /nexo-robo-saudacao\.svg/);
   ui.elements["nexo-close"].click();
   assert.equal(ui.host.dataset.nexoEmotion, "normal");
 });
@@ -119,7 +119,7 @@ test("expandir explicacao realmente muda para respondendo", () => {
   ui.elements["nexo-toggle"].click();
   ui.elements["nexo-explain"].click();
   assert.equal(ui.host.dataset.nexoEmotion, "respondendo");
-  assert.match(ui.elements["nexo-panel-robot"].src, /nexo-robo-respondendo\\.svg/);
+  assert.match(ui.elements["nexo-panel-robot"].src, /nexo-robo-respondendo\.svg/);
 });
 
 test("dica contextual so aparece sob solicitacao e nao utiliza rede", () => {
@@ -143,7 +143,7 @@ test("pensando so durante copia assincrona real e confirma apenas ao concluir", 
   const pending = ui.elements["nexo-copy"].click();
   assert.equal(ui.host.dataset.nexoEmotion, "pensando");
   assert.equal(ui.elements["nexo-copy"].disabled, true);
-  assert.match(copied, /127\\.0\\.0\\.1:18081/);
+  assert.match(copied, /127\.0\.0\.1:18081/);
   finish();
   await pending;
   assert.equal(ui.host.dataset.nexoEmotion, "confirmacao");
@@ -156,7 +156,7 @@ test("copia indisponivel nao informa conclusao nem usa confirmacao", async () =>
   ui.elements["nexo-toggle"].click();
   await ui.elements["nexo-copy"].click();
   assert.equal(ui.host.dataset.nexoEmotion, "respondendo");
-  assert.match(ui.elements["nexo-feedback"].textContent, /Ctrl\\+L e Ctrl\\+C/);
+  assert.match(ui.elements["nexo-feedback"].textContent, /Ctrl\+L e Ctrl\+C/);
 });
 
 test("as seis expressoes preservam a mesma estrutura do uniforme e a marca", () => {
