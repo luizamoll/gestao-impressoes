@@ -41,6 +41,7 @@ class PortalStaticResourcesTests {
         }
         assertTrue(new ClassPathResource("static/css/nexo-assistente.css").exists());
         assertTrue(new ClassPathResource("static/js/nexo-assistente.js").exists());
+        assertTrue(new ClassPathResource("static/js/nexo-agente.js").exists());
         assertTrue(new ClassPathResource("static/assets/portal-unh-marca-verde.svg").exists());
         assertTrue(new ClassPathResource("static/assets/portal-unh-simbolo.svg").exists());
     }
