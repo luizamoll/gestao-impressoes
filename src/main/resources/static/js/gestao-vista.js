@@ -76,6 +76,7 @@
   // Historico demonstrativo fixo do projeto; nao e leitura ao vivo.
   const select = document.getElementById("gvPeriod");
   const overviewSelect = document.getElementById("gvOverviewPeriod");
+  const refPeriod = document.getElementById("gvRefPeriod");
   if (!select) return;
   const data = {
     "2026-08": {
@@ -147,6 +148,18 @@
     // Os dois seletores permanecem sincronizados mesmo ao mudar de modulo.
     select.value = period;
     if (overviewSelect) overviewSelect.value = period;
+    if (refPeriod) refPeriod.value = period;
+    const refConsumed = document.getElementById("gvRefConsumed");
+    const refMonth = document.getElementById("gvRefConsumedMonth");
+    const refVariation = document.getElementById("gvRefVariation");
+    const refVariationNote = document.getElementById("gvRefVariationNote");
+    if (refConsumed) refConsumed.textContent = d.consumed;
+    if (refMonth) refMonth.textContent = d.overviewConsumedNote;
+    if (refVariation) refVariation.textContent = period === "2026-09" ? "+49,8%" : "—";
+    if (refVariationNote) refVariationNote.textContent = period === "2026-09"
+      ? "Comparado a agosto/2026"
+      : (period === "2026-10" ? "Ainda não há comparação" : "Sem mês anterior apurado");
+
 
     const byId = id => document.getElementById(id);
     byId("gvConsumed").textContent = d.consumed;
@@ -182,6 +195,7 @@
 
   select.addEventListener("change", () => render(select.value));
   overviewSelect?.addEventListener("change", () => render(overviewSelect.value));
+  refPeriod?.addEventListener("change", () => render(refPeriod.value));
   barButtons.forEach(button => button.addEventListener("click", () => {
     const period = button.dataset.gvPeriodTarget;
     if (Object.prototype.hasOwnProperty.call(data, period)) render(period);
