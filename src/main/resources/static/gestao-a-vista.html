@@ -19,27 +19,52 @@
   <link rel="stylesheet" href="css/portal-palette-v1.css?v=20261019-v1" />
   <link rel="stylesheet" href="css/portal-editorial-v1.css?v=20261019-v1" />
   <link rel="stylesheet" href="css/gestao-funcional.css?v=20261019-v1" />
+  <link rel="stylesheet" href="css/gestao-dashboard-ref-v1.css?v=20261019-v1" />
   <script src="js/nexo-agente.js?v=20261016-v1" defer></script>
   <script src="js/nexo-assistente.js?v=20261019-v4" defer></script>
+  <script src="js/gestao-dashboard-ref-v1.js?v=20261019-v1" defer></script>
 </head>
-<body class="portal-body gv-body">
+<body class="portal-body gv-body gv-ref-body">
   <a class="portal-skip-link" href="#conteudo">Pular para o conteúdo</a>
-  <header class="portal-header">
-    <div class="portal-container portal-header-inner">
-      <a class="portal-logo-link" href="index.html?v=20261014-8" aria-label="Voltar ao Portal UNH">
-        <img class="portal-logo-symbol" src="assets/portal-unh-simbolo.svg?v=20261014-7" alt="" width="62" height="62" />
-        <span class="portal-logo-copy"><span class="portal-logo-kicker">CENTRO UNIVERSITÁRIO</span><span class="portal-logo-name">unihorizontes</span></span>
-      </a>
-      <button class="portal-menu-toggle" id="portalMenuButton" type="button" aria-controls="portalNav" aria-expanded="false" aria-label="Abrir menu de navegação">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span>
-      </button>
-      <nav class="portal-nav" id="portalNav" aria-label="Navegação principal">
-        <a href="index.html?v=20261014-8">Início</a>
-        <a href="index.html?v=20261014-8#ferramentas">Ferramentas</a>
-        <a href="index.html?v=20261014-8#comunicados">Comunicados</a>
-        <a href="#conteudo" aria-current="page">Gestão à Vista</a>
-      </nav>
-      <div class="portal-brand-context"><strong>Portal UNH</strong><span>Intranet e Sistemas Internos</span></div>
+  <aside class="gv-workspace-sidebar gv-ref-sidebar" id="gvRefSidebar" aria-label="Navegação do Portal UNH">
+    <a class="gv-ref-brand" href="index.html" aria-label="Página inicial do Portal UNH">
+      <img src="assets/portal-unh-simbolo.svg?v=20261014-7" alt="" width="38" height="38"/>
+      <span><strong>Portal UNH</strong><small>Ambiente institucional</small></span>
+    </a>
+    <nav class="gv-ref-global-nav" aria-label="Áreas do Portal">
+      <a href="index.html"><span aria-hidden="true">⌂</span> Início</a>
+    </nav>
+    <p class="gv-ref-side-label">ACOMPANHAMENTO</p>
+    <nav class="gv-workspace-menu" aria-label="Navegação da Gestão à Vista">
+      <a href="#gv-visao-geral" data-gv-nav="gv-visao-geral" aria-current="location" class="gv-workspace-menu-current"><span aria-hidden="true">▦</span> Visão geral</a>
+      <a href="#gv-projetos" data-gv-nav="gv-projetos"><span aria-hidden="true">▤</span> Projetos</a>
+      <a href="#gv-indicadores" data-gv-nav="gv-indicadores"><span aria-hidden="true">◫</span> Indicadores</a>
+      <a href="#impressoes" data-gv-nav="impressoes"><span aria-hidden="true">▥</span> Impressões</a>
+    </nav>
+    <p class="gv-ref-side-label gv-ref-side-label-secondary">FERRAMENTAS E SERVIÇOS</p>
+    <nav class="gv-ref-global-nav" aria-label="Ferramentas e serviços">
+      <a href="index.html#ferramentas"><span aria-hidden="true">⚒</span> Ferramentas</a>
+      <a href="index.html#comunicados"><span aria-hidden="true">▣</span> Mural</a>
+      <a href="automacoes.html"><span aria-hidden="true">⌘</span> Automações</a>
+      <a href="gestao-documental.html"><span aria-hidden="true">▤</span> Documentos</a>
+      <a href="impressao.html"><span aria-hidden="true">▧</span> Gestão de Impressões</a>
+    </nav>
+    <p class="gv-ref-side-footer">Laboratório · Integrações internas em validação</p>
+  </aside>
+  <header class="gv-ref-topbar">
+    <button class="gv-ref-menu-toggle" id="gvRefMenuToggle" type="button" aria-expanded="false" aria-controls="gvRefSidebar" aria-label="Abrir menu lateral">☰</button>
+    <a class="gv-ref-topbrand" href="index.html" aria-label="Voltar ao Portal UNH"><img src="assets/portal-unh-simbolo.svg?v=20261014-7" alt="" width="28" height="28" /> Portal UNH</a>
+    <div class="gv-ref-search">
+      <label class="gv-ref-search-field" for="gvRefSearch"><span aria-hidden="true">⌕</span><span class="portal-visually-hidden">Buscar áreas do Portal</span>
+        <input id="gvRefSearch" type="search" autocomplete="off" placeholder="Pesquisar no Portal..." aria-controls="gvRefSearchResults" aria-expanded="false" />
+      </label>
+      <div class="gv-ref-search-results" id="gvRefSearchResults" hidden aria-live="polite"></div>
+    </div>
+    <div class="gv-ref-top-actions">
+      <a href="index.html#comunicados" title="Abrir mural" aria-label="Abrir mural de comunicados">▤</a>
+      <a href="index.html#ferramentas" title="Ferramentas" aria-label="Abrir ferramentas do Portal">▦</a>
+      <button type="button" id="gvRefHelp" title="Abrir Nexo" aria-label="Abrir o assistente Nexo">✧</button>
+      <span class="gv-ref-environment">Laboratório</span>
     </div>
   </header>
 
@@ -60,19 +85,6 @@
 
     <!-- Visualizacoes locais: sem dados reais do Vikunja ate homologacao da TI. -->
     <div class="gv-workspace" id="gv-painel">
-      <aside class="gv-workspace-sidebar" aria-label="Seções da Gestão à Vista">
-        <div class="gv-workspace-sidebar-brand">
-          <span class="gv-workspace-sidebar-icon" aria-hidden="true">◫</span>
-          <span><strong>Gestão à Vista</strong><small>Painel gerencial</small></span>
-        </div>
-        <nav class="gv-workspace-menu" aria-label="Navegação do painel">
-          <a href="#gv-visao-geral" data-gv-nav="gv-visao-geral" aria-current="location" class="gv-workspace-menu-current"><span aria-hidden="true">▦</span> Visão geral</a>
-          <a href="#gv-projetos" data-gv-nav="gv-projetos"><span aria-hidden="true">▤</span> Projetos</a>
-          <a href="#gv-indicadores" data-gv-nav="gv-indicadores"><span aria-hidden="true">◫</span> Indicadores</a>
-          <a href="#impressoes" data-gv-nav="impressoes"><span aria-hidden="true">▥</span> Impressões</a>
-        </nav>
-
-      </aside>
 
       <div class="gv-workspace-main">
         <section id="gv-visao-geral" data-gv-view aria-labelledby="gvWorkspaceTitle">
@@ -85,6 +97,56 @@
             <span class="gv-workspace-status" id="gvConnectorStatus" role="status" aria-live="polite"><span aria-hidden="true"></span><span id="gvConnectorText">Verificando integração…</span></span>
           </div>
 
+          <section class="gv-ref-summary" aria-label="Resumo da competência selecionada">
+            <article class="gv-ref-stat">
+              <span class="gv-ref-stat-icon" aria-hidden="true">▧</span>
+              <div><span>Impressões no período</span><strong id="gvRefConsumed">1.522</strong><small id="gvRefConsumedMonth">Setembro/2026 · histórico do projeto</small></div>
+            </article>
+            <article class="gv-ref-stat">
+              <span class="gv-ref-stat-icon gv-ref-stat-icon-blue" aria-hidden="true">↗</span>
+              <div><span>Variação mensal</span><strong id="gvRefVariation">+49,8%</strong><small id="gvRefVariationNote">Comparado a agosto/2026</small></div>
+            </article>
+            <article class="gv-ref-stat">
+              <span class="gv-ref-stat-icon gv-ref-stat-icon-sage" aria-hidden="true">▤</span>
+              <div><span>Projetos ativos</span><strong>—</strong><small>Vikunja não conectado · <a href="#gv-projetos">Ver status →</a></small></div>
+            </article>
+          </section>
+          <div class="gv-ref-analysis-grid">
+            <section class="gv-ref-history-chart" aria-labelledby="gvRefChartTitle">
+              <div class="gv-ref-chart-head"><div><h3 id="gvRefChartTitle">Evolução de impressões</h3><p>Histórico disponível. Sem registros confirmados para outubro.</p></div>
+              <label for="gvRefPeriod">Competência
+                <select id="gvRefPeriod" aria-label="Competência do resumo e gráfico">
+                  <option value="2026-09" selected>Setembro/2026</option>
+                  <option value="2026-08">Agosto/2026</option>
+                  <option value="2026-10">Outubro/2026 · sem leitura</option>
+                </select>
+              </label></div>
+              <div class="gv-ref-chart-body" role="group" aria-label="Histórico de impressão por mês; escala até 4.000 impressões">
+                <div class="gv-ref-chart-axis" aria-hidden="true"><span>4.000</span><span>3.000</span><span>2.000</span><span>1.000</span><span>0</span></div>
+                <div class="gv-ref-chart-plot">
+                  <div class="gv-ref-chart-guide" aria-hidden="true"></div>
+                  <button type="button" class="gv-ref-chart-bar" data-gv-period-target="2026-08" aria-label="Agosto de 2026: 1.016 impressões; selecionar competência" aria-pressed="false">
+                    <span class="gv-ref-chart-value">1.016</span><span class="gv-ref-chart-column" style="--gv-chart-height:25.4%"></span><span class="gv-ref-chart-label">Ago/26</span>
+                  </button>
+                  <button type="button" class="gv-ref-chart-bar gv-ref-chart-selected" data-gv-period-target="2026-09" aria-label="Setembro de 2026: 1.522 impressões; selecionar competência" aria-pressed="true">
+                    <span class="gv-ref-chart-value">1.522</span><span class="gv-ref-chart-column" style="--gv-chart-height:38.05%"></span><span class="gv-ref-chart-label">Set/26</span>
+                  </button>
+                  <button type="button" class="gv-ref-chart-bar gv-ref-chart-unknown" data-gv-period-target="2026-10" aria-label="Outubro de 2026: sem leitura apurada; selecionar competência" aria-pressed="false">
+                    <span class="gv-ref-chart-value">Sem leitura</span><span class="gv-ref-chart-column" aria-hidden="true"></span><span class="gv-ref-chart-label">Out/26</span>
+                  </button>
+                </div>
+              </div>
+              <p class="gv-ref-chart-note">Valores históricos de laboratório. Outubro não significa zero; o volume ainda é desconhecido.</p>
+            </section>
+            <nav class="gv-ref-shortcuts" aria-label="Acesso rápido">
+              <h3>Acesso rápido</h3>
+              <a href="index.html#comunicados"><span aria-hidden="true">▣</span>Mural institucional <span aria-hidden="true">→</span></a>
+              <a href="#gv-projetos"><span aria-hidden="true">▤</span>Projetos <span aria-hidden="true">→</span></a>
+              <a href="#gv-indicadores"><span aria-hidden="true">◫</span>Indicadores <span aria-hidden="true">→</span></a>
+              <a href="#impressoes"><span aria-hidden="true">▥</span>Impressões <span aria-hidden="true">→</span></a>
+              <a href="automacoes.html"><span aria-hidden="true">⌘</span>Automações <span aria-hidden="true">→</span></a>
+            </nav>
+          </div>
           <section class="gv-history-snapshot" aria-labelledby="gvHistorySnapshotTitle">
             <div class="gv-history-snapshot-copy">
               <span class="gv-workspace-kicker">Histórico disponível · sem atualização automática</span>
