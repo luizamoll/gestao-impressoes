@@ -34,6 +34,7 @@ jobs:
           node --check src/main/resources/static/js/nexo-agente.js
           node --test tests/gestao-vista-ui.test.cjs
           node --test tests/gestao-vista-funcional.test.cjs
+          node --test tests/gestao-dashboard-ref.test.cjs
           node --test tests/nexo-assistente.test.cjs
           node --test tests/nexo-agente.test.cjs
           node --test tests/portal-home-v3.test.cjs
