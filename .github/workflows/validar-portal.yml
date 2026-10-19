@@ -35,6 +35,7 @@ jobs:
           node --test tests/gestao-vista-ui.test.cjs
           node --test tests/nexo-assistente.test.cjs
           node --test tests/nexo-agente.test.cjs
+          node --test tests/portal-home-v3.test.cjs
       - name: Testes do Portal e conector Perseus
         run: |
           chmod +x ./mvnw
