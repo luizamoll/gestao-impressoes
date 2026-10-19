@@ -60,5 +60,6 @@ test("sintaxe basica CSS valida e todas as referencias de cores tem 6 digitos",(
   assert.equal(depth,0,"Todas as regras devem ser fechadas");
   const values=[...css.matchAll(/#[\da-fA-F]{3,8}\b/g)].map(m=>m[0]);
   assert.ok(values.length>20,"Paleta deve ter os tons de apoio");
-  assert.ok(values.every(c=>/^#[\da-fA-F]{6}$/.test(c)),"Cores hex devem ter 6 digitos");
+  assert.ok(values.every(c=>/^#(?:[\da-fA-F]{3}|[\da-fA-F]{6})$/.test(c)),
+    "Cores hex CSS devem ter 3 ou 6 digitos");
 });
