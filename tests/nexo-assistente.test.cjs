@@ -20,7 +20,8 @@ function mount(options = {}) {
   let host = null;
   const ids = ["nexo-toggle", "nexo-panel", "nexo-close", "nexo-explain", "nexo-help-answer",
     "nexo-robot", "nexo-panel-robot", "nexo-tip", "nexo-copy", "nexo-feedback",
-    "nexo-chat-form", "nexo-chat-input", "nexo-chat-log"];
+    "nexo-chat-form", "nexo-chat-input", "nexo-chat-log", "nexo-chat-submit",
+    "nexo-lab-toggle", "nexo-chat-disclosure", "nexo-disclaimer"];
   for (const id of ids) {
     elements[id] = {
       hidden: id === "nexo-panel" || id === "nexo-help-answer" || id === "nexo-feedback",
@@ -53,6 +54,11 @@ function mount(options = {}) {
       if (id === "nexo-widget") return host;
       return elements[id] || null;
     },
+    querySelector(query) {
+      if (query === ".nexo-chat-disclosure") return elements["nexo-chat-disclosure"];
+      if (query === ".nexo-disclaimer") return elements["nexo-disclaimer"];
+      return null;
+    },
     addEventListener(type, callback) { events[type] = callback; }
   };
   const window = { location: {
@@ -61,7 +67,7 @@ function mount(options = {}) {
   }};
   const navigator = { clipboard: options.clipboard };
   vm.runInNewContext(agentScript, { window });
-  vm.runInNewContext(script, { document, window, navigator });
+  vm.runInNewContext(script, { document, window, navigator, fetch: options.fetch });
   return { elements, events, get host() { return host; } };
 }
 
@@ -74,7 +80,9 @@ test("robo e atalhos sao locais, sem API, credenciais ou dados ficticios", () =>
     assert.ok(ui.host.innerHTML.includes('href="' + link + '"'));
   }
   assert.match(ui.host.innerHTML, /IA não conectada/);
-  assert.doesNotMatch(script, /\bfetch\s*\(|localStorage|\bWebSocket\b/);
+  assert.doesNotMatch(script, /localStorage|sessionStorage|\bWebSocket\b/);
+  assert.match(script, /fetch\(NEXO_LOCAL_URL/);
+  assert.match(script, /credentials: "omit"/);
 });
 
 test("clique abre e fecha painel, atualiza aria e restaura foco", () => {
@@ -218,7 +226,7 @@ test("agente nao transforma texto do usuario em HTML nem acessa a rede", () => {
   const user = ui.elements["nexo-chat-log"].children[0].children[0];
   assert.equal(user.textContent, "<img src=x onerror=alert(1)>");
   assert.equal(user.innerHTML, "");
-  assert.equal(script.includes("fetch("), false);
+  assert.match(script, /labEnabled && isLocalPortal/);
   assert.equal(script.includes("localStorage"), false);
   assert.equal(script.includes("sessionStorage"), false);
 });
@@ -232,4 +240,47 @@ test("conversa nao mantem mais que doze mensagens em memoria da pagina", () => {
     form.handlers.submit({ preventDefault() {} });
   }
   assert.equal(ui.elements["nexo-chat-log"].children.length, 12);
+});
+
+test("modo IA exige opt-in e envia somente para o servidor loopback", async () => {
+  const requests = [];
+  const ui = mount({ fetch: async (url, opts) => {
+    requests.push({ url, opts });
+    return { ok: true, async json() {
+      return { modo: "laboratorio_local", dados_reais: false,
+        resposta: "Outubro sem leitura confirmada.", fontes: ["histórico demonstrativo"],
+        ferramentas: ["consultar_impressoes"], duracao_s: 0.0 };
+    }};
+  }});
+  const toggle = ui.elements["nexo-lab-toggle"];
+  assert.equal(toggle.hidden, false);
+  assert.equal(requests.length, 0);
+  toggle.click();
+  assert.equal(toggle.attributes["aria-pressed"], "true");
+  assert.equal(toggle.textContent, "Voltar ao modo de regras");
+  ui.elements["nexo-chat-input"].value = "Qual o consumo de outubro?";
+  await ui.elements["nexo-chat-form"].handlers.submit({ preventDefault() {} });
+  assert.equal(requests.length, 1);
+  assert.equal(requests[0].url, "http://127.0.0.1:18767/chat");
+  assert.equal(requests[0].opts.credentials, "omit");
+  assert.equal(requests[0].opts.method, "POST");
+  assert.match(JSON.parse(requests[0].opts.body).pergunta, /outubro/);
+  assert.equal(ui.elements["nexo-chat-log"].children[1].children[0].textContent, "Outubro sem leitura confirmada.");
+  assert.match(ui.elements["nexo-chat-log"].children[1].children[1].textContent, /histórico demonstrativo/);
+  assert.equal(ui.elements["nexo-chat-input"].disabled, false);
+  toggle.click();
+  assert.equal(toggle.attributes["aria-pressed"], "false");
+  ui.elements["nexo-chat-input"].value = "Onde fica o mural?";
+  await ui.elements["nexo-chat-form"].handlers.submit({ preventDefault() {} });
+  assert.equal(requests.length, 1, "Modo de regras não consulta IA");
+});
+
+test("falha do servidor local não simula resposta do modelo", async () => {
+  const ui = mount({ fetch: async () => { throw new Error("offline"); } });
+  ui.elements["nexo-lab-toggle"].click();
+  ui.elements["nexo-chat-input"].value = "Explique IA";
+  await ui.elements["nexo-chat-form"].handlers.submit({ preventDefault() {} });
+  const log = ui.elements["nexo-chat-log"].children;
+  assert.match(log[1].children[0].textContent, /Não consegui acessar o Nexo local/);
+  assert.equal(ui.elements["nexo-chat-input"].disabled, false);
 });
