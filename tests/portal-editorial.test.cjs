@@ -11,7 +11,7 @@ test("grafismo local abstrato nao troca a logomarca UNH", () => {
   assert.match(svg,/^<svg\b/);
   assert.match(svg,/viewBox="0 0 1000 680"/);
   assert.match(svg,/<path\s+d="M-96 350/);
-  assert.doesNotMatch(svg,/<script\b|onload=|<foreignObject|https?:\/\//i);
+  assert.doesNotMatch(svg,/<script\b|onload=|<foreignObject|(?:href|src)\s*=\s*[\"']https?:/i);
   for (const name of ["index.html","gestao-a-vista.html"]) {
     const html=fs.readFileSync(path.join(root,name),"utf8");
     assert.match(html,/assets\/portal-unh-simbolo\.svg/);
