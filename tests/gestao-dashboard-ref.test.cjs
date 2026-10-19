@@ -27,9 +27,9 @@ function mount() {
   ["gvRefMenuToggle","gvRefSidebar","gvRefSearch","gvRefSearchResults","gvRefHelp","nexo-widget","nexo-panel","nexo-toggle","nexo-chat-input"]
     .forEach(id=>ids[id]=node());
   ids["nexo-panel"].hidden=true;
-  ids.nexo-toggle.click=()=>{
+  ids["nexo-toggle"].click=()=>{
     ids["nexo-panel"].hidden=!ids["nexo-panel"].hidden;
-    ids.nexo-toggle.setAttribute("aria-expanded",String(!ids["nexo-panel"].hidden));
+    ids["nexo-toggle"].setAttribute("aria-expanded",String(!ids["nexo-panel"].hidden));
   };
   const classNames=new Set();
   const document={
