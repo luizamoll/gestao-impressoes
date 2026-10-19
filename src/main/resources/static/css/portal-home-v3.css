@@ -130,7 +130,8 @@
   border-bottom:1px solid #e8eee9;background:#f6faf7;
   color:#64796a;font-size:10px;font-weight:800;letter-spacing:.1em;
 }
-.portal-hero-v3-workspace-mark{display:grid;place-items:center;height:23px;width:23px;background:#0b6749;border-radius:7px;color:#fff;font-size:15px;}
+.portal-hero-v3-workspace-mark{display:grid;place-items:center;flex:0 0 30px;height:30px;width:30px;background:#e8f2eb;border:1px solid #d4e6d9;border-radius:9px;}
+.portal-hero-v3-workspace-mark img{display:block;width:21px;height:21px;object-fit:contain;}
 .portal-hero-v3-workspace-dots{margin-left:auto;letter-spacing:.13em;font-size:13px;color:#8b9991;}
 .portal-hero-v3-workspace-content{padding:24px 24px 21px;}
 .portal-hero-v3-workspace-eyebrow,.portal-home-v3-rail-overline{
