@@ -2,8 +2,9 @@
 
 /**
  * Nexo - orientador de navegacao do Portal UNH.
- * Sem API, sem modelo de IA, sem coleta de mensagens, sem armazenamento ou cookies.
- * O widget oferece somente conteudo local, estatico e atalhos reais.
+ * Modo padrão: regras, sem rede. Modo IA opcional SOMENTE em localhost
+ * através de ponte Python de laboratório, sem dados/contas institucionais.
+ * Nenhum armazenamento, cookie ou integração institucional.
  */
 (() => {
   if (document.getElementById("nexo-widget") || !document.body) return;
@@ -25,6 +26,7 @@
       </div>
       <div class="nexo-panel-body">
         <p class="nexo-intro"><strong>Olá! Posso ajudar?</strong> Sou o guia de navegação do Portal UNH. Encontre rapidamente os recursos que você precisa.</p>
+        <button type="button" id="nexo-lab-toggle" class="nexo-lab-toggle" aria-pressed="false" hidden>Ativar IA local (laboratório)</button>
         <form id="nexo-chat-form" class="nexo-chat-form" aria-label="Converse com o Nexo">
           <label for="nexo-chat-input">Pergunte ao Nexo</label>
           <div class="nexo-chat-entry">
@@ -76,6 +78,34 @@
   const chatForm = document.getElementById("nexo-chat-form");
   const chatInput = document.getElementById("nexo-chat-input");
   const chatLog = document.getElementById("nexo-chat-log");
+  const labToggle = document.getElementById("nexo-lab-toggle");
+  const disclosure = document.querySelector(".nexo-chat-disclosure");
+  const disclaimer = document.querySelector(".nexo-disclaimer");
+  const helpAnswer = document.getElementById("nexo-help-answer");
+  const chatSubmit = document.getElementById("nexo-chat-submit");
+  const NEXO_LOCAL_URL = "http://127.0.0.1:18767/chat";
+  // IA somente no mesmo computador, via servidor local iniciado pela usuária.
+  const isLocalPortal = /^http:\/\/(?:127\.0\.0\.1|localhost):(?:18081|8080)(?:\/|$)/.test(String(window.location.href));
+  let labEnabled = false;
+  if (isLocalPortal && labToggle) {
+    labToggle.hidden = false;
+    labToggle.addEventListener("click", () => {
+      labEnabled = !labEnabled;
+      labToggle.setAttribute("aria-pressed", String(labEnabled));
+      labToggle.textContent = labEnabled ? "Voltar ao modo de regras" : "Ativar IA local (laboratório)";
+      if (disclosure) disclosure.textContent = labEnabled
+        ? "IA local experimental. Apenas dados demonstrativos; não envie dados pessoais, senhas ou relatórios reais."
+        : "Respostas orientadas por regras e dados históricos de laboratório. Sem IA generativa nesta fase.";
+      if (disclaimer) disclaimer.textContent = labEnabled
+        ? "IA local ativada manualmente · dados demonstrativos · não institucional"
+        : "Agente local experimental · IA não conectada";
+      if (helpAnswer) helpAnswer.textContent = labEnabled
+        ? "Neste modo de laboratório, consulto ferramentas demonstrativas via Python e Qwen local. Não acesso sistemas ou registros institucionais."
+        : "Por enquanto, eu ajudo a navegar pelo Portal. Ainda não converso com uma IA, não acesso dados de alunos ou projetos e não consulto sistemas institucionais.";
+      showFeedback(labEnabled ? "Modo IA local: inicie servidor_nexo.py em outro PowerShell. Nenhum dado real deve ser enviado." : "Modo de regras ativado; nenhuma chamada à IA.");
+      showEmotion(labEnabled ? "confirmacao" : "normal");
+    });
+  }
 
 
   // Um unico personagem base e cinco expressões vetoriais, sem dependencias.
@@ -139,12 +169,50 @@
     chatLog.scrollTop = chatLog.scrollHeight;
   }
 
-  chatForm.addEventListener("submit", event => {
+  chatForm.addEventListener("submit", async event => {
     event.preventDefault();
     const question = chatInput.value.trim();
     if (!question) return;
     appendChatMessage(question, "user");
     chatInput.value = "";
+    if (labEnabled && isLocalPortal) {
+      // Opt-in explícito: NUNCA enviar mensagem pela rede sem ativação manual.
+      // Endpoint fixo, estritamente loopback. Não enviar cookies nem credenciais.
+      chatInput.disabled = true;
+      if (chatSubmit) chatSubmit.disabled = true;
+      if (labToggle) labToggle.disabled = true;
+      showFeedback("Nexo está consultando as ferramentas do laboratório…");
+      showEmotion("pensando");
+      try {
+        const result = await fetch(NEXO_LOCAL_URL, {
+          method: "POST",
+          mode: "cors", credentials: "omit", cache: "no-store", referrerPolicy: "no-referrer",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ pergunta: question })
+        });
+        const data = await result.json();
+        if (!result.ok) throw new Error(data.erro || "Ponte local indisponível");
+        if (data.modo !== "laboratorio_local" || data.dados_reais !== false || typeof data.resposta !== "string") {
+          throw new Error("Resposta da ponte local não foi reconhecida.");
+        }
+        const source = (Array.isArray(data.fontes) ? data.fontes : []).join(" · ");
+        appendChatMessage(data.resposta, "assistant", null,
+          "Laboratório demonstrativo" + (source ? " · " + source : "") +
+          (typeof data.duracao_s === "number" ? " · " + data.duracao_s.toFixed(1) + " s" : ""));
+        showFeedback("Resposta recebida do laboratório local. Fontes e limites indicados abaixo da resposta.");
+        showEmotion("respondendo");
+      } catch (_error) {
+        appendChatMessage("Não consegui acessar o Nexo local. Inicie o arquivo servidor_nexo.py na pasta laboratorio/nexo-local e confirme que o Portal está aberto em localhost:18081 ou 127.0.0.1:18081. Não enviei a pergunta a serviços externos.", "assistant");
+        showFeedback("Ponte de IA local indisponível; o modo de regras continua acessível.");
+        showEmotion("dica");
+      } finally {
+        chatInput.disabled = false;
+        if (chatSubmit) chatSubmit.disabled = false;
+        if (labToggle) labToggle.disabled = false;
+        chatInput.focus();
+      }
+      return;
+    }
     const agent = window.NexoAgent;
     const response = agent && typeof agent.ask === "function"
       ? agent.ask(question, { pathname: window.location.pathname })
