@@ -358,3 +358,20 @@
   .nexo-chat-entry { flex-wrap: nowrap; }
   .nexo-chat-entry input { font-size: 12px; }
 }
+
+
+/* IA experimental: botao opcional; mascara de permissao mantida no JS + servidor. */
+.nexo-lab-toggle[hidden] { display: none !important; }
+.nexo-lab-toggle {
+  width: 100%; text-align: center; min-height: 38px;
+  margin: 0 0 13px; padding: 9px 11px;
+  border: 1px solid #cbdce6; border-radius: 10px;
+  background: #f1f6fa; color: #304d65;
+  font: inherit; font-weight: 700; font-size: 12px;
+  cursor: pointer;
+}
+.nexo-lab-toggle[aria-pressed="true"] {
+  background: #e7f0f7; border-color: #97bad3; color: #21435e;
+}
+.nexo-lab-toggle:disabled { opacity: .55; cursor: wait; }
+.nexo-chat-submit:disabled { cursor: wait; opacity: .6; }
