@@ -1,0 +1,35 @@
+name: Nexo - FAQ local
+
+on:
+  push:
+    branches:
+      - feat/nexo-conhecimento-local-20261019
+    paths:
+      - "src/main/resources/static/js/nexo-*.js"
+      - "tests/nexo-conhecimento.test.cjs"
+      - ".github/workflows/nexo-faq.yml"
+  pull_request:
+    paths:
+      - "src/main/resources/static/js/nexo-*.js"
+      - "tests/nexo-conhecimento.test.cjs"
+      - ".github/workflows/nexo-faq.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: Validar sintaxe e respostas
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verificar JavaScript
+        run: |
+          node --check src/main/resources/static/js/nexo-conhecimento.js
+          node --check src/main/resources/static/js/nexo-agente.js
+          node --check src/main/resources/static/js/nexo-assistente.js
+      - name: Testar respostas do Nexo
+        run: node --test tests/nexo-conhecimento.test.cjs
