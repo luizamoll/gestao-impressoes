@@ -1,0 +1,295 @@
+/* Portal UNH — Design system cromatico v1 | laboratorio 19/10/2026
+   Verde identifica a instituicao. Petrol representa leitura/analise.
+   Sálvia organiza superficies secundarias. Âmbar sinaliza pendencia,
+   coral informa variacao desfavoravel/erro (nunca apenas pela cor).
+   Nexo: identidade visual propria prateada/azul, mantida. */
+
+:root {
+  /* Marca institucional — cores de interface, sem alterar a arte oficial da logo */
+  --unh-brand: #075641;
+  --unh-brand-strong: #084c38;
+  --unh-brand-hover: #0b6b4b;
+  --unh-brand-soft: #ddeeE6;
+  --unh-brand-tint: #f0f7f2;
+  /* Neutros e camadas */
+  --unh-ink: #1d2a24;
+  --unh-graphite: #283530;
+  --unh-muted: #5e6e66;
+  --unh-tertiary: #6c7c73;
+  --unh-canvas: #f7f9f8;
+  --unh-surface: #ffffff;
+  --unh-surface-alt: #eef3f0;
+  --unh-line: #d9e3dd;
+  /* Apoio */
+  --unh-analytics: #2e5b74;
+  --unh-analytics-strong: #244d63;
+  --unh-analytics-soft: #dce8ef;
+  --unh-sage: #7e9f90;
+  --unh-sage-soft: #e7f0eb;
+  --unh-warning: #93610b;
+  --unh-warning-soft: #fff4dc;
+  --unh-danger: #ad4339;
+  --unh-danger-soft: #fce8e5;
+  --unh-focus: #17835e;
+  --unh-shadow: 0 14px 36px rgba(29,52,40,.07);
+}
+
+/* Cabecalho e elementos compartilhados: consistencia entre modulos sem tocar login. */
+body.portal-body:not(.portal-home-v3) {
+  color: var(--unh-ink);
+  background: linear-gradient(180deg,#f8faf9 0%,#f2f6f3 44%,#f7f9f8 100%);
+}
+body.portal-body .portal-header {
+  background: rgba(255,255,255,.97);
+  border-color: var(--unh-line);
+}
+body.portal-body .portal-nav a {
+  color: #40564b;
+}
+body.portal-body .portal-nav a:hover,
+body.portal-body .portal-nav a[aria-current="page"] {
+  color: var(--unh-brand);
+  background: var(--unh-brand-tint);
+  border-color: #dbeadf;
+}
+body.portal-body :is(a,button,input,select,textarea,summary):focus-visible {
+  outline-color: var(--unh-focus);
+  outline-offset: 3px;
+}
+body.portal-body .portal-brand-context { border-left-color: var(--unh-line); }
+body.portal-body .portal-brand-context strong { color: var(--unh-brand-strong); }
+body.portal-body .portal-brand-context span { color: var(--unh-muted); }
+
+/* Gestao a Vista: cores por funcao e contraste de leitura. */
+body.gv-body {
+  --gv-nav-active: var(--unh-brand);
+  --gv-information: var(--unh-analytics);
+  background:
+    radial-gradient(ellipse 46% 32% at 90% 9%,rgba(220,232,239,.42),transparent 90%),
+    linear-gradient(180deg,#f7f9f8 0%,#f1f6f3 58%,#f8faf9 100%);
+  color: var(--unh-ink);
+}
+.gv-page :is(h1,h2,h3) { color: var(--unh-graphite); }
+.gv-page :is(.gv-eyebrow,.gv-breadcrumb a) { color: var(--unh-brand); }
+.gv-page .gv-dash { background: var(--unh-brand-hover); }
+.gv-page .gv-intro h1 { color: var(--unh-ink); letter-spacing: -.027em; }
+.gv-page .gv-intro h1 em { color: var(--unh-brand); }
+.gv-page .gv-intro-copy p { color: var(--unh-muted); }
+.gv-page .gv-intro .gv-intro-caption { color: #52675a; }
+.gv-page .gv-intro-art.gv-intro-photo {
+  border-color: #d2dfd7;
+  box-shadow: 0 15px 35px rgba(22,53,38,.09);
+}
+.gv-page .gv-workspace {
+  border: 1px solid var(--unh-line);
+  background: var(--unh-surface);
+  box-shadow: 0 20px 58px rgba(35,59,43,.075);
+}
+.gv-page .gv-workspace-sidebar {
+  background: linear-gradient(180deg,#f5f8f6 0%,#eef3f1 100%);
+  border-right-color: var(--unh-line);
+}
+.gv-page .gv-workspace-sidebar-icon {
+  background: var(--unh-analytics-soft);
+  color: var(--unh-analytics-strong);
+}
+.gv-page .gv-workspace-sidebar-brand strong { color: var(--unh-ink); }
+.gv-page .gv-workspace-sidebar-brand small { color: var(--unh-muted); }
+.gv-page .gv-workspace-menu a {
+  color: #42564b !important;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  transition: background .15s,border-color .15s,color .15s;
+}
+.gv-page .gv-workspace-menu a>span { color: #6b8577; }
+.gv-page .gv-workspace-menu a:hover {
+  background: #e5efe9;
+  border-color: #dae8de;
+}
+.gv-page .gv-workspace-menu a.gv-workspace-menu-current {
+  position: relative;
+  color: var(--unh-brand-strong) !important;
+  background: #dcece2;
+  border-color: #cfe4d6;
+  box-shadow: inset 3px 0 0 var(--unh-brand);
+}
+.gv-page .gv-workspace-menu a.gv-workspace-menu-current>span { color: var(--unh-brand); }
+.gv-page .gv-workspace-sidebar-note {
+  border-color: var(--unh-line);
+  background: rgba(255,255,255,.7);
+}
+.gv-page .gv-workspace-sidebar-note :is(strong,span) { color: var(--unh-muted); }
+
+/* Cabeçalhos: verde como marca, petrol para metadados de analise. */
+.gv-page .gv-workspace-kicker,
+.gv-page .gv-workspace-brief-overline,
+.gv-page .gv-workspace-panel-head span:not(.gv-workspace-panel-decor) {
+  color: var(--unh-analytics);
+}
+.gv-page .gv-workspace-titlebar h2,
+.gv-page .gv-history-snapshot-copy h3,
+.gv-page .gv-next-modules h3 { color: var(--unh-ink); }
+.gv-page .gv-workspace-titlebar p,
+.gv-page .gv-history-snapshot-copy p,
+.gv-page .gv-integration-footnote { color: var(--unh-muted); }
+
+/* Pendente e indisponivel sao estados diferentes de erro. */
+.gv-page .gv-workspace-status[data-connection="pending"] {
+  color: #425e6e;
+  background: #eaf2f6;
+  border-color: #d5e3eb;
+}
+.gv-page .gv-workspace-status[data-connection="pending"]>span:first-child {
+  background: var(--unh-analytics);
+}
+.gv-page .gv-workspace-status[data-connection="unavailable"],
+.gv-page .gv-workspace-status:not([data-connection]) {
+  color: var(--unh-warning);
+  background: var(--unh-warning-soft);
+  border-color: #eedcab;
+}
+.gv-page .gv-workspace-status[data-connection="unavailable"]>span:first-child,
+.gv-page .gv-workspace-status:not([data-connection])>span:first-child { background: #ba831e; }
+
+/* Historico: destaque azul para metrica, nao para identidades e acoes. */
+.gv-page .gv-history-snapshot {
+  background: linear-gradient(113deg,#eef5f7 0%,#f8fbfa 52%,#fff 100%);
+  border-color: #d9e6e8;
+  box-shadow: 0 9px 23px rgba(35,75,90,.04);
+}
+.gv-page .gv-history-snapshot-metric strong {
+  color: var(--unh-analytics-strong);
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+.gv-page .gv-history-snapshot-metric span { color: var(--unh-muted); }
+.gv-page .gv-history-snapshot-link {
+  color: var(--unh-brand) !important;
+  border-color: #cdded3;
+  background: var(--unh-surface);
+}
+.gv-page .gv-history-snapshot-link:hover { background: var(--unh-brand-tint); }
+.gv-page .gv-snapshot-period { color: #4d6260; }
+.gv-page .gv-snapshot-period select,
+.gv-page .gv-period select {
+  color: var(--unh-ink);
+  background: var(--unh-surface);
+  border-color: #cddcd4;
+}
+.gv-page :is(.gv-snapshot-period select,.gv-period select):hover { border-color: var(--unh-sage); }
+
+/* Cards indicadores: neutro, petrol na analise e sálvia nos destaques. */
+.gv-page :is(.gv-workspace-stat,.gv-workspace-panel,.gv-kpi,.gv-panel,.gv-next-module) {
+  border-color: var(--unh-line);
+  background: #fff;
+  box-shadow: 0 7px 22px rgba(23,48,34,.04);
+}
+.gv-page .gv-workspace-stat>strong,
+.gv-page .gv-dashboard .gv-kpi strong { color: var(--unh-analytics-strong); }
+.gv-page .gv-workspace-stat>span,
+.gv-page .gv-kpi>span { color: #4d6964; }
+.gv-page .gv-workspace-stat>small,
+.gv-page .gv-kpi>small { color: var(--unh-muted); }
+.gv-page .gv-workspace-panel-head h3 { color: var(--unh-ink); }
+.gv-page .gv-workspace-panel-decor { color: var(--unh-sage); }
+.gv-page .gv-workspace-empty {
+  background: #f6f9f7;
+  border-color: #d8e4dc;
+}
+.gv-page .gv-workspace-empty>span { color: var(--unh-sage); }
+.gv-page .gv-workspace-empty :is(strong,p) { color: var(--unh-muted); }
+.gv-page .gv-workspace-note {
+  border-color: #dce6e0;
+  background: var(--unh-sage-soft);
+}
+.gv-page .gv-workspace-note :is(>span,p) { color: #465f52; }
+.gv-page .gv-workspace-brief {
+  border-color: #d5e3df;
+  background: linear-gradient(105deg,#eef4f2,#f8faf9);
+}
+.gv-page .gv-workspace-brief :is(strong,p) { color: var(--unh-ink); }
+.gv-page .gv-dashboard .gv-kpi-main {
+  background: linear-gradient(135deg,#e8f0f5,#fff);
+  border-color: #cbdee9;
+}
+.gv-page .gv-caption-pill {
+  color: var(--unh-analytics-strong);
+  background: var(--unh-analytics-soft);
+}
+.gv-page .gv-track { background: #e8eeea; }
+.gv-page .gv-track span { background: var(--unh-sage); }
+.gv-page .gv-bar-selected .gv-track span { background: var(--unh-analytics); }
+.gv-page .gv-bar-selected strong { color: var(--unh-analytics-strong); }
+.gv-page .gv-bar-waiting .gv-track {
+  background: repeating-linear-gradient(45deg,#f1f4f2,#f1f4f2 9px,#e8ede9 9px,#e8ede9 18px);
+}
+.gv-page .gv-insight { background: var(--unh-danger-soft); color: var(--unh-danger); }
+.gv-page .gv-insight.gv-insight-neutral {
+  background: var(--unh-analytics-soft);
+  color: var(--unh-analytics-strong);
+}
+.gv-page .gv-kpi-delta.gv-trend-bad strong,
+.gv-page .gv-kpi-delta.gv-trend-bad small { color: var(--unh-danger); }
+.gv-page .gv-indicator-explanation,
+.gv-page .gv-source { background: #f1f6f3; border-color: var(--unh-line); }
+.gv-page .gv-indicator-explanation summary { color: var(--unh-brand); }
+.gv-page .gv-next-module:hover { border-color: #aac8b4; box-shadow: var(--unh-shadow); }
+.gv-page .gv-next-module-name { color: var(--unh-ink); }
+.gv-page .gv-next-module-description { color: var(--unh-muted); }
+.gv-page .gv-next-module-status { color: var(--unh-analytics); }
+
+/* Mural e catalogo: cores de status distintas, sem inventar disponibilidade. */
+.portal-home-v3 .portal-section-intro h2,
+.portal-home-v3 .portal-feature-head h2 { color: var(--unh-ink); }
+.portal-home-v3 .portal-home-v3-rail-note {
+  background: linear-gradient(145deg,#f5f9f6,#fff);
+  border-color: var(--unh-line);
+}
+.portal-home-v3 .mural-post h3 { color: var(--unh-ink); }
+.portal-home-v3 .mural-post-kind {
+  color: var(--unh-brand);
+  background: var(--unh-brand-soft);
+}
+.portal-home-v3 .gv-home-status {
+  color: var(--unh-warning);
+  font-size: 12px;
+  font-weight: 750;
+}
+.portal-home-v3 .gv-home-status::before { background: #bf8a2b; }
+.portal-home-v3 .gd-home-state {
+  color: var(--unh-analytics-strong);
+  font-size: 12px;
+}
+.portal-home-v3 .gd-home-state::before { background: var(--unh-analytics); }
+.portal-home-v3 .automation-home-state { color: #557261; }
+.portal-home-v3 .portal-status { color: var(--unh-brand); }
+.portal-home-v3 .portal-hero-v3-quick-list a:focus-visible,
+.portal-home-v3 .portal-home-v3-catalog-filters button:focus-visible {
+  outline: 3px solid var(--unh-focus);
+  outline-offset: 2px;
+}
+
+/* Operacoes e documentos: campos mais claros e estados coerentes. */
+.automation-body .automation-status-planned { color: var(--unh-warning); background: var(--unh-warning-soft); }
+.automation-body .automation-status-local { color: var(--unh-brand-strong); background: var(--unh-brand-soft); }
+.automation-body .automation-hero-visual {
+  border-color: #d4e4d8;
+  background: linear-gradient(140deg,#e8f0eb,#f4f8f5);
+}
+.documental-body :is(input,select,textarea) { accent-color: var(--unh-brand); }
+
+/* O Nexo nao recebe verde institucional no rosto, corpo ou conversa. */
+.portal-body .nexo-panel { border-color: #d7e3e9; box-shadow: 0 20px 50px rgba(33,57,73,.18); }
+
+/* Evitar textos pequenos sem contraste, sem interferir em layout mobile. */
+.gv-page .gv-workspace-stat>small,
+.gv-page .gv-history-snapshot-metric span,
+.gv-page .gv-workspace-panel-head span:not(.gv-workspace-panel-decor) { font-size: 12px; }
+@media(max-width:860px) {
+  .gv-page .gv-workspace-sidebar { border-right:0;border-bottom:1px solid var(--unh-line); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .gv-page .gv-workspace-menu a,
+  .gv-page .gv-next-module { transition:none; }
+}
