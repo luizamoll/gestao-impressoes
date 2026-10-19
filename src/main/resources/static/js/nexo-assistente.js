@@ -15,7 +15,7 @@
     <aside id="nexo-panel" class="nexo-panel" aria-labelledby="nexo-title" hidden>
       <div class="nexo-panel-head">
         <div class="nexo-panel-identification">
-          <span class="nexo-panel-avatar"><img id="nexo-panel-robot" src="assets/nexo-robo.svg?v=20261016-v2" alt="" width="43" height="49"></span>
+          <span class="nexo-panel-avatar"><img id="nexo-panel-robot" src="assets/nexo-robo.svg?v=20261019-v3" alt="" width="43" height="49"></span>
           <div>
             <strong id="nexo-title">Nexo</strong>
             <span>Agente experimental do Portal</span>
@@ -58,7 +58,7 @@
     </aside>
     <button id="nexo-toggle" class="nexo-launcher" type="button"
         aria-controls="nexo-panel" aria-expanded="false" aria-label="Abrir Nexo, assistente de navegação do Portal UNH">
-      <img id="nexo-robot" src="assets/nexo-robo.svg?v=20261016-v2" width="91" height="104" alt="" class="nexo-launcher-avatar">
+      <img id="nexo-robot" src="assets/nexo-robo.svg?v=20261019-v3" width="91" height="104" alt="" class="nexo-launcher-avatar">
       <span class="nexo-launcher-label">Posso ajudar?</span>
     </button>`;
   document.body.append(host);
@@ -80,12 +80,12 @@
 
   // Um unico personagem base e cinco expressões vetoriais, sem dependencias.
   const emotions = Object.freeze({
-    normal: "assets/nexo-robo.svg?v=20261016-v2",
-    saudacao: "assets/nexo-robo-saudacao.svg?v=20261016-v1",
-    pensando: "assets/nexo-robo-pensando.svg?v=20261016-v1",
-    respondendo: "assets/nexo-robo-respondendo.svg?v=20261016-v1",
-    confirmacao: "assets/nexo-robo-confirmacao.svg?v=20261016-v1",
-    dica: "assets/nexo-robo-dica.svg?v=20261016-v1"
+    normal: "assets/nexo-robo.svg?v=20261019-v3",
+    saudacao: "assets/nexo-robo-saudacao.svg?v=20261019-v2",
+    pensando: "assets/nexo-robo-pensando.svg?v=20261019-v2",
+    respondendo: "assets/nexo-robo-respondendo.svg?v=20261019-v2",
+    confirmacao: "assets/nexo-robo-confirmacao.svg?v=20261019-v2",
+    dica: "assets/nexo-robo-dica.svg?v=20261019-v2"
   });
 
   function showEmotion(name) {
