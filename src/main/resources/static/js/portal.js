@@ -38,29 +38,53 @@
     link.setAttribute("aria-current", "page");
     closeMenu();
   }));
+  nav.querySelectorAll('a:not([href^="#"])').forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
 
 
-  // Filtra apenas o catalogo local; sem chamada a servidores.
+  // Busca e filtros combinados: operam somente sobre o catalogo local.
   const searchInput = document.getElementById("portalToolSearch");
   const toolCards = [...document.querySelectorAll(".portal-tools-card[data-search]")];
   const emptyNotice = document.getElementById("portalToolEmpty");
-  const normalize = value => value
+  const toolCount = document.getElementById("portalToolCount");
+  const categoryButtons = [...document.querySelectorAll("[data-portal-tool-filter]")];
+  let selectedCategory = "todas";
+  const normalize = value => String(value || "")
     .toLocaleLowerCase("pt-BR")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .trim();
 
-  searchInput?.addEventListener("input", () => {
-    if (!toolCards.length || !emptyNotice) return;
-    const query = normalize(searchInput.value);
+  function filterTools() {
+    if (!toolCards.length) return;
+    const query = normalize(searchInput?.value);
     let count = 0;
     toolCards.forEach(card => {
-      const match = normalize(card.getAttribute("data-search") || "").includes(query);
-      card.hidden = !match;
-      if (match) count++;
+      const matchesText = normalize(card.getAttribute("data-search")).includes(query);
+      const matchesCategory = selectedCategory === "todas"
+        || card.dataset.category === selectedCategory;
+      const visible = matchesText && matchesCategory;
+      card.hidden = !visible;
+      if (visible) count++;
     });
-    emptyNotice.hidden = count > 0;
-  });
+    if (emptyNotice) emptyNotice.hidden = count > 0;
+    if (toolCount) toolCount.textContent = count === 1
+      ? "1 ferramenta encontrada"
+      : count + " ferramentas encontradas";
+    categoryButtons.forEach(button => {
+      const active = button.dataset.portalToolFilter === selectedCategory;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  }
+
+  searchInput?.addEventListener("input", filterTools);
+  categoryButtons.forEach(button => button.addEventListener("click", () => {
+    selectedCategory = button.dataset.portalToolFilter || "todas";
+    filterTools();
+  }));
+  filterTools();
 
   document.addEventListener("keydown", event => {
     if (event.key === "Escape") closeMenu();
