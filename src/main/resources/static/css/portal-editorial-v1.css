@@ -1,0 +1,209 @@
+/* Portal UNH — assinatura visual editorial v1.
+   Grafismo de horizonte: patrimonio visual abstrato, distinto da logomarca oficial.
+   Mantem componentes, acessibilidade e backend preexistentes. */
+
+/* HOME: hero menos pesado — papel aquecido a esquerda, assinatura verde a direita. */
+.portal-home-v3 .portal-hero {
+  color: var(--unh-ink, #1d2a24);
+  background: linear-gradient(113deg,#f8f7f2 0%,#f4f5ef 46%,#edf3ed 100%);
+  border: 1px solid #e1e6de;
+  box-shadow: 0 23px 54px rgba(36,59,42,.095),0 3px 10px rgba(36,59,42,.03);
+}
+.portal-home-v3 .portal-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  top: 0;
+  right: 0;
+  z-index: 0;
+  border: 0;
+  box-shadow: none;
+  border-radius: inherit;
+  opacity: .75;
+  background:
+    radial-gradient(circle at 16% 3%,rgba(202,222,208,.48),transparent 38%),
+    linear-gradient(90deg,rgba(255,255,255,.32),transparent 72%);
+  mask-image: none;
+  pointer-events: none;
+}
+.portal-home-v3 .portal-hero::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  right: -3%;
+  width: 51%;
+  z-index: 0;
+  border-radius: 45% 0 0 45% / 66% 0 0 66%;
+  background:
+    url("../assets/unh-horizonte-linhas.svg") center 50% / 780px auto no-repeat,
+    radial-gradient(circle at 5% 70%,rgba(127,170,139,.47),transparent 37%),
+    linear-gradient(136deg,#12654f 4%,#0b513e 51%,#074036 100%);
+  box-shadow: inset 16px 0 45px rgba(3,45,29,.09);
+  pointer-events: none;
+}
+.portal-home-v3 .portal-hero-layout { position: relative; z-index: 1; }
+.portal-home-v3 .portal-hero-copy { color: var(--unh-ink,#1d2a24); }
+.portal-home-v3 .portal-hero h1 {
+  color: #23382c;
+  max-width: 680px;
+  line-height: 1.12;
+  letter-spacing: -.061em;
+}
+.portal-home-v3 .portal-hero h1 em {
+  color: var(--unh-brand,#075641);
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  font-style: normal;
+}
+.portal-home-v3 .portal-hero p {
+  color: #506458;
+  font-size: 16px;
+  line-height: 1.75;
+  max-width: 530px;
+}
+.portal-home-v3 .portal-hero-v3-kicker { color: #376d53; }
+.portal-home-v3 .portal-hero-v3-kicker>span:not(.portal-hero-v3-kicker-line) { opacity: .68; }
+.portal-home-v3 .portal-hero-v3-kicker-line { background: var(--unh-brand,#075641); }
+.portal-home-v3 .portal-hero .portal-hero-v3-main-action {
+  background: var(--unh-brand,#075641);
+  color: #fff !important;
+  border: 1px solid rgba(5,78,51,.12);
+  box-shadow: 0 11px 27px rgba(5,77,49,.16);
+}
+.portal-home-v3 .portal-hero .portal-hero-v3-main-action:hover {
+  background: var(--unh-brand-hover,#0b6b4b);
+  color: #fff !important;
+}
+.portal-home-v3 .portal-hero-v3-secondary { color: #285640 !important; }
+.portal-home-v3 .portal-hero-v3-meta {
+  border-top-color: rgba(35,86,56,.16);
+  margin-top: 31px;
+  padding-top: 24px;
+}
+.portal-home-v3 .portal-hero-v3-meta span { color: #516e5c; }
+.portal-home-v3 .portal-hero-v3-workspace {
+  transform: rotate(.6deg);
+  border: 1px solid rgba(221,230,223,.96);
+  border-top: 3px solid #89ab98;
+  background: #fff;
+  box-shadow: 0 30px 67px rgba(7,40,28,.18),0 5px 16px rgba(7,40,28,.055);
+}
+.portal-home-v3 .portal-hero-v3-workspace:hover { transform: rotate(0deg) translateY(-3px); }
+.portal-home-v3 .portal-hero-v3-workspace-top {
+  background: #f6f8f6;
+  border-bottom-color: #e0e8e2;
+}
+.portal-home-v3 .portal-hero-v3-quick-list a:nth-child(2) .portal-hero-v3-quick-icon {
+  color: var(--unh-analytics,#2e5b74);
+  background: var(--unh-analytics-soft,#dce8ef);
+}
+.portal-home-v3 .portal-hero-v3-quick-list a:nth-child(3) .portal-hero-v3-quick-icon {
+  color: #4a7060;
+  background: var(--unh-sage-soft,#e7f0eb);
+}
+.portal-home-v3 .portal-hero-v3-workspace-foot {
+  background: #f8faf8;
+}
+
+/* A assinatura se repete com discricao no editorial, nunca em todos os cards. */
+.portal-home-v3 .portal-home-v3-intro { position: relative; isolation: isolate; }
+.portal-home-v3 .portal-home-v3-intro::after {
+  content: "";
+  position: absolute;
+  top: -13px;
+  right: 1%;
+  width: 178px;
+  height: 92px;
+  pointer-events: none;
+  background: #9fbaaa;
+  opacity: .27;
+  -webkit-mask: url("../assets/unh-horizonte-linhas.svg") center / cover no-repeat;
+  mask: url("../assets/unh-horizonte-linhas.svg") center / cover no-repeat;
+  z-index: -1;
+}
+.portal-home-v3 .portal-feature-stack #ferramentas .portal-tools-card[data-category="gestao"] {
+  border-top: 3px solid #a7c8b2;
+}
+.portal-home-v3 .portal-feature-stack #ferramentas .portal-tools-card[data-category="documentos"] {
+  border-top: 3px solid #a7bfcc;
+}
+.portal-home-v3 .portal-feature-stack #ferramentas .portal-tools-card[data-category="automacoes"] {
+  border-top: 3px solid #b4c7b7;
+}
+
+/* GESTAO: a mesma assinatura grafica, identidade de marca com azul analitico. */
+.gv-page .gv-intro { position: relative; }
+.gv-page .gv-intro-copy {
+  position: relative;
+  padding-left: 20px;
+  border-left: 3px solid #9cbba7;
+}
+.gv-page .gv-intro h1 { color: var(--unh-ink,#1d2a24); }
+.gv-page .gv-intro h1 em { color: var(--unh-brand,#075641); }
+.gv-page .gv-workspace-sidebar {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.gv-page .gv-workspace-sidebar::after {
+  content: "";
+  position: absolute;
+  bottom: -75px;
+  right: -60px;
+  z-index: -1;
+  width: 285px;
+  height: 190px;
+  background: #adc6b8;
+  opacity: .27;
+  -webkit-mask: url("../assets/unh-horizonte-linhas.svg") center / contain no-repeat;
+  mask: url("../assets/unh-horizonte-linhas.svg") center / contain no-repeat;
+  pointer-events: none;
+}
+.gv-page .gv-workspace-sidebar-brand { border-bottom: 1px solid #d7e5db; padding-bottom: 16px; }
+.gv-page .gv-workspace-sidebar-icon { border: 1px solid #cddfd7; }
+.gv-page .gv-workspace-menu a.gv-workspace-menu-current {
+  box-shadow: inset 3px 0 0 var(--unh-brand,#075641),0 4px 12px rgba(20,82,52,.045);
+}
+.gv-page .gv-history-snapshot {
+  border-left: 3px solid var(--unh-analytics,#2e5b74);
+}
+
+/* Um pequeno toque editorial no cabecalho, sem redesenhar a logomarca. */
+.portal-home-v3 .portal-logo-copy { border-right-color: #d9e5dd; }
+.portal-home-v3 .portal-header { border-bottom: 1px solid #dce7df; }
+
+/* Responsividade: faixa grafica fica atras do painel, nunca do texto. */
+@media(max-width:1100px) {
+  .portal-home-v3 .portal-hero::after { width: 49%;right:-5%; }
+}
+@media(max-width:850px) {
+  .portal-home-v3 .portal-hero::after {
+    top: auto;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 51%;
+    border-radius: 34% 34% 0 0 / 12% 12% 0 0;
+    background-position: center 55%,center;
+  }
+  .portal-home-v3 .portal-hero-layout { gap: 37px; }
+  .portal-home-v3 .portal-hero-v3-workspace { transform: none; }
+  .portal-home-v3 .portal-hero-v3-workspace:hover { transform: translateY(-2px); }
+}
+@media(max-width:650px) {
+  .portal-home-v3 .portal-hero::after { height: 48%; }
+  .portal-home-v3 .portal-hero-layout { padding-block: 38px 33px; gap: 30px; }
+  .portal-home-v3 .portal-hero h1 { font-size: clamp(33px,8.7vw,44px); }
+  .portal-home-v3 .portal-hero p { font-size: 15px; }
+  .portal-home-v3 .portal-hero-v3-meta { gap: 11px; }
+  .portal-home-v3 .portal-home-v3-intro::after { width: 100px;height: 55px;opacity: .2; }
+  .gv-page .gv-intro-copy { padding-left: 14px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .portal-home-v3 .portal-hero-v3-workspace { transform: none; transition: none; }
+  .portal-home-v3 .portal-hero-v3-workspace:hover { transform: none; }
+}
