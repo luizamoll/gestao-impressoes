@@ -34,7 +34,7 @@
           </div>
         </form>
         <div id="nexo-chat-log" class="nexo-chat-log" role="log" aria-label="Conversa temporária com o Nexo" aria-live="polite" aria-relevant="additions text"></div>
-        <p class="nexo-chat-disclosure">Respostas orientadas por regras e dados históricos de laboratório. Sem IA generativa nesta fase.</p>
+        <p class="nexo-chat-disclosure">Respostas por regras e FAQ de laboratório (não homologado). Sem IA generativa ou acesso a dados institucionais.</p>
         <p class="nexo-section-heading">Ou escolha um atalho</p>
         <nav class="nexo-links" aria-label="Atalhos do assistente">
           <a href="index.html#comunicados"><span aria-hidden="true">▤</span><span>Mural de comunicados</span><span aria-hidden="true">→</span></a>
