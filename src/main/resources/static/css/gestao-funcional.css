@@ -1,0 +1,155 @@
+/* Estilos funcionais da Gestao a Vista: botoes, progresso, exportacao e impressao.
+   Sem mudancas no design system global nem em regras institucionais. */
+.gv-page .gv-report-actions {
+  display:flex;
+  gap:9px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+.gv-page .gv-report-button {
+  appearance:none;
+  min-height:40px;
+  padding:9px 14px;
+  border:1px solid #bfd2c5;
+  border-radius:10px;
+  color:var(--unh-brand,#075641);
+  background:#fff;
+  font:700 12px/1.4 "DM Sans","Segoe UI",sans-serif;
+  cursor:pointer;
+  transition:background .15s ease,border-color .15s ease;
+}
+.gv-page .gv-report-button:hover { background:#eaf3ed;border-color:#94b4a1; }
+.gv-page .gv-report-button:focus-visible,
+.gv-page .gv-bar-select:focus-visible {
+  outline:3px solid var(--unh-focus,#17835e);
+  outline-offset:3px;
+}
+.gv-page .gv-performance {
+  min-width:0;
+  margin-top:18px;
+  padding:20px 23px;
+  border:1px solid #d7e5dd;
+  border-radius:15px;
+  background:linear-gradient(115deg,#f0f6f2,#fff);
+}
+.gv-page .gv-detail-performance { margin-bottom:17px; }
+.gv-page .gv-performance-top,
+.gv-page .gv-performance-bottom {
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+.gv-page .gv-performance-top h3 {
+  margin:0 0 5px;
+  font-size:16px;
+  color:var(--unh-ink,#1d2a24);
+}
+.gv-page .gv-performance-top p {
+  margin:0;
+  color:#53695c;
+  line-height:1.5;
+  font-size:12px;
+}
+.gv-page .gv-performance-top>strong {
+  font:800 clamp(22px,2.5vw,31px)/1.1 "Plus Jakarta Sans","DM Sans",sans-serif;
+  color:var(--unh-analytics-strong,#244d63);
+  font-variant-numeric:tabular-nums;
+}
+.gv-page .gv-performance-track {
+  display:block;
+  height:12px;
+  margin:15px 0 12px;
+  overflow:hidden;
+  border-radius:999px;
+  background:#dce8e1;
+}
+.gv-page .gv-performance-track>span {
+  display:block;
+  height:100%;
+  max-width:100%;
+  border-radius:inherit;
+  background:var(--unh-analytics,#2e5b74);
+  transition:width .18s ease;
+}
+.gv-page .gv-performance-track.gv-usage-unavailable {
+  background:repeating-linear-gradient(135deg,#e7ede9,#e7ede9 10px,#f5f8f6 10px,#f5f8f6 20px);
+}
+.gv-page .gv-performance-bottom {
+  flex-wrap:wrap;
+  margin-top:6px;
+  color:#53675e;
+  font-size:12px;
+}
+.gv-page .gv-performance-bottom strong { color:var(--unh-ink,#1d2a24); }
+.gv-page .gv-bar-select {
+  appearance:none;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin:0 0 8px;
+  padding:7px 9px;
+  background:transparent;
+  border:1px solid transparent;
+  border-radius:8px;
+  text-align:left;
+  cursor:pointer;
+  font:inherit;
+}
+.gv-page .gv-bar-select:hover {
+  background:#f0f5f2;
+  border-color:#e0eae2;
+}
+.gv-page .gv-bar-select[aria-pressed="true"] {
+  background:#e7f0eb;
+  border-color:#cbded2;
+}
+.gv-page .gv-bar-select strong { font-size:13px; }
+.gv-page .gv-bar-select>span { color:#496356;font-size:12px;font-weight:750; }
+.gv-page .gv-bar-waiting .gv-bar-select>span { color:#6c7c73; }
+@media(max-width:650px) {
+  .gv-page .gv-performance { padding:16px; }
+  .gv-page .gv-performance-top>strong { font-size:23px; }
+  .gv-page .gv-bar-select { padding:8px 5px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .gv-page .gv-performance-track>span,
+  .gv-page .gv-report-button { transition:none; }
+}
+
+/* Versao impressa: somente o relatorio historico, nunca lista de projetos nao conectados. */
+@media print {
+  @page { size:auto; margin:15mm; }
+  html,body.gv-body,body.portal-body.gv-body { background:#fff!important;color:#111!important; }
+  body.gv-body .portal-header,
+  body.gv-body .gv-breadcrumb,
+  body.gv-body .gv-intro,
+  body.gv-body .gv-workspace-sidebar,
+  body.gv-body .portal-footer,
+  body.gv-body .nexo-widget,
+  body.gv-body .gv-report-actions { display:none!important; }
+  body.gv-body .gv-page { width:100%!important;max-width:none!important;padding:0!important;margin:0!important; }
+  body.gv-body .gv-workspace { display:block!important;width:100%!important;margin:0!important;border:0!important;box-shadow:none!important; }
+  body.gv-body .gv-workspace-main { padding:0!important; }
+  body.gv-body .gv-workspace-main>[data-gv-view]:not(#gv-impressao-view) { display:none!important; }
+  body.gv-body .gv-workspace-main>#gv-impressao-view,
+  body.gv-body .gv-workspace[data-gv-ready="true"] #gv-impressao-view[hidden] { display:block!important; }
+  body.gv-body .gv-dashboard { display:block!important; }
+  body.gv-body :is(.gv-kpi,.gv-panel,.gv-performance,.gv-source) {
+    box-shadow:none!important;
+    break-inside:avoid;
+  }
+  body.gv-body .gv-panels { display:block!important; }
+  body.gv-body .gv-panel { margin:14px 0; }
+  body.gv-body .gv-bar-select { border:0!important;padding-left:0!important; }
+  body.gv-body .gv-bar-select[aria-pressed="true"] { background:transparent!important; }
+  body.gv-body .gv-bar-selected strong { color:#111!important; }
+  body.gv-body .gv-open-source { text-decoration:none; }
+  body.gv-body .gv-dashboard-head { display:block; }
+  body.gv-body .gv-period { margin-top:12px; }
+  body.gv-body .gv-period select { border:0;padding:0;appearance:none; }
+  body.gv-body * { -webkit-print-color-adjust:exact;print-color-adjust:exact; }
+}
