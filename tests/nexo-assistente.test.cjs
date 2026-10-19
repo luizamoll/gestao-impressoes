@@ -178,6 +178,7 @@ test("as seis expressoes preservam a mesma estrutura do uniforme e a marca", () 
   const root = path.join(__dirname, "../src/main/resources/static/assets");
   const base = fs.readFileSync(path.join(root, "nexo-robo.svg"), "utf8");
   const logo = base.match(/M402,230 390,242/);
+  assert.doesNotMatch(base, /M64 157Q90 163 115 157/, "Blusa padrao nao deve ter bolso.");
   assert.ok(logo);
   const faces = ["saudacao","pensando","respondendo","confirmacao","dica"];
   for (const emotion of faces) {
@@ -185,6 +186,7 @@ test("as seis expressoes preservam a mesma estrutura do uniforme e a marca", () 
     assert.match(svg, /viewBox="0 0 180 206"/);
     assert.ok(svg.includes(logo[0]), "Logo precisa permanecer no uniforme: " + emotion);
     assert.match(svg, /M54 123Q72 114 90 114/);
+    assert.doesNotMatch(svg, /M64 157Q90 163 115 157/, "Blusa sem bolso: " + emotion);
     assert.doesNotMatch(svg, /#[0-9a-f]{0,2}(?:00ff00|008000|075641)/i);
   }
 });
