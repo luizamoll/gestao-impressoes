@@ -67,6 +67,17 @@
       return reply("No protótipo, a franquia mensal de Impressões é 4.000. Agosto registrou 1.016 e setembro 1.522 (+506, ou +49,8%). Outubro não tem leitura confirmada. São números históricos, não dados em tempo real.", "impressoes", "Histórico fixo do laboratório · agosto e setembro/2026");
     }
 
+    // A base local complementa (não substitui) as regras mais sensíveis acima.
+    // Correspondência só por expressões específicas; sem rede ou dados privados.
+    const knowledge = typeof window !== "undefined" ? window.NexoKnowledge : null;
+    if (knowledge && Array.isArray(knowledge.items)) {
+      for (const entry of knowledge.items) {
+        if (entry.triggers.some(phrase => text.includes(phrase))) {
+          return reply(entry.answer, entry.actionKey, entry.source);
+        }
+      }
+    }
+
     if (has(text, /\b(tarefas?|projetos?|vikunja|prazos?|pendencias?)\b/)) {
       if (has(text, /\b(ativos?|quantos?|listar|mostr(ar|e)|vencid(as|os)|atrasad(as|os)|quem|responsaveis?|hoje)\b/)) {
         return reply("Não consigo consultar projetos ou tarefas reais: o Vikunja ainda não está conectado nem autorizado pela TI. A área de Projetos explica esse estado sem inventar números.", "projetos");
