@@ -203,7 +203,8 @@ body.gv-body {
   border-color: #dce6e0;
   background: var(--unh-sage-soft);
 }
-.gv-page .gv-workspace-note :is(>span,p) { color: #465f52; }
+.gv-page .gv-workspace-note>span,
+.gv-page .gv-workspace-note p { color: #465f52; }
 .gv-page .gv-workspace-brief {
   border-color: #d5e3df;
   background: linear-gradient(105deg,#eef4f2,#f8faf9);
