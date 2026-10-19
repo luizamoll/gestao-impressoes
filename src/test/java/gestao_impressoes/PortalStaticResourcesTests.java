@@ -30,6 +30,8 @@ class PortalStaticResourcesTests {
         assertTrue(new ClassPathResource("static/css/painel-premium.css").exists());
         assertTrue(new ClassPathResource("static/js/sidebar.js").exists());
         assertTrue(new ClassPathResource("static/css/gestao-vista.css").exists());
+        assertTrue(new ClassPathResource("static/css/gestao-funcional.css").exists(),
+            "Estilos do relatorio e impressao devem entrar no JAR.");
         assertTrue(new ClassPathResource("static/css/gestao-documental.css").exists());
         assertTrue(new ClassPathResource("static/css/automacoes.css").exists());
         assertTrue(new ClassPathResource("static/js/automacoes.js").exists());
