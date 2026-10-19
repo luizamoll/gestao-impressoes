@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" fill="none" aria-hidden="true">
+  <!-- Grafismo abstrato original, inspirado em curvas/horizontes; nao substitui a logomarca oficial. -->
+  <g stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-96 350C74 332 101 149 267 151c160 1 189 222 337 229 171 8 163-217 367-228 95-5 175 39 240 84" stroke-width="3" opacity=".35"/>
+    <path d="M-96 380C74 362 101 179 267 181c160 1 189 222 337 229 171 8 163-217 367-228 95-5 175 39 240 84" stroke-width="2" opacity=".25"/>
+    <path d="M-96 410C74 392 101 209 267 211c160 1 189 222 337 229 171 8 163-217 367-228 95-5 175 39 240 84" stroke-width="1.8" opacity=".18"/>
+    <path d="M-96 440C74 422 101 239 267 241c160 1 189 222 337 229 171 8 163-217 367-228 95-5 175 39 240 84" stroke-width="1.6" opacity=".14"/>
+    <path d="M220-110C432 8 407 175 553 182s192-144 421-113" stroke-width="1.4" opacity=".19"/>
+    <path d="M243-101C455 17 430 184 576 191s192-144 421-113" stroke-width="1.2" opacity=".13"/>
+    <path d="M390 690c148-110 302-103 401-213 109-121 120-191 266-220" stroke-width="1.5" opacity=".18"/>
+  </g>
+  <circle cx="855" cy="112" r="8" fill="#D7E8DF" opacity=".55"/>
+  <circle cx="191" cy="495" r="5" fill="#D7E8DF" opacity=".26"/>
+</svg>
