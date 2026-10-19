@@ -67,9 +67,9 @@ test("a home premium preserva o mural antes das ferramentas e todas as integraco
   assert.match(html, /portal-mural-layout/);
   assert.match(html, /portal-home-v3-tool-grid/);
   assert.match(html, /portal-hero-v3-workspace/);
-  assert.match(html, /class="portal-hero-v3-workspace-mark"[^>]*><img src="assets\\/portal-unh-simbolo\\.svg/);
-  assert.doesNotMatch(html, /class="portal-hero-v3-workspace-mark"[^>]*>✳<\\/span>/);
-  assert.match(css, /\\.portal-hero-v3-workspace-mark img/);
+  assert.ok(html.includes('class="portal-hero-v3-workspace-mark" aria-hidden="true"><img src="assets/portal-unh-simbolo.svg'), "Símbolo oficial no cabeçalho");
+  assert.ok(!html.includes('class="portal-hero-v3-workspace-mark" aria-hidden="true">✳'), "Estrela removida");
+  assert.ok(css.includes(".portal-hero-v3-workspace-mark img"), "Imagem dimensionada no selo");
   assert.match(html, /Áreas internas protegidas/);
   assert.doesNotMatch(html, /dados em tempo real|projetos conectados/);
 });
