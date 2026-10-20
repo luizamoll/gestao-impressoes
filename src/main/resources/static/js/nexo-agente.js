@@ -103,7 +103,7 @@
     if (has(text, /\b(cpf|rg|matriculas?|dados pessoais|dados de aluno|dados dos alunos|senhas?|credenciais|boletim|notas dos alunos|folha de pagamento)\b/)) {
       return reply("Não tenho acesso a informações pessoais, senhas ou registros de alunos. Esta ajuda utiliza apenas dados do protótipo.", null, "Regra local de proteção");
     }
-    if (/^(oi|ola|bom dia|boa tarde|boa noite|e ai|eae|hey)[!. ]*$/.test(text)) {
+    if (/^(o+i+e*|o+l+a+|opa+|bom dia|boa tarde|boa noite|e ai|eae|hey|oi gente)$/.test(text)) {
       return reply("Olá! Você está em " + guide.title + ". Quer uma sugestão para esta página ou prefere acessar outro módulo?", null, "Guia local · " + guide.title);
     }
     if (has(text, /\b(como|consigo|posso|quero|preciso)\b/) && has(text, /\b(postar|publicar|criar (um |uma )?(post|publicacao|comunicado))\b/) && has(text, /\b(mural|comunicados?|publicacao|post)\b/)) {
