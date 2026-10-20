@@ -35,6 +35,89 @@
     return { answer, action, source, emotion: "respondendo" };
   }
 
+  // Contexto da pagina: somente estado documentado do PROTOTIPO, nunca alertas ao vivo.
+  // Alertas operacionais futuros exigem API autenticada, origem e confirmacao.
+  const pageGuides = Object.freeze({
+    "index.html": Object.freeze({
+      title: "Início e Mural",
+      suggestion: "Para experimentar uma publicação, use o seletor 'Testar como' e escolha 'Responsável autorizado'. Preencha título e mensagem e clique em 'Publicar no teste'.",
+      alert: "Mural demonstrativo: perfis simulados, sem login real. As publicações desaparecem ao atualizar a página.",
+      prompts: Object.freeze(["Como publicar no mural de testes?", "Quais ferramentas estão disponíveis?"]),
+      source: "Código do protótipo do Mural · sem consulta institucional"
+    }),
+    "impressao.html": Object.freeze({
+      title: "Gestão de Impressões",
+      suggestion: "Confira número de série, competência e leituras anterior e atual antes de interpretar o consumo.",
+      alert: "Outubro/2026 ainda não possui leitura confirmada. Consumo, saldo e excedente são desconhecidos, não zero.",
+      prompts: Object.freeze(["Como conferir uma leitura de impressora?", "O que sabemos do consumo em outubro?"]),
+      source: "Regras e histórico demonstrativos de Impressões"
+    }),
+    "gestao-a-vista.html": Object.freeze({
+      title: "Gestão à Vista",
+      suggestion: "Compare apenas competências com leituras verificadas e consulte a origem dos indicadores.",
+      alert: "Indicadores de Impressões são históricos do laboratório; integração institucional e métricas do Vikunja ainda estão pendentes.",
+      prompts: Object.freeze(["Compare agosto e setembro de 2026.", "Por que outubro não tem saldo calculado?"]),
+      source: "Indicadores demonstrativos e estado das integrações"
+    }),
+    "gestao-documental.html": Object.freeze({
+      title: "Gestão Documental",
+      suggestion: "Confira os módulos experimentais e a situação da integração Perseus antes de utilizar documentos.",
+      alert: "Ainda não existe análise de documentos institucionais autorizada pelo Nexo. Não envie arquivos reais ao laboratório.",
+      prompts: Object.freeze(["O que funciona na Gestão Documental?", "O Perseus já está integrado?"]),
+      source: "Documentação do laboratório · integração pendente"
+    }),
+    "automacoes.html": Object.freeze({
+      title: "Central de Automações",
+      suggestion: "Explore as rotinas em desenvolvimento, verificando o estágio antes de executar qualquer processo.",
+      alert: "O laboratório não executa automações institucionais nem possui autorização para operar sistemas reais.",
+      prompts: Object.freeze(["O que a Central de Automações faz?", "Há automações institucionais conectadas?"]),
+      source: "Estado demonstrativo da Central de Automações"
+    }),
+    "esg.html": Object.freeze({
+      title: "ESG e Consumo Responsável",
+      suggestion: "Comece pelos dados de consumo de páginas e compare períodos com fonte e competência informadas.",
+      alert: "Não é possível afirmar árvores, CO₂ ou água economizados sem metodologia validada e dados suficientes.",
+      prompts: Object.freeze(["Quais indicadores de ESG são confiáveis?", "O que podemos comparar nas impressões?"]),
+      source: "Diretrizes de ESG do protótipo"
+    })
+  });
+
+  function contextForPage(pathname = "") {
+    const name = String(pathname).split(/[?#]/, 1)[0].split("/").pop() || "index.html";
+    return pageGuides[name] || Object.freeze({
+      title: "Portal UNH",
+      suggestion: "Posso orientar sobre Mural, Impressões, Gestão à Vista, ESG, documentos e Automações.",
+      alert: "Este assistente usa orientações de laboratório, não avisos institucionais em tempo real.",
+      prompts: Object.freeze(["Sabe me guiar?", "Quais módulos estão disponíveis?"]),
+      source: "Orientações locais do Portal UNH"
+    });
+  }
+
+  // Respostas verificadas instantaneas: funcionam inclusive com IA ligada.
+  // Retorna null para perguntas abertas, que continuam no Ollama mediante opt-in.
+  function fastAnswer(question, context = {}) {
+    if (typeof question !== "string" || !question.trim() || question.length > 280) return null;
+    const text = normalize(question);
+    const guide = contextForPage(context.pathname);
+    // Nunca contornar recusas para dados protegidos.
+    if (has(text, /\\b(cpf|rg|matriculas?|dados pessoais|dados de aluno|dados dos alunos|senhas?|credenciais|boletim|notas dos alunos|folha de pagamento)\\b/)) {
+      return reply("Não tenho acesso a informações pessoais, senhas ou registros de alunos. Esta ajuda utiliza apenas dados do protótipo.", null, "Regra local de proteção");
+    }
+    if (/^(oi|ola|bom dia|boa tarde|boa noite|e ai|eae|hey)[!. ]*$/.test(text)) {
+      return reply("Olá! Você está em " + guide.title + ". Quer uma sugestão para esta página ou prefere acessar outro módulo?", null, "Guia local · " + guide.title);
+    }
+    if (has(text, /\\b(como|consigo|posso|quero|preciso)\\b/) && has(text, /\\b(postar|publicar|criar (um |uma )?(post|publicacao|comunicado))\\b/) && has(text, /\\b(mural|comunicados?|publicacao|post)\\b/)) {
+      return reply("No Mural de testes, vá a Comunicados e, no campo 'Testar como', selecione 'Responsável autorizado'. Preencha título e mensagem e clique em 'Publicar no teste'. A publicação só existe nesta demonstração e desaparece ao recarregar. Essa seleção não concede permissão institucional.", "mural", "Interface e código do Mural demonstrativo");
+    }
+    if (has(text, /\\b(me gui(ar|e)|orient(ar|e)|por onde (comecar|começo)|o que fazer aqui|onde estou|esta pagina|sugest(ao|oes)|aviso(s)?|atencao aqui)\\b/)) {
+      return reply("Você está em " + guide.title + ". Sugestão: " + guide.suggestion + " Atenção (laboratório): " + guide.alert, null, guide.source);
+    }
+    if (has(text, /\\b(compare|comparar|comparacao)\\b/) && has(text, /\\bagosto\\b/) && has(text, /\\bsetembro\\b/)) {
+      return reply("Histórico demonstrativo: agosto/2026 teve 1.016 impressões e setembro/2026 teve 1.522. Aumento de 506 (+49,8%). Outubro não tem leitura confirmada, então consumo e saldo são desconhecidos.", "impressoes", "Histórico fixo e não homologado de agosto/setembro 2026");
+    }
+    return null;
+  }
+
   function ask(question, context = {}) {
     if (typeof question !== "string" || !question.trim()) {
       return reply("Escreva uma pergunta sobre o Portal ou seus módulos.");
@@ -42,6 +125,8 @@
     if (question.length > 300) {
       return reply("Para esta versão de testes, envie uma pergunta de até 300 caracteres.");
     }
+    const quick = fastAnswer(question, context);
+    if (quick) return quick;
     const text = normalize(question);
     const here = String(context.pathname || "");
 
@@ -111,6 +196,6 @@
 
   // As respostas são deliberadamente sem HTML e só retornam URLs conhecidas.
   if (typeof window !== "undefined") {
-    window.NexoAgent = Object.freeze({ ask, normalize });
+    window.NexoAgent = Object.freeze({ ask, normalize, fastAnswer, contextForPage });
   }
 })();
