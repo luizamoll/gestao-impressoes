@@ -21,7 +21,9 @@ function mount(options = {}) {
   const ids = ["nexo-toggle", "nexo-panel", "nexo-close", "nexo-explain", "nexo-help-answer",
     "nexo-robot", "nexo-panel-robot", "nexo-tip", "nexo-copy", "nexo-feedback",
     "nexo-chat-form", "nexo-chat-input", "nexo-chat-log", "nexo-chat-submit",
-    "nexo-lab-toggle", "nexo-chat-disclosure", "nexo-disclaimer"];
+    "nexo-lab-toggle", "nexo-chat-disclosure", "nexo-disclaimer",
+    "nexo-context-title", "nexo-context-suggestion", "nexo-context-alert", "nexo-context-source",
+    "nexo-context-prompt-a", "nexo-context-prompt-b"];
   for (const id of ids) {
     elements[id] = {
       hidden: id === "nexo-panel" || id === "nexo-help-answer" || id === "nexo-feedback",
@@ -283,4 +285,35 @@ test("falha do servidor local não simula resposta do modelo", async () => {
   const log = ui.elements["nexo-chat-log"].children;
   assert.match(log[1].children[0].textContent, /Não consegui acessar o Nexo local/);
   assert.equal(ui.elements["nexo-chat-input"].disabled, false);
+});
+
+test("Nexo mostra sugestao e aviso especificos da pagina sem consultar IA", () => {
+  let calls = 0;
+  const ui = mount({ pathname: "impressao.html", fetch: () => { calls++; throw Error("não chamar"); } });
+  ui.elements["nexo-toggle"].click();
+  assert.equal(ui.elements["nexo-context-title"].textContent, "Gestão de Impressões");
+  assert.match(ui.elements["nexo-context-alert"].textContent, /Outubro/);
+  assert.match(ui.elements["nexo-context-source"].textContent, /não é alerta em tempo real/);
+  assert.equal(calls, 0);
+  ui.elements["nexo-context-prompt-a"].click();
+  assert.match(ui.elements["nexo-chat-input"].value, /conferir uma leitura/);
+  assert.equal(calls, 0, "Sugerir não é enviar uma pergunta");
+});
+
+test("mesmo com IA ativada, perguntas sobre mural sao respondidas instantaneamente sem fetch", async () => {
+  let calls = 0;
+  const ui = mount({ pathname: "index.html", fetch: () => { calls++; throw Error("não chamar"); } });
+  ui.elements["nexo-lab-toggle"].click();
+  ui.elements["nexo-chat-input"].value = "como postar no mural?";
+  await ui.elements["nexo-chat-form"].handlers.submit({ preventDefault() {} });
+  assert.equal(calls, 0);
+  assert.match(ui.elements["nexo-chat-log"].children[1].children[0].textContent, /Publicar no teste/);
+  assert.match(ui.elements["nexo-chat-log"].children[1].children[1].textContent, /Interface e código do Mural/);
+});
+
+test("avisos da Gestão Documental nao alegam acesso a dados reais", () => {
+  const ui = mount({ pathname: "gestao-documental.html" });
+  ui.elements["nexo-toggle"].click();
+  assert.match(ui.elements["nexo-context-title"].textContent, /Gestão Documental/);
+  assert.match(ui.elements["nexo-context-alert"].textContent, /Não envie arquivos reais/);
 });
