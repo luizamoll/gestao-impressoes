@@ -21,7 +21,8 @@
   padding: clamp(28px,4vw,52px) clamp(25px,4.6vw,58px) 57px;
   border: 1px solid #174b3d;
   border-radius: 27px;
-  background: linear-gradient(125deg,#123f34 0%,#124e3c 50%,#0a5945 100%);
+  /* Mesmos tons originais, com 8% de transparencia sobre o fundo da pagina. */
+  background: linear-gradient(125deg,rgba(18,63,52,.92) 0%,rgba(18,78,60,.92) 50%,rgba(10,89,69,.92) 100%);
   box-shadow: 0 26px 55px rgba(19,60,43,.16), inset 0 1px 0 rgba(255,255,255,.16);
   color: #fff;
   align-items: flex-start;
@@ -389,6 +390,98 @@
   .portal-home-v3 #comunicados .mural-publish,
   .portal-home-v3 #comunicados .mural-action {
     transition: none;
+    transform: none;
+  }
+}
+
+
+/* Ajuste fino de 20/10: manter exatamente o verde escolhido, so suavizar o fundo. */
+/* O destaque do inicio vinha do CSS editorial; a transparencia altera apenas seu fundo. */
+.portal-home-v3 .portal-hero::after {
+  background:
+    url("../assets/unh-horizonte-linhas.svg") center 50% / 780px auto no-repeat,
+    radial-gradient(circle at 5% 70%,rgba(127,170,139,.47),transparent 37%),
+    linear-gradient(136deg,rgba(18,101,79,.92) 4%,rgba(11,81,62,.92) 51%,rgba(7,64,54,.92) 100%);
+}
+
+/* Botoes/atalhos 3D na home: mesma navegacao, visual tactil com tons suaves. */
+.portal-home-v3 .portal-hero-v3-quick-list a,
+.portal-home-v3 #comunicados .portal-home-v3-rail-card a {
+  border: 1px solid #cddcd4;
+  border-bottom: 3px solid #b4c8ba;
+  border-radius: 13px;
+  background: linear-gradient(165deg,#fffefa 0%,#eff5f0 100%);
+  color: #214a37 !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.98),
+              0 4px 0 rgba(40,82,58,.10),
+              0 8px 13px rgba(17,60,39,.075);
+  transition: transform .16s ease,box-shadow .16s ease,border-color .16s ease,
+              background .16s ease;
+  text-decoration: none;
+  will-change: transform;
+}
+.portal-home-v3 .portal-hero-v3-quick-list a:hover,
+.portal-home-v3 #comunicados .portal-home-v3-rail-card a:hover {
+  transform: translateY(-2px);
+  border-color: #a7cbb4;
+  border-bottom-color: #93b5a0;
+  background: linear-gradient(160deg,#fff 0%,#e4f1e7 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,1),
+              0 5px 0 rgba(40,82,58,.10),
+              0 13px 23px rgba(17,60,39,.12);
+  color: #154d36 !important;
+}
+.portal-home-v3 .portal-hero-v3-quick-list a:active,
+.portal-home-v3 #comunicados .portal-home-v3-rail-card a:active {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+  box-shadow: inset 0 2px 5px rgba(27,67,43,.12),
+              0 1px 2px rgba(17,60,39,.09);
+}
+.portal-home-v3 .portal-hero-v3-quick-list a:focus-visible,
+.portal-home-v3 #comunicados .portal-home-v3-rail-card a:focus-visible {
+  outline: 3px solid #78bca0;
+  outline-offset: 3px;
+}
+
+/* O primeiro conjunto sao botoes compactos; o trilho lateral precisa de respiro extra. */
+.portal-home-v3 #comunicados .portal-home-v3-rail-card a {
+  display: grid;
+  margin-top: 9px;
+  padding: 12px 12px;
+  min-height: 47px;
+  gap: 8px;
+}
+.portal-home-v3 .portal-hero-v3-quick-list a {
+  min-height: 62px;
+}
+
+/* A cor de apoio dos atalhos pode variar discretamente; o verde da marca nao muda. */
+.portal-home-v3 .portal-hero-v3-quick-list a:nth-child(2),
+.portal-home-v3 #comunicados .portal-home-v3-rail-card a:nth-of-type(2) {
+  background: linear-gradient(160deg,#fefefe 0%,#eaf1f4 100%);
+  border-color: #cad9e0;
+  border-bottom-color: #aebfc8;
+}
+.portal-home-v3 .portal-hero-v3-quick-list a:nth-child(2):hover,
+.portal-home-v3 #comunicados .portal-home-v3-rail-card a:nth-of-type(2):hover {
+  background: linear-gradient(160deg,#fff 0%,#e0edf2 100%);
+}
+@media (max-width:650px) {
+  .portal-home-v3 #comunicados .portal-home-v3-rail-card a {
+    min-height: 48px;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .portal-home-v3 .portal-hero-v3-quick-list a,
+  .portal-home-v3 #comunicados .portal-home-v3-rail-card a {
+    transition: none;
+    will-change: auto;
+  }
+  .portal-home-v3 .portal-hero-v3-quick-list a:hover,
+  .portal-home-v3 #comunicados .portal-home-v3-rail-card a:hover,
+  .portal-home-v3 .portal-hero-v3-quick-list a:active,
+  .portal-home-v3 #comunicados .portal-home-v3-rail-card a:active {
     transform: none;
   }
 }
