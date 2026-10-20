@@ -260,13 +260,13 @@ test("modo IA exige opt-in e envia somente para o servidor loopback", async () =
   toggle.click();
   assert.equal(toggle.attributes["aria-pressed"], "true");
   assert.equal(toggle.textContent, "Voltar ao modo de regras");
-  ui.elements["nexo-chat-input"].value = "Qual o consumo de outubro?";
+  ui.elements["nexo-chat-input"].value = "Explique como funcionam agentes de IA";
   await ui.elements["nexo-chat-form"].handlers.submit({ preventDefault() {} });
   assert.equal(requests.length, 1);
   assert.equal(requests[0].url, "http://127.0.0.1:18767/chat");
   assert.equal(requests[0].opts.credentials, "omit");
   assert.equal(requests[0].opts.method, "POST");
-  assert.match(JSON.parse(requests[0].opts.body).pergunta, /outubro/);
+  assert.match(JSON.parse(requests[0].opts.body).pergunta, /agentes/);
   assert.equal(ui.elements["nexo-chat-log"].children[1].children[0].textContent, "Outubro sem leitura confirmada.");
   assert.match(ui.elements["nexo-chat-log"].children[1].children[1].textContent, /histórico demonstrativo/);
   assert.equal(ui.elements["nexo-chat-input"].disabled, false);
