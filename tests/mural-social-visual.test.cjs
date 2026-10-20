@@ -78,14 +78,14 @@ test("Nexo e demais módulos não são substituídos pelo redesenho", () => {
 });
 
 
-test("verde original so perde 8% de opacidade no mural e no inicio", () => {
-  assert.match(css,/rgba\(18,63,52,\.92\)/);
-  assert.match(css,/rgba\(18,78,60,\.92\)/);
-  assert.match(css,/rgba\(10,89,69,\.92\)/);
-  assert.match(css,/rgba\(18,101,79,\.92\)/);
-  assert.match(css,/rgba\(11,81,62,\.92\)/);
-  assert.match(css,/rgba\(7,64,54,\.92\)/);
-  assert.match(home,/mural-social-v2\.css\?v=20261020-c/);
+test("verde original so perde 4% de opacidade no mural e no inicio", () => {
+  assert.match(css,/rgba\(18,63,52,\.96\)/);
+  assert.match(css,/rgba\(18,78,60,\.96\)/);
+  assert.match(css,/rgba\(10,89,69,\.96\)/);
+  assert.match(css,/rgba\(18,101,79,\.96\)/);
+  assert.match(css,/rgba\(11,81,62,\.96\)/);
+  assert.match(css,/rgba\(7,64,54,\.96\)/);
+  assert.match(home,/mural-social-v2\.css\?v=20261020-d/);
 });
 
 test("atalhos visuais ganham relevo 3D sem alterar os destinos", () => {
