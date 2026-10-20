@@ -85,7 +85,7 @@ test("verde original so perde 8% de opacidade no mural e no inicio", () => {
   assert.match(css,/rgba\(18,101,79,\.92\)/);
   assert.match(css,/rgba\(11,81,62,\.92\)/);
   assert.match(css,/rgba\(7,64,54,\.92\)/);
-  assert.match(home,/mural-social-v2\.css\?v=20261020-b/);
+  assert.match(home,/mural-social-v2\.css\?v=20261020-c/);
 });
 
 test("atalhos visuais ganham relevo 3D sem alterar os destinos", () => {
@@ -100,4 +100,19 @@ test("atalhos visuais ganham relevo 3D sem alterar os destinos", () => {
   assert.match(home,/href="gestao-a-vista\.html"/);
   assert.match(home,/href="impressao\.html"/);
   assert.match(home,/href="automacoes\.html"/);
+});
+
+
+test("efeito 3D aplicado exatamente aos tres selos do mural", () => {
+  assert.match(home, /<div class="mural-social-hero-features"/);
+  assert.match(home, /<span>✦ Publicações<\/span>/);
+  assert.match(home, /<span>♡ Reações úteis<\/span>/);
+  assert.match(home, /<span>↗ Conversas<\/span>/);
+  assert.match(css, /#comunicados \.mural-social-hero-features span/);
+  assert.match(css, /\.mural-social-hero-features span:nth-child\(2\)/);
+  assert.match(css, /\.mural-social-hero-features span:nth-child\(3\)/);
+  assert.match(css, /border-bottom: 3px solid/);
+  assert.match(css, /0 3px 0 rgba\(0,28,19,\.23\)/);
+  assert.match(css, /\.mural-social-hero-features span:hover/);
+  assert.match(css, /prefers-reduced-motion:reduce/);
 });
