@@ -49,6 +49,7 @@ public class MuralLabSecurity {
                 .requestMatchers(HttpMethod.POST, "/api/laboratorio/mural/posts").hasRole("RESPONSAVEL")
                 .requestMatchers(HttpMethod.POST, "/api/laboratorio/mural/posts/*/comments").hasAnyRole("COLABORADOR", "RESPONSAVEL")
                 .requestMatchers(HttpMethod.PATCH, "/api/laboratorio/mural/posts/*/comments/*/hidden").hasRole("RESPONSAVEL")
+                .requestMatchers(HttpMethod.PATCH, "/api/laboratorio/mural/posts/*/comments-open").hasRole("RESPONSAVEL")
                 .requestMatchers(HttpMethod.DELETE, "/api/laboratorio/mural/posts/*").hasRole("RESPONSAVEL")
                 .anyRequest().denyAll()
             );
