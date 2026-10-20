@@ -34,6 +34,16 @@ public class MuralLabSecurity {
         );
     }
 
+    // A interface de testes e os scripts são públicos em localhost;
+    // todas as operações e leituras de dados exigem autenticação no backend.
+    @Bean
+    @Order(1)
+    public SecurityFilterChain muralLabPage(HttpSecurity http) throws Exception {
+        http.securityMatcher("/mural-lab.html", "/js/mural-lab.js")
+            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+        return http.build();
+    }
+
     @Bean
     @Order(0)
     public SecurityFilterChain muralLabApi(HttpSecurity http, UserDetailsService muralLabUsers) throws Exception {
