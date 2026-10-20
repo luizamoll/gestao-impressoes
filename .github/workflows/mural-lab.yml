@@ -25,6 +25,8 @@ jobs:
           distribution: temurin
           java-version: "21"
           cache: maven
+      - name: Preparar Maven Wrapper
+        run: chmod +x mvnw
       - name: Testar armazenamento e compilação
         run: ./mvnw -B -ntp -Dtest=MuralLabStoreTest test
       - name: Verificar script da página
