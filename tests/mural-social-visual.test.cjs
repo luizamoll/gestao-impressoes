@@ -76,3 +76,28 @@ test("Nexo e demais módulos não são substituídos pelo redesenho", () => {
   assert.match(home, /href="impressao\.html"/);
   assert.match(home, /href="gestao-documental\.html"/);
 });
+
+
+test("verde original so perde 8% de opacidade no mural e no inicio", () => {
+  assert.match(css,/rgba\(18,63,52,\.92\)/);
+  assert.match(css,/rgba\(18,78,60,\.92\)/);
+  assert.match(css,/rgba\(10,89,69,\.92\)/);
+  assert.match(css,/rgba\(18,101,79,\.92\)/);
+  assert.match(css,/rgba\(11,81,62,\.92\)/);
+  assert.match(css,/rgba\(7,64,54,\.92\)/);
+  assert.match(home,/mural-social-v2\.css\?v=20261020-b/);
+});
+
+test("atalhos visuais ganham relevo 3D sem alterar os destinos", () => {
+  assert.match(css,/\.portal-hero-v3-quick-list a/);
+  assert.match(css,/\.portal-home-v3-rail-card a/);
+  assert.match(css,/border-bottom:\s*3px solid/);
+  assert.match(css,/box-shadow:\s*inset 0 1px 0/);
+  assert.match(css,/:hover/);
+  assert.match(css,/:active/);
+  assert.match(css,/:focus-visible/);
+  assert.match(css,/prefers-reduced-motion:reduce/);
+  assert.match(home,/href="gestao-a-vista\.html"/);
+  assert.match(home,/href="impressao\.html"/);
+  assert.match(home,/href="automacoes\.html"/);
+});
