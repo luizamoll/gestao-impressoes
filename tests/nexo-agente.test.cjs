@@ -55,7 +55,7 @@ test("pergunta desconhecida nao inventa nem navega para link arbitrario", () => 
 test("explica contexto apenas pela rota informada, sem buscar historico", () => {
   const r = agent.ask("O que é esta página?", { pathname: "/automacoes.html" });
   assert.match(r.answer, /Central de Automações/);
-  assert.equal(r.action.href, "index.html#ferramentas");
+  assert.equal(r.action, null, "Uma orientação contextual não deve forçar a navegação.");
 });
 
 test("nao consulta serviços remotos nem armazena perguntas", () => {
@@ -101,8 +101,8 @@ test("todos os modulos exibem contexto verificado e alerta de laboratorio", () =
 
 test("respostas factuais compostas nao omitem segunda competencia nem inventam outubro", () => {
   const r = agent.fastAnswer("Compare agosto e setembro de 2026", { pathname: "/gestao-a-vista.html" });
-  assert.match(r.answer, /1\\.016/);
-  assert.match(r.answer, /1\\.522/);
+  assert.match(r.answer, /1\.016/);
+  assert.match(r.answer, /1\.522/);
   assert.match(r.answer, /506/);
   assert.match(r.answer, /desconhecidos/);
   assert.equal(r.action.href, "gestao-a-vista.html#impressoes");
