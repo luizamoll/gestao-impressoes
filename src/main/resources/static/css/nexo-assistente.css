@@ -375,3 +375,35 @@
 }
 .nexo-lab-toggle:disabled { opacity: .55; cursor: wait; }
 .nexo-chat-submit:disabled { cursor: wait; opacity: .6; }
+
+
+/* Contexto do Nexo: orientação do protótipo, nunca alerta institucional ao vivo. */
+.nexo-context {
+  display: grid; gap: 7px; padding: 12px 13px;
+  margin: 0 0 13px;
+  border: 1px solid #d8e3ec; border-radius: 13px;
+  background: #f7f9fb;
+}
+.nexo-context-eyebrow {
+  margin: 0; color: #697c8c; font-size: 10px;
+  font-weight: 750; text-transform: uppercase; letter-spacing: .09em;
+}
+.nexo-context strong { font-size: 14px; color: #253f50; }
+.nexo-context-suggestion {
+  margin: 0; color: #476071; font-size: 12px; line-height: 1.55;
+}
+.nexo-context-alert {
+  margin: 3px 0 0; padding: 9px 10px;
+  color: #715524; background: #fff9ec;
+  border-left: 3px solid #c4a058; border-radius: 6px;
+  font-size: 11px; line-height: 1.5;
+}
+.nexo-context-prompts { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 3px; }
+.nexo-context-prompts button {
+  flex: 1 1 120px; min-height: 33px; cursor: pointer;
+  padding: 7px 9px; border: 1px solid #c8d7e2; border-radius: 9px;
+  background: #fff; text-align: left; color: #35566b;
+  font-size: 11px; line-height: 1.35; font-weight: 650;
+}
+.nexo-context-prompts button:hover { background: #eaf2f7; }
+.nexo-context-source { font-size: 10px; color: #738390; line-height: 1.35; }
