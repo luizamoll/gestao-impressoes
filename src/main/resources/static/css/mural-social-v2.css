@@ -21,8 +21,8 @@
   padding: clamp(28px,4vw,52px) clamp(25px,4.6vw,58px) 57px;
   border: 1px solid #174b3d;
   border-radius: 27px;
-  /* Mesmos tons originais, com 8% de transparencia sobre o fundo da pagina. */
-  background: linear-gradient(125deg,rgba(18,63,52,.92) 0%,rgba(18,78,60,.92) 50%,rgba(10,89,69,.92) 100%);
+  /* Mesmos tons originais, com apenas 4% de transparencia sobre o fundo da pagina. */
+  background: linear-gradient(125deg,rgba(18,63,52,.96) 0%,rgba(18,78,60,.96) 50%,rgba(10,89,69,.96) 100%);
   box-shadow: 0 26px 55px rgba(19,60,43,.16), inset 0 1px 0 rgba(255,255,255,.16);
   color: #fff;
   align-items: flex-start;
@@ -433,13 +433,13 @@
 }
 
 
-/* Ajuste fino de 20/10: manter exatamente o verde escolhido, so suavizar o fundo. */
+/* Ajuste fino de 20/10: manter os tons de verde escolhidos, com 96% de opacidade. */
 /* O destaque do inicio vinha do CSS editorial; a transparencia altera apenas seu fundo. */
 .portal-home-v3 .portal-hero::after {
   background:
     url("../assets/unh-horizonte-linhas.svg") center 50% / 780px auto no-repeat,
     radial-gradient(circle at 5% 70%,rgba(127,170,139,.47),transparent 37%),
-    linear-gradient(136deg,rgba(18,101,79,.92) 4%,rgba(11,81,62,.92) 51%,rgba(7,64,54,.92) 100%);
+    linear-gradient(136deg,rgba(18,101,79,.96) 4%,rgba(11,81,62,.96) 51%,rgba(7,64,54,.96) 100%);
 }
 
 /* Botoes/atalhos 3D na home: mesma navegacao, visual tactil com tons suaves. */
