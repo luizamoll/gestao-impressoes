@@ -115,6 +115,29 @@
     if (has(text, /\b(compare|comparar|comparacao)\b/) && has(text, /\bagosto\b/) && has(text, /\bsetembro\b/)) {
       return reply("Histórico demonstrativo: agosto/2026 teve 1.016 impressões e setembro/2026 teve 1.522. Aumento de 506 (+49,8%). Outubro não tem leitura confirmada, então consumo e saldo são desconhecidos.", "impressoes", "Histórico fixo e não homologado de agosto/setembro 2026");
     }
+    // Perguntas guiadas do próprio bloco de contexto: não chamar Qwen para fatos fixos.
+    if (text.includes("outubro")) {
+      return reply("Outubro/2026 não tem leitura confirmada. Consumo, saldo e excedente permanecem desconhecidos, embora a competência tenha sua própria franquia demonstrativa de 4.000 páginas.", "impressoes", "Histórico fixo do laboratório · leitura de outubro indisponível");
+    }
+    if (text.includes("ferramentas") || text.includes("modulos disponiveis")) {
+      return reply("O protótipo reúne Mural, Gestão de Impressões, Gestão à Vista, Gestão Documental, Central de Automações e ESG. Projetos/Vikunja aguarda integração. A disponibilidade da tela não significa que há conexão institucional.", "ferramentas", "Catálogo demonstrativo do Portal UNH");
+    }
+    if (text.includes("perseus") && text.includes("integrad")) {
+      return reply("Não. A integração institucional do Perseus ainda não foi autorizada e ativada. A área documental é experimental e não deve receber documentos reais.", "documentos", "Estado da integração documentado no laboratório");
+    }
+    if (text.includes("esg") || (text.includes("indicadores") && text.includes("confiaveis"))) {
+      return reply("No protótipo, podemos acompanhar impressões por mês, variação e consumo por equipamento quando houver leituras conferidas. Conversões em CO₂, água ou árvores dependem de metodologia aprovada e fontes confiáveis.", "esg", "Diretrizes demonstrativas de ESG");
+    }
+    if (text.includes("central de automacoes") || (text.includes("automacoes") && text.includes("conectadas"))) {
+      return reply("A Central de Automações organiza experimentos e propostas de fluxos. Neste laboratório, não há execução institucional conectada ou autorizada.", "automacoes", "Documentação da Central de Automações");
+    }
+    if (text.includes("gestao documental") || text.includes("conferir uma leitura") ||
+        text.includes("podemos comparar nas impressoes")) {
+      return reply("Nesta página (" + guide.title + "): " + guide.suggestion + " Atenção: " + guide.alert, null, guide.source);
+    }
+    if (guide.prompts.some(prompt => normalize(prompt) === text)) {
+      return reply("Em " + guide.title + ": " + guide.suggestion + " Atenção: " + guide.alert, null, guide.source);
+    }
     return null;
   }
 
