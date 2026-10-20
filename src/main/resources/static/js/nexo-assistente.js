@@ -26,6 +26,17 @@
       </div>
       <div class="nexo-panel-body">
         <p class="nexo-intro"><strong>Olá! Posso ajudar?</strong> Sou o guia de navegação do Portal UNH. Encontre rapidamente os recursos que você precisa.</p>
+        <section class="nexo-context" aria-labelledby="nexo-context-title">
+          <p class="nexo-context-eyebrow">Nexo nesta página</p>
+          <strong id="nexo-context-title">Portal UNH</strong>
+          <p id="nexo-context-suggestion" class="nexo-context-suggestion">Veja dicas e recursos relevantes para a página.</p>
+          <p class="nexo-context-alert" id="nexo-context-alert">Avisos do protótipo — não são alertas institucionais em tempo real.</p>
+          <div class="nexo-context-prompts" aria-label="Perguntas sugeridas">
+            <button type="button" id="nexo-context-prompt-a">Como usar esta página?</button>
+            <button type="button" id="nexo-context-prompt-b">O que merece atenção?</button>
+          </div>
+          <small id="nexo-context-source" class="nexo-context-source">Orientação local do laboratório</small>
+        </section>
         <button type="button" id="nexo-lab-toggle" class="nexo-lab-toggle" aria-pressed="false" hidden>Ativar IA local (laboratório)</button>
         <form id="nexo-chat-form" class="nexo-chat-form" aria-label="Converse com o Nexo">
           <label for="nexo-chat-input">Pergunte ao Nexo</label>
@@ -83,6 +94,12 @@
   const disclaimer = document.querySelector(".nexo-disclaimer");
   const helpAnswer = document.getElementById("nexo-help-answer");
   const chatSubmit = document.getElementById("nexo-chat-submit");
+  const contextTitle = document.getElementById("nexo-context-title");
+  const contextSuggestion = document.getElementById("nexo-context-suggestion");
+  const contextAlert = document.getElementById("nexo-context-alert");
+  const contextSource = document.getElementById("nexo-context-source");
+  const suggestedPrompts = [document.getElementById("nexo-context-prompt-a"),
+                            document.getElementById("nexo-context-prompt-b")];
   const NEXO_LOCAL_URL = "http://127.0.0.1:18767/chat";
   // IA somente no mesmo computador, via servidor local iniciado pela usuária.
   const isLocalPortal = /^http:\/\/(?:127\.0\.0\.1|localhost):(?:18081|8080)(?:\/|$)/.test(String(window.location.href));
@@ -107,6 +124,32 @@
     });
   }
 
+
+  // O contexto é local, baseado somente na URL, nunca em dados sensíveis.
+  // Sugestões preenchem o campo, mas não enviam mensagens sem gesto da pessoa.
+  function renderPageContext() {
+    const guide = window.NexoAgent && typeof window.NexoAgent.contextForPage === "function"
+      ? window.NexoAgent.contextForPage(window.location.pathname)
+      : null;
+    if (!guide) return;
+    if (contextTitle) contextTitle.textContent = guide.title;
+    if (contextSuggestion) contextSuggestion.textContent = guide.suggestion;
+    if (contextAlert) contextAlert.textContent = "Aviso do laboratório: " + guide.alert;
+    if (contextSource) contextSource.textContent = guide.source + " · não é alerta em tempo real";
+    suggestedPrompts.forEach((button, index) => {
+      if (button) button.textContent = guide.prompts[index] || "Como usar esta página?";
+    });
+  }
+  suggestedPrompts.forEach(button => {
+    if (!button) return;
+    button.addEventListener("click", () => {
+      if (chatInput.disabled) return;
+      chatInput.value = button.textContent;
+      chatInput.focus();
+      showEmotion("dica");
+    });
+  });
+  renderPageContext();
 
   // Um unico personagem base e cinco expressões vetoriais, sem dependencias.
   const emotions = Object.freeze({
@@ -175,6 +218,19 @@
     if (!question) return;
     appendChatMessage(question, "user");
     chatInput.value = "";
+    const agent = window.NexoAgent;
+    // Consultas locais verificadas são instantâneas, mesmo com IA ativada.
+    // Perguntas abertas seguem para o modelo apenas sob opt-in.
+    if (agent && typeof agent.fastAnswer === "function") {
+      const quick = agent.fastAnswer(question, { pathname: window.location.pathname });
+      if (quick) {
+        appendChatMessage(quick.answer, "assistant", quick.action, quick.source);
+        showFeedback("Orientação local do protótipo · sem consulta à IA.");
+        showEmotion("respondendo");
+        chatInput.focus();
+        return;
+      }
+    }
     if (labEnabled && isLocalPortal) {
       // Opt-in explícito: NUNCA enviar mensagem pela rede sem ativação manual.
       // Endpoint fixo, estritamente loopback. Não enviar cookies nem credenciais.
@@ -213,7 +269,6 @@
       }
       return;
     }
-    const agent = window.NexoAgent;
     const response = agent && typeof agent.ask === "function"
       ? agent.ask(question, { pathname: window.location.pathname })
       : { answer: "O modo de perguntas ainda não carregou. Atualize a página e tente novamente.", action: null, source: null };
@@ -230,8 +285,10 @@
            : "Abrir Nexo, assistente de navegação do Portal UNH");
     showFeedback("");
     showEmotion(open ? "saudacao" : "normal");
-    if (open) close.focus();
-    else toggle.focus();
+    if (open) {
+      renderPageContext();
+      close.focus();
+    } else toggle.focus();
   }
 
   toggle.addEventListener("click", () => setOpen(panel.hidden));
