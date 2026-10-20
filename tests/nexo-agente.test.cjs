@@ -113,3 +113,23 @@ test("orientacao rapida nao expoe dados pessoais", () => {
   assert.match(r.answer, /Não tenho acesso/);
   assert.equal(r.action, null);
 });
+
+
+test("oii e saudacoes informais recebem resposta, mesmo com IA local ativada", () => {
+  for (const saudacao of ["oi", "oii", "oiii", "oie", "olá", "olaaa", "opa", "bom dia!"]) {
+    const resposta = agent.fastAnswer(saudacao, { pathname: "/index.html" });
+    assert.ok(resposta, "A saudacao nao pode depender do modelo: " + saudacao);
+    assert.match(resposta.answer, /Olá! Você está em/);
+    assert.doesNotMatch(resposta.answer, /Indisponível/);
+  }
+});
+
+test("Nexo reconhece resposta inconclusiva do modelo sem dizer que a ponte caiu", () => {
+  const ui = fs.readFileSync(path.join(__dirname,
+    "../src/main/resources/static/js/nexo-assistente.js"), "utf8");
+  assert.match(ui, /const modelAnswer = data\.resposta\.trim\(\)/);
+  assert.match(ui, /!source && !usedTools/);
+  assert.match(ui, /indispon\[ií\]vel/);
+  assert.match(ui, /A ponte local está ativa; o modelo retornou uma resposta inconclusiva/);
+  assert.match(ui, /Laboratório demonstrativo/);
+});

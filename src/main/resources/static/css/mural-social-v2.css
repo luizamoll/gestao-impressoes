@@ -1,0 +1,525 @@
+/*
+ * Mural UNH — identidade de feed editorial premium.
+ * Escopo: APENAS pagina inicial #comunicados. Sem alterar Nexo, regras JS,
+ * perfis de laboratorio, API persistente ou outras secoes do Portal.
+ * Carregado DEPOIS dos estilos globais para prevalecer sem !important.
+ */
+.portal-home-v3 #comunicados {
+  --mural-ink: #20372f;
+  --mural-soft-ink: #546d5f;
+  --mural-accent: #0b674e;
+  --mural-panel: #f0f4ef;
+}
+
+/* O mural agora possui um verdadeiro palco editorial em vez de heading neutro. */
+.portal-home-v3 #comunicados .mural-social-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 256px;
+  margin: 0;
+  padding: clamp(28px,4vw,52px) clamp(25px,4.6vw,58px) 57px;
+  border: 1px solid #174b3d;
+  border-radius: 27px;
+  /* Mesmos tons originais, com apenas 4% de transparencia sobre o fundo da pagina. */
+  background: linear-gradient(125deg,rgba(18,63,52,.96) 0%,rgba(18,78,60,.96) 50%,rgba(10,89,69,.96) 100%);
+  box-shadow: 0 26px 55px rgba(19,60,43,.16), inset 0 1px 0 rgba(255,255,255,.16);
+  color: #fff;
+  align-items: flex-start;
+  gap: 18px;
+}
+.portal-home-v3 #comunicados .mural-social-hero::before,
+.portal-home-v3 #comunicados .mural-social-hero::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  border: 1px solid rgba(226,246,230,.14);
+  border-radius: 50%;
+}
+.portal-home-v3 #comunicados .mural-social-hero::before {
+  width: 560px;
+  height: 560px;
+  right: -165px;
+  top: -340px;
+  box-shadow: 0 0 0 53px rgba(222,248,231,.045),0 0 0 109px rgba(222,248,231,.035);
+}
+.portal-home-v3 #comunicados .mural-social-hero::after {
+  width: 270px;
+  height: 270px;
+  right: 85px;
+  bottom: -221px;
+  background: rgba(200,236,206,.04);
+}
+.portal-home-v3 #comunicados .mural-social-hero-copy {
+  max-width: 620px;
+  position: relative;
+  z-index: 1;
+}
+.portal-home-v3 #comunicados .mural-social-hero .portal-overline {
+  color: #c5e7d6;
+  font-size: 11px;
+  letter-spacing: .17em;
+  font-weight: 800;
+}
+.portal-home-v3 #comunicados .mural-social-hero h2,
+.portal-home-v3 #comunicados .mural-social-hero h2 em {
+  font-family: "Plus Jakarta Sans",Inter,sans-serif;
+  font-size: clamp(30px,3.8vw,51px);
+  line-height: 1.13;
+  letter-spacing: -.06em;
+  font-weight: 800;
+  color: #fff;
+  margin: 13px 0 14px;
+}
+.portal-home-v3 #comunicados .mural-social-hero h2 em {
+  color: #d5efdb;
+  font-style: normal;
+}
+.portal-home-v3 #comunicados .mural-social-hero p {
+  color: #d4e7db;
+  max-width: 510px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.portal-home-v3 #comunicados .mural-social-hero-tag {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  white-space: normal;
+  max-width: 220px;
+  color: #effff2;
+  background: rgba(249,255,249,.09);
+  border: 1px solid rgba(226,249,233,.25);
+  border-radius: 99px;
+  padding: 9px 13px;
+  font-size: 11px;
+  line-height: 1.4;
+  backdrop-filter: blur(5px);
+}
+.mural-social-hero-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+/* Estes sao os TRES selos do mural: Publicacoes, Reacoes uteis e Conversas.
+   Eles descrevem funcionalidades, nao sao botoes clicaveis. Relevo puramente visual. */
+.portal-home-v3 #comunicados .mural-social-hero-features span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: .005em;
+  color: #184536;
+  background: linear-gradient(155deg,#f5fff8 0%,#cbe5d5 100%);
+  border: 1px solid rgba(216,255,226,.93);
+  border-bottom: 3px solid #91b9a1;
+  border-radius: 999px;
+  padding: 7px 14px 6px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95),
+              inset 0 -1px 0 rgba(32,94,55,.08),
+              0 3px 0 rgba(0,28,19,.23),
+              0 6px 13px rgba(0,24,17,.17);
+  text-shadow: 0 1px 0 rgba(255,255,255,.48);
+  transition: transform .16s ease,box-shadow .16s ease;
+}
+.portal-home-v3 #comunicados .mural-social-hero-features span:nth-child(2) {
+  color: #155247;
+  background: linear-gradient(155deg,#effef7 0%,#b8e6d9 100%);
+  border-bottom-color: #78ad9f;
+}
+.portal-home-v3 #comunicados .mural-social-hero-features span:nth-child(3) {
+  color: #254c62;
+  background: linear-gradient(155deg,#f5fbff 0%,#c7ddea 100%);
+  border-color: rgba(231,247,255,.92);
+  border-bottom-color: #91b5c7;
+}
+.portal-home-v3 #comunicados .mural-social-hero-features span:hover {
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.98),
+              0 4px 0 rgba(0,28,19,.25),
+              0 9px 17px rgba(0,24,17,.2);
+}
+@media (prefers-reduced-motion:reduce) {
+  .portal-home-v3 #comunicados .mural-social-hero-features span {
+    transition: none;
+  }
+  .portal-home-v3 #comunicados .mural-social-hero-features span:hover {
+    transform: none;
+  }
+}
+
+/* Flutua um pouco a area de atividade sobre a faixa editorial. */
+.portal-home-v3 #comunicados .portal-mural-layout {
+  position: relative;
+  z-index: 1;
+  margin: -29px 15px 0;
+  grid-template-columns: minmax(0,1fr) 288px;
+  gap: 17px;
+}
+.portal-home-v3 #comunicados .mural-panel {
+  overflow: hidden;
+  background: var(--mural-panel);
+  border: 1px solid #d3e2d6;
+  border-radius: 22px;
+  box-shadow: 0 20px 48px rgba(19,55,38,.15), 0 3px 10px rgba(18,59,38,.06);
+}
+.portal-home-v3 #comunicados .mural-demo-top {
+  padding: 14px 23px;
+  background: #e5f0e9;
+  border-bottom: 1px solid #d2e1d7;
+}
+.portal-home-v3 #comunicados .mural-demo-label {
+  color: #1b654b;
+}
+.portal-home-v3 #comunicados .mural-permission-bar {
+  padding: 18px 23px 15px;
+  background: #fff;
+}
+.portal-home-v3 #comunicados .mural-permission-bar select {
+  background: #f8faf8;
+  border: 1px solid #cbded1;
+  transition: border-color .18s,box-shadow .18s;
+}
+.portal-home-v3 #comunicados .mural-permission-bar select:hover {
+  border-color: #9dbda9;
+}
+
+/* Um convite mais humano e perceptivel para experimentar o mural. */
+.portal-home-v3 #comunicados .mural-composer-locked {
+  margin: 16px 18px 4px;
+  padding: 18px 19px;
+  background: #fff;
+  border: 1px solid #d8e7db;
+  border-radius: 16px;
+  color: #365848;
+  box-shadow: 0 6px 16px rgba(18,59,38,.045);
+}
+.portal-home-v3 #comunicados .mural-composer-locked .mural-avatar-neutral {
+  background: #e8f2ec;
+  color: #14563f;
+}
+.portal-home-v3 #comunicados .mural-composer {
+  margin: 16px 18px 4px;
+  padding: 20px;
+  border: 1px solid #c9ded0;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(21,66,42,.07);
+}
+.portal-home-v3 #comunicados .mural-composer-title strong {
+  font-size: 16px;
+  color: #193f2f;
+}
+.portal-home-v3 #comunicados .mural-composer :is(input[type=text],textarea) {
+  background: #f8faf8;
+  border-color: #d3e2d7;
+  min-height: 43px;
+}
+.portal-home-v3 #comunicados .mural-composer textarea {
+  min-height: 97px;
+}
+.portal-home-v3 #comunicados .mural-publish {
+  min-height: 43px;
+  background: #0a5a43;
+  padding: 10px 18px;
+  border-radius: 11px;
+  font-size: 12px;
+  box-shadow: 0 5px 12px rgba(8,78,53,.14);
+  transition: background .18s,transform .18s;
+}
+.portal-home-v3 #comunicados .mural-publish:hover {
+  background: #074833;
+  transform: translateY(-1px);
+}
+
+/* Hierarquia de rede social, sem simular engajamento nem posts fixados. */
+.portal-home-v3 #comunicados .mural-feed-heading {
+  padding: 22px 23px 15px;
+  align-items: center;
+}
+.portal-home-v3 #comunicados .mural-feed-heading strong {
+  font-size: 17px;
+  font-family: "Plus Jakarta Sans",Inter,sans-serif;
+  color: #1d3b2c;
+  letter-spacing: -.03em;
+}
+.portal-home-v3 #comunicados .mural-feed-heading span {
+  color: #677f70;
+}
+.portal-home-v3 #comunicados .mural-feed {
+  padding: 0 18px 23px;
+  gap: 17px;
+}
+.portal-home-v3 #comunicados .mural-post {
+  position: relative;
+  padding: 22px 23px;
+  background: #fff;
+  border: 1px solid #dfe9e1;
+  border-radius: 18px;
+  box-shadow: 0 6px 17px rgba(27,59,41,.045),0 1px 2px rgba(27,59,41,.035);
+  transition: box-shadow .2s,border-color .2s,transform .2s;
+}
+.portal-home-v3 #comunicados .mural-post:hover {
+  transform: translateY(-2px);
+  border-color: #bad3c2;
+  box-shadow: 0 17px 34px rgba(23,64,42,.12);
+}
+.portal-home-v3 #comunicados .mural-post:first-child {
+  padding: 29px 27px 26px;
+  border-color: #c8dfce;
+  background: linear-gradient(165deg,#fff 0%,#fff 70%,#f8fbf7 100%);
+  box-shadow: 0 14px 29px rgba(20,70,41,.105),0 2px 5px rgba(20,70,41,.04);
+}
+.portal-home-v3 #comunicados .mural-post:first-child::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 25px;
+  right: 25px;
+  height: 4px;
+  border-radius: 0 0 9px 9px;
+  background: linear-gradient(90deg,#0a5a43 0%,#59a57b 65%,#d0e8d5 100%);
+}
+.portal-home-v3 #comunicados .mural-post:first-child h3 {
+  font-size: clamp(21px,2.3vw,26px);
+  line-height: 1.3;
+}
+.portal-home-v3 #comunicados .mural-post .mural-avatar {
+  box-shadow: 0 0 0 4px #edf5ef;
+  border: 1px solid rgba(16,86,55,.08);
+}
+.portal-home-v3 #comunicados .mural-post-author strong {
+  font-size: 14px;
+  color: #1d382a;
+}
+.portal-home-v3 #comunicados .mural-post .mural-post-kind {
+  border: 1px solid #d0e8d7;
+  background: #edf8f0;
+}
+.portal-home-v3 #comunicados .mural-post h3 {
+  margin-top: 19px;
+  font-size: 19px;
+  letter-spacing: -.035em;
+  color: #1b3528;
+}
+.portal-home-v3 #comunicados .mural-post-body {
+  max-width: 68ch;
+  color: #526557;
+  line-height: 1.8;
+  font-size: 14px;
+}
+.portal-home-v3 #comunicados .mural-post-actions {
+  margin-top: 2px;
+  padding: 9px 0 5px;
+}
+.portal-home-v3 #comunicados .mural-action {
+  min-height: 44px;
+  padding: 8px 13px;
+  border-radius: 10px;
+  transition: background .18s, color .18s;
+}
+.portal-home-v3 #comunicados .mural-thread {
+  margin-top: 8px;
+  padding: 13px;
+  border-radius: 13px;
+  background: #f5f9f5;
+  border: 1px solid #e1ebe2;
+}
+.portal-home-v3 #comunicados .mural-comment-bubble {
+  background: #fff;
+  border: 1px solid #e1e9e2;
+}
+.portal-home-v3 #comunicados .mural-feedback {
+  font-weight: 650;
+}
+
+/* Trilho: a area do mural continua protagonista; atalhos sao secundarios. */
+.portal-home-v3 #comunicados .portal-home-v3-rail {
+  gap: 15px;
+}
+.portal-home-v3 #comunicados .portal-home-v3-rail-card {
+  padding: 22px 20px;
+  border: 1px solid #d9e7da;
+  border-radius: 18px;
+  box-shadow: 0 12px 27px rgba(17,58,38,.09);
+}
+.portal-home-v3 #comunicados .portal-home-v3-rail-highlight {
+  background: linear-gradient(145deg,#eff8f0,#fff 74%);
+}
+.portal-home-v3 #comunicados .portal-home-v3-rail-note {
+  background: #fffdf8;
+  border-color: #e9e0cf;
+  box-shadow: 0 7px 18px rgba(80,63,39,.055);
+}
+
+/* Layout existente (CSS do Portal) tem breakpoints 1000 e 650. */
+@media (max-width:1000px) {
+  .portal-home-v3 #comunicados .portal-mural-layout {
+    grid-template-columns: 1fr;
+    margin-left: 13px;
+    margin-right: 13px;
+  }
+  .portal-home-v3 #comunicados .portal-home-v3-rail {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+}
+@media (max-width:650px) {
+  .portal-home-v3 #comunicados .mural-social-hero {
+    min-height: 0;
+    padding: 26px 20px 53px;
+    flex-direction: column;
+    gap: 14px;
+    border-radius: 20px;
+  }
+  .portal-home-v3 #comunicados .mural-social-hero h2 {
+    font-size: clamp(29px,8vw,39px);
+  }
+  .portal-home-v3 #comunicados .mural-social-hero h2 em {
+    font-size: inherit;
+  }
+  .portal-home-v3 #comunicados .mural-social-hero-tag {
+    align-self: flex-start;
+    margin: 0;
+  }
+  .mural-social-hero-features { gap: 6px; margin-top: 15px; }
+  .mural-social-hero-features span { font-size: 10px; }
+  .portal-home-v3 #comunicados .portal-mural-layout {
+    margin: -23px 6px 0;
+  }
+  .portal-home-v3 #comunicados .mural-panel {
+    border-radius: 17px;
+  }
+  .portal-home-v3 #comunicados .mural-demo-top,
+  .portal-home-v3 #comunicados .mural-permission-bar {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .portal-home-v3 #comunicados .mural-feed {
+    padding: 0 10px 14px;
+    gap: 11px;
+  }
+  .portal-home-v3 #comunicados .mural-post,
+  .portal-home-v3 #comunicados .mural-post:first-child {
+    padding: 19px 15px;
+  }
+  .portal-home-v3 #comunicados .mural-post:first-child::before {
+    left: 16px;
+    right: 16px;
+  }
+  .portal-home-v3 #comunicados .mural-composer,
+  .portal-home-v3 #comunicados .mural-composer-locked {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 16px 13px;
+  }
+  .portal-home-v3 #comunicados .mural-feed-heading {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .portal-home-v3 #comunicados .portal-home-v3-rail {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .portal-home-v3 #comunicados .mural-post,
+  .portal-home-v3 #comunicados .mural-publish,
+  .portal-home-v3 #comunicados .mural-action {
+    transition: none;
+    transform: none;
+  }
+}
+
+
+/* Ajuste fino de 20/10: manter os tons de verde escolhidos, com 96% de opacidade. */
+/* O destaque do inicio vinha do CSS editorial; a transparencia altera apenas seu fundo. */
+.portal-home-v3 .portal-hero::after {
+  background:
+    url("../assets/unh-horizonte-linhas.svg") center 50% / 780px auto no-repeat,
+    radial-gradient(circle at 5% 70%,rgba(127,170,139,.47),transparent 37%),
+    linear-gradient(136deg,rgba(18,101,79,.96) 4%,rgba(11,81,62,.96) 51%,rgba(7,64,54,.96) 100%);
+}
+
+/* Botoes/atalhos 3D na home: mesma navegacao, visual tactil com tons suaves. */
+.portal-home-v3 .portal-hero-v3-quick-list a,
+.portal-home-v3 #comunicados .portal-home-v3-rail-card a {
+  border: 1px solid #cddcd4;
+  border-bottom: 3px solid #b4c8ba;
+  border-radius: 13px;
+  background: linear-gradient(165deg,#fffefa 0%,#eff5f0 100%);
+  color: #214a37 !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.98),
+              0 4px 0 rgba(40,82,58,.10),
+              0 8px 13px rgba(17,60,39,.075);
+  transition: transform .16s ease,box-shadow .16s ease,border-color .16s ease,
+              background .16s ease;
+  text-decoration: none;
+  will-change: transform;
+}
+.portal-home-v3 .portal-hero-v3-quick-list a:hover,
+.portal-home-v3 #comunicados .portal-home-v3-rail-card a:hover {
+  transform: translateY(-2px);
+  border-color: #a7cbb4;
+  border-bottom-color: #93b5a0;
+  background: linear-gradient(160deg,#fff 0%,#e4f1e7 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,1),
+              0 5px 0 rgba(40,82,58,.10),
+              0 13px 23px rgba(17,60,39,.12);
+  color: #154d36 !important;
+}
+.portal-home-v3 .portal-hero-v3-quick-list a:active,
+.portal-home-v3 #comunicados .portal-home-v3-rail-card a:active {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+  box-shadow: inset 0 2px 5px rgba(27,67,43,.12),
+              0 1px 2px rgba(17,60,39,.09);
+}
+.portal-home-v3 .portal-hero-v3-quick-list a:focus-visible,
+.portal-home-v3 #comunicados .portal-home-v3-rail-card a:focus-visible {
+  outline: 3px solid #78bca0;
+  outline-offset: 3px;
+}
+
+/* O primeiro conjunto sao botoes compactos; o trilho lateral precisa de respiro extra. */
+.portal-home-v3 #comunicados .portal-home-v3-rail-card a {
+  display: grid;
+  margin-top: 9px;
+  padding: 12px 12px;
+  min-height: 47px;
+  gap: 8px;
+}
+.portal-home-v3 .portal-hero-v3-quick-list a {
+  min-height: 62px;
+}
+
+/* A cor de apoio dos atalhos pode variar discretamente; o verde da marca nao muda. */
+.portal-home-v3 .portal-hero-v3-quick-list a:nth-child(2),
+.portal-home-v3 #comunicados .portal-home-v3-rail-card a:nth-of-type(2) {
+  background: linear-gradient(160deg,#fefefe 0%,#eaf1f4 100%);
+  border-color: #cad9e0;
+  border-bottom-color: #aebfc8;
+}
+.portal-home-v3 .portal-hero-v3-quick-list a:nth-child(2):hover,
+.portal-home-v3 #comunicados .portal-home-v3-rail-card a:nth-of-type(2):hover {
+  background: linear-gradient(160deg,#fff 0%,#e0edf2 100%);
+}
+@media (max-width:650px) {
+  .portal-home-v3 #comunicados .portal-home-v3-rail-card a {
+    min-height: 48px;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .portal-home-v3 .portal-hero-v3-quick-list a,
+  .portal-home-v3 #comunicados .portal-home-v3-rail-card a {
+    transition: none;
+    will-change: auto;
+  }
+  .portal-home-v3 .portal-hero-v3-quick-list a:hover,
+  .portal-home-v3 #comunicados .portal-home-v3-rail-card a:hover,
+  .portal-home-v3 .portal-hero-v3-quick-list a:active,
+  .portal-home-v3 #comunicados .portal-home-v3-rail-card a:active {
+    transform: none;
+  }
+}

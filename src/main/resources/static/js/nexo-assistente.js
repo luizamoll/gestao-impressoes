@@ -252,11 +252,29 @@
           throw new Error("Resposta da ponte local não foi reconhecida.");
         }
         const source = (Array.isArray(data.fontes) ? data.fontes : []).join(" · ");
-        appendChatMessage(data.resposta, "assistant", null,
-          "Laboratório demonstrativo" + (source ? " · " + source : "") +
-          (typeof data.duracao_s === "number" ? " · " + data.duracao_s.toFixed(1) + " s" : ""));
-        showFeedback("Resposta recebida do laboratório local. Fontes e limites indicados abaixo da resposta.");
-        showEmotion("respondendo");
+        const usedTools = Array.isArray(data.ferramentas) && data.ferramentas.length > 0;
+        const modelAnswer = data.resposta.trim();
+        // A ponte pode funcionar e o modelo responder so "Indisponível.".
+        // Nao confundir uma resposta inconclusiva do LLM com desconexao.
+        // So sinalizar falha de conversa quando NAO houve fonte/ferramenta factual.
+        if (!source && !usedTools && /^(?:indispon[ií]vel|sem resposta(?: do modelo)?|n[aã]o sei)[.!?\s]*$/i.test(modelAnswer)) {
+          appendChatMessage(
+            "A conexão local respondeu, mas o modelo não conseguiu elaborar uma resposta útil. " +
+            "Isso não significa que o Nexo está desconectado. Tente reformular a pergunta; " +
+            "se continuar acontecendo, precisamos ajustar o modelo Qwen do laboratório.",
+            "assistant", null, "Diagnóstico local · resposta inconclusiva da IA"
+          );
+          showFeedback("A ponte local está ativa; o modelo retornou uma resposta inconclusiva.");
+          showEmotion("dica");
+        } else {
+          appendChatMessage(modelAnswer || "O modelo local não retornou texto. Tente novamente.", "assistant", null,
+            "Laboratório demonstrativo" + (source ? " · " + source : "") +
+            (typeof data.duracao_s === "number" ? " · " + data.duracao_s.toFixed(1) + " s" : ""));
+          showFeedback(modelAnswer
+            ? "Resposta recebida do laboratório local. Fontes e limites indicados abaixo da resposta."
+            : "A ponte local está ativa, mas o modelo retornou uma resposta vazia.");
+          showEmotion(modelAnswer ? "respondendo" : "dica");
+        }
       } catch (_error) {
         appendChatMessage("Não consegui acessar o Nexo local. Inicie o arquivo servidor_nexo.py na pasta laboratorio/nexo-local e confirme que o Portal está aberto em localhost:18081 ou 127.0.0.1:18081. Não enviei a pergunta a serviços externos.", "assistant");
         showFeedback("Ponte de IA local indisponível; o modo de regras continua acessível.");
