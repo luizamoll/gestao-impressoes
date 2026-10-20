@@ -1,0 +1,70 @@
+name: Mural persistente - laboratório
+
+on:
+  push:
+    branches: [feat/mural-persistente-lab-20261020]
+  pull_request:
+    paths:
+      - "src/main/java/gestao_impressoes/mural/**"
+      - "src/test/java/gestao_impressoes/mural/**"
+      - "src/main/resources/application-mural-lab.properties"
+      - "src/main/resources/static/mural-lab.html"
+      - "src/main/resources/static/js/mural-lab.js"
+      - ".github/workflows/mural-lab.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  mural-lab:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - name: Preparar Maven Wrapper
+        run: chmod +x mvnw
+      - name: Testar armazenamento e compilação
+        run: ./mvnw -B -ntp -Dtest=MuralLabStoreTest test
+      - name: Verificar script da página
+        run: node --check src/main/resources/static/js/mural-lab.js
+      - name: Empacotar servidor de teste
+        run: ./mvnw -B -ntp -DskipTests package
+      - name: Iniciar perfil local
+        env:
+          SPRING_PROFILES_ACTIVE: mural-lab
+          MURAL_LAB_RESPONSAVEL_PASSWORD: testing-admin-local
+          MURAL_LAB_COLABORADOR_PASSWORD: testing-writer-local
+          MURAL_LAB_LEITOR_PASSWORD: testing-reader-local
+          MURAL_LAB_FILE: ./target/mural-smoke.properties
+        run: |
+          java -jar target/gestao-impressoes-0.0.1-SNAPSHOT.jar > target/mural-smoke.log 2>&1 &
+          echo $! > target/mural-smoke.pid
+          for i in $(seq 1 40); do
+            page=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:18082/mural-lab.html || true)
+            if [ "$page" = 200 ]; then exit 0; fi
+            sleep 2
+          done
+          cat target/mural-smoke.log
+          exit 1
+      - name: Verificar papéis, API e persistência local
+        run: |
+          set -euo pipefail
+          API=http://127.0.0.1:18082/api/laboratorio/mural/posts
+          anon=$(curl -s -o /dev/null -w '%{http_code}' "$API")
+          test "$anon" = 401
+          leitor=$(curl -s -o /dev/null -w '%{http_code}' -u leitor-lab:testing-reader-local -H 'Content-Type: application/json' -d '{"title":"Teste acesso","content":"Nao deve publicar"}' "$API")
+          test "$leitor" = 403
+          created=$(curl -s -o target/post.json -w '%{http_code}' -u responsavel-lab:testing-admin-local -H 'Content-Type: application/json' -d '{"title":"Comunicado de teste","content":"Teste persistente sem dados reais","commentsAllowed":true}' "$API")
+          test "$created" = 201
+          cat target/post.json
+          added=$(curl -s -o /dev/null -w '%{http_code}' -u colaborador-lab:testing-writer-local -H 'Content-Type: application/json' -d '{"text":"Comentario ficticio"}' "$API/1/comments")
+          test "$added" = 201
+          curl -fsS -u leitor-lab:testing-reader-local "$API" | grep -q 'Comentario ficticio'
+          test -s target/mural-smoke.properties
+      - name: Logs se falhar
+        if: failure()
+        run: cat target/mural-smoke.log || true
