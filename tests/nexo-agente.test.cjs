@@ -60,5 +60,56 @@ test("explica contexto apenas pela rota informada, sem buscar historico", () => 
 
 test("nao consulta serviços remotos nem armazena perguntas", () => {
   assert.doesNotMatch(script, /\bfetch\s*\(|localStorage|sessionStorage|indexedDB|\bXMLHttpRequest\b/);
-  assert.deepEqual(Object.keys(agent).sort(), ["ask", "normalize"]);
+  assert.deepEqual(Object.keys(agent).sort(), ["ask", "contextForPage", "fastAnswer", "normalize"]);
+});
+
+test("entende saudacao, orientacao e publicacao do mural de testes sem usar modelo", () => {
+  const greeting = agent.fastAnswer("boa tarde", { pathname: "/gestao-documental.html" });
+  assert.match(greeting.answer, /Gestão Documental/);
+  const guide = agent.fastAnswer("sabe me guiar?", { pathname: "/impressao.html" });
+  assert.match(guide.answer, /Gestão de Impressões/);
+  assert.match(guide.answer, /Outubro/);
+  const post = agent.fastAnswer("como postar no mural?", { pathname: "/index.html" });
+  assert.match(post.answer, /Testar como/);
+  assert.match(post.answer, /Responsável autorizado/);
+  assert.match(post.answer, /desaparece ao recarregar/);
+  assert.equal(post.action.href, "index.html#comunicados");
+  assert.equal(agent.fastAnswer("Explique o conceito de agentes inteligentes"), null);
+});
+
+test("todos os modulos exibem contexto verificado e alerta de laboratorio", () => {
+  for (const [page, title] of [
+    ["/", "Início e Mural"],
+    ["/index.html", "Início e Mural"],
+    ["/impressao.html", "Gestão de Impressões"],
+    ["/gestao-a-vista.html", "Gestão à Vista"],
+    ["/gestao-documental.html", "Gestão Documental"],
+    ["/automacoes.html", "Central de Automações"],
+    ["/esg.html", "ESG"]
+  ]) {
+    const guide = agent.contextForPage(page);
+    assert.match(guide.title, new RegExp(title));
+    assert.ok(guide.suggestion.length > 30);
+    assert.ok(guide.alert.length > 30);
+    assert.equal(guide.prompts.length, 2);
+    assert.ok(guide.source.length > 8);
+  }
+  assert.match(agent.contextForPage("/impressao.html").alert, /não zero/);
+  assert.match(agent.contextForPage("/gestao-documental.html").alert, /Não envie arquivos reais/);
+  assert.match(agent.contextForPage("/index.html").alert, /demonstrativo/);
+});
+
+test("respostas factuais compostas nao omitem segunda competencia nem inventam outubro", () => {
+  const r = agent.fastAnswer("Compare agosto e setembro de 2026", { pathname: "/gestao-a-vista.html" });
+  assert.match(r.answer, /1\\.016/);
+  assert.match(r.answer, /1\\.522/);
+  assert.match(r.answer, /506/);
+  assert.match(r.answer, /desconhecidos/);
+  assert.equal(r.action.href, "gestao-a-vista.html#impressoes");
+});
+
+test("orientacao rapida nao expoe dados pessoais", () => {
+  const r = agent.fastAnswer("Qual é a senha da pessoa?");
+  assert.match(r.answer, /Não tenho acesso/);
+  assert.equal(r.action, null);
 });
