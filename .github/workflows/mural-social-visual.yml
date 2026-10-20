@@ -1,0 +1,35 @@
+name: Mural social - visual e regressao
+
+on:
+  push:
+    branches: [feat/mural-social-integracao-lovable-20261020]
+  pull_request:
+    branches: [feat/mural-persistente-lab-20261020]
+
+permissions:
+  contents: read
+
+jobs:
+  visual-regressao:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Testar JavaScript e preservacao visual
+        run: |
+          node --check src/main/resources/static/js/mural.js
+          node --check src/main/resources/static/js/mural-lab.js
+          node --check src/main/resources/static/js/nexo-agente.js
+          node --check src/main/resources/static/js/nexo-assistente.js
+          node --test tests/*.test.cjs
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - name: Testar backend Java preservado
+        run: |
+          chmod +x mvnw
+          ./mvnw -B -ntp test
