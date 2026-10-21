@@ -14,20 +14,21 @@
   <link rel="stylesheet" href="css/mural.css?v=20261014-4" />
   <link rel="stylesheet" href="css/portal-home-v3.css?v=20261019-v2" />
   <script src="js/portal.js?v=20261014-9" defer></script>
-  <script src="js/mural.js?v=20261014-4" defer></script>
+  <script src="js/carrossel-unh.js?v=1" defer></script>
   <!-- Nexo: assistente de navegacao local; sem IA externa ou dados reais. -->
   <link rel="stylesheet" href="css/nexo-assistente.css?v=20261020-context-v1" />
   <link rel="stylesheet" href="css/portal-palette-v1.css?v=20261019-v1" />
   <link rel="stylesheet" href="css/portal-editorial-v1.css?v=20261019-v1" />
   <script src="js/nexo-agente.js?v=20261020-context-v1" defer></script>
   <script src="js/nexo-assistente.js?v=20261020-context-v1" defer></script>
+<link rel="stylesheet" href="css/unh-nav-v4.css?v=1" />
 </head>
 <body class="portal-body portal-home-v3">
   <a class="portal-skip-link" href="#conteudo">Pular para o conteúdo</a>
 
   <header class="portal-header" id="inicio">
     <div class="portal-container portal-header-inner">
-      <a class="portal-logo-link" href="#inicio" aria-label="Portal UNH — ir para o início">
+      <a class="portal-logo-link" href="index.html" aria-label="Portal UNH — ir para o início">
         <img class="portal-logo-symbol" src="assets/portal-unh-simbolo.svg?v=20261014-7" alt="" width="62" height="62" />
         <span class="portal-logo-copy">
           <span class="portal-logo-kicker">CENTRO UNIVERSITÁRIO</span>
@@ -43,9 +44,9 @@
       </button>
 
       <nav class="portal-nav" id="portalNav" aria-label="Navegação principal">
-        <a href="#inicio" aria-current="page">Início</a>
-        <a href="#comunicados">Comunicados</a>
-        <a href="#ferramentas">Ferramentas</a>
+        <a href="index.html" aria-current="page">Início</a>
+        <a href="comunicados.html">Comunicados</a>
+        <a href="aplicativos.html">Aplicativos</a>
         <a href="gestao-a-vista.html">Gestão à Vista</a>
       </nav>
 
@@ -67,10 +68,10 @@
           <h1 id="heroTitle">Um novo jeito de <em>conectar o trabalho.</em></h1>
           <p>Comunicação, ferramentas e indicadores reunidos para simplificar a rotina do Unihorizontes.</p>
           <div class="portal-hero-actions">
-            <a class="portal-button portal-button-primary portal-hero-v3-main-action" href="#comunicados">
+            <a class="portal-button portal-button-primary portal-hero-v3-main-action" href="comunicados.html">
               Acompanhar comunicados <span aria-hidden="true">↗</span>
             </a>
-            <a class="portal-hero-v3-secondary" href="#ferramentas">Explorar ferramentas <span aria-hidden="true">→</span></a>
+            <a class="portal-hero-v3-secondary" href="aplicativos.html">Explorar ferramentas <span aria-hidden="true">→</span></a>
           </div>
           <div class="portal-hero-v3-meta" aria-label="Sobre o acesso">
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg> Página inicial aberta</span>
@@ -87,7 +88,7 @@
             <span class="portal-hero-v3-workspace-eyebrow">Comece por aqui</span>
             <h2>A informação certa, <br>mais perto de você.</h2>
             <div class="portal-hero-v3-quick-list">
-              <a href="#comunicados">
+              <a href="comunicados.html">
                 <span class="portal-hero-v3-quick-icon" aria-hidden="true">▤</span>
                 <span><strong>Mural institucional</strong><small>Comunicação e colaboração</small></span>
                 <span aria-hidden="true">↗</span>
@@ -116,165 +117,7 @@
         <p>Primeiro, acompanhe a comunicação institucional. Depois, descubra as ferramentas da sua rotina.</p>
       </div>
 
-      <div class="portal-feature-grid portal-feature-stack">
-        <section class="portal-feature-section mural-section" id="comunicados" aria-labelledby="newsTitle">
-          <div class="portal-feature-head">
-            <div>
-              <span class="portal-overline">01 / COMUNICAÇÃO</span>
-              <h2 id="newsTitle">Mural <em>institucional.</em></h2>
-              <p>Comunicados e conversas em um espaço de colaboração.</p>
-            </div>
-            <span class="portal-home-v3-muted-note"><span aria-hidden="true">◌</span> Ambiente de demonstração</span>
-          </div>
-          <div class="portal-mural-layout">
-          <div class="mural-panel" id="muralPanel">
-            <div class="mural-demo-top">
-              <span class="mural-demo-label"><span class="mural-demo-dot" aria-hidden="true"></span> Ambiente de demonstração</span>
-              <p>Perfis simulados, sem login ou envio de dados. Tudo reinicia ao atualizar a página.</p>
-            </div>
-
-            <div class="mural-permission-bar">
-              <label for="muralRole">Testar como</label>
-              <select id="muralRole" aria-describedby="muralRoleHelp">
-                <option value="colaborador">Colaborador</option>
-                <option value="responsavel">Responsável autorizado</option>
-                <option value="leitor">Somente leitura</option>
-              </select>
-              <p id="muralRoleHelp" class="mural-role-help">Pode comentar e reagir quando a publicação permitir.</p>
-            </div>
-
-            <div id="muralComposerClosed" class="mural-composer-locked">
-              <span class="mural-avatar mural-avatar-neutral" aria-hidden="true">C</span>
-              <span>Publicações criadas apenas por setores autorizados.</span>
-              <span class="mural-lock-symbol" aria-hidden="true">🔒</span>
-            </div>
-
-            <form id="muralPostForm" class="mural-composer" hidden>
-              <div class="mural-composer-title"><span class="mural-avatar" aria-hidden="true">R</span>
-                <div><strong>Criar publicação</strong><small>Responsável autorizado (simulação)</small></div>
-              </div>
-              <label for="muralPostTitle">Título da publicação</label>
-              <input id="muralPostTitle" name="title" type="text" required minlength="4" maxlength="90"
-                placeholder="Ex.: Orientação sobre um serviço" />
-              <label for="muralPostText">Mensagem</label>
-              <textarea id="muralPostText" name="content" rows="3" required maxlength="1200"
-                placeholder="O que você deseja compartilhar?"></textarea>
-              <div class="mural-composer-options">
-                <label class="mural-checkbox-label" for="muralCommentsAllowed">
-                  <input id="muralCommentsAllowed" type="checkbox" checked />
-                  Permitir comentários
-                </label>
-                <button type="submit" class="mural-publish">Publicar no teste <span aria-hidden="true">→</span></button>
-              </div>
-            </form>
-
-            <div class="mural-feed-heading">
-              <strong>Publicações recentes</strong>
-              <span>Mais recentes primeiro</span>
-            </div>
-            <div id="muralFeed" class="mural-feed" aria-label="Publicações do mural">
-              <p class="mural-feed-loading">Carregando o protótipo de mural…</p>
-            </div>
-            <p id="muralFeedback" class="mural-feedback" role="status" aria-live="polite"></p>
-          </div>
-          <aside class="portal-home-v3-rail" aria-label="Recursos do portal">
-            <div class="portal-home-v3-rail-card portal-home-v3-rail-highlight">
-              <span class="portal-home-v3-rail-overline">NAVEGAÇÃO RÁPIDA</span>
-              <h3>Seu próximo passo começa aqui.</h3>
-              <p>Encontre as principais áreas do Portal sem sair da página inicial.</p>
-              <a href="gestao-a-vista.html"><span aria-hidden="true">▦</span> Gestão à Vista <span aria-hidden="true">↗</span></a>
-              <a href="impressao.html"><span aria-hidden="true">▤</span> Gestão de Impressões <span aria-hidden="true">↗</span></a>
-              <a href="gestao-documental.html"><span aria-hidden="true">▧</span> Gestão Documental <span aria-hidden="true">↗</span></a>
-            </div>
-            <div class="portal-home-v3-rail-card portal-home-v3-rail-note">
-              <span class="portal-home-v3-rail-overline">SOBRE ESTE AMBIENTE</span>
-              <h3>Estamos construindo.</h3>
-              <p>O mural é demonstrativo e seus comentários não ficam salvos. Integrações internas só estarão disponíveis após validação.</p>
-            </div>
-          </aside>
-          </div>
-        </section>
-
-        <section class="portal-feature-section" id="ferramentas" aria-labelledby="toolsTitle">
-          <div class="portal-feature-head">
-            <div>
-              <span class="portal-overline">02 / FERRAMENTAS</span>
-              <h2 id="toolsTitle">Um portal. <em>Muitas possibilidades.</em></h2>
-              <p>Encontre as soluções certas para cada tarefa. Algumas áreas exigem autenticação institucional.</p>
-            </div>
-            <span class="portal-home-v3-muted-note" id="portalToolCount" aria-live="polite">4 ferramentas encontradas</span>
-          </div>
-          <div class="portal-home-v3-catalog-controls">
-          <label class="portal-tool-search" for="portalToolSearch">
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
-            <span class="portal-visually-hidden">Buscar ferramentas</span>
-            <input id="portalToolSearch" type="search" autocomplete="off" placeholder="Buscar ferramenta ou finalidade..." aria-controls="portalToolCard" />
-          </label>
-          <div class="portal-home-v3-catalog-filters" role="group" aria-label="Filtrar ferramentas por categoria">
-            <button type="button" class="is-active" data-portal-tool-filter="todas" aria-pressed="true">Todas</button>
-            <button type="button" data-portal-tool-filter="gestao" aria-pressed="false">Gestão</button>
-            <button type="button" data-portal-tool-filter="documentos" aria-pressed="false">Documentos</button>
-            <button type="button" data-portal-tool-filter="automacoes" aria-pressed="false">Automações</button>
-          </div>
-          </div>
-          <div class="portal-home-v3-tool-grid">
-          <div class="portal-tools-card" id="portalToolCard" data-category="gestao" data-search="gestão de impressões impressao impressões franquia consumo equipamentos histórico leituras indicadores esg">
-            <div class="portal-tool-card-top">
-              <span class="portal-tool-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round"><path d="M7 8V3h10v5M6 17H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M7 14h10v7H7zM18 11h.01"/></svg>
-              </span>
-              <span class="portal-status">Disponível</span>
-            </div>
-            <h3>Gestão de Impressões</h3>
-            <p>Acompanhe consumo, franquia, equipamentos, histórico de leituras e indicadores ESG.</p>
-            <a class="portal-button portal-button-primary portal-tool-action"
-              href="impressao.html?v=20261014-2">Acessar sistema <span aria-hidden="true">→</span></a>
-          </div>
-          <div class="portal-tools-card gv-home-tool" data-category="gestao" data-search="gestão à vista gestao a vista indicadores métricas metricas painéis paineis comparação resultados desempenho relatórios">
-            <div class="portal-tool-card-top">
-              <span class="portal-tool-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V4M4 20h16M8 17v-6M13 17V9M18 17V6"/></svg>
-              </span>
-              <span class="gv-home-status">Em desenvolvimento</span>
-            </div>
-            <h3>Gestão à Vista</h3>
-            <p>Indicadores, comparações e resultados com linguagem simples para acompanhar a operação.</p>
-            <a class="portal-button portal-button-primary portal-tool-action" href="gestao-a-vista.html?v=20261014-1">Conhecer painel <span aria-hidden="true">→</span></a>
-          </div>
-          <div class="portal-tools-card gd-home-tool" data-category="documentos" data-search="perseus conferencia conferir conferir relatório pdf alunos coletados para fatura limpar organizar extrair enxugar pdf planilha excel gestão documental documentos">
-            <div class="portal-tool-card-top">
-              <span class="portal-tool-icon gd-home-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                  <path d="M14 2v6h6M8 13h8M8 17h6"/>
-                </svg>
-              </span>
-              <span class="gd-home-state">Integração local</span>
-            </div>
-            <h3>Conferência Perseus</h3>
-            <p>Organize e confira relatórios PDF de alunos e obtenha arquivos de conferência e planilhas, usando o programa Python que já existe.</p>
-            <a class="portal-button portal-button-primary portal-tool-action" href="gestao-documental.html?v=20261015-1">
-              Abrir ferramenta <span aria-hidden="true">→</span>
-            </a>
-          </div>
-
-          <div class="portal-tools-card automation-home" data-category="automacoes" data-search="central de automações automacoes automatizar tarefas repetitivas python planilhas pdf documentos colaboradores">
-            <div class="portal-tool-card-top">
-              <span class="portal-tool-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6h4M6.5 10v7h7.5"/></svg>
-              </span>
-              <span class="automation-home-state">Em estruturação</span>
-            </div>
-            <h3>Central de Automações</h3>
-            <p>Encontre ferramentas para reduzir tarefas repetitivas e acompanhe o estágio de cada integração.</p>
-            <a class="portal-button portal-button-primary portal-tool-action" href="automacoes.html?v=20261015-2">Explorar central <span aria-hidden="true">→</span></a>
-          </div>
-          </div>
-          <p class="portal-search-empty" id="portalToolEmpty" role="status" hidden>Nenhuma ferramenta encontrada. Tente outro termo.</p>
-        </section>
-      </div>
-
+<section class="unh-highlights" aria-labelledby="unh-destaques"><div class="unh-highlights-head"><div><span class="portal-overline">DESTAQUES</span><h2 id="unh-destaques">Informações em destaque</h2></div><a href="comunicados.html">Ver comunicados →</a></div><div class="unh-carousel" aria-live="off"><article class="unh-slide"><span>COMUNICADOS</span><h3>Novidades e avisos da instituição</h3><p>Acompanhe comunicados importantes em nossa página dedicada.</p><a href="comunicados.html">Acessar comunicados →</a></article><article class="unh-slide" hidden><span>SERVIÇOS</span><h3>Todos os aplicativos em um só lugar</h3><p>Encontre atalhos para ferramentas da sua rotina.</p><a href="aplicativos.html">Abrir biblioteca →</a></article><article class="unh-slide" hidden><span>ATENDIMENTO</span><h3>Precisa de suporte?</h3><p>Abra um chamado com a equipe responsável.</p><a href="https://helpdesk.unihorizontes.local/Helpdesk" target="_blank" rel="noopener noreferrer">Abrir chamado →</a></article></div><div class="unh-carousel-controls"><span data-slide-counter>1 / 3</span><button type="button" data-slide-prev aria-label="Slide anterior">←</button><button type="button" data-slide-next aria-label="Próximo slide">→</button><button type="button" data-slide-pause aria-pressed="false">Pausar</button></div></section><section class="unh-home-shortcuts"><h2>Acesso rápido</h2><div class="unh-shortcut-grid"><a href="comunicados.html">Comunicados<span>Informações e publicações</span></a><a href="aplicativos.html">Aplicativos<span>Ferramentas internas</span></a><a href="gestao-a-vista.html">Gestão à Vista<span>Indicadores</span></a><a href="impressao.html">Impressões<span>Gestão de impressoras</span></a></div></section>
       <section class="portal-next" aria-labelledby="nextTitle">
         <div class="portal-next-text">
           <span class="portal-overline">Evolução do portal</span>
@@ -293,7 +136,7 @@
   <footer class="portal-footer">
     <div class="portal-container portal-footer-inner">
       <span>Portal UNH · Intranet e Sistemas Internos</span>
-      <span>Ambiente em desenvolvimento</span>
+      <a class="unh-help-link" href="https://helpdesk.unihorizontes.local/Helpdesk" target="_blank" rel="noopener noreferrer">Abra aqui seu chamado ↗</a>
     </div>
   </footer>
 </body>
