@@ -11,10 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/portal.css?v=20261015-v4" />
-  <link rel="stylesheet" href="css/mural.css?v=20261014-4" />
   <link rel="stylesheet" href="css/portal-home-v3.css?v=20261019-v2" />
   <script src="js/portal.js?v=20261014-9" defer></script>
-  <script src="js/mural.js?v=20261014-4" defer></script>
   <!-- Nexo: assistente de navegacao local; sem IA externa ou dados reais. -->
   <link rel="stylesheet" href="css/nexo-assistente.css?v=20261020-context-v1" />
   <link rel="stylesheet" href="css/portal-palette-v1.css?v=20261019-v1" />
@@ -42,8 +40,8 @@
       </button>
 
       <nav class="portal-nav" id="portalNav" aria-label="Navegação principal">
-        <a href="index.html" aria-current="page">Início</a>
-        <a href="comunicados.html">Comunicados</a>
+        <a href="index.html">Início</a>
+        <a href="comunicados.html" aria-current="page">Comunicados</a>
         <a href="aplicativos.html">Aplicativos</a>
         <a href="gestao-a-vista.html">Gestão à Vista</a>
       </nav>
@@ -59,83 +57,15 @@
   </header>
 
 
-<main id="conteudo" class="portal-container portal-subpage-main"><h1>Comunicados institucionais</h1><p>Ambiente demonstrativo de comunicação.</p><div class="portal-feature-grid"><section class="portal-feature-section mural-section" id="comunicados" aria-labelledby="newsTitle">
-          <div class="portal-feature-head">
-            <div>
-              <span class="portal-overline">01 / COMUNICAÇÃO</span>
-              <h2 id="newsTitle">Mural <em>institucional.</em></h2>
-              <p>Comunicados e conversas em um espaço de colaboração.</p>
-            </div>
-            <span class="portal-home-v3-muted-note"><span aria-hidden="true">◌</span> Ambiente de demonstração</span>
-          </div>
-          <div class="portal-mural-layout">
-          <div class="mural-panel" id="muralPanel">
-            <div class="mural-demo-top">
-              <span class="mural-demo-label"><span class="mural-demo-dot" aria-hidden="true"></span> Ambiente de demonstração</span>
-              <p>Perfis simulados, sem login ou envio de dados. Tudo reinicia ao atualizar a página.</p>
-            </div>
-
-            <div class="mural-permission-bar">
-              <label for="muralRole">Testar como</label>
-              <select id="muralRole" aria-describedby="muralRoleHelp">
-                <option value="colaborador">Colaborador</option>
-                <option value="responsavel">Responsável autorizado</option>
-                <option value="leitor">Somente leitura</option>
-              </select>
-              <p id="muralRoleHelp" class="mural-role-help">Pode comentar e reagir quando a publicação permitir.</p>
-            </div>
-
-            <div id="muralComposerClosed" class="mural-composer-locked">
-              <span class="mural-avatar mural-avatar-neutral" aria-hidden="true">C</span>
-              <span>Publicações criadas apenas por setores autorizados.</span>
-              <span class="mural-lock-symbol" aria-hidden="true">🔒</span>
-            </div>
-
-            <form id="muralPostForm" class="mural-composer" hidden>
-              <div class="mural-composer-title"><span class="mural-avatar" aria-hidden="true">R</span>
-                <div><strong>Criar publicação</strong><small>Responsável autorizado (simulação)</small></div>
-              </div>
-              <label for="muralPostTitle">Título da publicação</label>
-              <input id="muralPostTitle" name="title" type="text" required minlength="4" maxlength="90"
-                placeholder="Ex.: Orientação sobre um serviço" />
-              <label for="muralPostText">Mensagem</label>
-              <textarea id="muralPostText" name="content" rows="3" required maxlength="1200"
-                placeholder="O que você deseja compartilhar?"></textarea>
-              <div class="mural-composer-options">
-                <label class="mural-checkbox-label" for="muralCommentsAllowed">
-                  <input id="muralCommentsAllowed" type="checkbox" checked />
-                  Permitir comentários
-                </label>
-                <button type="submit" class="mural-publish">Publicar no teste <span aria-hidden="true">→</span></button>
-              </div>
-            </form>
-
-            <div class="mural-feed-heading">
-              <strong>Publicações recentes</strong>
-              <span>Mais recentes primeiro</span>
-            </div>
-            <div id="muralFeed" class="mural-feed" aria-label="Publicações do mural">
-              <p class="mural-feed-loading">Carregando o protótipo de mural…</p>
-            </div>
-            <p id="muralFeedback" class="mural-feedback" role="status" aria-live="polite"></p>
-          </div>
-          <aside class="portal-home-v3-rail" aria-label="Recursos do portal">
-            <div class="portal-home-v3-rail-card portal-home-v3-rail-highlight">
-              <span class="portal-home-v3-rail-overline">NAVEGAÇÃO RÁPIDA</span>
-              <h3>Seu próximo passo começa aqui.</h3>
-              <p>Encontre as principais áreas do Portal sem sair da página inicial.</p>
-              <a href="gestao-a-vista.html"><span aria-hidden="true">▦</span> Gestão à Vista <span aria-hidden="true">↗</span></a>
-              <a href="impressao.html"><span aria-hidden="true">▤</span> Gestão de Impressões <span aria-hidden="true">↗</span></a>
-              <a href="gestao-documental.html"><span aria-hidden="true">▧</span> Gestão Documental <span aria-hidden="true">↗</span></a>
-            </div>
-            <div class="portal-home-v3-rail-card portal-home-v3-rail-note">
-              <span class="portal-home-v3-rail-overline">SOBRE ESTE AMBIENTE</span>
-              <h3>Estamos construindo.</h3>
-              <p>O mural é demonstrativo e seus comentários não ficam salvos. Integrações internas só estarão disponíveis após validação.</p>
-            </div>
-          </aside>
-          </div>
-        </section></div></main>
+<main id="conteudo" class="portal-container portal-subpage-main">
+<section class="unh-editorial-banner" aria-labelledby="comunicadosTitle">
+  <span class="unh-editorial-kicker">01 / COMUNICAÇÃO UNH</span>
+  <h1 id="comunicadosTitle">O que importa, <em>em destaque.</em></h1>
+  <p>Este espaço é reservado a comunicados e atualizações institucionais. As publicações deverão ser disponibilizadas pela equipe responsável.</p>
+  <a class="unh-editorial-link" href="index.html">← Voltar para os destaques</a>
+</section>
+<section class="unh-editorial-note"><h2>Informação organizada, sem excesso de rolagem.</h2><p>Os avisos em destaque ficam no carrossel da página inicial. O mural de demonstração, com publicações, reações e comentários, foi retirado do Portal.</p></section>
+</main>
   <footer class="portal-footer">
     <div class="portal-container portal-footer-inner">
       <span>Portal UNH · Intranet e Sistemas Internos</span>
