@@ -407,3 +407,7 @@
 }
 .nexo-context-prompts button:hover { background: #eaf2f7; }
 .nexo-context-source { font-size: 10px; color: #738390; line-height: 1.35; }
+
+/* Mobilidade do personagem Nexo */
+#nexo-toggle { touch-action: none; cursor: grab; }
+#nexo-toggle:active { cursor: grabbing; }
