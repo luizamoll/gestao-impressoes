@@ -50,8 +50,8 @@
         <p class="nexo-chat-disclosure">Respostas orientadas por regras e dados históricos de laboratório. Sem IA generativa nesta fase.</p>
         <p class="nexo-section-heading">Ou escolha um atalho</p>
         <nav class="nexo-links" aria-label="Atalhos do assistente">
-          <a href="index.html#comunicados"><span aria-hidden="true">▤</span><span>Mural de comunicados</span><span aria-hidden="true">→</span></a>
-          <a href="index.html#ferramentas"><span aria-hidden="true">▦</span><span>Ferramentas do Portal</span><span aria-hidden="true">→</span></a>
+          <a href="comunicados.html"><span aria-hidden="true">▤</span><span>Mural de comunicados</span><span aria-hidden="true">→</span></a>
+          <a href="aplicativos.html"><span aria-hidden="true">▦</span><span>Ferramentas do Portal</span><span aria-hidden="true">→</span></a>
           <a href="gestao-a-vista.html"><span aria-hidden="true">▥</span><span>Gestão à Vista</span><span aria-hidden="true">→</span></a>
           <a href="impressao.html"><span aria-hidden="true">▣</span><span>Gestão de Impressões</span><span aria-hidden="true">→</span></a>
           <a href="automacoes.html"><span aria-hidden="true">⌘</span><span>Central de Automações</span><span aria-hidden="true">→</span></a>
@@ -291,7 +291,44 @@
     } else toggle.focus();
   }
 
-  toggle.addEventListener("click", () => setOpen(panel.hidden));
+  // Arraste do mascote; clique e teclado preservados para acessibilidade.
+  const positionKey = "portal-unh-nexo-pos-v1";
+  try {
+    const saved = JSON.parse(localStorage.getItem(positionKey) || "null");
+    if (saved && Number.isFinite(saved.x) && Number.isFinite(saved.y)) {
+      host.style.left = Math.max(0, Math.min(innerWidth - 60, saved.x)) + "px";
+      host.style.top = Math.max(0, Math.min(innerHeight - 80, saved.y)) + "px";
+      host.style.right = "auto";
+      host.style.bottom = "auto";
+    }
+  } catch (_) { /* armazenamento opcional */ }
+  let dragStart = null, suppressClick = false;
+  toggle.addEventListener("pointerdown", event => {
+    if (event.button !== 0) return;
+    const rect = host.getBoundingClientRect();
+    dragStart = { x: event.clientX, y: event.clientY, left: rect.left, top: rect.top, moved: false };
+    toggle.setPointerCapture?.(event.pointerId);
+  });
+  toggle.addEventListener("pointermove", event => {
+    if (!dragStart) return;
+    const dx = event.clientX - dragStart.x, dy = event.clientY - dragStart.y;
+    if (!dragStart.moved && Math.hypot(dx, dy) < 7) return;
+    dragStart.moved = true;
+    host.style.left = Math.max(0, Math.min(innerWidth - 60, dragStart.left + dx)) + "px";
+    host.style.top = Math.max(0, Math.min(innerHeight - 80, dragStart.top + dy)) + "px";
+    host.style.right = "auto"; host.style.bottom = "auto";
+  });
+  function stopDragging() {
+    if (!dragStart) return;
+    if (dragStart.moved) {
+      suppressClick = true;
+      try { localStorage.setItem(positionKey, JSON.stringify({x: parseFloat(host.style.left), y: parseFloat(host.style.top)})); } catch (_) {}
+    }
+    dragStart = null;
+  }
+  toggle.addEventListener("pointerup", stopDragging);
+  toggle.addEventListener("pointercancel", stopDragging);
+  toggle.addEventListener("click", event => { if (suppressClick) { suppressClick = false; event.preventDefault(); return; } setOpen(panel.hidden); });
   close.addEventListener("click", () => setOpen(false));
   document.addEventListener("keydown", event => {
     if (event.key === "Escape" && !panel.hidden) setOpen(false);
