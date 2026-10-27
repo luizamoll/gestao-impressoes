@@ -1,0 +1,38 @@
+/* Biblioteca de aplicativos v2: tipografia nítida e interface funcional. */
+.app-library{font-family:Arial,"Segoe UI",sans-serif!important;background:#f4f7f5;color:#172c24;-webkit-font-smoothing:auto!important;text-rendering:optimizeLegibility}
+.app-library *{text-shadow:none!important;-webkit-text-stroke:0!important}
+.app-library .top{box-shadow:0 1px 0 #d8e4de}
+.app-library .top .shell{min-height:82px}
+.app-library .nav a{font-size:16px;letter-spacing:0}
+.app-library .nav a[aria-current="page"]{background:#e6f1eb;border-radius:9px;padding:10px 13px}
+.app-library .app-intro{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-top:28px;padding:30px 38px;border-radius:22px;background:linear-gradient(115deg,#114f3e,#167359);color:#fff;overflow:hidden;position:relative}
+.app-library .app-intro::after{content:"";position:absolute;right:-65px;top:-140px;width:380px;height:380px;border:35px solid #ffffff16;border-radius:50%;pointer-events:none}
+.app-library .app-intro-text{position:relative;z-index:1}
+.app-library .app-eyebrow{font-size:13px;font-weight:700;letter-spacing:.11em;color:#dbf6e9}
+.app-library .app-intro h1{font-size:clamp(32px,3.5vw,46px);line-height:1.14;letter-spacing:-.02em;margin:10px 0 12px;font-weight:800;color:#fff}
+.app-library .app-intro p{font-size:18px;line-height:1.6;max-width:650px;margin:0;color:#eaf8ef}
+.app-library .app-intro-mark{position:relative;z-index:1;font-weight:900;font-size:44px;color:#d7f5e4;line-height:1;opacity:.85}
+.app-library .app-intro-mark span{display:block;font-size:14px;letter-spacing:.22em;text-align:right;margin-top:4px}
+.app-library .app-section{padding:35px 0 60px}
+.app-library .app-section-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.app-library .app-section-head h2{font-size:29px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px;color:#193c2d}
+.app-library .app-section-head p{font-size:16px;color:#4b6257;margin:0}
+.app-library .app-count{border-radius:100px;border:1px solid #ccdfd3;padding:8px 13px;background:#fff;font-size:13px;font-weight:700;color:#215b45}
+.app-library .app-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:25px}
+.app-library .app-tile{display:flex;flex-direction:column;gap:14px;text-decoration:none;padding:24px;border-radius:18px;background:#fff;border:1px solid #ccddd2;box-shadow:0 4px 0 #dfeae3,0 12px 25px rgba(14,55,32,.06);min-height:244px;transition:border-color .15s,box-shadow .15s}
+.app-library .app-tile:hover{border-color:#6fa88a;box-shadow:0 4px 0 #c5dfcf,0 14px 28px rgba(14,55,32,.12)}
+.app-library .app-tile:focus-visible{outline:3px solid #14694c;outline-offset:3px}
+.app-library .app-tile-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:14px;background:#e3f1e8;border:1px solid #c9e2d2;color:#105a42;font-size:25px;font-weight:800;letter-spacing:-.03em;flex-shrink:0}
+.app-library .app-teams .app-tile-icon{background:#edeafb;color:#5146a4;border-color:#d8d3f5}
+.app-library .app-outlook .app-tile-icon{background:#e5f0fd;color:#145a9b;border-color:#cfe2f9}
+.app-library .app-vikunja .app-tile-icon{background:#fff0df;color:#8d5522;border-color:#f5dab7}
+.app-library .app-tile-text{display:flex;flex-direction:column;gap:7px}
+.app-library .app-tile-text strong{font-size:21px;line-height:1.25;font-weight:800;color:#172f24}
+.app-library .app-tile-text>span{font-size:16px;line-height:1.48;color:#4d6257}
+.app-library .app-tile-action{margin-top:auto;font-size:15px;font-weight:800;color:#096443}
+.app-library .app-footnote{font-size:14px;line-height:1.6;color:#51695b;margin:27px 0 0}
+.app-library .foot{margin-top:0}
+.app-library .foot .shell{font-size:14px}
+@media(max-width:950px){.app-library .app-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.app-library .app-intro-mark{display:none}}
+@media(max-width:620px){.app-library .app-tiles{grid-template-columns:1fr}.app-library .app-intro{padding:27px 22px}.app-library .app-intro p{font-size:16px}.app-library .app-tile{min-height:200px}.app-library .app-section-head h2{font-size:26px}}
+@media(prefers-reduced-motion:reduce){.app-library .app-tile{transition:none}}
