@@ -10,8 +10,9 @@
  */
 (() => {
   const safeLinks = Object.freeze({
-    mural: Object.freeze({ href: "index.html#comunicados", label: "Ir ao mural" }),
-    ferramentas: Object.freeze({ href: "index.html#ferramentas", label: "Explorar ferramentas" }),
+    destaques: Object.freeze({ href: "index.html#destaques", label: "Ver destaques da home" }),
+    vikunja: Object.freeze({ href: "https://vikunja.unihorizontes.local/projects/3/12", label: "Abrir Vikunja" }),
+    ferramentas: Object.freeze({ href: "aplicativos.html", label: "Abrir Biblioteca de Aplicativos" }),
     gestao: Object.freeze({ href: "gestao-a-vista.html", label: "Abrir Gestão à Vista" }),
     impressoes: Object.freeze({ href: "gestao-a-vista.html#impressoes", label: "Ver indicadores de Impressões" }),
     equipamentos: Object.freeze({ href: "impressao.html", label: "Abrir Gestão de Impressões" }),
@@ -39,11 +40,18 @@
   // Alertas operacionais futuros exigem API autenticada, origem e confirmacao.
   const pageGuides = Object.freeze({
     "index.html": Object.freeze({
-      title: "Início e Mural",
-      suggestion: "Para experimentar uma publicação, use o seletor 'Testar como' e escolha 'Responsável autorizado'. Preencha título e mensagem e clique em 'Publicar no teste'.",
-      alert: "Mural demonstrativo: perfis simulados, sem login real. As publicações desaparecem ao atualizar a página.",
-      prompts: Object.freeze(["Como publicar no mural de testes?", "Quais ferramentas estão disponíveis?"]),
-      source: "Código do protótipo do Mural · sem consulta institucional"
+      title: "Página inicial",
+      suggestion: "Comece pela Biblioteca de Aplicativos para abrir ferramentas; veja os banners demonstrativos em Destaques.",
+      alert: "Os banners da home são exemplos temporários; não são comunicados institucionais confirmados.",
+      prompts: Object.freeze(["Onde encontro os aplicativos?", "Como acessar o Vikunja?"]),
+      source: "Navegação pública do Portal · sem consulta institucional"
+    }),
+    "aplicativos.html": Object.freeze({
+      title: "Biblioteca de Aplicativos",
+      suggestion: "Clique em um cartão para abrir Helpdesk, Teams, Outlook, Vikunja ou os módulos internos. Os cartões explicam para que serve cada ferramenta.",
+      alert: "Alguns serviços exigem conta institucional ou acesso à rede interna. O Nexo não consulta seus dados nesses sistemas.",
+      prompts: Object.freeze(["Como acessar o Vikunja?", "Quais ferramentas estão disponíveis?"]),
+      source: "Catálogo público de aplicativos do Portal"
     }),
     "impressao.html": Object.freeze({
       title: "Gestão de Impressões",
@@ -86,7 +94,7 @@
     const name = String(pathname).split(/[?#]/, 1)[0].split("/").pop() || "index.html";
     return pageGuides[name] || Object.freeze({
       title: "Portal UNH",
-      suggestion: "Posso orientar sobre Mural, Impressões, Gestão à Vista, ESG, documentos e Automações.",
+      suggestion: "Posso orientar sobre Aplicativos, Vikunja, Impressões, Gestão à Vista, ESG, documentos e Automações.",
       alert: "Este assistente usa orientações de laboratório, não avisos institucionais em tempo real.",
       prompts: Object.freeze(["Sabe me guiar?", "Quais módulos estão disponíveis?"]),
       source: "Orientações locais do Portal UNH"
@@ -107,7 +115,7 @@
       return reply("Olá! Você está em " + guide.title + ". Quer uma sugestão para esta página ou prefere acessar outro módulo?", null, "Guia local · " + guide.title);
     }
     if (has(text, /\b(como|consigo|posso|quero|preciso)\b/) && has(text, /\b(postar|publicar|criar (um |uma )?(post|publicacao|comunicado))\b/) && has(text, /\b(mural|comunicados?|publicacao|post)\b/)) {
-      return reply("No Mural de testes, vá a Comunicados e, no campo 'Testar como', selecione 'Responsável autorizado'. Preencha título e mensagem e clique em 'Publicar no teste'. A publicação só existe nesta demonstração e desaparece ao recarregar. Essa seleção não concede permissão institucional.", "mural", "Interface e código do Mural demonstrativo");
+      return reply("A página independente de Comunicados foi retirada. A home apresenta banners de demonstração; publicação institucional exige uma fonte e fluxo autorizados.", "destaques", "Navegação atual do Portal");
     }
     if (has(text, /\b(me gui(ar|e)|orient(ar|e)|por onde (comecar|começo)|o que fazer aqui|onde estou|esta pagina|sugest(ao|oes)|aviso(s)?|atencao aqui)\b/)) {
       return reply("Você está em " + guide.title + ". Sugestão: " + guide.suggestion + " Atenção (laboratório): " + guide.alert, null, guide.source);
@@ -120,7 +128,7 @@
       return reply("Outubro/2026 não tem leitura confirmada. Consumo, saldo e excedente permanecem desconhecidos, embora a competência tenha sua própria franquia demonstrativa de 4.000 páginas.", "impressoes", "Histórico fixo do laboratório · leitura de outubro indisponível");
     }
     if (text.includes("ferramentas") || text.includes("modulos disponiveis")) {
-      return reply("O protótipo reúne Mural, Gestão de Impressões, Gestão à Vista, Gestão Documental, Central de Automações e ESG. Projetos/Vikunja aguarda integração. A disponibilidade da tela não significa que há conexão institucional.", "ferramentas", "Catálogo demonstrativo do Portal UNH");
+      return reply("A Biblioteca de Aplicativos reúne Helpdesk, Teams, Outlook, Vikunja e os módulos Gestão à Vista, Impressões e Automações. O atalho do Vikunja abre um projeto; isso não dá ao Nexo acesso às suas tarefas.", "ferramentas", "Atalhos do Portal UNH");
     }
     if (text.includes("perseus") && text.includes("integrad")) {
       return reply("Não. A integração institucional do Perseus ainda não foi autorizada e ativada. A área documental é experimental e não deve receber documentos reais.", "documentos", "Estado da integração documentado no laboratório");
@@ -177,9 +185,9 @@
 
     if (has(text, /\b(tarefas?|projetos?|vikunja|prazos?|pendencias?)\b/)) {
       if (has(text, /\b(ativos?|quantos?|listar|mostr(ar|e)|vencid(as|os)|atrasad(as|os)|quem|responsaveis?|hoje)\b/)) {
-        return reply("Não consigo consultar projetos ou tarefas reais: o Vikunja ainda não está conectado nem autorizado pela TI. A área de Projetos explica esse estado sem inventar números.", "projetos");
+        return reply("Não consigo consultar tarefas reais do Vikunja, mas posso abrir o projeto no sistema. Para visualizar prazos e responsáveis, acesse sua conta institucional.", "vikunja");
       }
-      return reply("A Gestão à Vista tem uma área para Projetos, mas os dados do Vikunja aguardam autorização da TI. Posso levar você até essa área.", "projetos");
+      return reply("Você pode abrir diretamente o Vikunja pelo Portal para organizar tarefas e projetos. Ainda não tenho autorização para ler os dados por integração.", "vikunja");
     }
 
     if (has(text, /\b(impressoes?|impressoras?|equipamentos?|toner|copias?|esg)\b/)) {
@@ -190,7 +198,7 @@
       return reply("Os indicadores históricos de Impressões estão na Gestão à Vista. Selecione agosto, setembro ou outubro de 2026 para comparar apenas períodos com leitura conhecida.", "impressoes");
     }
     if (has(text, /\b(mural|comunicados?|avisos?|publicacoes?|noticias?)\b/)) {
-      return reply("O Mural fica na página inicial, antes do catálogo de ferramentas. Nesta versão ele ainda é um protótipo, e não uma fonte institucional sincronizada.", "mural");
+      return reply("A página independente de Comunicados foi removida. A home mantém apenas um carrossel com banners fictícios, identificados como demonstração.", "destaques");
     }
     if (has(text, /\b(automacao|automacoes|automatizar|scripts?|rotinas?)\b/)) {
       return reply("A Central de Automações reúne ferramentas e fluxos em desenvolvimento. Consulte o estágio de cada opção antes de utilizá-la.", "automacoes");
@@ -199,7 +207,7 @@
       return reply("A Gestão Documental reúne orientações para a conferência de documentos e para a integração local do Perseus. Não recebo nem analiso arquivos nesta versão.", "documentos");
     }
     if (has(text, /\b(ferramentas?|sistemas?|catalogo|servicos?)\b/)) {
-      return reply("O catálogo de Ferramentas fica na página inicial, depois dos Comunicados. Lá você encontra as áreas disponíveis e as integrações em desenvolvimento.", "ferramentas");
+      return reply("A Biblioteca de Aplicativos tem os principais sistemas e uma descrição de cada um. Clique no cartão correspondente para abrir a ferramenta.", "ferramentas");
     }
     if (has(text, /\b(gestao a vista|indicadores?|painel|dashboard|metricas?|resultados?)\b/)) {
       return reply("A Gestão à Vista reúne indicadores e comparações por competência. Por enquanto, só há histórico de Impressões; métricas de tarefas continuam indisponíveis.", "gestao");
@@ -210,11 +218,12 @@
         "impressao.html": "Você está em Gestão de Impressões, dedicada a equipamentos e registros de consumo.",
         "esg.html": "Você está na área ESG, ligada à leitura de indicadores de consumo responsável.",
         "automacoes.html": "Você está na Central de Automações, com ferramentas em diferentes estágios.",
-        "gestao-documental.html": "Você está em Gestão Documental, que reúne a conferência de relatórios e a integração Perseus."
+        "gestao-documental.html": "Você está em Gestão Documental, que reúne a conferência de relatórios e a integração Perseus.",
+        "aplicativos.html": "Você está na Biblioteca de Aplicativos, com atalhos e descrições de sistemas como Vikunja, Teams e Outlook."
       };
-      return reply(contexts[here.split("/").pop()] || "Você está no Portal UNH. Os comunicados aparecem primeiro, seguidos do catálogo de ferramentas.", "ferramentas");
+      return reply(contexts[here.split("/").pop()] || "Você está no Portal UNH. Acesse Aplicativos para abrir ferramentas e Destaques para ver banners demonstrativos.", "ferramentas");
     }
-    return reply("Ainda não tenho uma resposta confiável sobre isso. Posso orientar sobre Mural, Impressões, Gestão à Vista, Projetos, documentos e Automações. Para perguntas abertas, precisaremos conectar um modelo de IA autorizado.");
+    return reply("Ainda não tenho uma resposta confiável sobre isso. Posso orientar sobre Aplicativos, Vikunja, Impressões, Gestão à Vista, documentos e Automações. Perguntas abertas exigem uma IA autorizada.");
   }
 
   // As respostas são deliberadamente sem HTML e só retornam URLs conhecidas.
