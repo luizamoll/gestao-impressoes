@@ -1,0 +1,17 @@
+/* Layout de banner demonstrativo; isola estilos do carrossel da home. */
+.portal-home-v3 .unh-banner-carousel{padding:0!important;min-height:300px}
+.portal-home-v3 .unh-banner-carousel::before{display:none}
+.portal-home-v3 .unh-banner-slide{min-height:300px;padding:40px 64px 58px;display:flex;align-items:center;position:relative;overflow:hidden}
+.portal-home-v3 .unh-banner-slide[hidden]{display:none!important}
+.portal-home-v3 .slide-one{background:linear-gradient(113deg,#0c493c 0%,#146851 65%,#1e866a 100%)}
+.portal-home-v3 .slide-two{background:linear-gradient(113deg,#163b51,#216b70 65%,#2a8b80)}
+.portal-home-v3 .slide-three{background:linear-gradient(113deg,#244b35,#567d4b 65%,#8ca36b)}
+.portal-home-v3 .unh-banner-copy{z-index:1;max-width:650px}
+.portal-home-v3 .unh-banner-tag{display:inline-flex;font-size:11px;font-weight:800;letter-spacing:.11em;padding:7px 11px;border:1px solid #ffffff77;border-radius:100px;color:#fff}
+.portal-home-v3 .unh-banner-slide h3{font-size:clamp(30px,4vw,51px);line-height:1.12;letter-spacing:-.035em;margin:18px 0 12px}
+.portal-home-v3 .unh-banner-slide p{font-size:16px;max-width:510px}
+.portal-home-v3 .unh-banner-art{position:absolute;right:-30px;top:-90px;width:400px;height:400px;display:grid;place-items:center;opacity:.18;pointer-events:none}
+.portal-home-v3 .unh-art-ring{position:absolute;inset:0;border:50px solid #fff;border-radius:50%}
+.portal-home-v3 .unh-art-symbol{color:#fff;font-size:86px;font-weight:900;letter-spacing:-.1em}
+.portal-home-v3 .unh-banner-carousel .unh-updates-controls{position:absolute;bottom:18px;right:28px;z-index:2}
+@media(max-width:680px){.portal-home-v3 .unh-banner-slide{padding:30px 24px 66px;min-height:320px}.portal-home-v3 .unh-banner-art{right:-230px;opacity:.10}.portal-home-v3 .unh-banner-slide h3{font-size:34px}}
