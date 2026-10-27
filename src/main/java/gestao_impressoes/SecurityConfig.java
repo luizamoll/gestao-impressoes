@@ -37,7 +37,7 @@ public class SecurityConfig {
                 // Apenas navegacao e status SEM dados institucionais. Todas as
                 // operacoes de escrita e outras APIs continuam exigindo sessao.
                 auth.requestMatchers(HttpMethod.GET,
-                    "/", "/index.html", "/aplicativos.html", "/comunicados.html",
+                    "/", "/index.html", "/aplicativos.html",
                     "/gestao-a-vista.html",
                     "/impressao.html",
                     "/esg.html",
@@ -51,7 +51,7 @@ public class SecurityConfig {
                 // Sem isto, novos CSS recebem redirecionamento para /login e a pagina
                 // aparece sem layout. APIs e paginas internas continuam protegidas.
                 auth.requestMatchers(HttpMethod.GET,
-                    "/", "/index.html", "/aplicativos.html", "/comunicados.html",
+                    "/", "/index.html", "/aplicativos.html",
                     "/gestao-a-vista.html", "/impressao.html", "/esg.html",
                     "/gestao-documental.html", "/automacoes.html",
                     "/css/**", "/js/**", "/assets/**", "/favicon.ico"
