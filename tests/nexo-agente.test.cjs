@@ -14,9 +14,9 @@ const agent = context.window.NexoAgent;
 
 test("agente recebe linguagem natural com acentos e indica atalho aprovado", () => {
   const answer = agent.ask("Onde estão os comunicados?");
-  assert.match(answer.answer, /Mural/);
-  assert.equal(answer.action.href, "index.html#comunicados");
-  assert.equal(answer.action.label, "Ir ao mural");
+  assert.match(answer.answer, /Comunicados|banners/);
+  assert.equal(answer.action.href, "index.html#destaques");
+  assert.equal(answer.action.label, "Ver destaques da home");
   assert.equal(answer.emotion, "respondendo");
 });
 
@@ -29,10 +29,10 @@ test("agente entende consultas sobre competências e nao inventa dados de outubr
   assert.equal(october.action.href, "gestao-a-vista.html#impressoes");
 });
 
-test("sem Vikunja nao cria lista ou numero inventado de tarefas", () => {
+test("Vikunja tem atalho autorizado mas Nexo nao inventa tarefas reais", () => {
   const response = agent.ask("Quantos projetos estão atrasados?");
-  assert.match(response.answer, /não está conectado/);
-  assert.equal(response.action.href, "gestao-a-vista.html#gv-projetos");
+  assert.match(response.answer, /não lê dados nem tarefas reais/);
+  assert.equal(response.action.href, "https://vikunja.unihorizontes.local/projects/3/12");
   assert.doesNotMatch(response.answer, /\b12\b/);
 });
 
@@ -63,24 +63,23 @@ test("nao consulta serviços remotos nem armazena perguntas", () => {
   assert.deepEqual(Object.keys(agent).sort(), ["ask", "contextForPage", "fastAnswer", "normalize"]);
 });
 
-test("entende saudacao, orientacao e publicacao do mural de testes sem usar modelo", () => {
+test("entende saudacao, orientacao e que o mural antigo foi descontinuado", () => {
   const greeting = agent.fastAnswer("boa tarde", { pathname: "/gestao-documental.html" });
   assert.match(greeting.answer, /Gestão Documental/);
   const guide = agent.fastAnswer("sabe me guiar?", { pathname: "/impressao.html" });
   assert.match(guide.answer, /Gestão de Impressões/);
   assert.match(guide.answer, /Outubro/);
   const post = agent.fastAnswer("como postar no mural?", { pathname: "/index.html" });
-  assert.match(post.answer, /Testar como/);
-  assert.match(post.answer, /Responsável autorizado/);
-  assert.match(post.answer, /desaparece ao recarregar/);
-  assert.equal(post.action.href, "index.html#comunicados");
+  assert.match(post.answer, /página independente de Comunicados foi retirada/);
+  assert.equal(post.action.href, "index.html#destaques");
   assert.equal(agent.fastAnswer("Explique o conceito de agentes inteligentes"), null);
 });
 
 test("todos os modulos exibem contexto verificado e alerta de laboratorio", () => {
   for (const [page, title] of [
-    ["/", "Início e Mural"],
-    ["/index.html", "Início e Mural"],
+    ["/", "Página inicial"],
+    ["/index.html", "Página inicial"],
+    ["/aplicativos.html", "Biblioteca de Aplicativos"],
     ["/impressao.html", "Gestão de Impressões"],
     ["/gestao-a-vista.html", "Gestão à Vista"],
     ["/gestao-documental.html", "Gestão Documental"],
@@ -96,7 +95,7 @@ test("todos os modulos exibem contexto verificado e alerta de laboratorio", () =
   }
   assert.match(agent.contextForPage("/impressao.html").alert, /não zero/);
   assert.match(agent.contextForPage("/gestao-documental.html").alert, /Não envie arquivos reais/);
-  assert.match(agent.contextForPage("/index.html").alert, /demonstrativo/);
+  assert.match(agent.contextForPage("/index.html").alert, /banners|exemplos/);
 });
 
 test("respostas factuais compostas nao omitem segunda competencia nem inventam outubro", () => {
@@ -132,4 +131,30 @@ test("Nexo reconhece resposta inconclusiva do modelo sem dizer que a ponte caiu"
   assert.match(ui, /indispon\[ií\]vel/);
   assert.match(ui, /A ponte local está ativa; o modelo retornou uma resposta inconclusiva/);
   assert.match(ui, /Laboratório demonstrativo/);
+});
+
+test("Nexo orienta sobre os aplicativos reais sem consultar dados institucionais", () => {
+  const options = [
+    ["Como acessar o Vikunja?", "https://vikunja.unihorizontes.local/projects/3/12"],
+    ["Preciso de ajuda no Helpdesk", "https://helpdesk.unihorizontes.local/Helpdesk"],
+    ["Quero abrir o Teams", "https://teams.microsoft.com/"],
+    ["Como funciona o Outlook?", "https://outlook.office.com/mail/"]
+  ];
+  for (const [question, url] of options) {
+    const result = agent.ask(question, { pathname: "/aplicativos.html" });
+    assert.equal(result.action.href, url);
+    assert.ok(result.answer.length > 40);
+  }
+});
+
+test("Nexo ativo continua disponivel na biblioteca e lembra painel sem salvar conversas", () => {
+  const root = path.join(__dirname, "../src/main/resources/static");
+  const app = fs.readFileSync(path.join(root, "aplicativos.html"), "utf8");
+  const ui = fs.readFileSync(path.join(root, "js/nexo-assistente.js"), "utf8");
+  assert.match(app, /js\/nexo-agente\.js/);
+  assert.match(app, /js\/nexo-assistente\.js/);
+  assert.match(app, /css\/nexo-assistente\.css/);
+  assert.match(ui, /sessionStorage\.setItem\(NEXO_PANEL_KEY/);
+  assert.match(ui, /sessionStorage\.getItem\(NEXO_PANEL_KEY/);
+  assert.doesNotMatch(ui, /sessionStorage\.setItem\([^,]+,\s*(?:question|chatLog)/);
 });
