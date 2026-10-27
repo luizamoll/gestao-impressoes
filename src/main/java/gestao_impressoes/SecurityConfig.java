@@ -52,6 +52,8 @@ public class SecurityConfig {
                 // aparece sem layout. APIs e paginas internas continuam protegidas.
                 auth.requestMatchers(HttpMethod.GET,
                     "/", "/index.html",
+                    "/gestao-a-vista.html", "/impressao.html", "/esg.html",
+                    "/gestao-documental.html", "/automacoes.html",
                     "/css/**", "/js/**", "/assets/**", "/favicon.ico"
                 ).permitAll();
             }
