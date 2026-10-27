@@ -117,6 +117,15 @@
     if (/^(o+i+e*|o+l+a+|opa+|bom dia|boa tarde|boa noite|e ai|eae|hey|oi gente)$/.test(text)) {
       return reply("Olá! Você está em " + guide.title + ". Quer uma sugestão para esta página ou prefere acessar outro módulo?", null, "Guia local · " + guide.title);
     }
+    // Perguntas sobre o conhecimento e as limitacoes do proprio Nexo nao
+    // dependem do modelo generativo nem da ponte Python.
+    if (has(text, /\b(site|portal|nexo)\b/) &&
+        has(text, /\b(sabe|saber|saiba|sei|conhece|conhecer|desconhece|limitacoes|limites)\b/)) {
+      return reply(
+        "Sim. Conheço as páginas, os atalhos e as orientações desta versão do Portal, mas não vejo o conteúdo das contas dos usuários, e-mails do Outlook, reuniões do Teams, chamados reais do Helpdesk ou tarefas do Vikunja. Também não acompanho mudanças em tempo real. Para consultar esses dados, seriam necessárias integrações autorizadas pela TI.",
+        "ferramentas", "Limites documentados do Nexo · guia local"
+      );
+    }
     if (has(text, /\b(como|consigo|posso|quero|preciso)\b/) && has(text, /\b(postar|publicar|criar (um |uma )?(post|publicacao|comunicado))\b/) && has(text, /\b(mural|comunicados?|publicacao|post)\b/)) {
       return reply("A página independente de Comunicados foi retirada. A home apresenta banners de demonstração; publicação institucional exige uma fonte e fluxo autorizados.", "destaques", "Navegação atual do Portal");
     }
