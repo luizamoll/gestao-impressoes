@@ -12,6 +12,9 @@
   const safeLinks = Object.freeze({
     destaques: Object.freeze({ href: "index.html#destaques", label: "Ver destaques da home" }),
     vikunja: Object.freeze({ href: "https://vikunja.unihorizontes.local/projects/3/12", label: "Abrir Vikunja" }),
+    helpdesk: Object.freeze({ href: "https://helpdesk.unihorizontes.local/Helpdesk", label: "Abrir Helpdesk" }),
+    teams: Object.freeze({ href: "https://teams.microsoft.com/", label: "Abrir Teams" }),
+    outlook: Object.freeze({ href: "https://outlook.office.com/mail/", label: "Abrir Outlook" }),
     ferramentas: Object.freeze({ href: "aplicativos.html", label: "Abrir Biblioteca de Aplicativos" }),
     gestao: Object.freeze({ href: "gestao-a-vista.html", label: "Abrir Gestão à Vista" }),
     impressoes: Object.freeze({ href: "gestao-a-vista.html#impressoes", label: "Ver indicadores de Impressões" }),
@@ -126,6 +129,18 @@
     // Perguntas guiadas do próprio bloco de contexto: não chamar Qwen para fatos fixos.
     if (text.includes("outubro")) {
       return reply("Outubro/2026 não tem leitura confirmada. Consumo, saldo e excedente permanecem desconhecidos, embora a competência tenha sua própria franquia demonstrativa de 4.000 páginas.", "impressoes", "Histórico fixo do laboratório · leitura de outubro indisponível");
+    }
+    if (has(text, /\b(vikunja|tarefas?|projetos?|prazos?)\b/)) {
+      return reply("O Vikunja ajuda a organizar tarefas, prazos e projetos. O link abre a instância institucional, mas o Nexo não lê dados nem tarefas reais.", "vikunja", "Biblioteca de Aplicativos · atalho institucional");
+    }
+    if (has(text, /\b(helpdesk|chamados?|suporte tecnico)\b/)) {
+      return reply("No Helpdesk você abre chamados de suporte à TI e acompanha solicitações.", "helpdesk", "Biblioteca de Aplicativos");
+    }
+    if (has(text, /\b(teams|reunioes?|chamadas?)\b/)) {
+      return reply("O Microsoft Teams é usado para mensagens, chamadas e reuniões. Seu acesso pode exigir a conta institucional.", "teams", "Biblioteca de Aplicativos");
+    }
+    if (has(text, /\b(outlook|email|e mail|correio)\b/)) {
+      return reply("O Outlook reúne os e-mails e a agenda da sua conta institucional.", "outlook", "Biblioteca de Aplicativos");
     }
     if (text.includes("ferramentas") || text.includes("modulos disponiveis")) {
       return reply("A Biblioteca de Aplicativos reúne Helpdesk, Teams, Outlook, Vikunja e os módulos Gestão à Vista, Impressões e Automações. O atalho do Vikunja abre um projeto; isso não dá ao Nexo acesso às suas tarefas.", "ferramentas", "Atalhos do Portal UNH");
