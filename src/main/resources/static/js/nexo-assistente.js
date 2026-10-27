@@ -215,6 +215,10 @@
     if (suggestedAction && typeof suggestedAction.href === "string" && typeof suggestedAction.label === "string") {
       const action = document.createElement("a");
       action.href = suggestedAction.href;
+      if (/^https:\/\//i.test(suggestedAction.href)) {
+        action.target = "_blank";
+        action.rel = "noopener noreferrer";
+      }
       action.className = "nexo-chat-link";
       action.textContent = suggestedAction.label + " →";
       item.append(action);
