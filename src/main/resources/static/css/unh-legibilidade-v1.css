@@ -1,0 +1,25 @@
+/* Legibilidade: tipografia nítida e tamanhos confortáveis.
+   Override isolado para evitar regressões em páginas internas. */
+.portal-home-v3{font-synthesis:none;-webkit-font-smoothing:auto;text-rendering:optimizeLegibility}
+.portal-home-v3 .portal-hero h1,
+.portal-home-v3 .portal-hero-v3-workspace h2,
+.portal-home-v3 .unh-app-access-heading h2,
+.portal-home-v3 .unh-updates-heading h2,
+.portal-home-v3 .unh-update-slide h3{
+  text-shadow:none!important;-webkit-text-stroke:0!important;
+  letter-spacing:-.035em!important;
+  -webkit-font-smoothing:auto;
+}
+.portal-home-v3 .portal-hero h1{font-size:clamp(36px,4vw,58px);line-height:1.15}
+.portal-home-v3 .portal-nav a{font-size:15px;font-weight:700}
+.portal-home-v3 .portal-hero p,
+.portal-home-v3 .portal-hero-v3-description{font-size:17px;line-height:1.65}
+.portal-home-v3 .portal-hero-v3-workspace h2{font-size:27px;line-height:1.3}
+.portal-home-v3 .portal-hero-v3-quick-list strong{font-size:15px}
+.portal-home-v3 .portal-hero-v3-quick-list small{font-size:12px}
+.portal-home-v3 .portal-hero-v3-meta span,
+.portal-home-v3 .portal-overline{font-size:12px}
+.portal-home-v3 .unh-app-access-card strong{font-size:19px}
+.portal-home-v3 .unh-app-access-card small{font-size:14px}
+.portal-home-v3 .portal-button{font-size:15px}
+@media(max-width:760px){.portal-home-v3 .portal-hero h1{font-size:clamp(32px,7vw,44px)}.portal-home-v3 .portal-hero p{font-size:16px}}
