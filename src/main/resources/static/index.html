@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="css/unh-app-access-v1.css?v=20261027" />
   <link rel="stylesheet" href="css/unh-destaques-v1.css?v=20261027" />
   <link rel="stylesheet" href="css/unh-legibilidade-v1.css?v=20261027-a" />
+  <link rel="stylesheet" href="css/unh-banner-demo-v1.css?v=20261027" />
 </head>
 <body class="portal-body portal-home-v3">
   <a class="portal-skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -128,11 +129,20 @@
 
     <section class="portal-container unh-compact-updates" aria-labelledby="unhDestaquesTitle">
       <div class="unh-updates-heading"><span class="portal-overline">COMUNICAÇÃO</span><h2 id="unhDestaquesTitle">Destaques do Portal.</h2><a href="comunicados.html">Ver comunicados →</a></div>
-      <div class="unh-updates-carousel" aria-roledescription="carrossel">
-        <article class="unh-update-slide" data-unh-slide><span>INFORMAÇÕES</span><h3>Comunicados em uma página exclusiva.</h3><p>Consulte as informações oficiais em um lugar organizado, sem feed social.</p><a href="comunicados.html">Acessar comunicados ↗</a></article>
-        <article class="unh-update-slide" data-unh-slide hidden><span>APLICATIVOS</span><h3>Ferramentas a um clique.</h3><p>Explore o catálogo de sistemas existentes na Biblioteca de Aplicativos.</p><a href="aplicativos.html">Explorar aplicativos ↗</a></article>
-        <article class="unh-update-slide" data-unh-slide hidden><span>SUPORTE</span><h3>Precisa de ajuda da TI?</h3><p>Entre em contato pelo Helpdesk institucional.</p><a href="https://helpdesk.unihorizontes.local/Helpdesk" target="_blank" rel="noopener noreferrer">Abrir chamado ↗</a></article>
-        <div class="unh-updates-controls"><button type="button" data-unh-prev aria-label="Destaque anterior">←</button><span data-unh-counter aria-live="polite">1 / 3</span><button type="button" data-unh-next aria-label="Próximo destaque">→</button></div>
+      <div class="unh-updates-carousel unh-banner-carousel" aria-roledescription="carrossel" aria-label="Banners de demonstração">
+        <article class="unh-update-slide unh-banner-slide slide-one" data-unh-slide>
+          <div class="unh-banner-copy"><span class="unh-banner-tag">DEMONSTRAÇÃO · CONTEÚDO FICTÍCIO</span><h3>Novas ideias ganham espaço aqui.</h3><p>Área reservada para as campanhas e novidades da Unihorizontes.</p><a href="comunicados.html">Conhecer a área de comunicados ↗</a></div>
+          <div class="unh-banner-art" aria-hidden="true"><span class="unh-art-ring"></span><span class="unh-art-symbol">UNH</span></div>
+        </article>
+        <article class="unh-update-slide unh-banner-slide slide-two" data-unh-slide hidden>
+          <div class="unh-banner-copy"><span class="unh-banner-tag">DEMONSTRAÇÃO · CONTEÚDO FICTÍCIO</span><h3>Conexões que fazem acontecer.</h3><p>Este banner temporário poderá dar lugar às campanhas institucionais.</p><a href="aplicativos.html">Conhecer os aplicativos ↗</a></div>
+          <div class="unh-banner-art" aria-hidden="true"><span class="unh-art-ring"></span><span class="unh-art-symbol">UNH</span></div>
+        </article>
+        <article class="unh-update-slide unh-banner-slide slide-three" data-unh-slide hidden>
+          <div class="unh-banner-copy"><span class="unh-banner-tag">DEMONSTRAÇÃO · CONTEÚDO FICTÍCIO</span><h3>Seu próximo destaque começa aqui.</h3><p>Um espaço visual preparado para comunicados e campanhas aprovados.</p><a href="comunicados.html">Ver comunicados ↗</a></div>
+          <div class="unh-banner-art" aria-hidden="true"><span class="unh-art-ring"></span><span class="unh-art-symbol">UNH</span></div>
+        </article>
+        <div class="unh-updates-controls"><button type="button" data-unh-prev aria-label="Banner anterior">←</button><span data-unh-counter aria-live="polite">1 / 3</span><button type="button" data-unh-next aria-label="Próximo banner">→</button></div>
       </div>
     </section>
   </main>
