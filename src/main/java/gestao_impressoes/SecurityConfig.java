@@ -47,11 +47,12 @@ public class SecurityConfig {
                     "/assets/**", "/css/**", "/js/**", "/favicon.ico"
                 ).permitAll();
             } else {
-                auth.requestMatchers(
+                // A home publica precisa carregar TODOS os estilos e scripts estaticos.
+                // Sem isto, novos CSS recebem redirecionamento para /login e a pagina
+                // aparece sem layout. APIs e paginas internas continuam protegidas.
+                auth.requestMatchers(HttpMethod.GET,
                     "/", "/index.html",
-                    "/css/portal.css", "/css/mural.css", "/css/nexo-assistente.css",
-                    "/js/portal.js", "/js/mural.js", "/js/nexo-assistente.js", "/js/nexo-agente.js",
-                    "/assets/**", "/favicon.ico"
+                    "/css/**", "/js/**", "/assets/**", "/favicon.ico"
                 ).permitAll();
             }
             auth.anyRequest().authenticated();
