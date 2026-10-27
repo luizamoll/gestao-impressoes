@@ -1,38 +1,189 @@
-/* Biblioteca de aplicativos v2: tipografia nítida e interface funcional. */
-.app-library{font-family:Arial,"Segoe UI",sans-serif!important;background:#f4f7f5;color:#172c24;-webkit-font-smoothing:auto!important;text-rendering:optimizeLegibility}
-.app-library *{text-shadow:none!important;-webkit-text-stroke:0!important}
-.app-library .top{box-shadow:0 1px 0 #d8e4de}
-.app-library .top .shell{min-height:82px}
-.app-library .nav a{font-size:16px;letter-spacing:0}
-.app-library .nav a[aria-current="page"]{background:#e6f1eb;border-radius:9px;padding:10px 13px}
-.app-library .app-intro{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-top:28px;padding:30px 38px;border-radius:22px;background:linear-gradient(115deg,#114f3e,#167359);color:#fff;overflow:hidden;position:relative}
-.app-library .app-intro::after{content:"";position:absolute;right:-65px;top:-140px;width:380px;height:380px;border:35px solid #ffffff16;border-radius:50%;pointer-events:none}
-.app-library .app-intro-text{position:relative;z-index:1}
-.app-library .app-eyebrow{font-size:13px;font-weight:700;letter-spacing:.11em;color:#dbf6e9}
-.app-library .app-intro h1{font-size:clamp(32px,3.5vw,46px);line-height:1.14;letter-spacing:-.02em;margin:10px 0 12px;font-weight:800;color:#fff}
-.app-library .app-intro p{font-size:18px;line-height:1.6;max-width:650px;margin:0;color:#eaf8ef}
-.app-library .app-intro-mark{position:relative;z-index:1;font-weight:900;font-size:44px;color:#d7f5e4;line-height:1;opacity:.85}
-.app-library .app-intro-mark span{display:block;font-size:14px;letter-spacing:.22em;text-align:right;margin-top:4px}
-.app-library .app-section{padding:35px 0 60px}
-.app-library .app-section-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.app-library .app-section-head h2{font-size:29px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px;color:#193c2d}
-.app-library .app-section-head p{font-size:16px;color:#4b6257;margin:0}
-.app-library .app-count{border-radius:100px;border:1px solid #ccdfd3;padding:8px 13px;background:#fff;font-size:13px;font-weight:700;color:#215b45}
-.app-library .app-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:25px}
-.app-library .app-tile{display:flex;flex-direction:column;gap:14px;text-decoration:none;padding:24px;border-radius:18px;background:#fff;border:1px solid #ccddd2;box-shadow:0 4px 0 #dfeae3,0 12px 25px rgba(14,55,32,.06);min-height:244px;transition:border-color .15s,box-shadow .15s}
-.app-library .app-tile:hover{border-color:#6fa88a;box-shadow:0 4px 0 #c5dfcf,0 14px 28px rgba(14,55,32,.12)}
-.app-library .app-tile:focus-visible{outline:3px solid #14694c;outline-offset:3px}
-.app-library .app-tile-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:14px;background:#e3f1e8;border:1px solid #c9e2d2;color:#105a42;font-size:25px;font-weight:800;letter-spacing:-.03em;flex-shrink:0}
-.app-library .app-teams .app-tile-icon{background:#edeafb;color:#5146a4;border-color:#d8d3f5}
-.app-library .app-outlook .app-tile-icon{background:#e5f0fd;color:#145a9b;border-color:#cfe2f9}
-.app-library .app-vikunja .app-tile-icon{background:#fff0df;color:#8d5522;border-color:#f5dab7}
-.app-library .app-tile-text{display:flex;flex-direction:column;gap:7px}
-.app-library .app-tile-text strong{font-size:21px;line-height:1.25;font-weight:800;color:#172f24}
-.app-library .app-tile-text>span{font-size:16px;line-height:1.48;color:#4d6257}
-.app-library .app-tile-action{margin-top:auto;font-size:15px;font-weight:800;color:#096443}
-.app-library .app-footnote{font-size:14px;line-height:1.6;color:#51695b;margin:27px 0 0}
-.app-library .foot{margin-top:0}
-.app-library .foot .shell{font-size:14px}
-@media(max-width:950px){.app-library .app-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.app-library .app-intro-mark{display:none}}
-@media(max-width:620px){.app-library .app-tiles{grid-template-columns:1fr}.app-library .app-intro{padding:27px 22px}.app-library .app-intro p{font-size:16px}.app-library .app-tile{min-height:200px}.app-library .app-section-head h2{font-size:26px}}
-@media(prefers-reduced-motion:reduce){.app-library .app-tile{transition:none}}
+/* Portal UNH • Biblioteca de aplicativos
+   Profundidade real por camadas de luz, relevo e sombra.
+   Texto sempre no plano 2D: sem transform, blur ou text-shadow. */
+
+.app-library {
+  font-family: "Segoe UI Variable", "Segoe UI", Arial, sans-serif !important;
+  background:
+    radial-gradient(ellipse 58% 38% at 7% 12%, rgba(192,220,202,.24), transparent 80%),
+    linear-gradient(180deg,#f3f7f4 0%,#edf4ef 100%);
+  color:#1a3529;
+  -webkit-font-smoothing:auto !important;
+}
+.app-library * { box-sizing:border-box; text-shadow:none !important; -webkit-text-stroke:0 !important; }
+.app-library .top {
+  position:relative;
+  z-index:5;
+  background:linear-gradient(180deg,#fff 5%,#f9fcfa 100%);
+  border-bottom:1px solid #cfded4;
+  box-shadow:0 3px 12px rgba(19,55,34,.075),inset 0 1px 0 #fff;
+}
+.app-library .top .shell { min-height:82px; }
+.app-library .brand { font-weight:700; font-size:18px; }
+.app-library .nav a { font-size:15px; font-weight:600; letter-spacing:0; }
+.app-library .nav a[aria-current="page"] {
+  border:1px solid #cfe2d5;
+  padding:9px 12px;
+  color:#075b40;
+  background:linear-gradient(180deg,#f3faf5,#e2f0e6);
+  border-radius:10px;
+  box-shadow:0 2px 0 #cadacf,0 4px 9px rgba(12,56,37,.06),inset 0 1px 0 #fff;
+}
+.app-library .app-intro {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  gap:28px;
+  margin-top:30px;
+  padding:35px 42px;
+  border:1px solid rgba(6,67,47,.75);
+  border-radius:24px;
+  color:#fff;
+  background:
+    radial-gradient(ellipse at 80% -20%,rgba(90,203,150,.25),transparent 55%),
+    linear-gradient(115deg,#0d493a 3%,#105f4a 52%,#167357 100%);
+  box-shadow:
+    0 4px 0 #b7cfc1,
+    0 10px 18px rgba(15,54,37,.12),
+    0 26px 48px rgba(15,54,37,.13),
+    inset 0 2px 0 rgba(255,255,255,.18),
+    inset 0 -9px 16px rgba(0,22,14,.17);
+}
+.app-library .app-intro::before {
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(135deg,rgba(255,255,255,.12),transparent 30%,transparent 75%,rgba(0,26,16,.16));
+  pointer-events:none;
+}
+.app-library .app-intro::after {
+  content:"";position:absolute;right:-70px;top:-154px;width:400px;height:400px;
+  border:44px solid rgba(200,248,219,.11);border-radius:50%;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 0 0 1px rgba(255,255,255,.08);
+  pointer-events:none;
+}
+.app-library .app-intro-text { position:relative;z-index:1; }
+.app-library .app-eyebrow { font-size:12px;font-weight:700;letter-spacing:.10em;color:#e0f4e8; }
+.app-library .app-intro h1 {
+  font-size:clamp(32px,3.5vw,45px);
+  line-height:1.14;letter-spacing:-.023em;
+  margin:12px 0 13px;
+  font-weight:700;
+  color:#fff;
+}
+.app-library .app-intro p { font-size:17px;line-height:1.62;max-width:650px;margin:0;color:#e8f5ed; }
+.app-library .app-intro-mark {
+  position:relative;z-index:1;
+  padding:17px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.025));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 10px 25px rgba(0,29,15,.13);
+  color:#e6faee;font-size:41px;font-weight:700;line-height:1;
+}
+.app-library .app-intro-mark span { display:block;font-size:12px;letter-spacing:.22em;text-align:right;margin-top:7px;font-weight:600; }
+.app-library .app-section { padding:40px 0 67px; }
+.app-library .app-section-head { display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap; }
+.app-library .app-section-head h2 { font-size:29px;line-height:1.2;letter-spacing:-.015em;margin:0 0 9px;color:#1b4230;font-weight:700; }
+.app-library .app-section-head p { font-size:16px;color:#4b6257;margin:0; }
+.app-library .app-count {
+  border-radius:100px;
+  border:1px solid #bfd7c7;
+  padding:9px 15px;
+  background:linear-gradient(180deg,#fff,#f2f9f4);
+  box-shadow:0 3px 7px rgba(20,63,39,.06),inset 0 1px 0 #fff;
+  font-size:13px;font-weight:600;color:#235c45;
+}
+.app-library .app-tiles {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;margin-top:26px;
+}
+.app-library .app-tile {
+  --accent:#0e7051;
+  position:relative;
+  isolation:isolate;
+  display:flex;flex-direction:column;gap:15px;
+  min-height:244px;
+  padding:25px 25px 23px;
+  text-decoration:none;
+  overflow:hidden;
+  border:1px solid #ceded2;
+  border-bottom-color:#b1cbb8;
+  border-radius:21px;
+  background:linear-gradient(155deg,#fff 0%,#fff 52%,#f4f9f5 100%);
+  box-shadow:
+    0 3px 0 #d8e6db,
+    0 8px 13px rgba(24,65,39,.10),
+    0 20px 36px rgba(24,65,39,.075),
+    inset 0 2px 0 rgba(255,255,255,1),
+    inset 0 -1px 0 rgba(143,187,154,.15);
+  transition:box-shadow .16s ease,border-color .16s ease,background .16s ease;
+}
+.app-library .app-tile::before {
+  content:"";position:absolute;top:0;left:22px;right:22px;height:3px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  opacity:.40;
+  border-radius:0 0 4px 4px;
+  pointer-events:none;
+}
+.app-library .app-tile:hover {
+  border-color:#8dbba1;
+  background:linear-gradient(155deg,#fff 0%,#fff 48%,#eff9f1 100%);
+  box-shadow:
+    0 3px 0 #bcd5c3,
+    0 12px 18px rgba(24,65,39,.14),
+    0 27px 42px rgba(24,65,39,.11),
+    inset 0 2px 0 #fff;
+}
+.app-library .app-tile:focus-visible { outline:3px solid #167653;outline-offset:5px; }
+.app-library .app-tile-icon {
+  display:grid;place-items:center;flex-shrink:0;
+  width:58px;height:58px;border-radius:16px;
+  background:linear-gradient(145deg,#f3faf4 0%,#dceee2 100%);
+  border:1px solid #bad9c5;
+  color:#185b43;
+  font-size:24px;font-weight:700;letter-spacing:0;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.95),
+    inset 0 -3px 5px rgba(31,113,58,.06),
+    0 4px 0 #c5dccd,
+    0 8px 13px rgba(32,93,52,.10);
+}
+.app-library .app-teams { --accent:#7166c8; }
+.app-library .app-outlook { --accent:#2976c1; }
+.app-library .app-vikunja { --accent:#c38036; }
+.app-library .app-teams .app-tile-icon { background:linear-gradient(145deg,#f7f5ff,#dfdcf8);color:#534ca4;border-color:#cfcaed;box-shadow:inset 0 2px 0 #fff,0 4px 0 #d7d3ee,0 8px 13px #554b9720; }
+.app-library .app-outlook .app-tile-icon { background:linear-gradient(145deg,#f4f9ff,#dceafa);color:#195f9e;border-color:#c4d9f2;box-shadow:inset 0 2px 0 #fff,0 4px 0 #c9def3,0 8px 13px #1a5d9820; }
+.app-library .app-vikunja .app-tile-icon { background:linear-gradient(145deg,#fff8ed,#ffe7c8);color:#95571d;border-color:#edc99d;box-shadow:inset 0 2px 0 #fff,0 4px 0 #efd3ae,0 8px 13px #88501d1c; }
+.app-library .app-tile-text { display:flex;flex-direction:column;gap:8px; }
+.app-library .app-tile-text strong { font-size:21px;line-height:1.3;font-weight:650;color:#183627; }
+.app-library .app-tile-text>span { font-size:16px;line-height:1.52;color:#3f594b; }
+.app-library .app-tile-action {
+  display:inline-flex;align-items:center;
+  width:max-content;max-width:100%;
+  margin-top:auto;
+  padding:8px 12px;
+  border:1px solid #bdd9c8;
+  border-radius:10px;
+  background:linear-gradient(180deg,#f0faf3,#e2f2e7);
+  box-shadow:0 2px 0 #c7ddcd,inset 0 1px 0 #fff;
+  font-size:14px;font-weight:700;color:#095d42;
+}
+.app-library .app-footnote { font-size:14px;line-height:1.65;color:#4d6356;margin:29px 0 0; }
+.app-library .foot { margin-top:0;box-shadow:0 -3px 14px rgba(22,56,32,.035); }
+.app-library .foot .shell { font-size:14px; }
+@media(max-width:950px) {
+  .app-library .app-tiles { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .app-library .app-intro-mark { display:none; }
+}
+@media(max-width:620px) {
+  .app-library .app-tiles { grid-template-columns:1fr;gap:19px; }
+  .app-library .app-intro { padding:27px 22px; }
+  .app-library .app-intro p { font-size:16px; }
+  .app-library .app-tile { min-height:210px; }
+  .app-library .app-section-head h2 { font-size:26px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .app-library .app-tile { transition:none; }
+}
