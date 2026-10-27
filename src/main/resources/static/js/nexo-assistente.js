@@ -4,7 +4,7 @@
  * Nexo - orientador de navegacao do Portal UNH.
  * Modo padrão: regras, sem rede. Modo IA opcional SOMENTE em localhost
  * através de ponte Python de laboratório, sem dados/contas institucionais.
- * Nenhum armazenamento, cookie ou integração institucional.
+ * Nao armazena perguntas nem cookies; apenas o estado aberto/fechado na aba.
  */
 (() => {
   if (document.getElementById("nexo-widget") || !document.body) return;
@@ -19,13 +19,13 @@
           <span class="nexo-panel-avatar"><img id="nexo-panel-robot" src="assets/nexo-robo.svg?v=20261019-v3" alt="" width="43" height="49"></span>
           <div>
             <strong id="nexo-title">Nexo</strong>
-            <span>Agente experimental do Portal</span>
+            <span>Orientação ativa · navegação do Portal</span>
           </div>
         </div>
         <button type="button" id="nexo-close" class="nexo-close" aria-label="Fechar assistente">×</button>
       </div>
       <div class="nexo-panel-body">
-        <p class="nexo-intro"><strong>Olá! Posso ajudar?</strong> Sou o guia de navegação do Portal UNH. Encontre rapidamente os recursos que você precisa.</p>
+        <p class="nexo-intro"><strong>Olá! Posso ajudar?</strong> Estou disponível enquanto você navega pelo Portal. Posso explicar cada área e indicar os aplicativos corretos.</p>
         <section class="nexo-context" aria-labelledby="nexo-context-title">
           <p class="nexo-context-eyebrow">Nexo nesta página</p>
           <strong id="nexo-context-title">Portal UNH</strong>
@@ -42,7 +42,7 @@
           <label for="nexo-chat-input">Pergunte ao Nexo</label>
           <div class="nexo-chat-entry">
             <input id="nexo-chat-input" name="pergunta" type="text" autocomplete="off"
-                   maxlength="280" placeholder="Ex.: Como foi setembro nas Impressões?" required>
+                   maxlength="280" placeholder="Ex.: Onde encontro o Vikunja?" required>
             <button type="submit" id="nexo-chat-submit" aria-label="Enviar pergunta ao Nexo">Enviar</button>
           </div>
         </form>
@@ -50,15 +50,16 @@
         <p class="nexo-chat-disclosure">Respostas orientadas por regras e dados históricos de laboratório. Sem IA generativa nesta fase.</p>
         <p class="nexo-section-heading">Ou escolha um atalho</p>
         <nav class="nexo-links" aria-label="Atalhos do assistente">
-          <a href="index.html#comunicados"><span aria-hidden="true">▤</span><span>Mural de comunicados</span><span aria-hidden="true">→</span></a>
-          <a href="index.html#ferramentas"><span aria-hidden="true">▦</span><span>Ferramentas do Portal</span><span aria-hidden="true">→</span></a>
+          <a href="index.html#destaques"><span aria-hidden="true">▤</span><span>Destaques da home</span><span aria-hidden="true">→</span></a>
+          <a href="aplicativos.html"><span aria-hidden="true">▦</span><span>Biblioteca de Aplicativos</span><span aria-hidden="true">→</span></a>
+          <a href="https://vikunja.unihorizontes.local/projects/3/12" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">✓</span><span>Vikunja · tarefas e projetos</span><span aria-hidden="true">↗</span></a>
           <a href="gestao-a-vista.html"><span aria-hidden="true">▥</span><span>Gestão à Vista</span><span aria-hidden="true">→</span></a>
           <a href="impressao.html"><span aria-hidden="true">▣</span><span>Gestão de Impressões</span><span aria-hidden="true">→</span></a>
           <a href="automacoes.html"><span aria-hidden="true">⌘</span><span>Central de Automações</span><span aria-hidden="true">→</span></a>
         </nav>
         <div class="nexo-help-area">
           <button type="button" id="nexo-explain" class="nexo-explain" aria-controls="nexo-help-answer" aria-expanded="false">O que você consegue fazer agora? <span aria-hidden="true">⌄</span></button>
-          <p id="nexo-help-answer" class="nexo-help-answer" hidden>Por enquanto, eu ajudo a navegar pelo Portal. Ainda não converso com uma IA, não acesso dados de alunos ou projetos e não consulto sistemas institucionais.</p>
+          <p id="nexo-help-answer" class="nexo-help-answer" hidden>Estou ativo como guia do Portal e respondo com regras locais, sem serviços externos. A IA generativa é um experimento opcional e separado; não tenho acesso a dados de alunos ou tarefas reais.</p>
         </div>
         <div class="nexo-quick-actions" aria-label="Ajuda do Nexo">
           <button type="button" id="nexo-tip" class="nexo-action" aria-describedby="nexo-tip-description">Dica desta página <span aria-hidden="true">✦</span></button>
@@ -66,7 +67,7 @@
         </div>
         <p id="nexo-tip-description" class="nexo-visually-hidden">Mostra uma dica local, sem consultar IA nem dados institucionais.</p>
         <p id="nexo-feedback" class="nexo-feedback" role="status" aria-live="polite" hidden></p>
-        <p class="nexo-disclaimer">Agente local experimental · IA não conectada</p>
+        <p class="nexo-disclaimer">Guia do Portal ativo · sem IA generativa</p>
       </div>
     </aside>
     <button id="nexo-toggle" class="nexo-launcher" type="button"
@@ -115,10 +116,10 @@
         : "Respostas orientadas por regras e dados históricos de laboratório. Sem IA generativa nesta fase.";
       if (disclaimer) disclaimer.textContent = labEnabled
         ? "IA local ativada manualmente · dados demonstrativos · não institucional"
-        : "Agente local experimental · IA não conectada";
+        : "Guia do Portal ativo · sem IA generativa";
       if (helpAnswer) helpAnswer.textContent = labEnabled
         ? "Neste modo de laboratório, consulto ferramentas demonstrativas via Python e Qwen local. Não acesso sistemas ou registros institucionais."
-        : "Por enquanto, eu ajudo a navegar pelo Portal. Ainda não converso com uma IA, não acesso dados de alunos ou projetos e não consulto sistemas institucionais.";
+        : "Estou ativo como guia do Portal e respondo com regras locais, sem serviços externos. A IA generativa é um experimento opcional e separado; não tenho acesso a dados de alunos ou tarefas reais.";
       showFeedback(labEnabled ? "Modo IA local: inicie servidor_nexo.py em outro PowerShell. Nenhum dado real deve ser enviado." : "Modo de regras ativado; nenhuma chamada à IA.");
       showEmotion(labEnabled ? "confirmacao" : "normal");
     });
@@ -183,7 +184,7 @@
       "gestao-documental.html": "Em Gestão Documental, confira o estágio da integração Perseus antes de tentar enviar arquivos.",
       "automacoes.html": "A Central de Automações reúne ferramentas em diferentes estágios. Confira a descrição antes de abrir cada módulo."
     };
-    return tips[pathname] || "Na página inicial do Portal, os comunicados aparecem antes do catálogo de ferramentas.";
+    return tips[pathname] || "Na home, acesse a Biblioteca de Aplicativos para abrir sistemas ou role até Destaques para ver os banners demonstrativos.";
   }
 
   // Cada pergunta aciona uma decisao local verificavel e no maximo uma
@@ -276,7 +277,7 @@
           showEmotion(modelAnswer ? "respondendo" : "dica");
         }
       } catch (_error) {
-        appendChatMessage("Não consegui acessar o Nexo local. Inicie o arquivo servidor_nexo.py na pasta laboratorio/nexo-local e confirme que o Portal está aberto em localhost:18081 ou 127.0.0.1:18081. Não enviei a pergunta a serviços externos.", "assistant");
+        appendChatMessage("O serviço experimental de IA local não está disponível. O Nexo continua funcionando como guia do Portal sem essa ponte. Para testar a IA, inicie servidor_nexo.py em outro terminal na pasta laboratorio/nexo-local; não envie dados reais.", "assistant");
         showFeedback("Ponte de IA local indisponível; o modo de regras continua acessível.");
         showEmotion("dica");
       } finally {
@@ -295,8 +296,13 @@
     chatInput.focus();
   });
 
-  function setOpen(open) {
+  const NEXO_PANEL_KEY = "unh-nexo-panel-open";
+  function savePanelState(open) {
+    try { window.sessionStorage.setItem(NEXO_PANEL_KEY, open ? "1" : "0"); } catch (_error) { /* Navegacao funciona mesmo sem armazenamento. */ }
+  }
+  function setOpen(open, restore = false) {
     panel.hidden = !open;
+    if (!restore) savePanelState(open);
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label",
       open ? "Fechar Nexo, assistente de navegação do Portal UNH"
@@ -305,8 +311,8 @@
     showEmotion(open ? "saudacao" : "normal");
     if (open) {
       renderPageContext();
-      close.focus();
-    } else toggle.focus();
+      if (!restore) close.focus();
+    } else if (!restore) toggle.focus();
   }
 
   toggle.addEventListener("click", () => setOpen(panel.hidden));
@@ -347,4 +353,9 @@
     }
   });
   showEmotion("normal");
+  // Mantem Nexo aberto ao mudar de pagina, se a pessoa o deixou aberto.
+  // Apenas uma flag da aba e persistida; nenhuma pergunta ou conversa e armazenada.
+  let wasOpen = false;
+  try { wasOpen = window.sessionStorage.getItem(NEXO_PANEL_KEY) === "1"; } catch (_error) { /* storage opcional */ }
+  if (wasOpen) setOpen(true, true);
 })();
