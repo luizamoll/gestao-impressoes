@@ -293,8 +293,18 @@
           showEmotion(modelAnswer ? "respondendo" : "dica");
         }
       } catch (_error) {
-        appendChatMessage("O serviço experimental de IA local não está disponível. O Nexo continua funcionando como guia do Portal sem essa ponte. Para testar a IA, inicie servidor_nexo.py em outro terminal na pasta laboratorio/nexo-local; não envie dados reais.", "assistant");
-        showFeedback("Ponte de IA local indisponível; o modo de regras continua acessível.");
+        // A falta da ponte nunca deve impedir respostas locais. Nao reenviar
+        // a pergunta a outra rede, nem afirmar que uma resposta de regras veio da IA.
+        const fallback = agent && typeof agent.ask === "function"
+          ? agent.ask(question, { pathname: window.location.pathname })
+          : null;
+        if (fallback) {
+          appendChatMessage(fallback.answer, "assistant", fallback.action, "Guia local · IA experimental indisponível");
+          showFeedback("A IA experimental não respondeu; orientação local disponível.");
+        } else {
+          appendChatMessage("Não consegui usar a IA experimental e o guia local não carregou. Atualize o Portal e tente novamente.", "assistant");
+          showFeedback("Guia local indisponível nesta página.");
+        }
         showEmotion("dica");
       } finally {
         chatInput.disabled = false;
