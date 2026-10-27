@@ -23,3 +23,25 @@
 .portal-home-v3 .unh-app-access-card small{font-size:14px}
 .portal-home-v3 .portal-button{font-size:15px}
 @media(max-width:760px){.portal-home-v3 .portal-hero h1{font-size:clamp(32px,7vw,44px)}.portal-home-v3 .portal-hero p{font-size:16px}}
+
+/* Evita renderização em subpixels e animações de escala/rotação de texto. */
+.portal-home-v3 .portal-hero-v3-workspace,
+.portal-home-v3 .portal-hero-v3-workspace:hover {
+  transform:none!important;
+}
+.portal-home-v3 .portal-hero-v3-quick-list a,
+.portal-home-v3 .portal-hero-v3-quick-list a:hover,
+.portal-home-v3 .unh-app-access-card,
+.portal-home-v3 .unh-app-access-card:hover {
+  transform:none!important;
+}
+.portal-home-v3 .portal-hero h1,
+.portal-home-v3 .portal-hero-v3-workspace h2,
+.portal-home-v3 .unh-app-access-card strong,
+.portal-home-v3 .unh-app-access-card small {
+  filter:none!important;
+  -webkit-font-smoothing:auto!important;
+  text-rendering:optimizeLegibility;
+}
+.portal-home-v3 .unh-app-access-card{min-height:177px}
+.portal-home-v3 .unh-app-access-card small{line-height:1.5;max-width:29ch}
