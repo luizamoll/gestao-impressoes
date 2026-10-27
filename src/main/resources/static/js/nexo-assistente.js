@@ -104,27 +104,39 @@
   const NEXO_LOCAL_URL = "http://127.0.0.1:18767/chat";
   // IA somente no mesmo computador, via servidor local iniciado pela usuária.
   const isLocalPortal = /^http:\/\/(?:127\.0\.0\.1|localhost):(?:18081|8080)(?:\/|$)/.test(String(window.location.href));
+  // Opt-in somente no laboratório local. Mantido apenas na aba atual;
+  // nunca guardar mensagens, credenciais nem respostas.
+  const NEXO_LAB_KEY = "unh-nexo-lab-consent";
   let labEnabled = false;
-  if (isLocalPortal && labToggle) {
-    labToggle.hidden = false;
-    labToggle.addEventListener("click", () => {
-      labEnabled = !labEnabled;
+  function renderLabMode() {
+    if (labToggle) {
       labToggle.setAttribute("aria-pressed", String(labEnabled));
       labToggle.textContent = labEnabled ? "Voltar ao modo de regras" : "Ativar IA local (laboratório)";
-      if (disclosure) disclosure.textContent = labEnabled
-        ? "IA local experimental. Apenas dados demonstrativos; não envie dados pessoais, senhas ou relatórios reais."
-        : "Respostas orientadas por regras e dados históricos de laboratório. Sem IA generativa nesta fase.";
-      if (disclaimer) disclaimer.textContent = labEnabled
-        ? "IA local ativada manualmente · dados demonstrativos · não institucional"
-        : "Guia do Portal ativo · sem IA generativa";
-      if (helpAnswer) helpAnswer.textContent = labEnabled
-        ? "Neste modo de laboratório, consulto ferramentas demonstrativas via Python e Qwen local. Não acesso sistemas ou registros institucionais."
-        : "Estou ativo como guia do Portal e respondo com regras locais, sem serviços externos. A IA generativa é um experimento opcional e separado; não tenho acesso a dados de alunos ou tarefas reais.";
-      showFeedback(labEnabled ? "Modo IA local: inicie servidor_nexo.py em outro PowerShell. Nenhum dado real deve ser enviado." : "Modo de regras ativado; nenhuma chamada à IA.");
+    }
+    if (disclosure) disclosure.textContent = labEnabled
+      ? "IA local experimental. Apenas dados demonstrativos; não envie dados pessoais, senhas ou relatórios reais."
+      : "Nexo ativo com orientações locais. Nenhuma conversa é enviada a serviços externos.";
+    if (disclaimer) disclaimer.textContent = labEnabled
+      ? "IA local autorizada nesta aba · somente demonstração"
+      : "Guia do Portal ativo · sem IA generativa";
+    if (helpAnswer) helpAnswer.textContent = labEnabled
+      ? "Neste modo de laboratório, posso consultar ferramentas demonstrativas via Python e Qwen local, se estiverem em execução. Não acesso registros institucionais."
+      : "Estou ativo como guia do Portal e respondo com regras locais, sem serviços externos. A IA generativa é um experimento opcional e separado; não tenho acesso a dados de alunos ou tarefas reais.";
+  }
+  if (isLocalPortal && labToggle) {
+    labToggle.hidden = false;
+    try { labEnabled = window.sessionStorage.getItem(NEXO_LAB_KEY) === "1"; } catch (_error) { /* Sessao opcional */ }
+    labToggle.addEventListener("click", () => {
+      labEnabled = !labEnabled;
+      try { window.sessionStorage.setItem(NEXO_LAB_KEY, labEnabled ? "1" : "0"); } catch (_error) { /* Sem permissao de armazenamento */ }
+      renderLabMode();
+      showFeedback(labEnabled
+        ? "IA local permitida nesta aba. Requer a ponte Python e o modelo no computador; não envie dados reais."
+        : "Modo de regras ativo; nenhuma pergunta será enviada à ponte Python.");
       showEmotion(labEnabled ? "confirmacao" : "normal");
     });
   }
-
+  renderLabMode();
 
   // O contexto é local, baseado somente na URL, nunca em dados sensíveis.
   // Sugestões preenchem o campo, mas não enviam mensagens sem gesto da pessoa.
