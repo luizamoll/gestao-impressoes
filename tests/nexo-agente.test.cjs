@@ -158,3 +158,22 @@ test("Nexo ativo continua disponivel na biblioteca e lembra painel sem salvar co
   assert.match(ui, /sessionStorage\.getItem\(NEXO_PANEL_KEY/);
   assert.doesNotMatch(ui, /sessionStorage\.setItem\([^,]+,\s*(?:question|chatLog)/);
 });
+
+test("pergunta sobre limites do Nexo funciona sem IA experimental", () => {
+  const response = agent.fastAnswer("tem algo q vc n saiba nesse site?", { pathname: "/index.html" });
+  assert.ok(response, "A resposta deve ser local e instantanea");
+  assert.match(response.answer, /Sim\. Conheço as páginas/);
+  assert.match(response.answer, /não vejo o conteúdo/);
+  assert.match(response.answer, /integrações autorizadas pela TI/);
+  assert.equal(response.action.href, "aplicativos.html");
+  assert.match(agent.ask("O que o Nexo sabe sobre o Portal?").answer, /Limites|Conheço as páginas|Conheço/);
+});
+
+test("IA local indisponivel volta ao guia em vez de parar no aviso da ponte", () => {
+  const ui = fs.readFileSync(path.join(__dirname,
+    "../src/main/resources/static/js/nexo-assistente.js"), "utf8");
+  assert.match(ui, /const fallback = agent && typeof agent\.ask === "function"/);
+  assert.match(ui, /appendChatMessage\(fallback\.answer, "assistant", fallback\.action/);
+  assert.match(ui, /Guia local · IA experimental indisponível/);
+  assert.doesNotMatch(ui, /appendChatMessage\("O serviço experimental de IA local não está disponível/);
+});
