@@ -23,9 +23,23 @@
   <script src="js/nexo-agente.js?v=20261027-fallback1" defer></script>
   <script src="js/nexo-assistente.js?v=20261027-fallback1" defer></script>
   <script src="js/gestao-dashboard-ref-v1.js?v=20261019-v1" defer></script>
+  <link rel="stylesheet" href="css/unh-site-header.css?v=20261028-unificado1" />
 </head>
 <body class="portal-body gv-body gv-ref-body">
   <a class="portal-skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="unh-site-header" aria-label="Cabeçalho do Portal UNH">
+    <div class="unh-site-header-inner">
+      <a class="unh-site-brand" href="index.html" aria-label="Portal UNH — página inicial">
+        <img src="assets/portal-unh-simbolo.svg" alt="" width="42" height="42" />
+        <span>Portal UNH</span>
+      </a>
+      <nav class="unh-site-nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="aplicativos.html">Aplicativos</a>
+        <a href="gestao-a-vista.html" aria-current="page">Gestão à Vista</a>
+      </nav>
+    </div>
+  </header>
   <aside class="gv-workspace-sidebar gv-ref-sidebar" id="gvRefSidebar" aria-label="Navegação do Portal UNH">
     <a class="gv-ref-brand" href="index.html" aria-label="Página inicial do Portal UNH">
       <img src="assets/portal-unh-simbolo.svg?v=20261014-7" alt="" width="38" height="38"/>
@@ -43,8 +57,8 @@
     </nav>
     <p class="gv-ref-side-label gv-ref-side-label-secondary">FERRAMENTAS E SERVIÇOS</p>
     <nav class="gv-ref-global-nav" aria-label="Ferramentas e serviços">
-      <a href="index.html#ferramentas"><span aria-hidden="true">⚒</span> Ferramentas</a>
-      <a href="index.html#comunicados"><span aria-hidden="true">▣</span> Mural</a>
+      <a href="aplicativos.html"><span aria-hidden="true">⚒</span> Ferramentas</a>
+      <a href="index.html#destaques"><span aria-hidden="true">▣</span> Destaques</a>
       <a href="automacoes.html"><span aria-hidden="true">⌘</span> Automações</a>
       <a href="gestao-documental.html"><span aria-hidden="true">▤</span> Documentos</a>
       <a href="impressao.html"><span aria-hidden="true">▧</span> Gestão de Impressões</a>
@@ -61,8 +75,8 @@
       <div class="gv-ref-search-results" id="gvRefSearchResults" hidden aria-live="polite"></div>
     </div>
     <div class="gv-ref-top-actions">
-      <a href="index.html#comunicados" title="Abrir mural" aria-label="Abrir mural de comunicados">▤</a>
-      <a href="index.html#ferramentas" title="Ferramentas" aria-label="Abrir ferramentas do Portal">▦</a>
+      <a href="index.html#destaques" title="Ver destaques" aria-label="Ver destaques da home">▤</a>
+      <a href="aplicativos.html" title="Aplicativos" aria-label="Abrir biblioteca de aplicativos">▦</a>
       <button type="button" id="gvRefHelp" title="Abrir Nexo" aria-label="Abrir o assistente Nexo">✧</button>
       <span class="gv-ref-environment">Laboratório</span>
     </div>
@@ -140,7 +154,7 @@
             </section>
             <nav class="gv-ref-shortcuts" aria-label="Acesso rápido">
               <h3>Acesso rápido</h3>
-              <a href="index.html#comunicados"><span aria-hidden="true">▣</span>Mural institucional <span aria-hidden="true">→</span></a>
+              <a href="index.html#destaques"><span aria-hidden="true">▣</span>Mural institucional <span aria-hidden="true">→</span></a>
               <a href="#gv-projetos"><span aria-hidden="true">▤</span>Projetos <span aria-hidden="true">→</span></a>
               <a href="#gv-indicadores"><span aria-hidden="true">◫</span>Indicadores <span aria-hidden="true">→</span></a>
               <a href="#impressoes"><span aria-hidden="true">▥</span>Impressões <span aria-hidden="true">→</span></a>
