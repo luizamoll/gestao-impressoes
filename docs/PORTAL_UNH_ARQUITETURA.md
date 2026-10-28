@@ -11,7 +11,7 @@
 - `src/main/resources/static/gestao-a-vista.html`: Gestão à Vista.
 - `src/main/resources/static/impressao.html`, `esg.html`, `gestao-documental.html`, `automacoes.html`: módulos existentes, com funcionalidades em estágios diferentes.
 - `comunicados.html` **não existe mais**. O mural antigo não foi reativado. Não restaurar atalhos para `#comunicados` nem para `#ferramentas`.
-- Menu principal da home e da biblioteca: **Início, Aplicativos e Gestão à Vista**.
+- Menu principal de **Início, Aplicativos e Gestão à Vista**: **Início, Aplicativos e Gestão à Vista**, com mesma marca SVG, título **Portal UNH**, altura de 76 px no desktop e estilo em `css/unh-site-header.css`. Na Gestão à Vista, a barra de busca permanece como controle do dashboard abaixo do cabeçalho global.
 
 ## Arquitetura de interface
 
@@ -21,6 +21,7 @@ A home é feita com HTML/CSS/JS estáticos servidos pelo Spring Boot; não há n
 
 | Área | Arquivos |
 | --- | --- |
+| Cabeçalho global | `css/unh-site-header.css` + mesmo HTML institucional nas três páginas principais; a marca é `assets/portal-unh-simbolo.svg` |
 | Home | `index.html`, `css/portal-home-v3.css`, `css/unh-app-access-v1.css`, `css/unh-destaques-v1.css`, `css/unh-banner-demo-v1.css`, `css/unh-home-depth-v1.css` |
 | Biblioteca | `aplicativos.html`, `css/unh-pages-v1.css`, `css/unh-app-library-v2.css` |
 | CSS compartilhado/legado da home | `css/portal.css`, `css/mural.css`, `css/portal-palette-v1.css`, `css/portal-editorial-v1.css`, `css/mural-social-v2.css`, `css/unh-legibilidade-v1.css` |
