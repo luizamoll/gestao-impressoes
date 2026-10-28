@@ -41,6 +41,7 @@
 | 27/10/2026 — Nexo | Resposta aos próprios limites e fallback quando IA experimental está desconectada | Não interromper pergunta simples sobre o Portal por falha da IA |
 | 28/10/2026 — organização | Criação deste registro de evolução e plano de consolidação | Evitar que dezenas de correções virem dívida técnica invisível |
 | 28/10/2026 — consistência visual | Padronização de altura do cabeçalho e espaçamentos da Biblioteca de Aplicativos, com responsividade explícita | Evitar que navegação e área útil mudem desnecessariamente quando a janela varia; manter profundidade 3D existente |
+| 28/10/2026 — cabeçalho unificado | Home, Biblioteca e Gestão à Vista passaram a usar a mesma marca Portal UNH, logo SVG, menu de três links e CSS compartilhado de 76 px no desktop | Evitar que a identidade e a navegação mudem ao trocar de página; Gestão mantém busca/menus internos abaixo do cabeçalho global |
 
 **Como manter o registro:** adicionar uma linha somente para cada decisão/entrega relevante; detalhes de cada ajuste ficam no histórico do Git. Não registrar cada cor, margem, commit ou teste trivial aqui.
 
@@ -50,7 +51,7 @@
 
 1. **CSS em camadas:** a home importa `portal.css`, `mural.css`, `portal-home-v3.css`, `portal-palette-v1.css`, `portal-editorial-v1.css`, `mural-social-v2.css`, `unh-app-access-v1.css`, `unh-destaques-v1.css`, `unh-legibilidade-v1.css`, `unh-banner-demo-v1.css` e `unh-home-depth-v1.css`. Há sobreposições e estilos históricos. **Não apagar em massa**: mapear primeiro quais seletores ainda afetam a página.
 2. **Visual duplicado:** biblioteca e home têm cartões/cores/sombras equivalentes implementados em estilos diferentes. Consolidar depois em tokens e componentes compartilhados.
-3. **HTML repetido:** cabeçalhos, navegação, rodapés e importações de Nexo aparecem em várias páginas; estudar componentes/fragmentos simples sem introduzir framework desnecessário.
+3. **HTML repetido:** a **aparência** dos cabeçalhos e a logo já foram unificadas via `css/unh-site-header.css` nas três páginas principais. O mesmo trecho de HTML ainda aparece em três arquivos: avaliar fragmento reutilizável antes de alterações futuras. Navegação de módulos, rodapés e importações do Nexo também merecem consolidação, sem framework desnecessário.
 4. **Nexo com muitas regras no JS:** centralizar catálogo de ferramentas, contexto das páginas e respostas comuns em um único esquema versionado, com testes. Separar definitivamente orientações confiáveis, dados demonstrativos e IA experimental.
 5. **Mensagens e nomes de laboratório:** verificar textos por desatualização; a saudação com nome fixo na home é uma demonstração, **não** personalização autenticada. Ajustar antes de uso institucional.
 6. **Automação local:** o `iniciar-portal.ps1` inicia o ambiente, mas **não** faz atualização do Git. Bloqueios de execução PowerShell podem vir da política corporativa. Planejar rotina única de atualizar/testar/iniciar **somente após** validação do fluxo e respeitando a TI.
