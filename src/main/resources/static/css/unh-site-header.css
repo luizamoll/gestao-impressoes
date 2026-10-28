@@ -104,4 +104,6 @@
   }
   .unh-site-header .unh-site-nav a { font-size:13px;padding:8px 6px;min-height:36px; }
 }
+/* O dashboard organiza a sua busca e a navegacao lateral sob a barra institucional. */
+.gv-ref-body > .unh-site-header { grid-area:site; z-index:90; }
 @media print { .unh-site-header { display:none!important; } }
