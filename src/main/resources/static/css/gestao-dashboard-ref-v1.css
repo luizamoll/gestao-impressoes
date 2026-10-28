@@ -9,8 +9,8 @@
     --gv-ref-paper: #fff;
     display: grid;
     grid-template-columns: 218px minmax(0,1fr) minmax(294px,335px);
-    grid-template-rows: 76px minmax(0,auto) auto;
-    grid-template-areas: "sidebar top top" "sidebar main nexo" "sidebar footer nexo";
+    grid-template-rows: 76px 76px minmax(0,auto) auto;
+    grid-template-areas: "site site site" "sidebar top top" "sidebar main nexo" "sidebar footer nexo";
     column-gap: 0;
     align-items: start;
     min-height: 100dvh;
@@ -21,9 +21,9 @@
   .gv-ref-body .gv-ref-sidebar {
     grid-area: sidebar;
     position: sticky;
-    top: 0;
+    top: 76px;
     z-index: 25;
-    height: 100dvh;
+    height: calc(100dvh - 76px);
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -117,7 +117,7 @@
     grid-area: top;
     position: sticky;
     z-index: 20;
-    top: 0;
+    top: 76px;
     display: flex;
     align-items: center;
     gap: 25px;
@@ -481,7 +481,7 @@
     grid-area: nexo;
     position: sticky;
     z-index: 10;
-    top: 86px;
+    top: 162px;
     right: auto;
     bottom: auto;
     align-self: start;
@@ -506,7 +506,7 @@
   .gv-ref-body .nexo-launcher-label { top: -22px;right: 12px;font-size: 10px; }
 }
 @media screen and (max-width:1250px) {
-  body.gv-ref-body { grid-template-columns: 212px minmax(0,1fr);grid-template-areas:"sidebar top" "sidebar main" "sidebar footer"; }
+  body.gv-ref-body { grid-template-columns: 212px minmax(0,1fr);grid-template-areas:"site site" "sidebar top" "sidebar main" "sidebar footer"; }
   .gv-ref-body .nexo-widget {
     position: fixed;
     z-index: 700;
@@ -529,16 +529,16 @@
   body.gv-ref-body {display: block;min-height:100dvh;}
   .gv-ref-body .gv-ref-sidebar {
     position: fixed;
-    inset: 0 auto 0 0;
+    inset: 76px auto 0 0;
     z-index: 55;
     width: min(285px,86vw);
-    height: 100dvh;
+    height: calc(100dvh - 76px);
     transform: translateX(-110%);
     box-shadow: 12px 0 45px rgba(23,48,68,.15);
     transition: transform .2s;
   }
   .gv-ref-body.gv-ref-menu-open .gv-ref-sidebar {transform:translateX(0);}
-  .gv-ref-body .gv-ref-topbar {height:67px;padding:0 15px;gap:12px;}
+  .gv-ref-body .gv-ref-topbar {height:67px;padding:0 15px;gap:12px;top:76px;}
   .gv-ref-body .gv-ref-menu-toggle {
     display: grid;
     place-items: center;
@@ -551,7 +551,8 @@
     color: #43677e;
     cursor: pointer;
   }
-  .gv-ref-body .gv-ref-topbrand {display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:14px;color:#2b4d62!important;text-decoration:none;white-space:nowrap;}
+  /* Marca institucional ja aparece no cabecalho global: nao duplicar no painel. */
+  .gv-ref-body .gv-ref-topbrand {display:none;}
   .gv-ref-body .gv-ref-topbrand img {width:25px;height:25px;}
   .gv-ref-body .gv-ref-search {flex:1 1 180px;}
   .gv-ref-body .gv-ref-environment {display:none;}
@@ -561,6 +562,8 @@
   .gv-ref-body .portal-footer {padding:12px 17px;}
 }
 @media screen and (max-width:600px) {
+  .gv-ref-body .gv-ref-sidebar {top:116px;height:calc(100dvh - 116px);inset-block-start:116px;}
+  .gv-ref-body .gv-ref-topbar {top:116px;}
   .gv-ref-body .gv-ref-top-actions a {display:none;}
   .gv-ref-body .gv-ref-top-actions {gap:4px;}
   .gv-ref-body .gv-ref-search-field {min-height:38px;padding:0 9px;}
