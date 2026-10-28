@@ -1,12 +1,14 @@
 # Nexo — estado operacional (Portal UNH)
 
-Atualizado: 2026-10-27. Branch de desenvolvimento: `feat/atalhos-apps-home-20261027`.
+Atualizado: 2026-10-28. Branch de desenvolvimento: `feat/atalhos-apps-home-20261027`.
 
 ## Disponibilidade
 - `nexo-agente.js` é um orientador local por regras, disponível enquanto a página do Portal está aberta. **Não** é uma IA generativa hospedada.
 - `nexo-assistente.js` monta o robô e seu painel. Presente em `index.html`, `aplicativos.html`, `gestao-a-vista.html`, `impressao.html`, `esg.html`, `gestao-documental.html` e `automacoes.html`.
 - O painel aberto permanece aberto durante a navegação **na mesma aba**, usando apenas uma flag em `sessionStorage`. Perguntas e respostas nunca são gravadas.
 - As orientações apontam para as páginas atuais, inclusive Biblioteca de Aplicativos e Vikunja; não existem mais links para o mural social descontinuado.
+- Perguntas sobre os limites do próprio Nexo são respondidas localmente. Se a ponte de IA falhar em uma pergunta aberta, o assistente retorna ao modo de regras com fonte identificada, **sem fingir que a IA respondeu**.
+- A experiência de IA generativa não é necessária para navegar, nem para usar os links do Portal.
 - Nenhum dado de alunos, senha ou informação real de projetos é consultado pelo Nexo.
 
 ## Inicialização em Windows
@@ -17,6 +19,8 @@ Na raiz do repositório:
 ```
 
 O Portal inicia normalmente com o Nexo de regras disponível em todas as páginas; não requer Python ou Ollama.
+
+Se o Windows impedir a execução do `.ps1` por uma política institucional, não forçar a alteração. Como alternativa, execute `.\\mvnw.cmd spring-boot:run`; o Nexo de regras continua disponível.
 
 ## IA generativa local (opcional, somente laboratório)
 ```powershell
@@ -33,3 +37,7 @@ Se a ponte ou modelo estiver indisponível, as orientações por regras continua
 - Abrir painel na home, navegar para Aplicativos na mesma aba; painel deve permanecer aberto.
 - Perguntar sobre Helpdesk, Teams, Outlook e Vikunja; as respostas oferecem atalhos aprovados.
 - Confirmar que nenhuma resposta afirma consultar dados reais de alunos, tarefas ou impressoras.
+
+## Evolução e manutenção
+
+Registrar decisões e problemas relevantes em [PORTAL_UNH_PROCESSO.md](PORTAL_UNH_PROCESSO.md). A consolidação futura vai separar respostas confiáveis, conhecimento de navegação e integrações autorizadas; não duplicar URLs e regras em cada nova alteração.
