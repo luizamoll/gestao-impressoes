@@ -40,8 +40,11 @@
 | 27/10/2026 — Nexo | Inclusão do Nexo nas páginas, estado do painel na aba, links atuais e script `iniciar-portal.ps1` | Assistente disponível sem depender da ponte |
 | 27/10/2026 — Nexo | Resposta aos próprios limites e fallback quando IA experimental está desconectada | Não interromper pergunta simples sobre o Portal por falha da IA |
 | 28/10/2026 — organização | Criação deste registro de evolução e plano de consolidação | Evitar que dezenas de correções virem dívida técnica invisível |
+| 28/10/2026 — consistência visual | Padronização de altura do cabeçalho e espaçamentos da Biblioteca de Aplicativos, com responsividade explícita | Evitar que navegação e área útil mudem desnecessariamente quando a janela varia; manter profundidade 3D existente |
 
 **Como manter o registro:** adicionar uma linha somente para cada decisão/entrega relevante; detalhes de cada ajuste ficam no histórico do Git. Não registrar cada cor, margem, commit ou teste trivial aqui.
+
+**Comparação de capturas da biblioteca (28/10):** o banner e os cartões mantinham dimensões praticamente iguais nas duas imagens; a diferença aparente incluía enquadramento distinto do navegador. Ajustamos a estrutura da barra superior e os pontos responsivos, mas a área externa ao site (abas, barra de endereço, zoom e escala do Windows) não é controlável via CSS. A validação deve comparar a mesma largura útil e o mesmo zoom (100%), além de telas diferentes.
 
 ## 4. Problemas e dívida técnica identificados
 
