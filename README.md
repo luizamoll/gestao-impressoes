@@ -64,3 +64,15 @@ Consulte também:
 - [Arquitetura proposta](docs/ARQUITETURA.md)
 - [Regras de negócio](docs/REGRAS_NEGOCIO.md)
 - [Roadmap](docs/ROADMAP.md)
+
+## Portal UNH (módulo no mesmo repositório)
+
+Além da Gestão de Impressões, este repositório contém o **Portal UNH** — home pública, Biblioteca de Aplicativos, módulos internos e assistente Nexo em desenvolvimento. As telas e seus vínculos institucionais têm estados de implementação diferentes; não interpretar a existência de uma página como integração em produção.
+
+Para evitar documentação dispersa, **todas as decisões recentes, dificuldades e simplificações futuras** estão organizadas em um ponto central:
+
+- **[Processo, histórico e plano de simplificação do Portal](docs/PORTAL_UNH_PROCESSO.md)** — começar por aqui ao retomar o desenvolvimento.
+- [Arquitetura vigente e regras de preservação](docs/PORTAL_UNH_ARQUITETURA.md)
+- [Nexo: operação e limites](docs/NEXO_ATIVO.md)
+
+**Diretriz:** quando o Portal estabilizar visualmente, eliminar gradualmente CSS duplicado, referências antigas e configurações repetidas. Fazer isso com verificações e sem reescrever módulos funcionais.
