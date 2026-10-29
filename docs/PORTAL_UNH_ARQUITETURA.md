@@ -1,6 +1,6 @@
 # Portal UNH — arquitetura vigente e regras de preservação
 
-**Revisado em:** 28/10/2026. **Branch de desenvolvimento:** `feat/atalhos-apps-home-20261027`.
+**Revisado em:** 29/10/2026. **Branch de desenvolvimento:** `feat/atalhos-apps-home-20261027`.
 
 > Consulte [PORTAL_UNH_PROCESSO.md](PORTAL_UNH_PROCESSO.md) para decisões, histórico de alterações, dívida técnica e o plano de **simplificação futura**. Este documento descreve apenas a arquitetura vigente, sem reproduzir o histórico.
 
@@ -11,7 +11,7 @@
 - `src/main/resources/static/gestao-a-vista.html`: Gestão à Vista.
 - `src/main/resources/static/impressao.html`, `esg.html`, `gestao-documental.html`, `automacoes.html`: módulos existentes, com funcionalidades em estágios diferentes.
 - `comunicados.html` **não existe mais**. O mural antigo não foi reativado. Não restaurar atalhos para `#comunicados` nem para `#ferramentas`.
-- Menu principal de **Início, Aplicativos e Gestão à Vista**: **Início, Aplicativos e Gestão à Vista**, com mesma marca SVG, título **Portal UNH**, altura de 76 px no desktop e estilo em `css/unh-site-header.css`. Na Gestão à Vista, a barra de busca permanece como controle do dashboard abaixo do cabeçalho global.
+- Menu principal de **Início, Aplicativos e Gestão à Vista**: **Início, Aplicativos e Gestão à Vista**, com mesmo símbolo SVG e assinatura de duas linhas **CENTRO UNIVERSITÁRIO / unihorizontes**, botão vermelho **Abrir chamado** com link Helpdesk, altura de 76 px no desktop e estilo em `css/unh-site-header.css`. Na Gestão à Vista, a barra de busca permanece como controle do dashboard abaixo do cabeçalho global.
 
 ## Arquitetura de interface
 
