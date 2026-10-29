@@ -159,6 +159,31 @@
     0 4px 0 #c5dccd,
     0 8px 13px rgba(32,93,52,.10);
 }
+.app-library .app-tile.app-helpdesk {
+  --accent:#b92d40;
+  border-color:#e0b1b9;
+  border-bottom-color:#c78b95;
+  background:linear-gradient(155deg,#fff 0%,#fffafa 55%,#fff0f1 100%);
+  box-shadow:0 3px 0 #ead1d5,0 8px 13px rgba(110,29,41,.11),0 20px 36px rgba(110,29,41,.07),inset 0 2px 0 #fff;
+}
+.app-library .app-tile.app-helpdesk:hover {
+  border-color:#b74455;
+  background:linear-gradient(155deg,#fff,#ffecef);
+  box-shadow:0 3px 0 #e1bac1,0 12px 19px rgba(110,29,41,.16),0 28px 42px rgba(110,29,41,.11),inset 0 2px 0 #fff;
+}
+.app-library .app-helpdesk .app-tile-icon {
+  color:#a41f32;
+  border-color:#e5b8c0;
+  background:linear-gradient(145deg,#fff6f7,#ffdce2);
+  box-shadow:inset 0 2px 0 #fff,0 4px 0 #edc5cc,0 8px 13px rgba(144,33,49,.12);
+}
+.app-library .app-helpdesk .app-tile-text strong { color:#972233; }
+.app-library .app-helpdesk .app-tile-action {
+  color:#fff;
+  border-color:#a32636;
+  background:linear-gradient(180deg,#d74455,#a92133);
+  box-shadow:0 2px 0 #e5bfc5,inset 0 1px 0 rgba(255,255,255,.24);
+}
 .app-library .app-teams { --accent:#7166c8; }
 .app-library .app-outlook { --accent:#2976c1; }
 .app-library .app-vikunja { --accent:#c38036; }
