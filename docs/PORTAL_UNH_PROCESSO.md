@@ -1,6 +1,6 @@
 # Portal UNH — registro de evolução e plano de simplificação
 
-**Atualizado:** 28/10/2026  
+**Atualizado:** 29/10/2026  
 **Branch de trabalho:** `feat/atalhos-apps-home-20261027`  
 **Papel deste documento:** ser o ponto central de acompanhamento das alterações do Portal, sem criar um documento para cada pequeno ajuste.
 
@@ -24,6 +24,7 @@
 
 - **Experiência:** interface clara, didática, com fontes nítidas e profundidade realista (superfícies, iluminação, bordas e sombras), **sem** dar espessura exagerada às letras, rotação do texto ou efeitos que causem tremulação.
 - **Fluxo:** menu curto `Início → Aplicativos → Gestão à Vista`; serviços e ferramentas com descrições práticas. Não voltar a misturar todos os módulos em uma página longa.
+- **Marca e suporte:** cabeçalho global preserva a marca original **Centro Universitário / unihorizontes**, os três links de navegação e o botão vermelho **Abrir chamado**, com destino ao Helpdesk. A identidade do Portal é compartilhada, mas módulos internos podem conservar comandos próprios.
 - **Conteúdo:** nunca apresentar exemplos fictícios como comunicados institucionais ou indicadores confirmados.
 - **Acessos:** Vikunja é aplicativo externo existente; seu atalho atual leva a um **projeto específico**, não a uma API integrada. Outros endereços exigem verificação antes de trocar.
 - **Mascote:** preservar Nexo prateado e separado da identidade verde do restante do Portal.
@@ -42,6 +43,7 @@
 | 28/10/2026 — organização | Criação deste registro de evolução e plano de consolidação | Evitar que dezenas de correções virem dívida técnica invisível |
 | 28/10/2026 — consistência visual | Padronização de altura do cabeçalho e espaçamentos da Biblioteca de Aplicativos, com responsividade explícita | Evitar que navegação e área útil mudem desnecessariamente quando a janela varia; manter profundidade 3D existente |
 | 28/10/2026 — cabeçalho unificado | Home, Biblioteca e Gestão à Vista passaram a usar a mesma marca Portal UNH, logo SVG, menu de três links e CSS compartilhado de 76 px no desktop | Evitar que a identidade e a navegação mudem ao trocar de página; Gestão mantém busca/menus internos abaixo do cabeçalho global |
+| 29/10/2026 — identidade e suporte | Mantida a barra unificada de 76 px; restaurada a marca anterior de duas linhas **Centro Universitário / unihorizontes** nas três páginas; adicionado botão vermelho **Abrir chamado** no topo; cartões Helpdesk destacados em vermelho na home e biblioteca | Melhorar a identificação institucional e dar prioridade ao suporte, sem redesenhar hero, cartões, menus, Nexo ou dashboards |
 
 **Como manter o registro:** adicionar uma linha somente para cada decisão/entrega relevante; detalhes de cada ajuste ficam no histórico do Git. Não registrar cada cor, margem, commit ou teste trivial aqui.
 
