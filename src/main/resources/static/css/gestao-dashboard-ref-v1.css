@@ -561,6 +561,11 @@
   .gv-ref-body .gv-ref-analysis-grid {grid-template-columns:minmax(0,1.8fr) minmax(180px,.85fr);}
   .gv-ref-body .portal-footer {padding:12px 17px;}
 }
+/* Mantem os controles do dashboard abaixo da marca em duas linhas. */
+@media screen and (max-width:700px) {
+  .gv-ref-body .gv-ref-sidebar {top:116px;height:calc(100dvh - 116px);inset-block-start:116px;}
+  .gv-ref-body .gv-ref-topbar {top:116px;}
+}
 @media screen and (max-width:600px) {
   .gv-ref-body .gv-ref-sidebar {top:116px;height:calc(100dvh - 116px);inset-block-start:116px;}
   .gv-ref-body .gv-ref-topbar {top:116px;}
