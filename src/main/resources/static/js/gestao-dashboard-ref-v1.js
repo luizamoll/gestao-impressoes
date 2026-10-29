@@ -14,9 +14,10 @@
     { label: "Projetos", terms: "vikunja equipes projeto", href: "#gv-projetos" },
     { label: "Indicadores", terms: "prazos tarefas métricas", href: "#gv-indicadores" },
     { label: "Impressões", terms: "historico consumo franquia relatorio meses", href: "#impressoes" },
-    { label: "Mural institucional", terms: "comunicados avisos mensagens", href: "index.html#comunicados" },
-    { label: "Ferramentas do Portal", terms: "catalogo aplicativos", href: "index.html#ferramentas" },
-    { label: "Central de Automações", terms: "n8n automacoes rotinas", href: "automacoes.html" },
+    { label: "Destaques da home", terms: "comunicados avisos banners destaques", href: "index.html#destaques" },
+    { label: "Biblioteca de Aplicativos", terms: "catalogo aplicativos ferramentas sistemas", href: "aplicativos.html" },
+    { label: "Vikunja · abrir projeto", terms: "vikunja tarefas projetos sistema interno", href: "https://vikunja.unihorizontes.local/projects/3/12" },
+    { label: "Central de Automações", terms: "automacoes rotinas ferramentas", href: "automacoes.html" },
     { label: "Gestão Documental", terms: "pdf perseus documentos", href: "gestao-documental.html" },
     { label: "Gestão de Impressões", terms: "equipamentos leitura serie impressora upload", href: "impressao.html" }
   ]);
@@ -47,6 +48,10 @@
       for (const item of options) {
         const link = document.createElement("a");
         link.href = item.href;
+        if (/^https:\/\//i.test(item.href)) {
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+        }
         link.textContent = item.label;
         link.addEventListener("click", closeSearch);
         results.append(link);
@@ -63,7 +68,11 @@
       if (!first) return;
       event.preventDefault();
       closeSearch();
-      window.location.assign(first.href);
+      if (/^https:\/\//i.test(first.href)) {
+        window.open(first.href, "_blank", "noopener,noreferrer");
+      } else {
+        window.location.assign(first.href);
+      }
     }
   });
 
