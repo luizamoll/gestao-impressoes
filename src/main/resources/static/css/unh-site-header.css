@@ -100,7 +100,7 @@
   background:linear-gradient(180deg,#f3faf5,#e2f0e6);
   box-shadow:0 2px 0 #cadacf,0 4px 9px rgba(12,56,37,.06),inset 0 1px 0 #fff;
 }
-/* Helpdesk em destaque discreto: vermelho solido e relevo institucional. */
+/* Helpdesk: vermelho dessaturado, fosco, com relevo discreto. */
 .unh-site-header .unh-site-cta {
   display:inline-flex;
   justify-content:center;
@@ -109,35 +109,25 @@
   min-height:38px;
   margin-left:8px;
   padding:9px 15px;
-  border:1px solid #c64a5c;
-  border-bottom-color:#ae394a;
+  border:1px solid #96565e;
   border-radius:10px;
-  background:#c43d4f;
-  box-shadow:
-    0 2px 0 #ead7da,
-    0 6px 14px rgba(118,28,40,.12),
-    inset 0 1px 0 rgba(255,255,255,.10);
+  background:#a45f67;
+  box-shadow:0 2px 5px rgba(85,45,51,.10);
   color:#fff!important;
   font:700 14px/1.2 "Segoe UI Variable","Segoe UI",Arial,sans-serif;
   letter-spacing:0;
   text-decoration:none!important;
   text-shadow:none!important;
   white-space:nowrap;
-  transition:background .15s ease,box-shadow .15s ease,transform .15s ease;
+  transition:background .15s ease,box-shadow .15s ease;
 }
 .unh-site-header .unh-site-cta:hover {
-  background:#b93647;
-  box-shadow:
-    0 2px 0 #e4cacf,
-    0 8px 16px rgba(118,28,40,.16),
-    inset 0 1px 0 rgba(255,255,255,.12);
+  background:#92525b;
+  box-shadow:0 3px 8px rgba(85,45,51,.13);
 }
 .unh-site-header .unh-site-cta:active {
-  transform:translateY(1px);
-  box-shadow:
-    0 1px 0 #e4cacf,
-    0 4px 10px rgba(118,28,40,.12),
-    inset 0 1px 0 rgba(255,255,255,.08);
+  background:#824851;
+  box-shadow:0 1px 3px rgba(85,45,51,.12);
 }
 .unh-site-header :is(a):focus-visible {
   outline:3px solid #187451;
