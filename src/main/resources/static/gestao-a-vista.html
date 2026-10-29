@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="css/gestao-dashboard-ref-v1.css?v=20261029-header2" />
   <script src="js/nexo-agente.js?v=20261027-fallback1" defer></script>
   <script src="js/nexo-assistente.js?v=20261027-fallback1" defer></script>
-  <script src="js/gestao-dashboard-ref-v1.js?v=20261019-v1" defer></script>
+  <script src="js/gestao-dashboard-ref-v1.js?v=20261029-searchfix1" defer></script>
   <link rel="stylesheet" href="css/unh-site-header.css?v=20261029-fosco1" />
 </head>
 <body class="portal-body gv-body gv-ref-body">
@@ -158,7 +158,7 @@
             </section>
             <nav class="gv-ref-shortcuts" aria-label="Acesso rápido">
               <h3>Acesso rápido</h3>
-              <a href="index.html#destaques"><span aria-hidden="true">▣</span>Mural institucional <span aria-hidden="true">→</span></a>
+              <a href="index.html#destaques"><span aria-hidden="true">▣</span>Destaques da home <span aria-hidden="true">→</span></a>
               <a href="#gv-projetos"><span aria-hidden="true">▤</span>Projetos <span aria-hidden="true">→</span></a>
               <a href="#gv-indicadores"><span aria-hidden="true">◫</span>Indicadores <span aria-hidden="true">→</span></a>
               <a href="#impressoes"><span aria-hidden="true">▥</span>Impressões <span aria-hidden="true">→</span></a>
@@ -231,7 +231,12 @@
           </div>
           <div class="gv-workspace-panel">
             <div class="gv-workspace-panel-head"><div><span>FONTE: VIKUNJA</span><h3>Integração ainda não habilitada</h3></div></div>
-            <div class="gv-workspace-empty"><strong>Projetos não disponíveis</strong><p>Não significa que não existem projetos. Apenas não há uma fonte conectada com permissão de leitura.</p></div>
+            <div class="gv-workspace-empty">
+              <strong>Projetos não disponíveis neste painel</strong>
+              <p>Isso não significa que não existam projetos. O Portal ainda não tem uma integração autorizada para consultar os dados do Vikunja.</p>
+              <a class="gv-project-open" href="https://vikunja.unihorizontes.local/projects/3/12" target="_blank" rel="noopener noreferrer">Abrir projetos no Vikunja <span aria-hidden="true">↗</span></a>
+              <small class="gv-project-open-note">O acesso abre o sistema original e pode exigir rede interna e autenticação.</small>
+            </div>
           </div>
           <div class="gv-workspace-note"><span aria-hidden="true">ⓘ</span><p>Próximo passo técnico: confirmar endereço interno, versão da API e permissões com a TI. O Portal não duplicará a edição de tarefas do Vikunja.</p></div>
         </section>
