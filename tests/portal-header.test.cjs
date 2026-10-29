@@ -59,7 +59,7 @@ test("Helpdesk recebe destaque vermelho sem alterar os demais cartoes", () => {
   const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
   const library = fs.readFileSync(path.join(root, "aplicativos.html"), "utf8");
   assert.ok(css.includes(".unh-site-header .unh-site-cta"));
-  assert.ok(css.includes("#d94050"));
+  assert.ok(css.includes("background:#a45f67"));
   assert.ok(libraryCss.includes(".app-library .app-tile.app-helpdesk"));
   assert.ok(homeCss.includes(".portal-home-v3 .unh-app-access-card.unh-helpdesk-card"));
   assert.ok(home.includes('class="unh-app-access-card unh-helpdesk-card"'));
