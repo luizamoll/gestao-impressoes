@@ -138,7 +138,7 @@
   .unh-site-header .unh-site-nav a { font-size:13px;padding:8px; }
   .unh-site-header .unh-site-cta { padding:9px 12px;font-size:12px;margin-left:2px; }
 }
-@media(max-width:600px) {
+@media(max-width:700px) {
   .unh-site-header { height:116px; }
   .unh-site-header .unh-site-header-inner {
     display:grid;
