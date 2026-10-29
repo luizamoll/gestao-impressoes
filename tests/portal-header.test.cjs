@@ -22,7 +22,12 @@ test("cabecalho e marca institucional identicos nas tres paginas principais", ()
     assert.ok(header, file);
     const brand = header.match(/<a class="unh-site-brand"[\s\S]*?<\/a>/)?.[0];
     assert.ok(brand, file);
-    assert.match(brand, /Portal UNH/);
+    assert.ok(brand.includes("CENTRO UNIVERSITÁRIO"), file);
+    assert.ok(brand.includes("unihorizontes"), file);
+    assert.equal(header.split('class="unh-site-cta"').length - 1, 1, file);
+    assert.ok(header.includes("Abrir chamado"), file);
+    assert.ok(header.includes('href="https://helpdesk.unihorizontes.local/Helpdesk"'), file);
+    assert.ok(header.includes('target="_blank" rel="noopener noreferrer"'), file);
     const logo = brand.match(/src="([^"]+)"/)?.[1];
     logos.add(logo);
     for (const href of standardLinks) {
@@ -45,4 +50,19 @@ test("cabecalho compartilhado preserva altura aprovada e painel preserva pesquis
   assert.match(dashboardCss, /top: 76px;/);
   assert.match(dashboard, /id="gvRefSearch"/);
   assert.match(dashboard, /id="gvRefMenuToggle"/);
+});
+
+test("Helpdesk recebe destaque vermelho sem alterar os demais cartoes", () => {
+  const css = fs.readFileSync(path.join(root, "css/unh-site-header.css"), "utf8");
+  const libraryCss = fs.readFileSync(path.join(root, "css/unh-app-library-v2.css"), "utf8");
+  const homeCss = fs.readFileSync(path.join(root, "css/unh-home-depth-v1.css"), "utf8");
+  const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
+  const library = fs.readFileSync(path.join(root, "aplicativos.html"), "utf8");
+  assert.ok(css.includes(".unh-site-header .unh-site-cta"));
+  assert.ok(css.includes("#d94050"));
+  assert.ok(libraryCss.includes(".app-library .app-tile.app-helpdesk"));
+  assert.ok(homeCss.includes(".portal-home-v3 .unh-app-access-card.unh-helpdesk-card"));
+  assert.ok(home.includes('class="unh-app-access-card unh-helpdesk-card"'));
+  assert.ok(library.includes('class="app-tile app-helpdesk"'));
+  assert.ok(css.includes("@media(max-width:700px)"));
 });
