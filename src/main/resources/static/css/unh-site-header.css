@@ -35,9 +35,8 @@
   white-space:nowrap;
   text-decoration:none;
   color:#075641!important;
-  font-size:18px;
-  line-height:1.25;
-  font-weight:700;
+  line-height:1;
+  min-width:0;
 }
 .unh-site-header .unh-site-brand img {
   display:block;
@@ -45,6 +44,26 @@
   height:42px;
   min-width:42px;
   object-fit:contain;
+}
+.unh-site-header .unh-site-brand-copy {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:3px;
+  padding-right:19px;
+  border-right:1px solid #dfebe3;
+}
+.unh-site-header .unh-site-brand-kicker {
+  display:block;
+  font:700 9px/1.15 "Segoe UI Variable","Segoe UI",Arial,sans-serif;
+  letter-spacing:.105em;
+  color:#4b7862;
+}
+.unh-site-header .unh-site-brand-name {
+  display:block;
+  font:700 25px/1.05 "Plus Jakarta Sans","Segoe UI Variable","Segoe UI",Arial,sans-serif;
+  letter-spacing:-.048em;
+  color:#075641;
 }
 .unh-site-header .unh-site-nav {
   display:flex;
@@ -81,28 +100,82 @@
   background:linear-gradient(180deg,#f3faf5,#e2f0e6);
   box-shadow:0 2px 0 #cadacf,0 4px 9px rgba(12,56,37,.06),inset 0 1px 0 #fff;
 }
+/* Atalho de suporte deliberadamente destacado, sem alterar a navegacao. */
+.unh-site-header .unh-site-cta {
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  flex:0 0 auto;
+  min-height:41px;
+  margin-left:8px;
+  padding:10px 17px;
+  border:1px solid #8f1e2c;
+  border-bottom-color:#781623;
+  border-radius:11px;
+  background:linear-gradient(180deg,#d94050,#af2435);
+  box-shadow:0 3px 0 #e8c7ca,0 7px 14px rgba(122,23,36,.17),inset 0 1px 0 rgba(255,255,255,.23);
+  color:#fff!important;
+  font:700 14px/1.2 "Segoe UI Variable","Segoe UI",Arial,sans-serif;
+  letter-spacing:0;
+  text-decoration:none!important;
+  text-shadow:none!important;
+  white-space:nowrap;
+  transition:background .15s,box-shadow .15s;
+}
+.unh-site-header .unh-site-cta:hover {
+  background:linear-gradient(180deg,#c93646,#9c1d2e);
+  box-shadow:0 3px 0 #dbb7bb,0 10px 18px rgba(122,23,36,.23),inset 0 1px 0 rgba(255,255,255,.25);
+}
 .unh-site-header :is(a):focus-visible {
   outline:3px solid #187451;
   outline-offset:3px;
 }
+@media(max-width:730px) {
+  .unh-site-header .unh-site-header-inner { gap:9px; }
+  .unh-site-header .unh-site-brand-name { font-size:21px; }
+  .unh-site-header .unh-site-brand-copy { padding-right:10px; }
+  .unh-site-header .unh-site-nav { gap:2px; }
+  .unh-site-header .unh-site-nav a { font-size:13px;padding:8px; }
+  .unh-site-header .unh-site-cta { padding:9px 12px;font-size:12px;margin-left:2px; }
+}
 @media(max-width:600px) {
   .unh-site-header { height:116px; }
   .unh-site-header .unh-site-header-inner {
-    height:116px;min-height:116px;
-    flex-direction:column;
-    align-items:flex-start;
-    justify-content:center;
-    gap:6px;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-rows:44px 37px;
+    align-content:center;
+    column-gap:8px;
+    row-gap:6px;
+    height:116px;
+    min-height:116px;
+    padding:0;
   }
-  .unh-site-header .unh-site-brand { font-size:17px; }
+  .unh-site-header .unh-site-brand { grid-column:1;grid-row:1; }
   .unh-site-header .unh-site-brand img { width:39px;height:39px;min-width:39px; }
+  .unh-site-header .unh-site-brand-copy { border-right:0;padding-right:0;gap:2px; }
+  .unh-site-header .unh-site-brand-name { font-size:20px; }
+  .unh-site-header .unh-site-brand-kicker { font-size:8px;letter-spacing:.08em; }
+  .unh-site-header .unh-site-cta {
+    grid-column:2;grid-row:1;
+    margin-left:0;
+    min-height:37px;
+  }
   .unh-site-header .unh-site-nav {
+    grid-column:1 / -1;grid-row:2;
     margin:0;
     width:100%;
     justify-content:space-between;
     gap:2px;
   }
   .unh-site-header .unh-site-nav a { font-size:13px;padding:8px 6px;min-height:36px; }
+}
+@media(max-width:380px) {
+  .unh-site-header .unh-site-brand img {width:33px;height:33px;min-width:33px;}
+  .unh-site-header .unh-site-brand-name {font-size:17px;}
+  .unh-site-header .unh-site-brand-kicker {font-size:7px;letter-spacing:.06em;}
+  .unh-site-header .unh-site-cta {font-size:11px;padding:9px 10px;}
+  .unh-site-header .unh-site-nav a {font-size:12px;padding:8px 5px;}
 }
 /* O dashboard organiza a sua busca e a navegacao lateral sob a barra institucional. */
 .gv-ref-body > .unh-site-header { grid-area:site; z-index:90; }
