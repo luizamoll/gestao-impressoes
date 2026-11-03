@@ -21,9 +21,9 @@ class GestaoAVistaNavegacaoTests {
     void quatroModulosTemLinksEConteudoSeparados() throws Exception {
         String html = resource("static/gestao-a-vista.html");
 
-        assertEquals(4, count(html, "data-gv-view"));
-        assertEquals(4, count(html, "data-gv-nav="));
-        for (String id : new String[]{"gv-visao-geral", "gv-projetos", "gv-indicadores", "impressoes"}) {
+        assertEquals(3, count(html, "data-gv-view"));
+        assertEquals(3, count(html, "data-gv-nav="));
+        for (String id : new String[]{"gv-visao-geral", "gv-ferramentas", "impressoes"}) {
             assertTrue(html.contains("href=\"#" + id + "\""), "Menu precisa navegar para " + id);
         }
         assertTrue(html.contains("id=\"gv-impressao-view\""));
@@ -38,7 +38,7 @@ class GestaoAVistaNavegacaoTests {
         assertTrue(html.contains("Setembro/2026"));
         assertTrue(html.contains("Outubro/2026 · sem leitura"));
         assertTrue(html.contains("class=\"gv-next-modules\""),
-            "Visão geral deve oferecer navegação rápida para módulos futuros.");
+            "Visão geral deve oferecer navegação rápida para ferramentas existentes.");
         assertTrue(html.contains("Versão de laboratório"),
             "Dados históricos devem permanecer claramente identificados.");
         assertTrue(html.indexOf("class=\"gv-history-snapshot\"") <
@@ -59,14 +59,23 @@ class GestaoAVistaNavegacaoTests {
         assertTrue(javascript.contains("view.hidden"), "Visões devem alternar sem recarregar.");
         assertTrue(javascript.contains("aria-current"), "Menu deve identificar visão atual.");
         assertTrue(css.contains("[data-gv-view][hidden]"), "Conteúdo oculto não pode reaparecer pelo CSS.");
-        assertTrue(javascript.contains("aguardando_autorizacao"));
+        assertTrue(javascript.contains("gv-ferramentas"));
+        assertTrue(!javascript.contains("checkConnector"), "Nao consultar status de integracao inexistente.");
     }
 
     @Test
-    void semConexaoNaoInventaDadosDeTarefas() throws Exception {
+    void centralUsaFerramentasExistentesSemPrometerIntegracaoDeDados() throws Exception {
         String html = resource("static/gestao-a-vista.html");
-        assertTrue(html.contains("Nenhum nome, responsável ou tarefa institucional"));
-        assertTrue(html.contains("Aguardando integração"));
-        assertTrue(html.contains("O Vikunja institucional ainda não foi conectado."));
+        assertTrue(html.contains("Central de ferramentas"));
+        for (String href : new String[]{"impressao.html", "esg.html",
+                "automacoes.html", "gestao-documental.html",
+                "https://helpdesk.unihorizontes.local/Helpdesk",
+                "https://teams.microsoft.com/", "https://outlook.office.com/mail/"}) {
+            assertTrue(html.contains("href=\\\"" + href + "\\\""), "Ferramenta deve abrir: " + href);
+        }
+        assertTrue(html.contains("Ainda não há sincronização"));
+        assertTrue(!html.contains("Vikunja"));
+        assertTrue(!html.contains("gv-projetos"));
+        assertTrue(!html.contains("gv-indicadores"));
     }
 }
