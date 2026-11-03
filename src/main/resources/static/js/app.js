@@ -142,20 +142,20 @@ function enhanceMachineHistory() {
         </div>`;
       card.querySelector(".history-card-head")?.after(overview);
     } else if (card.textContent.includes("BRBSV730KB")) {
-      // Duas leituras acumuladas, sem datas de coleta: diferenca nao mensal.
+      // Diferenca atribuida a outubro conforme a competencia informada pela responsavel.
       const overview = document.createElement("div");
       overview.className = "machine-overview new-machine";
       overview.innerHTML = `
         <div class="machine-highlight neutral">
-          <span>Acréscimo entre leituras</span><strong>+1.027</strong><small>Não equivale ao consumo de um mês</small>
+          <span>Consumo informado de outubro</span><strong>1.027</strong><small>Diferença entre leituras atribuída a outubro pela responsável</small>
         </div>
         <div class="machine-reading-flow">
           <div><span>Anterior</span><strong>56</strong></div><div class="flow-arrow">→</div>
           <div><span>Nova leitura</span><strong>1.083</strong></div><div class="flow-equals">=</div>
-          <div class="flow-result"><span>Diferença acumulada</span><strong>1.027</strong></div>
+          <div class="flow-result"><span>Consumo de outubro informado</span><strong>1.027</strong></div>
         </div>
         <div class="machine-message neutral">
-          <strong>Leitura rápida</strong><span>O relatório recebido em 03/11/2026 registra 1.083 páginas; a leitura anterior era 56. Como a data de coleta não está informada, ainda não é possível atribuir 1.027 impressões a um mês.</span>
+          <strong>Leitura rápida</strong><span>O relatório recebido em 03/11/2026 registra 1.083 páginas; a leitura anterior era 56. A diferença de 1.027 foi atribuída a outubro conforme a competência informada pela responsável, pois as folhas HP não exibem data de coleta.</span>
         </div>`;
       card.querySelector(".history-card-head")?.after(overview);
     }
