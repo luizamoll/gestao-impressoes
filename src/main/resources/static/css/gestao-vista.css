@@ -226,37 +226,74 @@
 .gv-workspace-empty>span { display: block; font-size: 28px; color: #94aab3; margin-bottom: 7px; }
 .gv-workspace-empty strong { display: block; font-size: 15px; color: #495f69; }
 .gv-workspace-empty p { max-width: 360px; margin: 8px auto 0; font-size: 13px; line-height: 1.6; color: #718188; }
-/* Acesso ao sistema original sem simular integracao de projetos. */
-.gv-workspace-empty .gv-project-open {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-  margin-top:17px;
-  padding:10px 15px;
-  border:1px solid #a9c8b6;
+/* Central de ferramentas: modulos reais, sem simulacao de conexao de dados. */
+.gv-page #gv-ferramentas .gv-workspace-panel {
+  margin-top:18px;
+  border:1px solid #dbe6de;
+  box-shadow:0 3px 0 #e5eee7,0 16px 28px rgba(25,65,43,.045),inset 0 1px 0 #fff;
+}
+.gv-page #gv-ferramentas .gv-workspace-panel-head { margin-bottom:17px; }
+.gv-page #gv-ferramentas .gv-workspace-panel-head h3 { color:#254839; }
+.gv-tools-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));
+  gap:13px;
+}
+.gv-tool-card {
+  display:grid;
+  grid-template-columns:43px minmax(0,1fr) 17px;
+  gap:13px;
+  align-items:start;
+  min-width:0;
+  padding:18px 15px;
+  border:1px solid #dce7df;
+  border-radius:14px;
+  background:linear-gradient(150deg,#fff 0%,#f6faf7 100%);
+  box-shadow:0 3px 0 #e5ede7,0 9px 18px rgba(26,62,41,.055),inset 0 1px 0 #fff;
+  text-decoration:none!important;
+  color:#203f30!important;
+  transition:border-color .15s ease,box-shadow .15s ease;
+}
+.gv-tool-card:hover {
+  border-color:#a2c6b1;
+  box-shadow:0 3px 0 #d4e6d8,0 12px 24px rgba(26,62,41,.10),inset 0 1px 0 #fff;
+}
+.gv-tool-card:focus-visible {outline:3px solid #187453;outline-offset:3px;}
+.gv-tool-icon {
+  display:grid;place-items:center;
+  width:43px;height:43px;
+  border:1px solid #c6dece;
+  border-radius:12px;
+  background:linear-gradient(150deg,#f0f9f2,#dfeee4);
+  box-shadow:inset 0 1px 0 #fff,0 3px 0 #d5e4d9;
+  color:#27654a;
+  font-size:20px;
+  font-weight:750;
+}
+.gv-tool-icon-support {
+  border-color:#e2c5ca;
+  background:linear-gradient(150deg,#fbf5f5,#eddcde);
+  box-shadow:inset 0 1px 0 #fff,0 3px 0 #ead7d9;
+  color:#9a5964;
+}
+.gv-tool-copy {display:flex;flex-direction:column;gap:5px;min-width:0;}
+.gv-tool-copy strong {font-size:15px;line-height:1.3;color:#244334;}
+.gv-tool-copy small {font-size:12px;line-height:1.55;color:#5e7368;}
+.gv-tool-copy em {font-size:11px;line-height:1.45;color:#486c57;font-style:normal;font-weight:700;}
+.gv-tool-go {color:#428060;font-size:18px;line-height:1.3;}
+.gv-tools-note {
+  margin:17px 0 0;
+  padding:12px 14px;
+  border:1px solid #dbe5dc;
   border-radius:10px;
-  background:linear-gradient(180deg,#f7fbf8,#eaf4ed);
-  box-shadow:0 2px 0 #d6e7da,inset 0 1px 0 #fff;
-  color:#175b42!important;
-  font:700 13px/1.4 "DM Sans","Segoe UI",sans-serif;
-  text-decoration:none;
-}
-.gv-workspace-empty .gv-project-open:hover {
-  background:#dff0e5;
-  border-color:#84b198;
-}
-.gv-workspace-empty .gv-project-open:focus-visible {
-  outline:3px solid #167653;
-  outline-offset:3px;
-}
-.gv-workspace-empty .gv-project-open-note {
-  display:block;
-  max-width:400px;
-  margin:12px auto 0;
-  color:#647b75;
+  background:#f5f8f5;
   font-size:12px;
-  line-height:1.5;
+  line-height:1.65;
+  color:#526c5b;
+}
+@media(max-width:600px) {
+  .gv-page #gv-ferramentas .gv-workspace-panel { padding:18px 14px; }
+  .gv-tools-grid {grid-template-columns:1fr;}
 }
 .gv-workspace-note {
   display: flex; align-items: flex-start; gap: 10px;
