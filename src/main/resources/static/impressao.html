@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css?v=20261014-1" />
   <link rel="stylesheet" href="css/leitura.css?v=20261014-7" />
-  <link rel="stylesheet" href="css/painel-premium.css?v=20261103-mensal1" />
+  <link rel="stylesheet" href="css/painel-premium.css?v=20261103-mensal2" />
       <!-- Nexo: assistente de navegacao local; sem IA externa ou dados reais. -->
   <link rel="stylesheet" href="css/nexo-assistente.css?v=20261020-context-v1" />
   <script src="js/nexo-agente.js?v=20261027-fallback1" defer></script>
@@ -460,13 +460,13 @@
               <div class="equipment-model">HP LaserJet Pro MFP 4103fdw</div>
               <div class="serial">Série BRBSV730KB</div>
               <div class="reading">
-                <span>Acréscimo entre leituras · não mensal</span>
-                <strong>+1.027</strong>
+                <span>Consumo mensal</span>
+                <strong class="reading-text">Não apurado</strong>
               </div>
-              <div class="card-secondary-data">
+              <details class="equipment-counter-detail"><summary>Ver contador acumulado <span aria-hidden="true">⌄</span></summary><div class="card-secondary-data">
                 <span>Leitura total mais recente</span>
                 <strong>1.083</strong>
-              </div>
+              </div></details>
               <div class="product">Produto 2Z629A</div>
             </article>
 
@@ -479,10 +479,10 @@
                 <span>Consumo em setembro</span>
                 <strong>1.439</strong>
               </div>
-              <div class="card-secondary-data">
+              <details class="equipment-counter-detail"><summary>Ver contador acumulado <span aria-hidden="true">⌄</span></summary><div class="card-secondary-data">
                 <span>Leitura total mais recente</span>
                 <strong>28.201</strong>
-              </div>
+              </div></details>
               <div class="product">Produto 2Z629A</div>
             </article>
 
@@ -495,14 +495,20 @@
                 <span>Consumo em setembro</span>
                 <strong>83</strong>
               </div>
-              <div class="card-secondary-data">
+              <details class="equipment-counter-detail"><summary>Ver contador acumulado <span aria-hidden="true">⌄</span></summary><div class="card-secondary-data">
                 <span>Leitura total mais recente</span>
                 <strong>17.486</strong>
-              </div>
+              </div></details>
               <div class="product">Produto 2Z610A</div>
             </article>
           </div>
 
+          <details class="equipment-archive" id="historico-tecnico">
+            <summary>
+              <span><strong>Ver histórico completo e tabelas técnicas</strong><small>Leituras acumuladas por série, contadores e diferenças entre registros</small></span>
+              <span class="reading-disclosure-arrow" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="equipment-archive-body">
           <div class="panel technical-panel">
             <div class="panel-heading">
               <h3>Dados técnicos dos relatórios</h3>
@@ -737,6 +743,8 @@
               <div class="history-foot">Acréscimo de 1.027 páginas desde a primeira leitura conhecida; <strong>não é consumo mensal</strong>. Scanner = 167 páginas no alimentador + 66 no vidro.</div>
             </article>
           </div>
+            </div>
+          </details>
         </section>
 
         <section class="esg-preview">
