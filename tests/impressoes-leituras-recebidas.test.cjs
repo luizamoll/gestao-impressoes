@@ -48,8 +48,8 @@ test("tabela tecnica usa leitura mais recente por numero de serie", () => {
 
 test("duas leituras do Mestrado produzem 1027 no fechamento atribuido a outubro", () => {
   assert.match(impressao, /2 leituras/);
-  assert.match(app, /Acréscimo entre leituras/);
-  assert.match(app, /Não equivale ao consumo de um mês/);
+  assert.match(app, /Consumo informado de outubro/);
+  assert.match(app, /Diferença entre leituras atribuída a outubro pela responsável/);
   assert.doesNotMatch(app, /é necessária uma segunda leitura/);
   assert.match(gestao, /apuração de outubro/);
 });
