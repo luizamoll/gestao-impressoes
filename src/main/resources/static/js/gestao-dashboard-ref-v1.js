@@ -10,13 +10,15 @@
 
   const destinations = Object.freeze([
     { label: "Página inicial", terms: "home inicio portal", href: "index.html" },
+    { label: "Helpdesk · abrir chamado", terms: "suporte ti chamados help desk", href: "https://helpdesk.unihorizontes.local/Helpdesk" },
+    { label: "Microsoft Teams", terms: "reunioes conversas mensagens equipes", href: "https://teams.microsoft.com/" },
+    { label: "Outlook", terms: "emails correio agenda calendario", href: "https://outlook.office.com/mail/" },
     { label: "Visão geral", terms: "resumo dashboard painel", href: "#gv-visao-geral" },
-    { label: "Projetos", terms: "vikunja equipes projeto", href: "#gv-projetos" },
-    { label: "Indicadores", terms: "prazos tarefas métricas", href: "#gv-indicadores" },
+    { label: "Ferramentas", terms: "aplicativos recursos sistemas central", href: "#gv-ferramentas" },
+    { label: "ESG e consumo responsável", terms: "esg sustentabilidade indicadores", href: "esg.html" },
     { label: "Impressões", terms: "historico consumo franquia relatorio meses", href: "#impressoes" },
     { label: "Destaques da home", terms: "comunicados avisos banners destaques", href: "index.html#destaques" },
     { label: "Biblioteca de Aplicativos", terms: "catalogo aplicativos ferramentas sistemas", href: "aplicativos.html" },
-    { label: "Vikunja · abrir projeto", terms: "vikunja tarefas projetos sistema interno", href: "https://vikunja.unihorizontes.local/projects/3/12" },
     { label: "Central de Automações", terms: "automacoes rotinas ferramentas", href: "automacoes.html" },
     { label: "Gestão Documental", terms: "pdf perseus documentos", href: "gestao-documental.html" },
     { label: "Gestão de Impressões", terms: "equipamentos leitura serie impressora upload", href: "impressao.html" }
