@@ -107,6 +107,6 @@ test("indicadores acompanham competencia sem inventar leitura",()=>{
   assert.match(logic,/if \(refConsumed\) refConsumed\.textContent = d\.consumed/);
   assert.match(logic,/if \(refVariation\) refVariation\.textContent = period === "2026-09"/);
   assert.match(logic,/barButtons\.forEach/);
-  assert.match(html,/Outubro\/2026 · sem leitura/);
+  assert.match(html,/Outubro\/2026 · apuração informada/);
   assert.match(html,/Sem leitura/);
 });
