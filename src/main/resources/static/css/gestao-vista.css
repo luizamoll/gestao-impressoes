@@ -634,3 +634,21 @@
 .gv-latest-detail-note a {font-weight:700;color:#1d6845!important;text-decoration:underline}
 @media(max-width:1080px){.gv-latest-head{flex-direction:column}.gv-latest-head>a{align-self:flex-start}}
 @media(max-width:760px){.gv-latest-grid{grid-template-columns:1fr}.gv-page .gv-latest-readings{padding:17px 14px}}
+
+/* Contadores sao detalhes tecnicos opcionais, nao KPIs do mes. */
+.gv-page .gv-latest-readings{padding:0;overflow:hidden;box-shadow:0 2px 0 #e8eee9}
+.gv-latest-summary{
+  display:flex;align-items:center;justify-content:space-between;gap:15px;
+  padding:14px 18px;list-style:none;cursor:pointer;
+  background:#f9fcfa;color:#24573c
+}
+.gv-latest-summary::-webkit-details-marker{display:none}
+.gv-latest-summary:focus-visible{outline:3px solid #187451;outline-offset:-3px}
+.gv-latest-summary>span:first-child{display:flex;flex-direction:column;gap:3px}
+.gv-latest-summary strong{font-size:14px;line-height:1.35}
+.gv-latest-summary small{font-size:12px;color:#647b6b;line-height:1.4}
+.gv-latest-chevron{font-size:22px;transition:transform .15s}
+.gv-latest-readings[open] .gv-latest-chevron{transform:rotate(180deg)}
+.gv-latest-body{padding:18px 21px 20px;border-top:1px solid #dfebe2}
+@media(max-width:760px){.gv-latest-body{padding:16px 14px}}
+@media(prefers-reduced-motion:reduce){.gv-latest-chevron{transition:none}}
