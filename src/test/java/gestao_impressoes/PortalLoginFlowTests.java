@@ -112,7 +112,7 @@ class PortalLoginFlowTests {
 
         HttpResponse<String> status = getJson(client, "/api/gestao-a-vista/status");
         assertEquals(200, status.statusCode());
-        assertTrue(status.body().contains("aguardando_autorizacao"));
+        assertTrue(status.body().contains("catalogo_disponivel"));
         assertTrue(status.body().contains("\"conectado\":false"));
         assertTrue(status.headers().firstValue("cache-control").orElse("").contains("no-store"));
 
