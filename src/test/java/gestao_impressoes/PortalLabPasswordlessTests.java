@@ -54,7 +54,7 @@ class PortalLabPasswordlessTests {
         assertEquals(200, get("/gestao-documental.html", "text/html").statusCode());
         HttpResponse<String> status = get("/api/gestao-a-vista/status", "application/json");
         assertEquals(200, status.statusCode());
-        assertTrue(status.body().contains("aguardando_autorizacao"));
+        assertTrue(status.body().contains("catalogo_disponivel"));
         assertTrue(status.body().contains("\"conectado\":false"));
     }
 
