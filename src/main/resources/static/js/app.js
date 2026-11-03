@@ -142,14 +142,20 @@ function enhanceMachineHistory() {
         </div>`;
       card.querySelector(".history-card-head")?.after(overview);
     } else if (card.textContent.includes("BRBSV730KB")) {
+      // Duas leituras acumuladas, sem datas de coleta: diferenca nao mensal.
       const overview = document.createElement("div");
       overview.className = "machine-overview new-machine";
       overview.innerHTML = `
         <div class="machine-highlight neutral">
-          <span>Consumo mensal</span><strong class="machine-text-value">Ainda não calculável</strong><small>é necessária uma segunda leitura</small>
+          <span>Acréscimo entre leituras</span><strong>+1.027</strong><small>Não equivale ao consumo de um mês</small>
+        </div>
+        <div class="machine-reading-flow">
+          <div><span>Anterior</span><strong>56</strong></div><div class="flow-arrow">→</div>
+          <div><span>Nova leitura</span><strong>1.083</strong></div><div class="flow-equals">=</div>
+          <div class="flow-result"><span>Diferença acumulada</span><strong>1.027</strong></div>
         </div>
         <div class="machine-message neutral">
-          <strong>Leitura rápida</strong><span>Esta é a primeira leitura registrada. No próximo relatório, o sistema poderá calcular quanto esta máquina consumiu no período.</span>
+          <strong>Leitura rápida</strong><span>O relatório recebido em 03/11/2026 registra 1.083 páginas; a leitura anterior era 56. Como a data de coleta não está informada, ainda não é possível atribuir 1.027 impressões a um mês.</span>
         </div>`;
       card.querySelector(".history-card-head")?.after(overview);
     }
