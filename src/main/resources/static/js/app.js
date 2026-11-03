@@ -170,7 +170,7 @@ function enhanceMachineHistory() {
   });
 
   document.querySelectorAll(".history-table th").forEach(th => {
-    if (th.textContent.trim() === "Diferença") th.textContent = "Consumo desde a leitura anterior";
+    if (th.textContent.trim() === "Diferença") th.textContent = "Diferença entre leituras";
   });
 
   document.querySelectorAll(".history-table tbody tr").forEach(row => {
