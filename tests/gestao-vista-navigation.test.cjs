@@ -3,37 +3,49 @@ const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
-
 const root = path.join(__dirname, "../src/main/resources/static");
-const html = fs.readFileSync(path.join(root,"gestao-a-vista.html"), "utf8");
+const html = fs.readFileSync(path.join(root,"gestao-a-vista.html"),"utf8");
 const search = fs.readFileSync(path.join(root,"js/gestao-dashboard-ref-v1.js"),"utf8");
-const style = fs.readFileSync(path.join(root,"css/gestao-vista.css"),"utf8");
+const logic = fs.readFileSync(path.join(root,"js/gestao-vista.js"),"utf8");
+const css = fs.readFileSync(path.join(root,"css/gestao-vista.css"),"utf8");
 
-test("busca da Gestao a Vista nao retorna secoes removidas", () => {
-  assert.doesNotMatch(search, /href:\s*"index\.html#(?:comunicados|ferramentas)"/);
-  assert.match(search, /href:\s*"index\.html#destaques"/);
-  assert.match(search, /href:\s*"aplicativos\.html"/);
-  assert.match(search, /label: "Destaques da home"/);
-  assert.match(html, /Destaques da home/);
+test("tres areas uteis substituem indicadores vazios e o Vikunja",()=>{
+  assert.equal((html.match(/data-gv-nav=/g)||[]).length,3);
+  assert.equal((html.match(/data-gv-view/g)||[]).length,3);
+  assert.match(html,/id="gv-ferramentas"/);
+  assert.match(html,/id="gv-impressao-view"/);
+  assert.doesNotMatch(html,/Vikunja|vikunja|gv-projetos|gv-indicadores/);
+  assert.match(logic,/"gv-ferramentas": "gv-ferramentas"/);
+  assert.doesNotMatch(logic,/checkConnector|Vikunja|gv-projetos|gv-indicadores/);
 });
 
-test("Vikunja e somente um atalho externo e nao fonte de tarefas no painel", () => {
-  const url = "https://vikunja.unihorizontes.local/projects/3/12";
-  assert.ok(search.includes(url));
-  assert.ok(html.includes(url));
-  assert.match(html, /Projetos não disponíveis neste painel/);
-  assert.match(html, /integração autorizada/);
-  assert.match(html, /Abrir projetos no Vikunja/);
-  assert.match(html, /rel="noopener noreferrer"/);
-  assert.match(style, /\.gv-workspace-empty \.gv-project-open/);
+test("ferramentas existentes abrem rotas e servicos reais, sem tokens",()=>{
+  const internal=["impressao.html","esg.html","automacoes.html","gestao-documental.html"];
+  const external=[
+    "https://helpdesk.unihorizontes.local/Helpdesk",
+    "https://teams.microsoft.com/","https://outlook.office.com/mail/"
+  ];
+  for(const href of [...internal,...external]){
+    assert.ok(html.includes('href="'+href+'"'),href);
+  }
+  assert.equal((html.match(/class="gv-tool-card"/g)||[]).length,7);
+  assert.match(html,/Ainda não há sincronização/);
+  assert.match(css,/\.gv-tools-grid/);
+  assert.match(html,/target="_blank" rel="noopener noreferrer"/);
 });
 
-test("dados sem leitura e estado do conector continuam explicitamente indisponiveis", () => {
-  const calc = fs.readFileSync(path.join(root,"js/gestao-vista.js"),"utf8");
-  assert.match(calc, /"2026-10": \{\s*pages: null/);
-  assert.match(html, /Outubro\/2026 · sem leitura/);
-  assert.match(html, /Vikunja não conectado/);
-  assert.match(html, /id="gvRefPeriod"/);
-  assert.match(html, /id="gvDownloadCsv"/);
-  assert.match(html, /unh-site-header\.css/);
+test("busca aponta para tres areas e ferramentas existentes",()=>{
+  assert.doesNotMatch(search,/gv-projetos|gv-indicadores|Vikunja|index\.html#comunicados|index\.html#ferramentas/);
+  assert.match(search,/href: "index\.html#destaques"/);
+  assert.match(search,/href: "#gv-ferramentas"/);
+  assert.match(search,/href: "gestao-documental\.html"/);
+  assert.match(search,/href: "https:\/\/teams\.microsoft\.com\/"/);
+});
+
+test("historico continua sem transformar leitura ausente em zero",()=>{
+  assert.match(logic,/"2026-10": \{\s*pages: null/);
+  assert.match(html,/Outubro\/2026 · sem leitura/);
+  assert.match(html,/id="gvRefPeriod"/);
+  assert.match(html,/id="gvDownloadCsv"/);
+  assert.match(html,/unh-site-header\.css/);
 });
