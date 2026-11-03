@@ -79,6 +79,8 @@ As fotografias compartilhadas na conversa apresentam relatórios de uso **sem da
 
 **Regra de cálculo:** subtrair apenas contadores acumulados do **mesmo número de série** e em ordem conhecida; apresentar os resultados como *diferença desde o registro anterior*, nunca como total mensal sem datas verificadas. Os valores históricos de agosto/setembro de 2026 (1.016/1.522) e outubro sem consumo apurado permanecem **inalterados**.
 
+**Ajuste de apresentação (03/11/2026):** a captura da Gestão de Impressões mostrou que a seção antiga de outubro recebia destaque antes das leituras recém-cadastradas. Reorganizamos a Visão geral para abrir com os três contadores atualizados e as diferenças por série; a competência de outubro aparece depois, com aviso de que não pode ser apurada sem datas de coleta. O atalho Visão geral agora aponta para as leituras recentes; Equipamentos mantém tabela e histórico completos.
+
 **Próxima integração real:** capturar data da emissão ou da leitura e fonte verificável; cadastrar cada registro em uma fonte única persistente com série, data, contador, mídia e proveniência; consolidar os valores repetidos de HTML/JS no futuro para evitar manutenção de múltiplas cópias. Nada de considerar a seleção de arquivo como importação automática antes de implementar parser e validações.
 
 ## 4. Problemas e dívida técnica identificados
