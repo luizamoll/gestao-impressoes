@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css?v=20261014-1" />
   <link rel="stylesheet" href="css/leitura.css?v=20261014-7" />
-  <link rel="stylesheet" href="css/painel-premium.css?v=20261103-mensal3" />
+  <link rel="stylesheet" href="css/painel-premium.css?v=20261103-mensal4" />
       <!-- Nexo: assistente de navegacao local; sem IA externa ou dados reais. -->
   <link rel="stylesheet" href="css/nexo-assistente.css?v=20261020-context-v1" />
   <script src="js/nexo-agente.js?v=20261027-fallback1" defer></script>
@@ -281,11 +281,35 @@
           <div class="month-comparison-heading">
             <div>
               <span class="eyebrow">Histórico mensal</span>
-              <h2 id="monthComparisonTitle">Comparação mês a mês</h2>
-              <p>Todos os meses ficam visíveis. A leitura é o total acumulado da impressora; o consumo mensal é calculado pela diferença para o mês anterior.</p>
+              <h2 id="monthComparisonTitle">Consumo mensal confirmado</h2>
+              <p>Aqui aparecem apenas as impressões consumidas por competência. Contadores acumulados e cálculos técnicos ficam recolhidos para evitar confusão.</p>
             </div>
           </div>
 
+          <div class="monthly-only-cards" role="list" aria-label="Impressões consumidas em cada competência">
+            <article class="monthly-only-card" role="listitem">
+              <span>Agosto/2026</span>
+              <strong>1.016</strong>
+              <small>Impressões no mês · 25,4% da franquia</small>
+            </article>
+            <article class="monthly-only-card is-latest" role="listitem">
+              <span>Setembro/2026 · último mês apurado</span>
+              <strong>1.522</strong>
+              <small>Impressões no mês · 38,1% da franquia</small>
+            </article>
+            <article class="monthly-only-card is-pending" role="listitem">
+              <span>Outubro/2026</span>
+              <strong>—</strong>
+              <small>Consumo não apurado · falta confirmar a data das leituras</small>
+            </article>
+          </div>
+
+          <details class="monthly-technical-comparison" id="comparativo-tecnico">
+            <summary>
+              <span><strong>Consultar contadores históricos por mês</strong><small>Valores acumulados por impressora e memória de cálculo — não são o consumo mensal</small></span>
+              <span class="reading-disclosure-arrow" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="monthly-technical-body">
           <div class="timeline-table-wrap">
             <table class="timeline-table">
               <thead>
@@ -416,6 +440,8 @@
                 <span>Total consumido em setembro</span>
                 <strong>1.439 + 83 = 1.522</strong>
               </div>
+            </div>
+          </details>
             </div>
           </details>
         </section>
