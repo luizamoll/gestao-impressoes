@@ -602,6 +602,11 @@ body, .app-shell,.main,.content{max-width:100%}
 @media(prefers-reduced-motion:reduce){.reading-disclosure-arrow{transition:none}}
 
 /* Contadores de vida util: todos os numeros tecnicos ficam fechados por padrao. */
+/* Forcar ocultacao mesmo se estilos de cartoes/tabelas definirem display. */
+.new-readings-disclosure:not([open]) > :not(summary),
+.equipment-counter-detail:not([open]) > :not(summary),
+.equipment-archive:not([open]) > :not(summary){display:none!important}
+
 .equipment-counter-detail{margin-top:11px;border-top:1px solid #e3ece5;padding-top:9px}
 .equipment-counter-detail>summary {
   cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;
