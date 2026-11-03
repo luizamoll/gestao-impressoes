@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/portal.css?v=20261015-v2" />
-  <link rel="stylesheet" href="css/gestao-vista.css?v=20261029-vikunja1" />
+  <link rel="stylesheet" href="css/gestao-vista.css?v=20261103-ferramentas1" />
   <script src="js/portal.js?v=20261014-8" defer></script>
-  <script src="js/gestao-vista.js?v=20261019-funcional-v1" defer></script>
+  <script src="js/gestao-vista.js?v=20261103-ferramentas1" defer></script>
   <!-- Nexo: assistente de navegacao local; sem IA externa ou dados reais. -->
   <link rel="stylesheet" href="css/nexo-assistente.css?v=20261020-context-v1" />
   <link rel="stylesheet" href="css/portal-palette-v1.css?v=20261019-v1" />
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="css/gestao-dashboard-ref-v1.css?v=20261029-header2" />
   <script src="js/nexo-agente.js?v=20261027-fallback1" defer></script>
   <script src="js/nexo-assistente.js?v=20261027-fallback1" defer></script>
-  <script src="js/gestao-dashboard-ref-v1.js?v=20261029-searchfix1" defer></script>
+  <script src="js/gestao-dashboard-ref-v1.js?v=20261103-ferramentas1" defer></script>
   <link rel="stylesheet" href="css/unh-site-header.css?v=20261029-fosco1" />
 </head>
 <body class="portal-body gv-body gv-ref-body">
@@ -55,19 +55,18 @@
     <p class="gv-ref-side-label">ACOMPANHAMENTO</p>
     <nav class="gv-workspace-menu" aria-label="Navegação da Gestão à Vista">
       <a href="#gv-visao-geral" data-gv-nav="gv-visao-geral" aria-current="location" class="gv-workspace-menu-current"><span aria-hidden="true">▦</span> Visão geral</a>
-      <a href="#gv-projetos" data-gv-nav="gv-projetos"><span aria-hidden="true">▤</span> Projetos</a>
-      <a href="#gv-indicadores" data-gv-nav="gv-indicadores"><span aria-hidden="true">◫</span> Indicadores</a>
+      <a href="#gv-ferramentas" data-gv-nav="gv-ferramentas"><span aria-hidden="true">▤</span> Ferramentas</a>
       <a href="#impressoes" data-gv-nav="impressoes"><span aria-hidden="true">▥</span> Impressões</a>
     </nav>
     <p class="gv-ref-side-label gv-ref-side-label-secondary">FERRAMENTAS E SERVIÇOS</p>
     <nav class="gv-ref-global-nav" aria-label="Ferramentas e serviços">
-      <a href="aplicativos.html"><span aria-hidden="true">⚒</span> Ferramentas</a>
+      <a href="aplicativos.html"><span aria-hidden="true">⚒</span> Biblioteca de Aplicativos</a>
       <a href="index.html#destaques"><span aria-hidden="true">▣</span> Destaques</a>
       <a href="automacoes.html"><span aria-hidden="true">⌘</span> Automações</a>
       <a href="gestao-documental.html"><span aria-hidden="true">▤</span> Documentos</a>
       <a href="impressao.html"><span aria-hidden="true">▧</span> Gestão de Impressões</a>
     </nav>
-    <p class="gv-ref-side-footer">Laboratório · Integrações internas em validação</p>
+    <p class="gv-ref-side-footer">Módulos existentes · histórico identificado</p>
   </aside>
   <header class="gv-ref-topbar">
     <button class="gv-ref-menu-toggle" id="gvRefMenuToggle" type="button" aria-expanded="false" aria-controls="gvRefSidebar" aria-label="Abrir menu lateral">☰</button>
@@ -101,7 +100,7 @@
       <div class="gv-intro-art gv-intro-photo" aria-hidden="true"></div>
     </section>
 
-    <!-- Visualizacoes locais: sem dados reais do Vikunja ate homologacao da TI. -->
+    <!-- Painel de acompanhamento: historico de impressoes e acessos diretos a ferramentas existentes. -->
     <div class="gv-workspace" id="gv-painel">
 
       <div class="gv-workspace-main">
@@ -110,9 +109,9 @@
             <div>
               <span class="gv-workspace-kicker">Visão da operação</span>
               <h2 id="gvWorkspaceTitle">Visão geral</h2>
-              <p>Informações operacionais em um só lugar. Nesta etapa, podemos consultar o histórico de Impressões.</p>
+              <p>Consulte o histórico de Impressões e acesse módulos já existentes, sem confundir dados demonstrativos com informações em tempo real.</p>
             </div>
-            <span class="gv-workspace-status" id="gvConnectorStatus" role="status" aria-live="polite"><span aria-hidden="true"></span><span id="gvConnectorText">Verificando integração…</span></span>
+            <span class="gv-workspace-status" id="gvConnectorStatus" role="status" aria-live="polite"><span aria-hidden="true"></span><span id="gvConnectorText">Histórico local · sem sincronização automática</span></span>
           </div>
 
           <section class="gv-ref-summary" aria-label="Resumo da competência selecionada">
@@ -126,7 +125,7 @@
             </article>
             <article class="gv-ref-stat">
               <span class="gv-ref-stat-icon gv-ref-stat-icon-sage" aria-hidden="true">▤</span>
-              <div><span>Projetos ativos</span><strong>—</strong><small>Vikunja não conectado · <a href="#gv-projetos">Ver status →</a></small></div>
+              <div><span>Ferramentas</span><strong>7</strong><small>Acessos diretos · <a href="#gv-ferramentas">Explorar →</a></small></div>
             </article>
           </section>
           <div class="gv-ref-analysis-grid">
@@ -159,8 +158,8 @@
             <nav class="gv-ref-shortcuts" aria-label="Acesso rápido">
               <h3>Acesso rápido</h3>
               <a href="index.html#destaques"><span aria-hidden="true">▣</span>Destaques da home <span aria-hidden="true">→</span></a>
-              <a href="#gv-projetos"><span aria-hidden="true">▤</span>Projetos <span aria-hidden="true">→</span></a>
-              <a href="#gv-indicadores"><span aria-hidden="true">◫</span>Indicadores <span aria-hidden="true">→</span></a>
+              <a href="#gv-ferramentas"><span aria-hidden="true">▤</span>Ferramentas <span aria-hidden="true">→</span></a>
+              <a href="gestao-documental.html"><span aria-hidden="true">◫</span>Documentos <span aria-hidden="true">→</span></a>
               <a href="#impressoes"><span aria-hidden="true">▥</span>Impressões <span aria-hidden="true">→</span></a>
               <a href="automacoes.html"><span aria-hidden="true">⌘</span>Automações <span aria-hidden="true">→</span></a>
             </nav>
@@ -207,58 +206,74 @@
           <section class="gv-next-modules" aria-labelledby="gvModulesTitle">
             <h3 id="gvModulesTitle">Outras áreas de acompanhamento</h3>
             <div class="gv-next-modules-grid">
-              <a href="#gv-projetos" class="gv-next-module">
-                <span class="gv-next-module-name">Projetos</span>
-                <span class="gv-next-module-description">Áreas e equipes acompanhadas</span>
-                <span class="gv-next-module-status">Integração pendente <span aria-hidden="true">→</span></span>
+              <a href="#gv-ferramentas" class="gv-next-module">
+                <span class="gv-next-module-name">Central de ferramentas</span>
+                <span class="gv-next-module-description">Acessos aos sistemas disponíveis</span>
+                <span class="gv-next-module-status">Explorar <span aria-hidden="true">→</span></span>
               </a>
-              <a href="#gv-indicadores" class="gv-next-module">
-                <span class="gv-next-module-name">Indicadores</span>
-                <span class="gv-next-module-description">Prazos, entregas e tarefas</span>
-                <span class="gv-next-module-status">Integração pendente <span aria-hidden="true">→</span></span>
+              <a href="automacoes.html" class="gv-next-module">
+                <span class="gv-next-module-name">Central de Automações</span>
+                <span class="gv-next-module-description">Consulte rotinas e recursos catalogados</span>
+                <span class="gv-next-module-status">Abrir módulo <span aria-hidden="true">→</span></span>
               </a>
             </div>
-            <p class="gv-integration-footnote">O Vikunja institucional ainda não foi conectado. Indicadores de tarefas dependem da autorização da TI.</p>
+            <p class="gv-integration-footnote">Acessos diretos disponíveis. A importação automática de dados entre módulos ainda não foi implantada.</p>
           </section>
         </section>
 
-        <section id="gv-projetos" data-gv-view aria-labelledby="gvProjectsTitle">
+        <section id="gv-ferramentas" data-gv-view aria-labelledby="gvToolsTitle">
           <div class="gv-workspace-titlebar">
-            <div><span class="gv-workspace-kicker">Equipes e projetos</span>
-              <h2 id="gvProjectsTitle">Projetos acompanhados</h2>
-              <p>Os projetos virão do Vikunja interno. Nenhum nome, responsável ou tarefa institucional será exibido sem autorização.</p>
+            <div><span class="gv-workspace-kicker">Ferramentas existentes</span>
+              <h2 id="gvToolsTitle">Central de ferramentas</h2>
+              <p>Abra os módulos e serviços já disponíveis. Cada sistema continua responsável pelos próprios dados.</p>
             </div>
           </div>
-          <div class="gv-workspace-panel">
-            <div class="gv-workspace-panel-head"><div><span>FONTE: VIKUNJA</span><h3>Integração ainda não habilitada</h3></div></div>
-            <div class="gv-workspace-empty">
-              <strong>Projetos não disponíveis neste painel</strong>
-              <p>Isso não significa que não existam projetos. O Portal ainda não tem uma integração autorizada para consultar os dados do Vikunja.</p>
-              <a class="gv-project-open" href="https://vikunja.unihorizontes.local/projects/3/12" target="_blank" rel="noopener noreferrer">Abrir projetos no Vikunja <span aria-hidden="true">↗</span></a>
-              <small class="gv-project-open-note">O acesso abre o sistema original e pode exigir rede interna e autenticação.</small>
+          <section class="gv-workspace-panel" aria-labelledby="gvPortalModules">
+            <div class="gv-workspace-panel-head"><div><span>NO PORTAL</span><h3 id="gvPortalModules">Módulos internos</h3></div></div>
+            <div class="gv-tools-grid">
+              <a class="gv-tool-card" href="impressao.html">
+                <span class="gv-tool-icon" aria-hidden="true">▧</span>
+                <span class="gv-tool-copy"><strong>Gestão de Impressões</strong><small>Consulte equipamentos e relatórios no módulo original.</small><em>Histórico local</em></span>
+                <span class="gv-tool-go" aria-hidden="true">→</span>
+              </a>
+              <a class="gv-tool-card" href="esg.html">
+                <span class="gv-tool-icon" aria-hidden="true">◉</span>
+                <span class="gv-tool-copy"><strong>ESG e consumo</strong><small>Acesse indicadores e orientações sobre consumo responsável.</small><em>Módulo do Portal</em></span>
+                <span class="gv-tool-go" aria-hidden="true">→</span>
+              </a>
+              <a class="gv-tool-card" href="automacoes.html">
+                <span class="gv-tool-icon" aria-hidden="true">⚙</span>
+                <span class="gv-tool-copy"><strong>Central de Automações</strong><small>Explore rotinas catalogadas e seus estágios.</small><em>Catálogo do Portal</em></span>
+                <span class="gv-tool-go" aria-hidden="true">→</span>
+              </a>
+              <a class="gv-tool-card" href="gestao-documental.html">
+                <span class="gv-tool-icon" aria-hidden="true">▤</span>
+                <span class="gv-tool-copy"><strong>Gestão Documental</strong><small>Acesse os recursos locais do laboratório Perseus.</small><em>Módulo do Portal</em></span>
+                <span class="gv-tool-go" aria-hidden="true">→</span>
+              </a>
             </div>
-          </div>
-          <div class="gv-workspace-note"><span aria-hidden="true">ⓘ</span><p>Próximo passo técnico: confirmar endereço interno, versão da API e permissões com a TI. O Portal não duplicará a edição de tarefas do Vikunja.</p></div>
-        </section>
-
-        <section id="gv-indicadores" data-gv-view aria-labelledby="gvIndicatorsTitle">
-          <div class="gv-workspace-titlebar">
-            <div><span class="gv-workspace-kicker">Indicadores operacionais</span>
-              <h2 id="gvIndicatorsTitle">Prazos e entregas</h2>
-              <p>Indicadores calculados somente sobre tarefas permitidas para sua conta. Sem integração, os valores permanecem indisponíveis.</p>
+          </section>
+          <section class="gv-workspace-panel gv-tools-external" aria-labelledby="gvExternalModules">
+            <div class="gv-workspace-panel-head"><div><span>SERVIÇOS EXTERNOS</span><h3 id="gvExternalModules">Acessos institucionais</h3></div></div>
+            <div class="gv-tools-grid">
+              <a class="gv-tool-card" href="https://helpdesk.unihorizontes.local/Helpdesk" target="_blank" rel="noopener noreferrer">
+                <span class="gv-tool-icon gv-tool-icon-support" aria-hidden="true">+</span>
+                <span class="gv-tool-copy"><strong>Helpdesk</strong><small>Abra e acompanhe chamados no sistema de suporte.</small><em>Acesso externo com autenticação própria</em></span>
+                <span class="gv-tool-go" aria-hidden="true">↗</span>
+              </a>
+              <a class="gv-tool-card" href="https://teams.microsoft.com/" target="_blank" rel="noopener noreferrer">
+                <span class="gv-tool-icon" aria-hidden="true">T</span>
+                <span class="gv-tool-copy"><strong>Microsoft Teams</strong><small>Abra suas conversas e reuniões.</small><em>Acesso externo com conta institucional</em></span>
+                <span class="gv-tool-go" aria-hidden="true">↗</span>
+              </a>
+              <a class="gv-tool-card" href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">
+                <span class="gv-tool-icon" aria-hidden="true">✉</span>
+                <span class="gv-tool-copy"><strong>Outlook</strong><small>Consulte mensagens e calendário na sua conta.</small><em>Acesso externo com conta institucional</em></span>
+                <span class="gv-tool-go" aria-hidden="true">↗</span>
+              </a>
             </div>
-          </div>
-          <div class="gv-workspace-stats" aria-label="Indicadores de tarefas não conectados">
-            <article class="gv-workspace-stat"><span>Tarefas abertas</span><strong>—</strong><small>Aguardando integração</small></article>
-            <article class="gv-workspace-stat"><span>Em atraso</span><strong>—</strong><small>Aguardando integração</small></article>
-            <article class="gv-workspace-stat"><span>Próximos prazos</span><strong>—</strong><small>Aguardando integração</small></article>
-            <article class="gv-workspace-stat"><span>Concluídas no período</span><strong>—</strong><small>Aguardando integração</small></article>
-          </div>
-          <details class="gv-indicator-explanation">
-            <summary>Como calcularemos os indicadores?</summary>
-            <p><strong>Abertas:</strong> tarefas ainda não concluídas. <strong>Em atraso:</strong> tarefas abertas com vencimento ultrapassado. <strong>Próximos prazos:</strong> tarefas abertas com vencimento na janela escolhida. <strong>Concluídas:</strong> tarefas efetivamente finalizadas durante o período selecionado.</p>
-            <p>As regras dependerão dos campos e permissões confirmados na versão do Vikunja da UNH.</p>
-          </details>
+            <p class="gv-tools-note">Nesta primeira etapa, a integração é de navegação: os atalhos abrem os aplicativos reais. Ainda não há sincronização de chamados, e-mails, tarefas ou outros dados de serviços externos.</p>
+          </section>
         </section>
 
         <div data-gv-view id="gv-impressao-view">
