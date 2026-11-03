@@ -637,3 +637,41 @@ body, .app-shell,.main,.content{max-width:100%}
   .equipment-archive>summary{padding:13px 14px}
   .equipment-archive-body{padding:13px 10px 18px}
 }
+
+/* Consumo mensal em primeiro plano; contadores historicos fechados por padrao. */
+.monthly-only-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:19px 0 17px}
+.monthly-only-card{
+  display:flex;flex-direction:column;gap:7px;min-width:0;
+  padding:19px 18px;border:1px solid #dae7de;border-radius:15px;
+  background:#fff;box-shadow:0 2px 0 #e7eee9,0 7px 19px rgba(27,71,47,.04)
+}
+.monthly-only-card>span{font-weight:700;color:#4e6a58;font-size:12px;line-height:1.45}
+.monthly-only-card>strong{
+  color:#19583b;font-size:clamp(26px,2.7vw,37px);line-height:1.25;
+  font-variant-numeric:tabular-nums;letter-spacing:-.04em
+}
+.monthly-only-card>small{color:#5b7162;font-size:12px;line-height:1.5}
+.monthly-only-card.is-latest{background:#f0f7f2;border-color:#bcd9c4;box-shadow:0 3px 0 #e0eee3,0 8px 22px rgba(27,71,47,.045)}
+.monthly-only-card.is-pending>strong{color:#657e6b}
+.monthly-technical-comparison{
+  border:1px solid #dce7df;border-radius:13px;background:#fff;overflow:hidden;
+}
+.monthly-technical-comparison>summary{
+  display:flex;align-items:center;justify-content:space-between;gap:13px;
+  padding:15px 17px;background:#f9fcfa;color:#25593d;cursor:pointer;list-style:none
+}
+.monthly-technical-comparison>summary::-webkit-details-marker{display:none}
+.monthly-technical-comparison>summary>span:first-child{display:flex;flex-direction:column;gap:3px}
+.monthly-technical-comparison>summary strong{font-size:13px;line-height:1.4}
+.monthly-technical-comparison>summary small{font-size:12px;color:#637b6b;line-height:1.5}
+.monthly-technical-comparison[open]>summary .reading-disclosure-arrow{transform:rotate(180deg)}
+.monthly-technical-comparison:not([open])>:not(summary){display:none!important}
+.monthly-technical-body{padding:18px 16px 20px;border-top:1px solid #e3ece5}
+.monthly-technical-body .timeline-table-wrap{overflow-x:auto}
+.monthly-technical-comparison>summary:focus-visible{outline:3px solid #187451;outline-offset:-3px}
+@media(max-width:900px){.monthly-only-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){
+ .monthly-only-cards{grid-template-columns:1fr;gap:10px}
+ .monthly-technical-body{padding:13px 9px}
+ .monthly-only-card{padding:17px 15px}
+}
