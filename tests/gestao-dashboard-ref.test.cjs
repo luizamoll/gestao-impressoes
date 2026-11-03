@@ -52,18 +52,19 @@ function mount() {
 test("a tela usa menu lateral, historico real e Nexo original",()=>{
   assert.match(html,/class="portal-body gv-body gv-ref-body"/);
   assert.match(html,/id="gvRefSidebar"/);
-  assert.equal((html.match(/data-gv-nav=/g)||[]).length,4);
-  assert.equal((html.match(/data-gv-view/g)||[]).length,4);
+  assert.equal((html.match(/data-gv-nav=/g)||[]).length,3);
+  assert.equal((html.match(/data-gv-view/g)||[]).length,3);
   assert.match(html,/id="gvRefConsumed"/);
   assert.match(html,/id="gvRefVariation"/);
   assert.match(html,/id="gvRefPeriod"/);
   assert.match(html,/id="gvRefSearch"/);
   assert.match(html,/id="gvRefHelp"/);
   assert.match(html,/id="gvConnectorStatus"/);
-  assert.match(html,/href="index\.html#comunicados"/);
+  assert.ok(html.includes('href="index.html#destaques"'));
   assert.match(html,/gestao-dashboard-ref-v1\.css/);
   assert.match(html,/gestao-dashboard-ref-v1\.js/);
-  assert.match(html,/Vikunja não conectado/);
+  assert.match(html,/Central de ferramentas/);
+  assert.doesNotMatch(html,/Vikunja|gv-projetos|gv-indicadores/);
   assert.doesNotMatch(html,/12 projetos ativos|<strong>12<\/strong>/);
   assert.doesNotMatch(html,/Mai\/2026|Jun\/2026|Jul\/2026/);
   assert.match(css,/\.gv-ref-body \.nexo-widget/);
