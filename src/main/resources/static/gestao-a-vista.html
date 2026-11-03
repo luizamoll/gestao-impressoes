@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/portal.css?v=20261015-v2" />
   <link rel="stylesheet" href="css/gestao-vista.css?v=20261103-mensal2" />
   <script src="js/portal.js?v=20261014-8" defer></script>
-  <script src="js/gestao-vista.js?v=20261103-ferramentas1" defer></script>
+  <script src="js/gestao-vista.js?v=20261103-outubro1" defer></script>
   <!-- Nexo: assistente de navegacao local; sem IA externa ou dados reais. -->
   <link rel="stylesheet" href="css/nexo-assistente.css?v=20261020-context-v1" />
   <link rel="stylesheet" href="css/portal-palette-v1.css?v=20261019-v1" />
@@ -178,11 +178,11 @@
                   <button type="button" class="gv-ref-chart-bar" data-gv-period-target="2026-08" aria-label="Agosto de 2026: 1.016 impressões; selecionar competência" aria-pressed="false">
                     <span class="gv-ref-chart-value">1.016</span><span class="gv-ref-chart-column" style="--gv-chart-height:25.4%"></span><span class="gv-ref-chart-label">Ago/26</span>
                   </button>
-                  <button type="button" class="gv-ref-chart-bar gv-ref-chart-selected" data-gv-period-target="2026-09" aria-label="Setembro de 2026: 1.522 impressões; selecionar competência" aria-pressed="true">
+                  <button type="button" class="gv-ref-chart-bar" data-gv-period-target="2026-09" aria-label="Setembro de 2026: 1.522 impressões; selecionar competência" aria-pressed="false">
                     <span class="gv-ref-chart-value">1.522</span><span class="gv-ref-chart-column" style="--gv-chart-height:38.05%"></span><span class="gv-ref-chart-label">Set/26</span>
                   </button>
-                  <button type="button" class="gv-ref-chart-bar gv-ref-chart-unknown" data-gv-period-target="2026-10" aria-label="Outubro de 2026: sem leitura apurada; selecionar competência" aria-pressed="false">
-                    <span class="gv-ref-chart-value">Sem leitura</span><span class="gv-ref-chart-column" aria-hidden="true"></span><span class="gv-ref-chart-label">Out/26</span>
+                  <button type="button" class="gv-ref-chart-bar gv-ref-chart-selected" data-gv-period-target="2026-10" aria-label="Outubro de 2026: 1.664 impressões conforme período informado; selecionar competência" aria-pressed="true">
+                    <span class="gv-ref-chart-value">1.664</span><span class="gv-ref-chart-column" style="--gv-chart-height:41.6%"></span><span class="gv-ref-chart-label">Out/26</span>
                   </button>
                 </div>
               </div>
@@ -329,24 +329,24 @@
             </select>
           </label>
         </div>
-        <p class="gv-warning">Os valores desta versão são históricos e não estão sincronizados com um banco de dados. Outubro ainda não possui uma leitura de consumo confirmada.</p>
-        <p class="gv-latest-detail-note"><strong>Dados técnicos disponíveis:</strong> três relatórios aguardam conferência da competência, com data da coleta a confirmar. Os contadores acumulados ficam recolhidos na seção de detalhes; <a href="impressao.html#equipment">consultar por equipamento ↗</a>. Eles não modificam os totais mensais históricos.</p>
+        <p class="gv-warning">Os valores são registros locais sem sincronização automática. A apuração de outubro considera o período informado pela responsável; os relatórios HP não apresentam data impressa da coleta.</p>
+        <p class="gv-latest-detail-note"><strong>Dados técnicos disponíveis:</strong> três relatórios compõem a apuração informada de outubro, embora a data da coleta não apareça nas folhas. Os contadores acumulados ficam recolhidos na seção de detalhes; <a href="impressao.html#equipment">consultar por equipamento ↗</a>. Suas diferenças compõem o consumo informado de outubro.</p>
         <div class="gv-kpis" aria-label="Indicadores da competência selecionada">
-          <article class="gv-kpi gv-kpi-main"><span>Consumo apurado</span><strong id="gvConsumed">1.522</strong><small id="gvConsumedNote">Impressões em setembro</small></article>
+          <article class="gv-kpi gv-kpi-main"><span>Consumo apurado</span><strong id="gvConsumed">1.664</strong><small id="gvConsumedNote">Impressões em outubro</small></article>
           <article class="gv-kpi"><span>Franquia mensal</span><strong>4.000</strong><small>Limite contratado</small></article>
-          <article class="gv-kpi"><span>Saldo calculado</span><strong id="gvRemaining">2.478</strong><small id="gvRemainingNote">Após o consumo do mês</small></article>
-          <article class="gv-kpi gv-kpi-delta" id="gvTrend"><span>Variação anterior</span><strong id="gvDelta">+506</strong><small id="gvDeltaNote">+49,8% versus agosto</small></article>
+          <article class="gv-kpi"><span>Saldo calculado</span><strong id="gvRemaining">2.336</strong><small id="gvRemainingNote">Após o consumo do mês</small></article>
+          <article class="gv-kpi gv-kpi-delta" id="gvTrend"><span>Variação anterior</span><strong id="gvDelta">+142</strong><small id="gvDeltaNote">+9,3% versus setembro</small></article>
         </div>
   
         <section class="gv-performance gv-detail-performance" aria-labelledby="gvDetailPerformanceTitle">
           <div class="gv-performance-top">
             <div><h3 id="gvDetailPerformanceTitle">Uso da franquia</h3><p>Consumo registrado na competência selecionada</p></div>
-            <strong id="gvDetailUsage">38,1%</strong>
+            <strong id="gvDetailUsage">41,6%</strong>
           </div>
           <div class="gv-performance-track" role="progressbar" id="gvDetailUsageTrack"
                aria-label="Porcentagem consumida da franquia na competência" aria-valuemin="0" aria-valuemax="100"
                aria-valuenow="38.1" aria-valuetext="38,1% da franquia mensal">
-            <span id="gvDetailUsageFill" style="width:38.05%"></span>
+            <span id="gvDetailUsageFill" style="width:41.6%"></span>
           </div>
         </section>
         <div class="gv-panels">
@@ -355,33 +355,33 @@
               <div><h3 id="gvHistoryTitle">Comparação mensal</h3><p>Proporção em relação à franquia mensal de 4.000.</p></div>
               <span class="gv-caption-pill">Histórico</span>
             </div>
-            <div class="gv-bars" role="group" aria-label="Agosto: 1.016 impressões, 25,4% da franquia. Setembro: 1.522 impressões, 38,1% da franquia. Outubro: sem leitura apurada.">
+            <div class="gv-bars" role="group" aria-label="Agosto: 1.016 impressões, 25,4% da franquia. Setembro: 1.522 impressões, 38,1% da franquia. Outubro: 1.664 impressões, 41,6% da franquia.">
               <div class="gv-bar-row" data-period="2026-08">
                 <button type="button" class="gv-bar-select" data-gv-period-target="2026-08" aria-pressed="false" aria-label="Selecionar agosto de 2026">
                   <strong>Agosto/2026</strong><span>1.016 · 25,4%</span>
                 </button>
                 <div class="gv-track"><span style="width:25.4%"></span></div>
               </div>
-              <div class="gv-bar-row gv-bar-selected" data-period="2026-09">
-                <button type="button" class="gv-bar-select" data-gv-period-target="2026-09" aria-pressed="true" aria-label="Selecionar setembro de 2026">
+              <div class="gv-bar-row" data-period="2026-09">
+                <button type="button" class="gv-bar-select" data-gv-period-target="2026-09" aria-pressed="false" aria-label="Selecionar setembro de 2026">
                   <strong>Setembro/2026</strong><span>1.522 · 38,1%</span>
                 </button>
                 <div class="gv-track"><span style="width:38.05%"></span></div>
               </div>
-              <div class="gv-bar-row gv-bar-waiting" data-period="2026-10">
-                <button type="button" class="gv-bar-select" data-gv-period-target="2026-10" aria-pressed="false" aria-label="Selecionar outubro de 2026 sem leitura">
-                  <strong>Outubro/2026</strong><span>Aguardando leitura</span>
+              <div class="gv-bar-row gv-bar-selected" data-period="2026-10">
+                <button type="button" class="gv-bar-select" data-gv-period-target="2026-10" aria-pressed="true" aria-label="Selecionar outubro de 2026: 1.664 impressões">
+                  <strong>Outubro/2026</strong><span>1.664 · 41,6%</span>
                 </button>
-                <div class="gv-track"><span style="width:0%"></span></div>
-                <small>Sem barra porque o consumo não foi apurado, não porque foi zero.</small>
+                <div class="gv-track"><span style="width:41.6%"></span></div>
+                <small>Competência informada pela responsável; data de coleta ausente no documento.</small>
               </div>
             </div>
             <div class="gv-insight gv-insight-alert" id="gvInsight" role="status" aria-live="polite">
-              <span id="gvInsightIcon" aria-hidden="true">↗</span>
-              <p id="gvInsightText">De agosto para setembro, o consumo aumentou 506 impressões (+49,8%). Vale acompanhar essa variação.</p>
+              <span id="gvInsightIcon" aria-hidden="true">✓</span>
+              <p id="gvInsightText">Outubro registra 1.664 impressões, 142 a mais que setembro (+9,3%), conforme período informado pela responsável.</p>
             </div>
             <details class="gv-method"><summary>Como os indicadores são calculados?</summary>
-              <p>Consumo mensal = diferença entre duas leituras acumuladas do mesmo equipamento. A franquia de 4.000 é independente para cada mês. Sem leitura suficiente, o consumo é desconhecido — não zero.</p>
+              <p>Consumo mensal = diferença entre duas leituras acumuladas do mesmo equipamento. A franquia de 4.000 é independente para cada mês. Sem leitura suficiente, o consumo seria desconhecido — não zero. Outubro foi atribuído à competência pela responsável.</p>
             </details>
           </section>
           <aside class="gv-panel gv-reading" aria-labelledby="gvReadTitle">
@@ -392,7 +392,7 @@
             <a class="gv-open-source" href="impressao.html?v=20261014-3">Abrir Gestão de Impressões <span aria-hidden="true">→</span></a>
           </aside>
         </div>
-        <div class="gv-source"><span aria-hidden="true">●</span><p><strong>Fonte:</strong> registros históricos de agosto e setembro/2026 do projeto de impressões. Números fixos, ainda sujeitos à validação institucional antes de qualquer publicação em produção.</p></div>
+        <div class="gv-source"><span aria-hidden="true">●</span><p><strong>Fonte:</strong> histórico de agosto e setembro e apuração de outubro informada pela responsável a partir de relatórios HP recebidos em 03/11/2026. Dados locais sem sincronização automática e sujeitos a validação institucional.</p></div>
       </section>
         </div>
       </div>
