@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/portal.css?v=20261015-v2" />
-  <link rel="stylesheet" href="css/gestao-vista.css?v=20261103-ferramentas1" />
+  <link rel="stylesheet" href="css/gestao-vista.css?v=20261103-leituras1" />
   <script src="js/portal.js?v=20261014-8" defer></script>
   <script src="js/gestao-vista.js?v=20261103-ferramentas1" defer></script>
   <!-- Nexo: assistente de navegacao local; sem IA externa ou dados reais. -->
@@ -127,6 +127,33 @@
               <span class="gv-ref-stat-icon gv-ref-stat-icon-sage" aria-hidden="true">▤</span>
               <div><span>Ferramentas</span><strong>7</strong><small>Acessos diretos · <a href="#gv-ferramentas">Explorar →</a></small></div>
             </article>
+          </section>
+          <section class="gv-latest-readings" aria-labelledby="gvLatestReportsTitle">
+            <div class="gv-latest-head">
+              <div><span class="gv-workspace-kicker">Relatórios recebidos em 03/11/2026</span>
+                <h3 id="gvLatestReportsTitle">Novas leituras de impressoras</h3>
+                <p>Contadores acumulados dos relatórios HP. As datas de coleta não estão informadas: as diferenças abaixo são <strong>entre leituras</strong>, não representam um mês nem consumo da franquia.</p>
+              </div>
+              <a href="impressao.html#equipment">Conferir equipamento por série <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="gv-latest-grid">
+              <article class="gv-latest-card">
+                <span>Graduação + RH <small>BRBST2P00K</small></span>
+                <strong>28.201</strong>
+                <small>Anterior: 27.582 · diferença: <b>+619</b></small>
+              </article>
+              <article class="gv-latest-card">
+                <span>Reserva Graduação + RH <small>BRBST160GT</small></span>
+                <strong>17.486</strong>
+                <small>Anterior: 17.468 · diferença: <b>+18</b></small>
+              </article>
+              <article class="gv-latest-card">
+                <span>Secretaria do Mestrado <small>BRBSV730KB</small></span>
+                <strong>1.083</strong>
+                <small>Anterior: 56 · diferença: <b>+1.027</b></small>
+              </article>
+            </div>
+            <p class="gv-latest-source">Fonte: fotografias dos relatórios de uso HP enviadas para registro; dados não sincronizados automaticamente. Competência mensal da coleta: a confirmar.</p>
           </section>
           <div class="gv-ref-analysis-grid">
             <section class="gv-ref-history-chart" aria-labelledby="gvRefChartTitle">
@@ -297,6 +324,7 @@
           </label>
         </div>
         <p class="gv-warning">Os valores desta versão são históricos e não estão sincronizados com um banco de dados. Outubro ainda não possui uma leitura de consumo confirmada.</p>
+        <p class="gv-latest-detail-note"><strong>Novas leituras registradas:</strong> 28.201 (Graduação/RH), 17.486 (Reserva) e 1.083 (Mestrado), com data da coleta a confirmar. <a href="impressao.html#equipment">Consultar relatórios e diferenças por equipamento ↗</a> Estas leituras não modificam os totais mensais históricos.</p>
         <div class="gv-kpis" aria-label="Indicadores da competência selecionada">
           <article class="gv-kpi gv-kpi-main"><span>Consumo apurado</span><strong id="gvConsumed">1.522</strong><small id="gvConsumedNote">Impressões em setembro</small></article>
           <article class="gv-kpi"><span>Franquia mensal</span><strong>4.000</strong><small>Limite contratado</small></article>
