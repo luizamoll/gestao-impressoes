@@ -423,26 +423,42 @@
           <div class="section-title">
             <div>
               <h2>Equipamentos</h2>
-              <p>Primeiro mostramos o consumo do mês. Os contadores acumulados ficam como informação técnica de apoio.</p>
+              <p>Os totais mensais confirmados permanecem no histórico. Abaixo, os novos relatórios atualizam os contadores acumulados, com data da coleta ainda não informada.</p>
             </div>
             <div class="search-box">
               <input id="equipmentSearch" type="search" placeholder="Buscar por setor, modelo ou série" aria-label="Buscar equipamento" />
             </div>
           </div>
 
+          <section class="new-readings-summary" aria-labelledby="newReadingsTitle">
+            <div class="new-readings-head">
+              <div>
+                <span class="eyebrow">Relatórios recebidos em 03/11/2026 · coleta sem data</span>
+                <h3 id="newReadingsTitle">Novas leituras de três equipamentos</h3>
+                <p>Diferenças calculadas desde a leitura anterior de cada série. <strong>Não são consumos mensais</strong> e não alteram a franquia de outubro ou novembro.</p>
+              </div>
+            </div>
+            <div class="new-readings-grid">
+              <article><span>Graduação + RH · BRBST2P00K</span><strong>28.201</strong><small>Anterior 27.582 · acréscimo +619</small></article>
+              <article><span>Reserva · BRBST160GT</span><strong>17.486</strong><small>Anterior 17.468 · acréscimo +18</small></article>
+              <article><span>Mestrado · BRBSV730KB</span><strong>1.083</strong><small>Anterior 56 · acréscimo +1.027</small></article>
+            </div>
+            <p class="new-readings-provenance">Fonte: cinco fotografias de relatórios de uso HP enviadas para conferência. São contadores acumulados, não dados em tempo real. Data impressa da coleta não localizada nos relatórios.</p>
+          </section>
+
           <div class="equipment-cards" id="equipmentCards">
             <article class="equipment-card new-equipment-card" data-search="hp laserjet pro mfp 4103fdw 2z629a brbsv730kb secretaria mestrado">
-              <span class="equipment-state">Impressora nova</span>
+              <span class="equipment-state">Duas leituras disponíveis</span>
               <h3>Secretaria do Mestrado</h3>
               <div class="equipment-model">HP LaserJet Pro MFP 4103fdw</div>
               <div class="serial">Série BRBSV730KB</div>
               <div class="reading">
-                <span>Consumo mensal</span>
-                <strong class="reading-text">Ainda não calculável</strong>
+                <span>Acréscimo entre leituras · não mensal</span>
+                <strong>+1.027</strong>
               </div>
               <div class="card-secondary-data">
-                <span>Primeira leitura total</span>
-                <strong>56</strong>
+                <span>Leitura total mais recente</span>
+                <strong>1.083</strong>
               </div>
               <div class="product">Produto 2Z629A</div>
             </article>
@@ -458,7 +474,7 @@
               </div>
               <div class="card-secondary-data">
                 <span>Leitura total mais recente</span>
-                <strong>27.582</strong>
+                <strong>28.201</strong>
               </div>
               <div class="product">Produto 2Z629A</div>
             </article>
@@ -474,7 +490,7 @@
               </div>
               <div class="card-secondary-data">
                 <span>Leitura total mais recente</span>
-                <strong>17.468</strong>
+                <strong>17.486</strong>
               </div>
               <div class="product">Produto 2Z610A</div>
             </article>
@@ -502,28 +518,28 @@
                   <tr data-search="hp laserjet pro mfp 4103fdw 2z629a brbsv730kb">
                     <td><strong>Secretaria do Mestrado</strong><small>HP LaserJet Pro MFP 4103fdw · Produto 2Z629A</small></td>
                     <td>BRBSV730KB</td>
-                    <td><strong>56</strong></td>
-                    <td>5</td>
+                    <td><strong>1.083</strong></td>
+                    <td>176</td>
                     <td>0</td>
                     <td>0</td>
-                    <td>1</td>
-                    <td>142</td>
+                    <td>9</td>
+                    <td>233</td>
                   </tr>
                   <tr data-search="hp laserjet pro mfp 4103fdw 2z629a brbst2p00k">
                     <td><strong>Secretaria de Graduação + RH</strong><small>HP LaserJet Pro MFP 4103fdw · Produto 2Z629A</small></td>
                     <td>BRBST2P00K</td>
-                    <td><strong>27.582</strong></td>
-                    <td>7.576</td>
+                    <td><strong>28.201</strong></td>
+                    <td>7.763</td>
                     <td>1</td>
-                    <td>28</td>
-                    <td>978</td>
-                    <td>5.349</td>
+                    <td>29</td>
+                    <td>995</td>
+                    <td>5.465</td>
                   </tr>
                   <tr data-search="hp laserjet pro 4003dw 2z610a brbst160gt">
                     <td><strong>Reserva da Secretaria de Graduação + RH</strong><small>HP LaserJet Pro 4003dw · Produto 2Z610A</small></td>
                     <td>BRBST160GT</td>
-                    <td><strong>17.468</strong></td>
-                    <td>8.589</td>
+                    <td><strong>17.486</strong></td>
+                    <td>8.593</td>
                     <td>2</td>
                     <td>3</td>
                     <td>—</td>
@@ -538,7 +554,7 @@
             <div class="history-heading">
               <div>
                 <h3>Histórico de leituras</h3>
-                <p>Agosto e setembro foram identificados pelos conjuntos enviados. As leituras maiores permanecem como leitura mais recente, pois são posteriores a setembro.</p>
+                <p>Agosto e setembro têm referência histórica. As leituras mais novas foram recebidas em 03/11/2026, mas as fotos não trazem data da coleta; portanto, suas diferenças são entre registros e não de um mês específico.</p>
               </div>
             </div>
 
@@ -548,7 +564,7 @@
                   <strong>Secretaria de Graduação + RH</strong>
                   <span>HP LaserJet Pro MFP 4103fdw · Série BRBST2P00K · Produto 2Z629A</span>
                 </div>
-                <span class="history-status">4 leituras</span>
+                <span class="history-status">5 leituras</span>
               </div>
               <div class="history-table-wrap">
                 <table class="history-table">
@@ -595,8 +611,8 @@
                       <td>1.180</td>
                       <td>21</td>
                     </tr>
-                    <tr class="latest-row">
-                      <td>Mais recente</td>
+                    <tr>
+                      <td>Leitura anterior · sem data</td>
                       <td><strong>27.582</strong></td>
                       <td><span class="delta">+7.825</span></td>
                       <td>7.576</td>
@@ -605,10 +621,20 @@
                       <td>1.274</td>
                       <td>28</td>
                     </tr>
+                    <tr class="latest-row">
+                      <td>Nova leitura · coleta sem data</td>
+                      <td><strong>28.201</strong></td>
+                      <td><span class="delta">+619</span></td>
+                      <td>7.763</td>
+                      <td>995</td>
+                      <td>5.465</td>
+                      <td>1.374</td>
+                      <td>29</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
-              <div class="history-foot">Scanner = alimentador + vidro. Julho → agosto: 819 impressões. Agosto → setembro: 1.439 impressões.</div>
+              <div class="history-foot">Scanner = alimentador + vidro. Agosto → setembro: 1.439 impressões; leitura anterior → nova leitura: +619, sem data para definir competência.</div>
             </article>
 
             <article class="history-card">
@@ -617,7 +643,7 @@
                   <strong>Reserva da Secretaria de Graduação + RH</strong>
                   <span>HP LaserJet Pro 4003dw · Série BRBST160GT · Produto 2Z610A</span>
                 </div>
-                <span class="history-status">4 leituras</span>
+                <span class="history-status">5 leituras</span>
               </div>
               <div class="history-table-wrap">
                 <table class="history-table">
@@ -660,8 +686,8 @@
                       <td>3</td>
                       <td>17.229</td>
                     </tr>
-                    <tr class="latest-row">
-                      <td>Mais recente</td>
+                    <tr>
+                      <td>Leitura anterior · sem data</td>
                       <td><strong>17.468</strong></td>
                       <td><span class="delta">+239</span></td>
                       <td>8.589</td>
@@ -669,10 +695,19 @@
                       <td>3</td>
                       <td>17.468</td>
                     </tr>
+                    <tr class="latest-row">
+                      <td>Nova leitura · coleta sem data</td>
+                      <td><strong>17.486</strong></td>
+                      <td><span class="delta">+18</span></td>
+                      <td>8.593</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>17.486</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
-              <div class="history-foot">Julho → agosto: 197 impressões. Agosto → setembro: 83 impressões. Este modelo não apresenta dados de cópia ou scanner nos relatórios enviados.</div>
+              <div class="history-foot">Julho → agosto: 197 impressões. Agosto → setembro: 83. Leitura anterior → nova leitura: +18, sem data para definir competência. O modelo não possui cópia/scanner.</div>
             </article>
 
             <article class="history-card">
@@ -681,17 +716,18 @@
                   <strong>Secretaria do Mestrado</strong>
                   <span>HP LaserJet Pro MFP 4103fdw · Série BRBSV730KB · Produto 2Z629A</span>
                 </div>
-                <span class="history-status muted-status">1 leitura</span>
+                <span class="history-status">2 leituras</span>
               </div>
-              <div class="single-reading-grid">
-                <div><span>Leitura total</span><strong>56</strong></div>
-                <div><span>Frente/verso</span><strong>5</strong></div>
-                <div><span>Cópias</span><strong>1</strong></div>
-                <div><span>Scanner</span><strong>142</strong></div>
-                <div><span>Pasta na rede</span><strong>138</strong></div>
-                <div><span>A4 equivalente</span><strong>55,5</strong></div>
+              <div class="history-table-wrap">
+                <table class="history-table">
+                  <thead><tr><th>Leitura</th><th>Contador total</th><th>Diferença</th><th>Frente/verso</th><th>Cópias</th><th>Scanner</th><th>Pasta na rede</th><th>A4 equivalente</th></tr></thead>
+                  <tbody>
+                    <tr><td>Primeira leitura · sem data</td><td><strong>56</strong></td><td>—</td><td>5</td><td>1</td><td>142</td><td>138</td><td>55,5</td></tr>
+                    <tr class="latest-row"><td>Nova leitura · coleta sem data</td><td><strong>1.083</strong></td><td><span class="delta">+1.027</span></td><td>176</td><td>9</td><td>233</td><td>225</td><td>1.082,5</td></tr>
+                  </tbody>
+                </table>
               </div>
-              <div class="history-foot">Ainda não há uma segunda leitura desta série para calcular diferença.</div>
+              <div class="history-foot">Acréscimo de 1.027 páginas desde a primeira leitura conhecida; <strong>não é consumo mensal</strong>. Scanner = 167 páginas no alimentador + 66 no vidro.</div>
             </article>
           </div>
         </section>
