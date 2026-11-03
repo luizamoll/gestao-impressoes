@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Contrato inicial de leitura da Gestao a Vista.
- * Nao acessa Vikunja, nao retorna tarefas e nao recebe segredos.
+ * Estado seguro da Gestao a Vista, sem dados de contas nem de sistemas externos.
  * A API permanece protegida pela SecurityFilterChain do Portal.
+ *
+ * "conectado" indica apenas integracao de DADOS com outros sistemas,
+ * nunca disponibilidade dos atalhos de navegacao.
  */
 @RestController
 public class GestaoAVistaStatusController {
@@ -25,10 +27,10 @@ public class GestaoAVistaStatusController {
         return ResponseEntity.ok()
             .cacheControl(CacheControl.noStore())
             .body(new IntegracaoStatus(
-                "Vikunja",
-                "aguardando_autorizacao",
+                "Portal UNH",
+                "catalogo_disponivel",
                 false,
-                "A instancia institucional ainda nao foi integrada ou autorizada pela TI."
+                "Links para ferramentas existentes estao disponiveis. Os indicadores de impressoes sao historicos e nao ha sincronizacao automatica de dados."
             ));
     }
 }
