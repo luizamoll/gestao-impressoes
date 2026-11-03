@@ -46,6 +46,7 @@
 | 29/10/2026 — identidade e suporte | Mantida a barra unificada de 76 px; restaurada a marca anterior de duas linhas **Centro Universitário / unihorizontes** nas três páginas; adicionado botão vermelho **Abrir chamado** no topo; cartões Helpdesk destacados em vermelho na home e biblioteca | Melhorar a identificação institucional e dar prioridade ao suporte, sem redesenhar hero, cartões, menus, Nexo ou dashboards |
 | 29/10/2026 — Gestão à Vista | Corrigidos resultados de busca que apontavam para âncoras removidas; adicionado acesso ao projeto no Vikunja a partir da área Projetos; criado teste de navegação e estado sem integração | Tornar o painel útil agora sem inventar tarefas nem interferir no cabeçalho homologado |
 | 03/11/2026 — Gestão à Vista | **Decisão revisada:** não integrar Vikunja ao painel. Removidas as áreas Projetos/Indicadores sem dados, criada Central de ferramentas com 7 acessos existentes (4 internos e 3 externos); busca e Nexo atualizados; endpoint de status agora descreve o catálogo. | Focar em integrar ferramentas realmente disponíveis, começando por navegação, sem alegar sincronização ou inventar indicadores |
+| 03/11/2026 — Impressões | Novos relatórios HP recebidos em cinco fotografias: atualizados contadores de três séries, histórico preservado e Gestão à Vista ganhou cartões de leituras recentes; data da coleta não informada | Diferenciar nova leitura do consumo por competência e evitar atualização falsa do mês |
 
 **Como manter o registro:** adicionar uma linha somente para cada decisão/entrega relevante; detalhes de cada ajuste ficam no histórico do Git. Não registrar cada cor, margem, commit ou teste trivial aqui.
 
@@ -63,6 +64,22 @@
 - **P2 — Integração de dados verdadeira:** identificar junto à TI quais fontes/APIs existentes são autorizadas para leitura (prioridade: módulo de Impressões). Construir adaptador server-side com contrato mínimo, dados/erros rastreáveis e autenticação adequada. Nunca acessar contas pessoais, tokens de cliente ou sistemas sem aprovação.
 - **P3 — Simplificação:** eliminar a duplicação de métricas de Impressões entre Visão Geral e análise detalhada quando a origem dos dados estiver consolidada; evitar adicionar CSS de correção em cascata.
 - **P4 — Design:** preservar cabeçalho UniHorizontes e botão Abrir chamado, além do Nexo. Ajustar apenas conforme capturas reais da Gestão à Vista.
+
+### Leituras HP recebidas em 03/11/2026 — transcrição conferível
+
+As fotografias compartilhadas na conversa apresentam relatórios de uso **sem data visível de coleta**. Registrar a **data de recebimento (03/11/2026)** não permite afirmar a competência mensal. Dados transcritos manualmente, sujeitos à conferência com os relatórios originais; as imagens **não foram adicionadas ao repositório**.
+
+| Série | Equipamento/setor | Leitura anterior no Portal | Novo contador | Acréscimo *entre leituras* | Frente/verso | Cópias | Scanner* | Pasta na rede |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| `BRBST2P00K` | HP MFP 4103fdw · Graduação/RH | 27.582 | **28.201** | **+619** | 7.763 | 995 | 5.465 (4.724 + 741) | 1.374 |
+| `BRBST160GT` | HP 4003dw · Reserva Graduação/RH | 17.468 | **17.486** | **+18** | 8.593 | — | — | — |
+| `BRBSV730KB` | HP MFP 4103fdw · Mestrado | 56 | **1.083** | **+1.027** | 176 | 9 | 233 (167 + 66) | 225 |
+
+*Scanner = contadores do mecanismo, alimentador + vidro; não somar novamente à quantidade de impressões.* A4 equivalente do Mestrado = **1.082,5**, diferente do contador bruto de **1.083** (mídias de tamanhos distintos). Valores A4 equivalentes dos demais relatórios: **28.201,0** e **17.486,0**. Congestões/falhas de coleta: Graduação/RH **1/29**, reserva **2/3**, Mestrado **0/0**.
+
+**Regra de cálculo:** subtrair apenas contadores acumulados do **mesmo número de série** e em ordem conhecida; apresentar os resultados como *diferença desde o registro anterior*, nunca como total mensal sem datas verificadas. Os valores históricos de agosto/setembro de 2026 (1.016/1.522) e outubro sem consumo apurado permanecem **inalterados**.
+
+**Próxima integração real:** capturar data da emissão ou da leitura e fonte verificável; cadastrar cada registro em uma fonte única persistente com série, data, contador, mídia e proveniência; consolidar os valores repetidos de HTML/JS no futuro para evitar manutenção de múltiplas cópias. Nada de considerar a seleção de arquivo como importação automática antes de implementar parser e validações.
 
 ## 4. Problemas e dívida técnica identificados
 
