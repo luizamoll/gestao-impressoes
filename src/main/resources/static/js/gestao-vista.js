@@ -71,20 +71,20 @@
       overviewConsumedNote: "Impressões em setembro/2026"
     },
     "2026-10": {
-      pages: null, deltaPages: null,
-      consumed: "—", note: "Consumo ainda não apurado", remaining: "—",
-      remainingNote: "Saldo depende da leitura atual", delta: "—",
-      deltaNote: "Sem comparação disponível",
-      insight: "Outubro é uma competência nova, mas não há leitura suficiente para determinar consumo. Ausência de registro não significa zero impressões.",
-      status: "neutral", symbol: "○",
-      overviewNote: "Outubro/2026 · leitura não apurada. Consumo desconhecido, não zero.",
-      overviewConsumedNote: "Outubro/2026 · sem leitura confirmada"
+      pages: 1664, deltaPages: 142,
+      consumed: "1.664", note: "Impressões em outubro", remaining: "2.336",
+      remainingNote: "Após o consumo do período", delta: "+142",
+      deltaNote: "+9,3% versus setembro",
+      insight: "Outubro registra 1.664 impressões (619 Graduação/RH, 18 Reserva e 1.027 Mestrado), 41,6% da franquia. Competência informada pela responsável; os relatórios não exibem a data de coleta.",
+      status: "neutral", symbol: "✓",
+      overviewNote: "Outubro/2026 · apuração informada pela responsável, sem sincronização automática.",
+      overviewConsumedNote: "Impressões em outubro/2026"
     }
   };
 
   const monthlyAllowance = 4000;
 
-  // Historico: valores confirmados sao numeros; ausencia de leitura e null,
+  // Historico e apuracao de outubro informada pela responsavel; ausencia futura e null,
   // nunca zero. O mesmo conjunto alimenta KPI, barras, CSV e impressao.
   function updateUsage(prefix, period, pages) {
     const percent = pages === null ? null : Math.round((pages / monthlyAllowance) * 1000) / 10;
@@ -106,8 +106,8 @@
       }
     }
     if (note) note.textContent = pages === null
-      ? "Outubro/2026 · leitura não apurada; não é zero"
-      : (period === "2026-08" ? "Agosto/2026" : "Setembro/2026") + " · competência apurada";
+      ? "Sem apuração para o período"
+      : ({ "2026-08":"Agosto/2026", "2026-09":"Setembro/2026", "2026-10":"Outubro/2026" }[period] || period) + " · competência registrada";
   }
 
   const barButtons = [...document.querySelectorAll("[data-gv-period-target]")];
@@ -126,10 +126,10 @@
     const refVariationNote = document.getElementById("gvRefVariationNote");
     if (refConsumed) refConsumed.textContent = d.consumed;
     if (refMonth) refMonth.textContent = d.overviewConsumedNote;
-    if (refVariation) refVariation.textContent = period === "2026-09" ? "+49,8%" : "—";
+    if (refVariation) refVariation.textContent = period === "2026-09" ? "+49,8%" : period === "2026-10" ? "+9,3%" : "—";
     if (refVariationNote) refVariationNote.textContent = period === "2026-09"
       ? "Comparado a agosto/2026"
-      : (period === "2026-10" ? "Ainda não há comparação" : "Sem mês anterior apurado");
+      : (period === "2026-10" ? "Comparado a setembro/2026" : "Sem mês anterior apurado");
 
 
     const byId = id => document.getElementById(id);
@@ -179,13 +179,13 @@
       ["competencia","situacao","impressoes","franquia_mensal","saldo","uso_percentual","variacao_absoluta","fonte"],
       ...Object.entries(data).map(([period, d]) => [
         period,
-        d.pages === null ? "nao_apurado" : "historico",
+        d.pages === null ? "nao_apurado" : (period === "2026-10" ? "competencia_informada" : "historico"),
         d.pages === null ? "" : d.pages,
         monthlyAllowance,
         d.pages === null ? "" : monthlyAllowance - d.pages,
         d.pages === null ? "" : String(Math.round(d.pages / monthlyAllowance * 1000) / 10).replace(".", ","),
         d.deltaPages === null ? "" : d.deltaPages,
-        "Historico demonstrativo do projeto; sem sincronizacao automatica"
+        period === "2026-10" ? "Relatorios HP recebidos em 03/11/2026; competencia outubro informada pela responsavel; coleta sem data no documento" : "Historico demonstrativo do projeto; sem sincronizacao automatica"
       ])
     ];
     const quote = value => '"' + String(value).replace(/"/g, '""') + '"';
