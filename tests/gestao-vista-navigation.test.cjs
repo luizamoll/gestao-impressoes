@@ -43,8 +43,8 @@ test("busca aponta para tres areas e ferramentas existentes",()=>{
 });
 
 test("historico continua sem transformar leitura ausente em zero",()=>{
-  assert.match(logic,/"2026-10": \{\s*pages: null/);
-  assert.match(html,/Outubro\/2026 · sem leitura/);
+  assert.match(logic,/"2026-10": \{\s*pages: 1664/);
+  assert.match(html,/Outubro\/2026 · apuração informada/);
   assert.match(html,/id="gvRefPeriod"/);
   assert.match(html,/id="gvDownloadCsv"/);
   assert.match(html,/unh-site-header\.css/);
