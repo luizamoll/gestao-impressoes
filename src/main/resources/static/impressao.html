@@ -78,27 +78,12 @@
       </header>
 
       <div class="content">
-          <section class="new-readings-summary section-anchor" id="overview" aria-labelledby="newReadingsTitle">
-            <div class="new-readings-head">
-              <div>
-                <span class="eyebrow">Atualização · recebidos em 03/11/2026 · coleta sem data</span>
-                <h3 id="newReadingsTitle">Novas leituras de três equipamentos</h3>
-                <p>Diferenças calculadas desde a leitura anterior de cada série. <strong>Não são consumos mensais</strong> e não alteram a franquia de outubro ou novembro.</p>
-              </div>
-            </div>
-            <div class="new-readings-grid">
-              <article><span>Graduação + RH · BRBST2P00K</span><strong>28.201</strong><small>Anterior 27.582 · acréscimo +619</small></article>
-              <article><span>Reserva · BRBST160GT</span><strong>17.486</strong><small>Anterior 17.468 · acréscimo +18</small></article>
-              <article><span>Mestrado · BRBSV730KB</span><strong>1.083</strong><small>Anterior 56 · acréscimo +1.027</small></article>
-            </div>
-            <p class="new-readings-provenance">Fonte: cinco fotografias de relatórios de uso HP enviadas para conferência. São contadores acumulados, não dados em tempo real. Data impressa da coleta não localizada nos relatórios.</p>
-          </section>
-
-        <section class="summary executive-summary" id="monthly-overview">
+        <section class="summary section-anchor executive-summary" id="overview">
           <div class="summary-heading">
             <span class="eyebrow">Outubro/2026 · competência ainda não apurada</span>
             <h2>Novas leituras recebidas. Outubro ainda não tem consumo mensal confirmado.</h2>
             <p>Recebemos novos contadores das três impressoras, mas as fotos não informam quando as leituras foram coletadas. Por isso, ainda não é possível calcular o consumo de outubro. A franquia de 4.000 é mensal e não herda as 1.522 impressões de setembro.</p>
+            <p class="last-confirmed-month"><span>Último mês apurado</span><strong>Setembro/2026 · 1.522 impressões</strong></p>
           </div>
 
           <div class="usage-progress" aria-label="Uso da franquia de outubro ainda não apurado; sem leitura confirmada">
@@ -229,7 +214,7 @@
             <div>
               <span class="eyebrow">Último mês fechado</span>
               <h2 id="usageRankingTitle">Como o consumo de setembro se distribuiu?</h2>
-              <p>Este ranking permanece histórico de setembro. As novas leituras já estão disponíveis no início da página, mas sem datas de coleta não definem o consumo de outubro.</p>
+              <p>Este ranking permanece histórico de setembro. Os contadores acumulados estão recolhidos na área Equipamentos; sem datas de coleta, eles não definem o consumo de outubro.</p>
             </div>
           </div>
 
@@ -439,12 +424,34 @@
           <div class="section-title">
             <div>
               <h2>Equipamentos</h2>
-              <p>Os totais mensais confirmados permanecem no histórico. Abaixo, os novos relatórios atualizam os contadores acumulados, com data da coleta ainda não informada.</p>
+              <p>Os dados de cada equipamento e seus contadores acumulados ficam nesta área técnica. Para ver a diferença entre leituras recentes, expanda a seção abaixo.</p>
             </div>
             <div class="search-box">
               <input id="equipmentSearch" type="search" placeholder="Buscar por setor, modelo ou série" aria-label="Buscar equipamento" />
             </div>
           </div>
+
+          <details class="new-readings-disclosure" id="contadores-acumulados">
+            <summary>
+              <span class="reading-disclosure-label"><strong>Consultar contadores acumulados</strong><small>3 equipamentos · dados técnicos, não consumo mensal</small></span>
+              <span class="reading-disclosure-arrow" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="new-readings-summary" aria-labelledby="newReadingsTitle">
+            <div class="new-readings-head">
+              <div>
+                <span class="eyebrow">Atualização · recebidos em 03/11/2026 · coleta sem data</span>
+                <h3 id="newReadingsTitle">Novas leituras de três equipamentos</h3>
+                <p>Diferenças calculadas desde a leitura anterior de cada série. <strong>Não são consumos mensais</strong> e não alteram a franquia de outubro ou novembro.</p>
+              </div>
+            </div>
+            <div class="new-readings-grid">
+              <article><span>Graduação + RH · BRBST2P00K</span><strong>28.201</strong><small>Anterior 27.582 · acréscimo +619</small></article>
+              <article><span>Reserva · BRBST160GT</span><strong>17.486</strong><small>Anterior 17.468 · acréscimo +18</small></article>
+              <article><span>Mestrado · BRBSV730KB</span><strong>1.083</strong><small>Anterior 56 · acréscimo +1.027</small></article>
+            </div>
+            <p class="new-readings-provenance">Fonte: cinco fotografias de relatórios de uso HP enviadas para conferência. São contadores acumulados, não dados em tempo real. Data impressa da coleta não localizada nos relatórios.</p>
+          </div>
+          </details>
 
           <div class="equipment-cards" id="equipmentCards">
             <article class="equipment-card new-equipment-card" data-search="hp laserjet pro mfp 4103fdw 2z629a brbsv730kb secretaria mestrado">
