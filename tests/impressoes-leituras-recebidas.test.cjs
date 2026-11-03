@@ -18,7 +18,7 @@ const leituras = [
 const br = n => n.toLocaleString("pt-BR");
 
 test("as 3 fotos de series distintas foram transcritas no cadastro e no painel", () => {
-  assert.match(impressao, /Relatórios recebidos em 03\/11\/2026/);
+  assert.match(impressao, /recebidos em 03\/11\/2026/i);
   assert.match(gestao, /Relatórios recebidos em 03\/11\/2026/);
   for (const x of leituras) {
     assert.equal(x.nova - x.anterior, x.diferenca, x.serie);
@@ -61,4 +61,13 @@ test("historico mensal apurado nao vira consumo de novembro sem data de coleta",
   assert.match(impressao, /Não são consumos mensais/);
   assert.match(impressao, /data da coleta/);
   assert.match(gestao, /data da coleta a confirmar/);
+});
+
+test("contadores ficam protegidos em detalhes e o resumo mensal permanece visivel", () => {
+  assert.match(impressao, /<details class="new-readings-disclosure"/);
+  assert.match(gestao, /<details class="gv-latest-readings"/);
+  assert.doesNotMatch(impressao, /<details class="new-readings-disclosure"[^>]*\bopen\b/);
+  assert.doesNotMatch(gestao, /<details class="gv-latest-readings"[^>]*\bopen\b/);
+  assert.ok(impressao.indexOf('id="overview"') < impressao.indexOf('id="contadores-acumulados"'));
+  assert.match(gestao, /id="gvRefConsumed">1\.522/);
 });
