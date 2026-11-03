@@ -46,21 +46,21 @@ test("tabela tecnica usa leitura mais recente por numero de serie", () => {
   assert.match(impressao, /225/); // Scan para pasta da rede: Mestrado.
 });
 
-test("duas leituras do Mestrado permitem delta, mas nao consumo mensal", () => {
+test("duas leituras do Mestrado produzem 1027 no fechamento atribuido a outubro", () => {
   assert.match(impressao, /2 leituras/);
   assert.match(app, /Acréscimo entre leituras/);
   assert.match(app, /Não equivale ao consumo de um mês/);
   assert.doesNotMatch(app, /é necessária uma segunda leitura/);
-  assert.match(gestao, /não representam um mês nem consumo da franquia/);
+  assert.match(gestao, /apuração de outubro/);
 });
 
-test("historico mensal apurado nao vira consumo de novembro sem data de coleta", () => {
+test("outubro fica registrado como periodo informado sem criar dados de novembro", () => {
   assert.match(gestaoLogic, /"2026-09": \{/);
   assert.match(gestaoLogic, /pages: 1522/);
-  assert.match(gestaoLogic, /"2026-10": \{\s*pages: null/);
-  assert.match(impressao, /Não são consumos mensais/);
+  assert.match(gestaoLogic, /"2026-10": \{\s*pages: 1664/);
+  assert.match(impressao, /Contadores de vida útil não são consumo mensal/);
   assert.match(impressao, /data da coleta/);
-  assert.match(gestao, /data da coleta a confirmar/);
+  assert.match(gestao, /data de coleta/);
 });
 
 test("contadores ficam protegidos em detalhes e o resumo mensal permanece visivel", () => {
@@ -69,7 +69,7 @@ test("contadores ficam protegidos em detalhes e o resumo mensal permanece visive
   assert.doesNotMatch(impressao, /<details class="new-readings-disclosure"[^>]*\bopen\b/);
   assert.doesNotMatch(gestao, /<details class="gv-latest-readings"[^>]*\bopen\b/);
   assert.ok(impressao.indexOf('id="overview"') < impressao.indexOf('id="contadores-acumulados"'));
-  assert.match(gestao, /id="gvRefConsumed">1\.522/);
+  assert.match(gestao, /id="gvRefConsumed">1\.664/);
 });
 
 test("cartoes de equipamentos nao destacam acumulados nem totais de vida util", () => {
@@ -78,7 +78,7 @@ test("cartoes de equipamentos nao destacam acumulados nem totais de vida util", 
   const cards = impressao.slice(cardStart, archiveStart);
   assert.equal((cards.match(/<details class="equipment-counter-detail"/g) || []).length, 3);
   assert.equal((cards.match(/<\/div><\/details>/g) || []).length, 3);
-  assert.match(cards, /Consumo mensal<\/span>\s*<strong class="reading-text">Não apurado<\/strong>/);
+  assert.match(cards, /Consumo em outubro<\/span>\s*<strong>1\.027<\/strong>/);
   assert.doesNotMatch(cards, /Acréscimo entre leituras · não mensal<\/span>/);
   assert.doesNotMatch(cards, /<details class="equipment-counter-detail"[^>]*\sopen(?:\s|>)/);
 });
