@@ -600,3 +600,35 @@ body, .app-shell,.main,.content{max-width:100%}
 .last-confirmed-month span{font-size:12px;color:#5a7662}
 .last-confirmed-month strong{font-size:15px;color:#1c6140}
 @media(prefers-reduced-motion:reduce){.reading-disclosure-arrow{transition:none}}
+
+/* Contadores de vida util: todos os numeros tecnicos ficam fechados por padrao. */
+.equipment-counter-detail{margin-top:11px;border-top:1px solid #e3ece5;padding-top:9px}
+.equipment-counter-detail>summary {
+  cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;
+  gap:9px;font-size:12px;font-weight:650;color:#366c50;line-height:1.5;
+}
+.equipment-counter-detail>summary::-webkit-details-marker,
+.equipment-archive>summary::-webkit-details-marker{display:none}
+.equipment-counter-detail>summary span{font-size:18px;line-height:1}
+.equipment-counter-detail[open]>summary span{transform:rotate(180deg)}
+.equipment-counter-detail .card-secondary-data{margin-top:10px;padding:10px 12px;background:#f5f9f6;border:1px solid #dce9df;border-radius:10px}
+.equipment-archive{
+  margin-top:20px;border:1px solid #d9e5dc;border-radius:15px;
+  background:#fff;box-shadow:0 2px 0 #e9efe9;overflow:hidden;
+}
+.equipment-archive>summary {
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:16px 19px;cursor:pointer;list-style:none;background:#f9fcfa;color:#28563f;
+}
+.equipment-archive>summary>span:first-child{display:flex;flex-direction:column;gap:3px}
+.equipment-archive>summary strong{font-size:14px;line-height:1.35}
+.equipment-archive>summary small{font-size:12px;line-height:1.5;color:#647c6b}
+.equipment-archive[open]>summary .reading-disclosure-arrow{transform:rotate(180deg)}
+.equipment-archive-body{padding:19px 18px 21px;border-top:1px solid #e3ece5}
+.equipment-archive-body>.panel{margin:0 0 18px}
+.equipment-archive-body>.history-panel{margin:0}
+.equipment-counter-detail>summary:focus-visible,.equipment-archive>summary:focus-visible{outline:3px solid #187451;outline-offset:-3px}
+@media(max-width:640px){
+  .equipment-archive>summary{padding:13px 14px}
+  .equipment-archive-body{padding:13px 10px 18px}
+}
