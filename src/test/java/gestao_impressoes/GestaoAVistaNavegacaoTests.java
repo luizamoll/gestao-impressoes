@@ -71,7 +71,7 @@ class GestaoAVistaNavegacaoTests {
                 "automacoes.html", "gestao-documental.html",
                 "https://helpdesk.unihorizontes.local/Helpdesk",
                 "https://teams.microsoft.com/", "https://outlook.office.com/mail/"}) {
-            assertTrue(html.contains("href=\\\"" + href + "\\\""), "Ferramenta deve abrir: " + href);
+            assertTrue(html.contains("href=" + (char)34 + href + (char)34), "Ferramenta deve abrir: " + href);
         }
         assertTrue(html.contains("Ainda não há sincronização"));
         assertTrue(!html.contains("Vikunja"));
