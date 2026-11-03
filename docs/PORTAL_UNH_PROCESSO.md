@@ -1,6 +1,6 @@
 # Portal UNH — registro de evolução e plano de simplificação
 
-**Atualizado:** 29/10/2026  
+**Atualizado:** 03/11/2026  
 **Branch de trabalho:** `feat/atalhos-apps-home-20261027`  
 **Papel deste documento:** ser o ponto central de acompanhamento das alterações do Portal, sem criar um documento para cada pequeno ajuste.
 
@@ -45,20 +45,24 @@
 | 28/10/2026 — cabeçalho unificado | Home, Biblioteca e Gestão à Vista passaram a usar a mesma marca Portal UNH, logo SVG, menu de três links e CSS compartilhado de 76 px no desktop | Evitar que a identidade e a navegação mudem ao trocar de página; Gestão mantém busca/menus internos abaixo do cabeçalho global |
 | 29/10/2026 — identidade e suporte | Mantida a barra unificada de 76 px; restaurada a marca anterior de duas linhas **Centro Universitário / unihorizontes** nas três páginas; adicionado botão vermelho **Abrir chamado** no topo; cartões Helpdesk destacados em vermelho na home e biblioteca | Melhorar a identificação institucional e dar prioridade ao suporte, sem redesenhar hero, cartões, menus, Nexo ou dashboards |
 | 29/10/2026 — Gestão à Vista | Corrigidos resultados de busca que apontavam para âncoras removidas; adicionado acesso ao projeto no Vikunja a partir da área Projetos; criado teste de navegação e estado sem integração | Tornar o painel útil agora sem inventar tarefas nem interferir no cabeçalho homologado |
+| 03/11/2026 — Gestão à Vista | **Decisão revisada:** não integrar Vikunja ao painel. Removidas as áreas Projetos/Indicadores sem dados, criada Central de ferramentas com 7 acessos existentes (4 internos e 3 externos); busca e Nexo atualizados; endpoint de status agora descreve o catálogo. | Focar em integrar ferramentas realmente disponíveis, começando por navegação, sem alegar sincronização ou inventar indicadores |
 
 **Como manter o registro:** adicionar uma linha somente para cada decisão/entrega relevante; detalhes de cada ajuste ficam no histórico do Git. Não registrar cada cor, margem, commit ou teste trivial aqui.
 
 **Comparação de capturas da biblioteca (28/10):** o banner e os cartões mantinham dimensões praticamente iguais nas duas imagens; a diferença aparente incluía enquadramento distinto do navegador. Ajustamos a estrutura da barra superior e os pontos responsivos, mas a área externa ao site (abas, barra de endereço, zoom e escala do Windows) não é controlável via CSS. A validação deve comparar a mesma largura útil e o mesmo zoom (100%), além de telas diferentes.
 
-### Gestão à Vista — prioridades próximas (29/10/2026)
+### Gestão à Vista — estado e próximos passos (03/11/2026)
 
-- **Já disponível:** abas Visão geral, Projetos, Indicadores e Impressões; competência selecionável, histórico demonstrativo de agosto/setembro, outubro sem leitura, exportação CSV, busca de navegação, Nexo e menu lateral.
-- **Concluído neste ciclo:** buscar páginas válidas (Destaques e Aplicativos, em vez de mural/ferramentas descontinuados); acesso externo ao Vikunja pela área Projetos; manter indicação explícita de ausência de integração.
-- **P1 — Validar funcionalidade no navegador:** alternar quatro abas, testar três competências, exportação CSV, busca, responsividade, Nexo e cabeçalho; não chamar de homologado antes dos testes locais.
-- **P2 — Reduzir redundância visual:** hoje Visão geral e Impressões repetem indicadores de consumo/franquia; propor papéis claros para resumo executivo e análise detalhada, consolidando a origem dos dados.
-- **P3 — Camada de dados:** separar os valores demonstrativos de uma futura fonte autenticada, com origem, competência, autorização, estados (conectado/indisponível) e testes; **não** publicar informações institucionais sem validação.
-- **P4 — Integração com Vikunja:** apenas após liberação da TI, API server-side com autenticação, escopo mínimo e indicadores de tarefas permitidas; usar o aplicativo original para edição de projetos.
-- **P5 — Visual:** revisar imagens reais da Gestão à Vista e aplicar mudanças pontuais mantendo o cabeçalho UniHorizontes e o Nexo.
+**Decisão de escopo:** o Vikunja pode continuar na Biblioteca de Aplicativos como um atalho independente, mas **não será integrado** à Gestão à Vista. Não recriar a área "Projetos acompanhados" ou indicadores de tarefas vazios.
+
+- **Implementado no código:** três áreas — Visão geral, Ferramentas e Impressões. A Central de ferramentas oferece navegação real para Gestão de Impressões, ESG, Automações, Gestão Documental, Helpdesk, Teams e Outlook.
+- **Tipo de integração entregue:** **acesso/navegação**, não sincronização de dados. Os quatro módulos internos abrem dentro do Portal; os três serviços externos abrem em nova aba, podendo exigir acesso institucional.
+- **Dados atuais:** métricas de Impressões ainda vêm de um histórico demonstrativo fixo (agosto/setembro de 2026; outubro sem leitura). A ausência de informação **não equivale a zero**.
+- **API de status:** `/api/gestao-a-vista/status` agora relata `catalogo_disponivel` e `conectado=false`, sem afirmar conexões institucionais. Permanece protegida pelas regras existentes do backend.
+- **P1 — Validação local:** abrir as três áreas, conferir links dos sete sistemas, busca, CSV, competências, Nexo, cabeçalho, responsividade e testes Maven/Node. Alterações no GitHub não substituem homologação no Windows.
+- **P2 — Integração de dados verdadeira:** identificar junto à TI quais fontes/APIs existentes são autorizadas para leitura (prioridade: módulo de Impressões). Construir adaptador server-side com contrato mínimo, dados/erros rastreáveis e autenticação adequada. Nunca acessar contas pessoais, tokens de cliente ou sistemas sem aprovação.
+- **P3 — Simplificação:** eliminar a duplicação de métricas de Impressões entre Visão Geral e análise detalhada quando a origem dos dados estiver consolidada; evitar adicionar CSS de correção em cascata.
+- **P4 — Design:** preservar cabeçalho UniHorizontes e botão Abrir chamado, além do Nexo. Ajustar apenas conforme capturas reais da Gestão à Vista.
 
 ## 4. Problemas e dívida técnica identificados
 
