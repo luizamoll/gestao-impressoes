@@ -71,3 +71,28 @@ test("contadores ficam protegidos em detalhes e o resumo mensal permanece visive
   assert.ok(impressao.indexOf('id="overview"') < impressao.indexOf('id="contadores-acumulados"'));
   assert.match(gestao, /id="gvRefConsumed">1\.522/);
 });
+
+test("cartoes de equipamentos nao destacam acumulados nem totais de vida util", () => {
+  const cardStart = impressao.indexOf('class="equipment-cards"');
+  const archiveStart = impressao.indexOf('class="equipment-archive"');
+  const cards = impressao.slice(cardStart, archiveStart);
+  assert.equal((cards.match(/<details class="equipment-counter-detail"/g) || []).length, 3);
+  assert.equal((cards.match(/<\/div><\/details>/g) || []).length, 3);
+  assert.match(cards, /Consumo mensal<\/span>\s*<strong class="reading-text">Não apurado<\/strong>/);
+  assert.doesNotMatch(cards, /Acréscimo entre leituras · não mensal<\/span>/);
+  assert.doesNotMatch(cards, /<details class="equipment-counter-detail"[^>]*\sopen(?:\s|>)/);
+});
+
+test("tabela e historico de totais acumulados ficam juntos e recolhidos", () => {
+  const begin = impressao.indexOf('<details class="equipment-archive"');
+  const end = impressao.indexOf('</details>', begin);
+  assert.ok(begin > 0 && end > begin);
+  const archive = impressao.slice(begin, end);
+  assert.match(archive, /Dados técnicos dos relatórios/);
+  assert.match(archive, /Histórico de leituras/);
+  assert.match(archive, /Leitura total/);
+  assert.doesNotMatch(archive.slice(0, 300), /<details[^>]*\sopen(?:\s|>)/);
+  assert.match(gestao, /<details class="gv-latest-readings"/);
+  const note = gestao.match(/<p class="gv-latest-detail-note">[\s\S]*?<\/p>/)?.[0] || "";
+  assert.doesNotMatch(note, /28\.201|17\.486|1\.083/);
+});
