@@ -28,11 +28,15 @@ test("historico anterior continua separado e a franquia contratual e explicita",
   assert.match(html, /Aguardando leitura de outubro/);
 });
 
-test("leituras novas precedem apuracao ainda pendente", () => {
-  const i = html.indexOf('id="overview"');
-  const j = html.indexOf('id="monthly-overview"');
-  const k = html.indexOf('id="equipment"');
-  assert.ok(i > 0 && j > i && k > j);
+test("resumo mensal tem prioridade e contadores de vida util ficam recolhidos", () => {
+  const mensal = html.indexOf('id="overview"');
+  const equipamentos = html.indexOf('id="equipment"');
+  const detalhes = html.indexOf('id="contadores-acumulados"');
+  assert.ok(mensal > 0 && equipamentos > mensal && detalhes > equipamentos);
+  assert.ok(html.includes('<details class="new-readings-disclosure"'));
+  assert.ok(!html.includes('<details class="new-readings-disclosure" open'));
   assert.ok(html.includes("Não são consumos mensais"));
   assert.ok(html.includes("Outubro/2026 · competência ainda não apurada"));
+  assert.ok(html.includes("Último mês apurado"));
+  assert.ok(html.includes("Setembro/2026 · 1.522 impressões"));
 });
