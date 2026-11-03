@@ -636,6 +636,8 @@
 @media(max-width:760px){.gv-latest-grid{grid-template-columns:1fr}.gv-page .gv-latest-readings{padding:17px 14px}}
 
 /* Contadores sao detalhes tecnicos opcionais, nao KPIs do mes. */
+.gv-latest-readings:not([open]) > :not(summary){display:none!important}
+
 .gv-page .gv-latest-readings{padding:0;overflow:hidden;box-shadow:0 2px 0 #e8eee9}
 .gv-latest-summary{
   display:flex;align-items:center;justify-content:space-between;gap:15px;
