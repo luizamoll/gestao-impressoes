@@ -40,3 +40,19 @@ test("resumo mensal tem prioridade e contadores de vida util ficam recolhidos", 
   assert.ok(html.includes("Último mês apurado"));
   assert.ok(html.includes("Setembro/2026 · 1.522 impressões"));
 });
+test("comparativo do mes mostra apenas consumo, com contador bruto recolhido", () => {
+  const inicio = html.indexOf('<section class="month-comparison"');
+  const fim = html.indexOf('<section class="equipment-section"', inicio);
+  const comparacao = html.slice(inicio, fim);
+  const detalhes = comparacao.indexOf('<details class="monthly-technical-comparison"');
+  const tabela = comparacao.indexOf('<div class="timeline-table-wrap">');
+  assert.ok(inicio > 0 && fim > inicio);
+  assert.ok(detalhes > 0 && tabela > detalhes);
+  assert.match(comparacao, /Consumo mensal confirmado/);
+  assert.match(comparacao, /Agosto\/2026[\s\S]*?<strong>1\.016<\/strong>/);
+  assert.match(comparacao, /Setembro\/2026 · último mês apurado[\s\S]*?<strong>1\.522<\/strong>/);
+  assert.match(comparacao, /Outubro\/2026[\s\S]*?<strong>—<\/strong>/);
+  assert.doesNotMatch(comparacao.slice(0, detalhes), /18\.318|19\.757|17\.229/);
+  assert.doesNotMatch(comparacao.slice(detalhes, detalhes + 110), /\sopen(?:\s|>)/);
+  assert.match(comparacao.slice(tabela), /19\.757/);
+});
