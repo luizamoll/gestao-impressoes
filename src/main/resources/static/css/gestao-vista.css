@@ -591,3 +591,46 @@
 @media (max-width: 600px) {
   .gv-snapshot-period { max-width: none; }
 }
+
+/* Leituras recém-recebidas: contadores acumulados separados da competência mensal. */
+.gv-page .gv-latest-readings {
+  margin:18px 0 19px;
+  padding:20px 22px;
+  border:1px solid #d7e6db;
+  border-radius:16px;
+  background:linear-gradient(155deg,#fff 0%,#f5faf6 100%);
+  box-shadow:0 3px 0 #e8eee9,0 13px 23px rgba(28,72,48,.055),inset 0 1px 0 #fff;
+}
+.gv-latest-head {display:flex;justify-content:space-between;align-items:flex-start;gap:15px}
+.gv-latest-head h3 {margin:5px 0 8px;font-size:20px;color:#214b33;letter-spacing:-.03em}
+.gv-latest-head p {max-width:730px;margin:0;color:#526d5b;font-size:12px;line-height:1.65}
+.gv-latest-head>a {
+  flex:0 0 auto;align-self:center;
+  padding:9px 12px;
+  border:1px solid #c5decc;border-radius:9px;
+  background:#fff;color:#256244!important;
+  font-size:12px;font-weight:700;text-decoration:none;
+}
+.gv-latest-head>a:hover {background:#eaf4ed;border-color:#9bc1a7}
+.gv-latest-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.gv-latest-card {
+  display:flex;flex-direction:column;gap:5px;
+  padding:15px 16px;
+  border:1px solid #dce8df;border-radius:11px;
+  background:#fff;box-shadow:0 2px 0 #e8efe9,0 6px 14px rgba(30,70,44,.04);
+}
+.gv-latest-card>span {display:flex;flex-direction:column;gap:2px;color:#526f60;font-size:12px;font-weight:700}
+.gv-latest-card>span small {font-size:11px;font-weight:500;color:#72897b}
+.gv-latest-card>strong {font-size:27px;line-height:1.25;letter-spacing:-.04em;font-variant-numeric:tabular-nums;color:#245a3c}
+.gv-latest-card>small {font-size:11px;line-height:1.5;color:#607769}
+.gv-latest-card>small b {color:#2d6548}
+.gv-latest-source {margin:12px 0 0;color:#688071;font-size:11px;line-height:1.55}
+.gv-page .gv-latest-detail-note {
+  margin:12px 0 18px;padding:13px 15px;
+  border:1px solid #d6e5da;border-radius:11px;
+  background:#f3f9f5;color:#52695b;
+  font-size:12px;line-height:1.7;
+}
+.gv-latest-detail-note a {font-weight:700;color:#1d6845!important;text-decoration:underline}
+@media(max-width:1080px){.gv-latest-head{flex-direction:column}.gv-latest-head>a{align-self:flex-start}}
+@media(max-width:760px){.gv-latest-grid{grid-template-columns:1fr}.gv-page .gv-latest-readings{padding:17px 14px}}
