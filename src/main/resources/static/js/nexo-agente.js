@@ -21,8 +21,7 @@
     equipamentos: Object.freeze({ href: "impressao.html", label: "Abrir Gestão de Impressões" }),
     esg: Object.freeze({ href: "esg.html", label: "Abrir ESG" }),
     documentos: Object.freeze({ href: "gestao-documental.html", label: "Abrir Gestão Documental" }),
-    automacoes: Object.freeze({ href: "automacoes.html", label: "Abrir Central de Automações" }),
-    projetos: Object.freeze({ href: "gestao-a-vista.html#gv-projetos", label: "Ver área de Projetos" })
+    automacoes: Object.freeze({ href: "automacoes.html", label: "Abrir Central de Automações" })
   });
 
   function normalize(value) {
@@ -65,10 +64,10 @@
     }),
     "gestao-a-vista.html": Object.freeze({
       title: "Gestão à Vista",
-      suggestion: "Compare apenas competências com leituras verificadas e consulte a origem dos indicadores.",
-      alert: "Indicadores de Impressões são históricos do laboratório; integração institucional e métricas do Vikunja ainda estão pendentes.",
+      suggestion: "Na Gestão à Vista, selecione o período para analisar o histórico de Impressões ou abra Ferramentas para acessar os módulos existentes.",
+      alert: "O histórico de Impressões é demonstrativo. A central reúne acessos diretos, mas ainda não sincroniza dados entre sistemas.",
       prompts: Object.freeze(["Compare agosto e setembro de 2026.", "Por que outubro não tem saldo calculado?"]),
-      source: "Indicadores demonstrativos e estado das integrações"
+      source: "Histórico de Impressões e navegação da Gestão à Vista"
     }),
     "gestao-documental.html": Object.freeze({
       title: "Gestão Documental",
