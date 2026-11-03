@@ -32,7 +32,7 @@ function mount() {
     };
   }
   const elements = Object.fromEntries(elementIds.map(id=>[id,el()]));
-  elements.gvPeriod.value = elements.gvOverviewPeriod.value = "2026-09";
+  elements.gvPeriod.value = elements.gvOverviewPeriod.value = "2026-10";
   const bars=["2026-08","2026-09","2026-10"].map(period=>{
     const a=el();a.dataset.period=period;return a;
   });
@@ -68,16 +68,17 @@ function mount() {
   return { elements,bars,buttons,downloaded };
 }
 
-test("painel inicial apresenta 38,1% e barra sincronizada",()=>{
+test("painel inicial apresenta outubro 41,6% e barra sincronizada",()=>{
   const {elements,buttons}=mount();
-  assert.equal(elements.gvOverviewUsage.textContent,"38,1%");
-  assert.equal(elements.gvDetailUsage.textContent,"38,1%");
-  assert.equal(elements.gvOverviewUsageFill.style.width,"38.05%");
-  assert.equal(elements.gvDetailUsageFill.style.width,"38.05%");
-  assert.equal(elements.gvOverviewUsageTrack.attrs["aria-valuenow"],"38.1");
-  assert.equal(elements.gvOverviewRemaining.textContent,"2.478");
-  assert.equal(elements.gvOverviewDelta.textContent,"+506");
-  assert.deepEqual(buttons.map(b=>b.attrs["aria-pressed"]),["false","true","false"]);
+  assert.equal(elements.gvConsumed.textContent,"1.664");
+  assert.equal(elements.gvOverviewUsage.textContent,"41,6%");
+  assert.equal(elements.gvDetailUsage.textContent,"41,6%");
+  assert.equal(elements.gvOverviewUsageFill.style.width,"41.60%");
+  assert.equal(elements.gvDetailUsageFill.style.width,"41.60%");
+  assert.equal(elements.gvOverviewUsageTrack.attrs["aria-valuenow"],"41.6");
+  assert.equal(elements.gvOverviewRemaining.textContent,"2.336");
+  assert.equal(elements.gvOverviewDelta.textContent,"+142");
+  assert.deepEqual(buttons.map(b=>b.attrs["aria-pressed"]),["false","false","true"]);
 });
 
 test("clicar agosto na comparacao seleciona competencias, percentuais e acessibilidade",()=>{
@@ -94,27 +95,24 @@ test("clicar agosto na comparacao seleciona competencias, percentuais e acessibi
   assert.deepEqual(buttons.map(b=>b.attrs["aria-pressed"]),["true","false","false"]);
 });
 
-test("outubro mostra leitura ausente, nao zero, sem porcentagem acessivel falsa",()=>{
+test("outubro informado tem consumo, saldo e percentual, sem confundir contador bruto",()=>{
   const {elements,buttons}=mount();
   buttons[2].fire("click");
-  assert.equal(elements.gvConsumed.textContent,"—");
-  assert.equal(elements.gvRemaining.textContent,"—");
-  assert.equal(elements.gvOverviewRemaining.textContent,"—");
-  assert.equal(elements.gvOverviewDelta.textContent,"—");
-  assert.equal(elements.gvOverviewUsage.textContent,"—");
-  assert.equal(elements.gvDetailUsage.textContent,"—");
-  assert.equal(elements.gvDetailUsageFill.style.width,"0%");
-  assert.equal(elements.gvOverviewUsageTrack.attrs["aria-valuenow"],undefined);
-  assert.match(elements.gvOverviewUsageTrack.attrs["aria-valuetext"],/consumo desconhecido/);
-  assert.ok(elements.gvDetailUsageTrack.classes.has("gv-usage-unavailable"));
-  assert.match(elements.gvOverviewUsageNote.textContent,/não é zero/);
+  assert.equal(elements.gvConsumed.textContent,"1.664");
+  assert.equal(elements.gvRemaining.textContent,"2.336");
+  assert.equal(elements.gvOverviewRemaining.textContent,"2.336");
+  assert.equal(elements.gvOverviewDelta.textContent,"+142");
+  assert.equal(elements.gvOverviewUsage.textContent,"41,6%");
+  assert.equal(elements.gvDetailUsage.textContent,"41,6%");
+  assert.equal(elements.gvDetailUsageFill.style.width,"41.60%");
+  assert.equal(elements.gvOverviewUsageTrack.attrs["aria-valuenow"],"41.6");
+  assert.match(elements.gvOverviewDataNote.textContent,/Outubro\/2026.*responsável/);
+  assert.equal(elements.gvDetailUsageTrack.classes.has("gv-usage-unavailable"),false);
   buttons[1].fire("click");
   assert.equal(elements.gvOverviewUsage.textContent,"38,1%");
-  assert.equal(elements.gvOverviewUsageTrack.attrs["aria-valuenow"],"38.1");
-  assert.equal(elements.gvDetailUsageTrack.classes.has("gv-usage-unavailable"),false);
 });
 
-test("CSV exporta dois meses conhecidos e outubro vazio, com fonte e formato Excel",()=>{
+test("CSV exporta outubro como competencia informada, com fonte verificavel",()=>{
   const {elements,downloaded}=mount();
   elements.gvDownloadCsv.fire("click");
   assert.equal(downloaded.clicked,1);
@@ -126,7 +124,7 @@ test("CSV exporta dois meses conhecidos e outubro vazio, com fonte e formato Exc
   assert.equal(lines.length,4,"cabecalho + agosto + setembro + outubro");
   assert.match(lines[1],/^"2026-08";"historico";"1016";"4000";"2984";"25,4";"";/);
   assert.match(lines[2],/^"2026-09";"historico";"1522";"4000";"2478";"38,1";"506";/);
-  assert.match(lines[3],/^"2026-10";"nao_apurado";"";"4000";"";"";"";/);
+  assert.match(lines[3],/^"2026-10";"competencia_informada";"1664";"4000";"2336";"41,6";"142";/);
   assert.match(csv,/sem sincronizacao automatica/);
   assert.ok(downloaded.removed);
   assert.deepEqual(downloaded.revoked,["blob:mock-csv"]);
