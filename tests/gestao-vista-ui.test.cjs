@@ -37,8 +37,8 @@ function mount() {
       change() { handlers.change?.(); }
     }];
   }));
-  elements.gvPeriod.value = "2026-09";
-  elements.gvOverviewPeriod.value = "2026-09";
+  elements.gvPeriod.value = "2026-10";
+  elements.gvOverviewPeriod.value = "2026-10";
   const bars = ["2026-08", "2026-09", "2026-10"].map(period => {
     const classes = new Set();
     return {
@@ -61,13 +61,13 @@ function mount() {
   return { elements, bars };
 }
 
-test("setembro inicia igual nos dois modulos", () => {
+test("outubro inicia igual nos dois modulos", () => {
   const { elements, bars } = mount();
-  assert.equal(elements.gvConsumed.textContent, "1.522");
-  assert.equal(elements.gvOverviewConsumed.textContent, "1.522");
-  assert.equal(elements.gvPeriod.value, "2026-09");
-  assert.equal(elements.gvOverviewPeriod.value, "2026-09");
-  assert.equal(bars.find(bar => bar.dataset.period === "2026-09").classes.has("gv-bar-selected"), true);
+  assert.equal(elements.gvConsumed.textContent, "1.664");
+  assert.equal(elements.gvOverviewConsumed.textContent, "1.664");
+  assert.equal(elements.gvPeriod.value, "2026-10");
+  assert.equal(elements.gvOverviewPeriod.value, "2026-10");
+  assert.equal(bars.find(bar => bar.dataset.period === "2026-10").classes.has("gv-bar-selected"), true);
 });
 
 test("selecionar agosto na visao geral altera os indicadores de impressoes", () => {
@@ -82,16 +82,16 @@ test("selecionar agosto na visao geral altera os indicadores de impressoes", () 
   assert.equal(bars.find(bar => bar.dataset.period === "2026-08").classes.has("gv-bar-selected"), true);
 });
 
-test("outubro sem leitura nao se transforma em zero nem gera saldo ficticio", () => {
+test("outubro possui consumo de 1664 e origem informada", () => {
   const { elements, bars } = mount();
   elements.gvPeriod.value = "2026-10";
   elements.gvPeriod.change();
   assert.equal(elements.gvOverviewPeriod.value, "2026-10");
-  assert.equal(elements.gvConsumed.textContent, "—");
-  assert.equal(elements.gvOverviewConsumed.textContent, "—");
-  assert.equal(elements.gvRemaining.textContent, "—");
-  assert.match(elements.gvOverviewDataNote.textContent, /desconhecido, não zero/);
-  assert.match(elements.gvOverviewConsumedNote.textContent, /sem leitura confirmada/);
+  assert.equal(elements.gvConsumed.textContent, "1.664");
+  assert.equal(elements.gvOverviewConsumed.textContent, "1.664");
+  assert.equal(elements.gvRemaining.textContent, "2.336");
+  assert.match(elements.gvOverviewDataNote.textContent, /Outubro\/2026.*responsável/);
+  assert.match(elements.gvOverviewConsumedNote.textContent, /Impressões em outubro/);
   assert.equal(bars.find(bar => bar.dataset.period === "2026-10").classes.has("gv-bar-selected"), true);
   assert.equal(elements.gvInsight.classes.has("gv-insight-neutral"), true);
 });
